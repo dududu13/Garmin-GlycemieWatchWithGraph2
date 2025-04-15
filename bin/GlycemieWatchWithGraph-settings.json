@@ -1,0 +1,150 @@
+{
+  "settings" : [ {
+    "key" : "sourceBG",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "sourceBG",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "$literal0$",
+      "value" : 0
+    }, {
+      "display" : "$literal1$",
+      "value" : 1
+    }, {
+      "display" : "$literal2$",
+      "value" : 2
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "url",
+    "valueType" : "string",
+    "defaultValue" : "",
+    "configTitle" : "url",
+    "configPrompt" : null,
+    "configType" : "alphaNumeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "tokenNS",
+    "valueType" : "string",
+    "defaultValue" : "",
+    "configTitle" : "token",
+    "configPrompt" : null,
+    "configType" : "alphaNumeric",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "afficheSecondes",
+    "valueType" : "boolean",
+    "defaultValue" : false,
+    "configTitle" : "secondsPrompt",
+    "configPrompt" : null,
+    "configType" : "boolean",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "afficheMeteo",
+    "valueType" : "boolean",
+    "defaultValue" : false,
+    "configTitle" : "meteoPrompt",
+    "configPrompt" : null,
+    "configType" : "boolean",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "nbHGraph",
+    "valueType" : "number",
+    "defaultValue" : 1,
+    "configTitle" : "nbHGraph",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "$literal3$",
+      "value" : 0
+    }, {
+      "display" : "$literal4$",
+      "value" : 1
+    }, {
+      "display" : "$literal5$",
+      "value" : 2
+    }, {
+      "display" : "$literal6$",
+      "value" : 3
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "logarithmique",
+    "valueType" : "boolean",
+    "defaultValue" : true,
+    "configTitle" : "logarithmique",
+    "configPrompt" : null,
+    "configType" : "boolean",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  } ],
+  "supportsLiveValidation" : false,
+  "languages" : {
+    "valyrian" : {
+      "secondsPrompt" : "Affiche les secondes ?",
+      "nbHGraph" : "Hours for graph",
+      "logarithmique" : "Log scale for graph ?",
+      "version" : "V. 1",
+      "url" : "Online site URL",
+      "meteoPrompt" : "Meteo, or graph ?",
+      "AppName" : "Blood Glucode Watch",
+      "token" : "Access token NS user, if necessary",
+      "$literal1$" : "AAPS",
+      "$literal0$" : "URL NightScout",
+      "$literal3$" : "1h",
+      "$literal2$" : "Xdrip+",
+      "$literal5$" : "4h",
+      "$literal4$" : "2h",
+      "sourceBG" : "Blood glucose source",
+      "$literal6$" : "6h"
+    }
+  }
+}

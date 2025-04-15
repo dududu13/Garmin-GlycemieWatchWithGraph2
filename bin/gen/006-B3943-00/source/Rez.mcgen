@@ -1,0 +1,1537 @@
+import Toybox.Lang;
+using Toybox.WatchUi;
+using Toybox.WatchUi as Ui;
+using Toybox.Graphics;
+using Toybox.Graphics as Gfx;
+
+module Rez {
+    module Drawables {
+        (:initialized) var BoutonVide as ResourceId;
+        (:initialized) var Coche as ResourceId;
+        (:initialized) var back as ResourceId;
+        (:initialized) var blueTooth as ResourceId;
+        (:initialized) var LauncherIcon as ResourceId;
+
+        class settingsGraph extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (45 / 100.0))) + (5 / 2)), (((416 - 0) * (50 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (45 / 100.0))) + 5, ((416 - 0) * (50 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsGraphActive extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (45 / 100.0))) + (5 / 2)), (((416 - 0) * (50 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (45 / 100.0))) + 5, ((416 - 0) * (50 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche0 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((416 - 0) * (12 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((416 - 0) * (12 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (30 / 100.0))) + (5 / 2)), (((416 - 0) * (12 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (30 / 100.0))) + 5, ((416 - 0) * (12 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (45 / 100.0))) + (5 / 2)), (((416 - 0) * (12 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (45 / 100.0))) + 5, ((416 - 0) * (12 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (60 / 100.0))) + (5 / 2)), (((416 - 0) * (70 / 100.0)) - 5), (((416 - 0) * (18 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (60 / 100.0))) + 5, ((416 - 0) * (70 / 100.0)) - (2 * 5), ((416 - 0) * (18 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive0 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((416 - 0) * (12 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((416 - 0) * (12 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (30 / 100.0))) + (5 / 2)), (((416 - 0) * (12 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (30 / 100.0))) + 5, ((416 - 0) * (12 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (45 / 100.0))) + (5 / 2)), (((416 - 0) * (12 / 100.0)) - 5), (((416 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (45 / 100.0))) + 5, ((416 - 0) * (12 / 100.0)) - (2 * 5), ((416 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (60 / 100.0))) + (5 / 2)), (((416 - 0) * (70 / 100.0)) - 5), (((416 - 0) * (18 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (60 / 100.0))) + 5, ((416 - 0) * (70 / 100.0)) - (2 * 5), ((416 - 0) * (18 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsSurligneLine0 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (27 / 100.0))) + 0, ((416 - 0) * (45 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
+            }
+        }
+
+        class settingsSurligneLine1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (42 / 100.0))) + 0, ((416 - 0) * (45 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
+            }
+        }
+
+        class settingsSurligneLine2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (57 / 100.0))) + 0, ((416 - 0) * (45 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
+            }
+        }
+
+        class settingsSurligneLine3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + ((416 - 0) * (28 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (73 / 100.0))) + 0, ((416 - 0) * (48 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
+            }
+        }
+
+        class settingsChoixBG1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (22 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (20 / 100.0))) + (5 / 2)), (((416 - 0) * (59 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (22 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (20 / 100.0))) + 5, ((416 - 0) * (59 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsChoixBG2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (22 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (40 / 100.0))) + (5 / 2)), (((416 - 0) * (59 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (22 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (40 / 100.0))) + 5, ((416 - 0) * (59 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsChoixBG3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (22 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (60 / 100.0))) + (5 / 2)), (((416 - 0) * (59 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (22 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (60 / 100.0))) + 5, ((416 - 0) * (59 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsChoixBGActive1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (22 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (20 / 100.0))) + (5 / 2)), (((416 - 0) * (59 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (22 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (20 / 100.0))) + 5, ((416 - 0) * (59 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsChoixBGActive2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (22 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (40 / 100.0))) + (5 / 2)), (((416 - 0) * (59 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (22 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (40 / 100.0))) + 5, ((416 - 0) * (59 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsChoixBGActive3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (22 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (60 / 100.0))) + (5 / 2)), (((416 - 0) * (59 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (22 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (60 / 100.0))) + 5, ((416 - 0) * (59 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDuree1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (5 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (5 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDuree2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (29 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (29 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDuree3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (53 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (53 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDuree4 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (77 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (77 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDureeActive1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (5 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (5 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDureeActive2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (29 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (29 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDureeActive3 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (53 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (53 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsDureeActive4 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (77 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (28 / 100.0))) + (5 / 2)), (((416 - 0) * (18 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (77 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (28 / 100.0))) + 5, ((416 - 0) * (18 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsScale1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (20 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (58 / 100.0))) + (5 / 2)), (((416 - 0) * (25 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (20 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (58 / 100.0))) + 5, ((416 - 0) * (25 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsScaleActive1 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (20 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (58 / 100.0))) + (5 / 2)), (((416 - 0) * (25 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (20 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (58 / 100.0))) + 5, ((416 - 0) * (25 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsScale2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (58 / 100.0))) + (5 / 2)), (((416 - 0) * (25 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (58 / 100.0))) + 5, ((416 - 0) * (25 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsScaleActive2 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (58 / 100.0))) + (5 / 2)), (((416 - 0) * (25 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (58 / 100.0))) + 5, ((416 - 0) * (25 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class backgroundGrey extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + 0) + 0, ((0 + 0) + 0) + 0, ((416 - 0) - 0) - (2 * 0), ((416 - 0) - 0) - (2 * 0));
+            }
+        }
+
+        class backgroundBlack extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + 0) + 0, ((0 + 0) + 0) + 0, ((416 - 0) - 0) - (2 * 0), ((416 - 0) - 0) - (2 * 0));
+            }
+        }
+
+        class cercleNotif extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.fillCircle(((0 + 0) + ((416 - 0) * (12 / 100.0))), ((0 + 0) + ((416 - 0) * (39 / 100.0))), (((416 - 0) * (6 / 100.0)) - 0));
+            }
+        }
+    } // Drawables
+
+    module Layouts {
+        function layoutSettingsChoixSourceBG(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
+            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
+            }
+
+            var rez_cmp_local_text_1193959466 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (21 / 100.0)), :text=>"NigthScout", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_1139614796 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (41 / 100.0)), :text=>"AAPS", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_8374157491 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (61 / 100.0)), :text=>"Xdrip", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_custom_selectable_14295387131182493329 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+
+            var rez_cmp_local_custom_selectable_13016745771638067850 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive1(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG1(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(416 * (59 / 100.0)), :locX=>(416 * (22 / 100.0)), :locY=>(416 * (20 / 100.0)), :behavior=>:nigthscout, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_12797518701618786051 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive2(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG2(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(416 * (59 / 100.0)), :locX=>(416 * (22 / 100.0)), :locY=>(416 * (40 / 100.0)), :behavior=>:aaps, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_10684974341016840512 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive3(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG3(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(416 * (59 / 100.0)), :locX=>(416 * (22 / 100.0)), :locY=>(416 * (60 / 100.0)), :behavior=>:xdrip, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_11478969152092624704 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(416 * (20 / 100.0)), :locX=>(416 * (40 / 100.0)), :locY=>(416 * (80 / 100.0)), :behavior=>:back, :height=>(416 * (20 / 100.0))});
+
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_text_1193959466, rez_cmp_local_text_1139614796, rez_cmp_local_text_8374157491, rez_cmp_local_custom_selectable_14295387131182493329, rez_cmp_local_custom_selectable_13016745771638067850, rez_cmp_local_custom_selectable_12797518701618786051, rez_cmp_local_custom_selectable_10684974341016840512, rez_cmp_local_custom_selectable_11478969152092624704] as Array<WatchUi.Drawable>;
+        }
+
+        function layoutSettingsHeuresGraph(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
+            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
+            }
+
+            var rez_cmp_local_custom_selectable_46428211913725765358 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+
+            var rez_cmp_local_text_2042061750 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (15 / 100.0)), :text=>"Durée du graphique ?", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_text_un = new WatchUi.Text({:identifier=>"un", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (8 / 100.0)), :locY=>(416 * (30 / 100.0)), :text=>"1 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_12328022382134557307 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive1(), :stateDefault=>new $.Rez.Drawables.settingsDuree1(), :width=>(416 * (18 / 100.0)), :locX=>(416 * (5 / 100.0)), :locY=>(416 * (28 / 100.0)), :behavior=>:UN, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_text_deux = new WatchUi.Text({:identifier=>"deux", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (32 / 100.0)), :locY=>(416 * (30 / 100.0)), :text=>"2 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_17851008573871416621 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive2(), :stateDefault=>new $.Rez.Drawables.settingsDuree2(), :width=>(416 * (18 / 100.0)), :locX=>(416 * (29 / 100.0)), :locY=>(416 * (28 / 100.0)), :behavior=>:DEUX, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_text_quatre = new WatchUi.Text({:identifier=>"quatre", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (56 / 100.0)), :locY=>(416 * (30 / 100.0)), :text=>"4 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_46325576237776306214 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive3(), :stateDefault=>new $.Rez.Drawables.settingsDuree3(), :width=>(416 * (18 / 100.0)), :locX=>(416 * (53 / 100.0)), :locY=>(416 * (28 / 100.0)), :behavior=>:QUATRE, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_text_six = new WatchUi.Text({:identifier=>"six", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (80 / 100.0)), :locY=>(416 * (30 / 100.0)), :text=>"6 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_13272225842016372201 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive4(), :stateDefault=>new $.Rez.Drawables.settingsDuree4(), :width=>(416 * (18 / 100.0)), :locX=>(416 * (77 / 100.0)), :locY=>(416 * (28 / 100.0)), :behavior=>:SIX, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_text_5456945618 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (45 / 100.0)), :text=>"Graph scale", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_text_1703529506 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (32 / 100.0)), :locY=>(416 * (60 / 100.0)), :text=>"log", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_15260318648349617469 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsScaleActive1(), :stateDefault=>new $.Rez.Drawables.settingsScale1(), :width=>(416 * (25 / 100.0)), :locX=>(416 * (20 / 100.0)), :locY=>(416 * (60 / 100.0)), :behavior=>:LOG, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_text_5888599076 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (68 / 100.0)), :locY=>(416 * (60 / 100.0)), :text=>"linear", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_34586036052120301210 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsScaleActive2(), :stateDefault=>new $.Rez.Drawables.settingsScale2(), :width=>(416 * (25 / 100.0)), :locX=>(416 * (55 / 100.0)), :locY=>(416 * (60 / 100.0)), :behavior=>:LINEAR, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_17748645114869502951 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(416 * (20 / 100.0)), :locX=>(416 * (40 / 100.0)), :locY=>(416 * (80 / 100.0)), :behavior=>:back, :height=>(416 * (20 / 100.0))});
+
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_46428211913725765358, rez_cmp_local_text_2042061750, rez_cmp_local_text_un, rez_cmp_local_custom_selectable_12328022382134557307, rez_cmp_local_text_deux, rez_cmp_local_custom_selectable_17851008573871416621, rez_cmp_local_text_quatre, rez_cmp_local_custom_selectable_46325576237776306214, rez_cmp_local_text_six, rez_cmp_local_custom_selectable_13272225842016372201, rez_cmp_local_text_5456945618, rez_cmp_local_text_1703529506, rez_cmp_local_custom_selectable_15260318648349617469, rez_cmp_local_text_5888599076, rez_cmp_local_custom_selectable_34586036052120301210, rez_cmp_local_custom_selectable_17748645114869502951] as Array<WatchUi.Drawable>;
+        }
+
+        function main(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundBlack = new $.Rez.Drawables.backgroundBlack();
+            if (rez_cmp_local_custom_drawable_backgroundBlack.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundBlack.identifier = "backgroundBlack";
+            }
+
+            var rez_cmp_local_custom_drawable_cercleNotif = new $.Rez.Drawables.cercleNotif();
+            if (rez_cmp_local_custom_drawable_cercleNotif.identifier == null) {
+                rez_cmp_local_custom_drawable_cercleNotif.identifier = "cercleNotif";
+            }
+
+            var rez_cmp_local_text_date = new WatchUi.Text({:identifier=>"date", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (6 / 100.0)), :text=>"date", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
+
+            var rez_cmp_local_text_heure = new WatchUi.Text({:identifier=>"heure", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (15 / 100.0)), :text=>"00:00", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_NUMBER_HOT});
+
+            var rez_cmp_local_text_notif = new WatchUi.Text({:identifier=>"notif", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (12 / 100.0)), :locY=>(416 * (32 / 100.0)), :text=>"1", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_BG = new WatchUi.Text({:identifier=>"BG", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (75 / 100.0)), :locY=>(416 * (41 / 100.0)), :text=>"000", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_NUMBER_HOT});
+
+            var rez_cmp_local_text_Delta = new WatchUi.Text({:identifier=>"Delta", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (24 / 100.0)), :locY=>(416 * (50 / 100.0)), :text=>"0", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_NUMBER_MILD});
+
+            var rez_cmp_local_text_Elapsed = new WatchUi.Text({:identifier=>"Elapsed", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (96 / 100.0)), :locY=>(416 * (44 / 100.0)), :text=>"+0", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_NUMBER_MILD});
+
+            var rez_cmp_local_text_1782126954 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (93 / 100.0)), :locY=>(416 * (62 / 100.0)), :text=>"min", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_SYSTEM_XTINY});
+
+            var rez_cmp_local_text_ProvenanceBG = new WatchUi.Text({:identifier=>"ProvenanceBG", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (2 / 100.0)), :locY=>(416 * (46 / 100.0)), :text=>"aaps", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_XTINY});
+
+            var rez_cmp_local_text_Secondes = new WatchUi.Text({:identifier=>"Secondes", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (96 / 100.0)), :locY=>(416 * (36 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_VCENTER, :font=>Gfx.FONT_NUMBER_MILD});
+
+            var rez_cmp_local_text_NextCall = new WatchUi.Text({:identifier=>"NextCall", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (25 / 100.0)), :locY=>(416 * (46 / 100.0)), :text=>"000", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_XTINY});
+
+            var rez_cmp_local_text_Temperature = new WatchUi.Text({:identifier=>"Temperature", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (17 / 100.0)), :locY=>(416 * (71 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_LARGE});
+
+            var rez_cmp_local_text_Wind = new WatchUi.Text({:identifier=>"Wind", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (83 / 100.0)), :locY=>(416 * (71 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_LARGE});
+
+            var rez_cmp_local_text_Batterie = new WatchUi.Text({:identifier=>"Batterie", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (85 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
+
+            return [rez_cmp_local_custom_drawable_backgroundBlack, rez_cmp_local_custom_drawable_cercleNotif, rez_cmp_local_text_date, rez_cmp_local_text_heure, rez_cmp_local_text_notif, rez_cmp_local_text_BG, rez_cmp_local_text_Delta, rez_cmp_local_text_Elapsed, rez_cmp_local_text_1782126954, rez_cmp_local_text_ProvenanceBG, rez_cmp_local_text_Secondes, rez_cmp_local_text_NextCall, rez_cmp_local_text_Temperature, rez_cmp_local_text_Wind, rez_cmp_local_text_Batterie] as Array<WatchUi.Drawable>;
+        }
+
+        function Settings(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
+            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
+            }
+
+            var rez_cmp_local_custom_selectable_16122490334801152041 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+
+            var rez_cmp_local_text_3933768662 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (2 / 100.0)), :text=>$.Rez.Strings.version, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_text_1001319800 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (15 / 100.0)), :locY=>(416 * (15 / 100.0)), :text=>"Seconds ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_6533765161 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (15 / 100.0)), :locY=>(416 * (30 / 100.0)), :text=>"Meteo ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_1270778381 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (39 / 100.0)), :locY=>(416 * (45 / 100.0)), :text=>"Graph", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_18095357191819288205 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsGraphActive(), :stateDefault=>new $.Rez.Drawables.settingsGraph(), :width=>(416 * (50 / 100.0)), :locX=>(416 * (15 / 100.0)), :locY=>(416 * (45 / 100.0)), :behavior=>:graph, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_19326560501831638704 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive0(), :stateDefault=>new $.Rez.Drawables.settingsCoche0(), :width=>(416 * (16 / 100.0)), :locX=>(416 * (70 / 100.0)), :locY=>(416 * (15 / 100.0)), :behavior=>:seconds, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_11518148902605879919 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive1(), :stateDefault=>new $.Rez.Drawables.settingsCoche1(), :width=>(416 * (16 / 100.0)), :locX=>(416 * (70 / 100.0)), :locY=>(416 * (30 / 100.0)), :behavior=>:meteo, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_15462855821831568521 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive2(), :stateDefault=>new $.Rez.Drawables.settingsCoche2(), :width=>(416 * (16 / 100.0)), :locX=>(416 * (70 / 100.0)), :locY=>(416 * (45 / 100.0)), :behavior=>:meteo, :height=>(416 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_12041833774482362831 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive3(), :stateDefault=>new $.Rez.Drawables.settingsCoche3(), :width=>(416 * (68 / 100.0)), :locX=>(416 * (18 / 100.0)), :locY=>(416 * (60 / 100.0)), :behavior=>:sourceBG, :height=>(416 * (18 / 100.0))});
+
+            var rez_cmp_local_text_choixSource = new WatchUi.Text({:identifier=>"choixSource", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (52 / 100.0)), :locY=>(416 * (63.4 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_29458775411742547317 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(416 * (20 / 100.0)), :locX=>(416 * (40 / 100.0)), :locY=>(416 * (80 / 100.0)), :behavior=>:back, :height=>(416 * (20 / 100.0))});
+
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_16122490334801152041, rez_cmp_local_text_3933768662, rez_cmp_local_text_1001319800, rez_cmp_local_text_6533765161, rez_cmp_local_text_1270778381, rez_cmp_local_custom_selectable_18095357191819288205, rez_cmp_local_custom_selectable_19326560501831638704, rez_cmp_local_custom_selectable_11518148902605879919, rez_cmp_local_custom_selectable_15462855821831568521, rez_cmp_local_custom_selectable_12041833774482362831, rez_cmp_local_text_choixSource, rez_cmp_local_custom_selectable_29458775411742547317] as Array<WatchUi.Drawable>;
+        }
+    } // Layouts
+
+    module Strings {
+        (:initialized) var secondsPrompt as ResourceId;
+        (:initialized) var nbHGraph as ResourceId;
+        (:initialized) var sourceBG as ResourceId;
+        (:initialized) var logarithmique as ResourceId;
+        (:initialized) var version as ResourceId;
+        (:initialized) var url as ResourceId;
+        (:initialized) var meteoPrompt as ResourceId;
+        (:initialized) var AppName as ResourceId;
+        (:initialized) var token as ResourceId;
+    } // Strings
+
+    module Styles {
+        module prompt_font_enhanced_readability__body_with_title {
+            const exclude as Boolean = true;
+        } // prompt_font_enhanced_readability__body_with_title
+
+        module system_size__menu_header {
+            const width as Number = 416;
+            const height as Number = 130;
+        } // system_size__menu_header
+
+        module system_loc__hint_button_left_bottom {
+            const x as Number = 16;
+            const y as Number = 275;
+        } // system_loc__hint_button_left_bottom
+
+        module prompt_font_enhanced_readability__body_no_title {
+            const exclude as Boolean = true;
+        } // prompt_font_enhanced_readability__body_no_title
+
+        module prompt_loc__body_no_title {
+            const x as Number = 42;
+            const y as Number = 42;
+        } // prompt_loc__body_no_title
+
+        module system_icon_dark__about {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__about.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__about
+
+        module system_icon_light__question {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__question.svg";
+            const dithering as String = "none";
+        } // system_icon_light__question
+
+        module system_loc__hint_button_left_top {
+            const exclude as Boolean = true;
+        } // system_loc__hint_button_left_top
+
+        module prompt_font__title {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER;
+            const font = Graphics.FONT_XTINY;
+        } // prompt_font__title
+
+        module system_icon_dark__discard {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__discard.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__discard
+
+        module system_size__menu_item {
+            const width as Number = 416;
+            const height as Number = 109;
+        } // system_size__menu_item
+
+        module system_color_dark__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // system_color_dark__text
+
+        module system_icon_destructive__discard {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__discard.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__discard
+
+        module system_icon_dark__hint_action_menu {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_action_menu
+
+        module prompt_size__title {
+            const width as Number = 333;
+            const height as Number = 63;
+        } // prompt_size__title
+
+        module confirmation_font__body {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER;
+            const font = Graphics.FONT_TINY;
+        } // confirmation_font__body
+
+        module system_color_dark__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // system_color_dark__background
+
+        module system_icon_destructive__hint_button_left_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_left_top
+
+        module system_size__launch_icon {
+            const scaleX as Number = 60;
+            const scaleY as Number = 60;
+            const scaleRelativeTo as String = "screen";
+        } // system_size__launch_icon
+
+        module confirmation_input__confirm {
+            const button = WatchUi.KEY_ENTER;
+        } // confirmation_input__confirm
+
+        module prompt_font__body_with_title {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER;
+            const font = Graphics.FONT_TINY;
+        } // prompt_font__body_with_title
+
+        module confirmation_loc__body {
+            const x as Number = 83;
+            const y as Number = 83;
+        } // confirmation_loc__body
+
+        module system_icon_destructive__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_left_bottom
+
+        module prompt_color_dark__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // prompt_color_dark__background
+
+        module system_icon_destructive__hint_action_menu {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_action_menu
+
+        module system_loc__hint_action_menu {
+            const x as Number = 360;
+            const y as Number = 77;
+        } // system_loc__hint_action_menu
+
+        module confirmation_icon__hint_confirm {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_completion.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_confirm
+
+        module system_loc__hint_button_left_middle {
+            const x as Number = 4;
+            const y as Number = 173;
+        } // system_loc__hint_button_left_middle
+
+        module prompt_size__body_no_title {
+            const width as Number = 333;
+            const height as Number = 333;
+        } // prompt_size__body_no_title
+
+        module system_icon_light__hint_button_left_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_left_top
+
+        module prompt_color_light__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // prompt_color_light__background
+
+        module confirmation_input__delete {
+            const button = WatchUi.KEY_ENTER;
+        } // confirmation_input__delete
+
+        module system_icon_dark__hint_button_left_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_left_top
+
+        module system_input__action_menu {
+            const button = WatchUi.KEY_ENTER;
+        } // system_input__action_menu
+
+        module system_icon_light__save {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__save.svg";
+            const dithering as String = "none";
+        } // system_icon_light__save
+
+        module prompt_color_light__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_light__body
+
+        module system_loc__subwindow {
+            const exclude as Boolean = true;
+        } // system_loc__subwindow
+
+        module system_icon_light__warning {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__warning.svg";
+            const dithering as String = "none";
+        } // system_icon_light__warning
+
+        module confirmation_color_light__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // confirmation_color_light__body
+
+        module confirmation_icon_light__hint_keep {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_keep.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_keep
+
+        module activity_color_light__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // activity_color_light__background
+
+        module system_icon_positive__hint_button_right_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_right_top
+
+        module system_size__screen {
+            const width as Number = 416;
+            const height as Number = 416;
+        } // system_size__screen
+
+        module system_icon_destructive__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_right_bottom
+
+        module system_color_light__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // system_color_light__background
+
+        module system_icon_destructive__hint_button_right_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_right_top
+
+        module confirmation_loc__hint_confirm {
+            const x as Number = 338;
+            const y as Number = 77;
+        } // confirmation_loc__hint_confirm
+
+        module activity_color_dark__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // activity_color_dark__text
+
+        module confirmation_input__keep {
+            const button = WatchUi.KEY_DOWN;
+        } // confirmation_input__keep
+
+        module prompt_loc__body_with_title {
+            const x as Number = 42;
+            const y as Number = 125;
+        } // prompt_loc__body_with_title
+
+        module system_icon_dark__search {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__search.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__search
+
+        module activity_color_light__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // activity_color_light__text
+
+        module confirmation_icon__hint_keep {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_keep.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_keep
+
+        module system_icon_dark__save {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__save.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__save
+
+        module system_icon_destructive__hint_button_left_middle {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__hint_button_left_middle
+
+        module system_icon_light__search {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__search.svg";
+            const dithering as String = "none";
+        } // system_icon_light__search
+
+        module system_icon_dark__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_left_bottom
+
+        module system_icon_positive__hint_button_left_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__hint_button_left_top.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_left_top
+
+        module system_loc__hint_button_right_bottom {
+            const x as Number = 360;
+            const y as Number = 275;
+        } // system_loc__hint_button_right_bottom
+
+        module confirmation_icon_dark__hint_reject {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_reject.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_reject
+
+        module confirmation_color_dark__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // confirmation_color_dark__body
+
+        module confirmation_icon_light__hint_confirm {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_completion.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_confirm
+
+        module prompt_color_dark__title {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_dark__title
+
+        module system_icon_destructive__cancel {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__cancel.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__cancel
+
+        module system_icon_light__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_right_bottom
+
+        module prompt_loc__title {
+            const x as Number = 42;
+            const y as Number = 30;
+        } // prompt_loc__title
+
+        module confirmation_font_enhanced_readability__body {
+            const exclude as Boolean = true;
+        } // confirmation_font_enhanced_readability__body
+
+        module prompt_color_light__title {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_light__title
+
+        module system_icon_dark__hint_button_right_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_right_top
+
+        module system_icon_dark__hint_button_left_middle {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_left_middle
+
+        module confirmation_icon_dark__hint_keep {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_keep.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_keep
+
+        module system_icon_light__cancel {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__cancel.svg";
+            const dithering as String = "none";
+        } // system_icon_light__cancel
+
+        module confirmation_icon_light__hint_reject {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_reject.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_reject
+
+        module system_icon_light__about {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__about.svg";
+            const dithering as String = "none";
+        } // system_icon_light__about
+
+        module system_size__toast_icon {
+            const scaleX as Number = 40;
+            const scaleY as Number = 40;
+            const scaleRelativeTo as String = "screen";
+        } // system_size__toast_icon
+
+        module system_icon_dark__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_dark__hint_button_right_middle
+
+        module confirmation_icon__hint_reject {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_reject.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_reject
+
+        module system_icon_light__hint_action_menu {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_action_menu
+
+        module system_icon_light__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_light__hint_button_right_middle
+
+        module system_icon_destructive__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_destructive__hint_button_right_middle
+
+        module confirmation_loc__hint_reject {
+            const x as Number = 16;
+            const y as Number = 275;
+            const horizontalJustification as String = "left";
+        } // confirmation_loc__hint_reject
+
+        module confirmation_icon_dark__hint_delete {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_delete.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_delete
+
+        module activity_color_dark__background {
+            const color as Number = 0x000000;
+            const background as Number = 0x000000;
+        } // activity_color_dark__background
+
+        module system_icon_light__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_left_bottom
+
+        module system_icon_positive__hint_button_left_middle {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_left_middle
+
+        module system_size__menu_icon {
+            const scaleX as Number = 60;
+            const scaleY as Number = 60;
+            const scaleRelativeTo as String = "screen";
+        } // system_size__menu_icon
+
+        module system_icon_destructive__warning {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_destructive__warning.svg";
+            const dithering as String = "none";
+        } // system_icon_destructive__warning
+
+        module system_loc__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_loc__hint_button_right_middle
+
+        module system_icon_dark__cancel {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__cancel.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__cancel
+
+        module prompt_size__body_with_title {
+            const width as Number = 333;
+            const height as Number = 250;
+        } // prompt_size__body_with_title
+
+        module system_loc__hint_button_right_top {
+            const x as Number = 360;
+            const y as Number = 77;
+        } // system_loc__hint_button_right_top
+
+        module system_color_light__text {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // system_color_light__text
+
+        module system_icon_light__check {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__check.svg";
+            const dithering as String = "none";
+        } // system_icon_light__check
+
+        module confirmation_input__reject {
+            const button = WatchUi.KEY_DOWN;
+        } // confirmation_input__reject
+
+        module system_icon_light__revert {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__revert.svg";
+            const dithering as String = "none";
+        } // system_icon_light__revert
+
+        module system_size__subwindow {
+            const exclude as Boolean = true;
+        } // system_size__subwindow
+
+        module system_icon_positive__hint_button_left_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__hint_button_left_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_left_bottom
+
+        module system_icon_dark__check {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__check.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__check
+
+        module confirmation_loc__hint_keep {
+            const x as Number = 16;
+            const y as Number = 275;
+            const horizontalJustification as String = "left";
+        } // confirmation_loc__hint_keep
+
+        module confirmation_loc__hint_delete {
+            const x as Number = 338;
+            const y as Number = 77;
+        } // confirmation_loc__hint_delete
+
+        module system_icon_positive__hint_action_menu {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_action_menu
+
+        module system_icon_positive__hint_button_right_middle {
+            const exclude as Boolean = true;
+        } // system_icon_positive__hint_button_right_middle
+
+        module system_icon_light__hint_button_left_middle {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__hint_button_left_middle.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_left_middle
+
+        module system_icon_dark__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_dark__hint_button_right_bottom
+
+        module system_icon_positive__hint_button_right_bottom {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__hint_button_right_bottom.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__hint_button_right_bottom
+
+        module system_icon_dark__revert {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__revert.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__revert
+
+        module confirmation_icon_light__hint_delete {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_delete.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_light__hint_delete
+
+        module system_icon_dark__question {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__question.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__question
+
+        module system_icon_light__discard {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__discard.svg";
+            const dithering as String = "none";
+        } // system_icon_light__discard
+
+        module device_info {
+            const screenWidth as Number = 416;
+            const screenShape = Toybox.System.SCREEN_SHAPE_ROUND;
+            const hasNightMode as Boolean = false;
+            const hasGpu as Boolean = true;
+            const screenHeight as Number = 416;
+            const hasTouchScreen as Boolean = true;
+            const hasEnhancedReadabilityMode as Boolean = false;
+        } // device_info
+
+        module confirmation_icon_dark__hint_confirm {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_completion.svg";
+            const dithering as String = "none";
+        } // confirmation_icon_dark__hint_confirm
+
+        module prompt_font__body_no_title {
+            const justification = Graphics.TEXT_JUSTIFY_CENTER|Graphics.TEXT_JUSTIFY_VCENTER;
+            const font = Graphics.FONT_TINY;
+        } // prompt_font__body_no_title
+
+        module prompt_size__title_icon {
+            const scaleX as Float = 0.15;
+            const scaleRelativeTo as String = "screen";
+        } // prompt_size__title_icon
+
+        module system_icon_dark__warning {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_dark__warning.svg";
+            const compress as String = "true";
+            const dithering as String = "none";
+            const automaticPalette as String = "true";
+        } // system_icon_dark__warning
+
+        module prompt_loc__title_icon {
+            const x as Number = 208;
+            const y as Number = 62;
+            const horizontalJustification as String = "center";
+            const verticalJustification as String = "center";
+        } // prompt_loc__title_icon
+
+        module prompt_font_enhanced_readability__title {
+            const exclude as Boolean = true;
+        } // prompt_font_enhanced_readability__title
+
+        module prompt_color_dark__body {
+            const color as Number = 0xFFFFFF;
+            const background = Graphics.COLOR_TRANSPARENT;
+        } // prompt_color_dark__body
+
+        module confirmation_icon__hint_delete {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\confirmation_icon__hint_delete.svg";
+            const dithering as String = "none";
+        } // confirmation_icon__hint_delete
+
+        module system_icon_light__hint_button_right_top {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_light__hint_button_right_top.svg";
+            const dithering as String = "none";
+        } // system_icon_light__hint_button_right_top
+
+        module confirmation_size__body {
+            const width as Number = 250;
+            const height as Number = 250;
+        } // confirmation_size__body
+
+        module system_icon_positive__check {
+            const filename as String = "C:\\Users\\gduriez\\AppData\\Roaming\\Garmin\\ConnectIQ\\Devices\\epix2\\system_icon_positive__check.svg";
+            const dithering as String = "none";
+        } // system_icon_positive__check
+    } // Styles
+} // Rez
