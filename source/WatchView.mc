@@ -112,7 +112,7 @@ var justification = {
         //graphBuffer = Gfx.createBufferedBitmap({:width=>hauteurGraph,:height=>largeurGraph,:alphaBlending=>1}).get();
         tabData = WatchOutils.readStoredData();
 
-        
+        /*
         var simulationTabForGraph =[123,125,115,102,93,86,81,82,92,101,120,134,144,147,152,154,151,146,140,134,131,136,146,157,167,174,176,172,164,155,
             149,141,136,130,126,121,117,114,111,110,111,110,110,111,111,109,106,105,103,107,109,109,110,109,109,106,101,102,107,108,110,110,109,106,107,107,
             109,107,120,139,148,150,147,146,144,141,135,123,114,113,118,125,128,138,154,166,170,171,177,185,193,196,190,185,183,179,175,172,170,172,173];
@@ -121,7 +121,7 @@ var justification = {
         for (var i=1 ;i<simulationTabForGraph.size();i++) {
             tabData.add([simulationTabForGraph[i],simulationTabForGraph[i]-simulationTabForGraph[i-1],t]);
         }
-        
+        */
 
         readSettingsAndInitGraph();
         readValeursAffichage();
