@@ -23,7 +23,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchOutils_mc
         %tmp.2 = getv ? :System;
         symbol [ println %tmp.3 10 13 20 ];
         %tmp.3 = getv function %tmp.2 :println;
-        %tmp.4 = "debut store donnÃ©es =";
+        %tmp.4 = "debut store données =";
         %tmp.5 = lgetv %tabData;
         symbol [ tabData %tmp.5 10 45 52 ];
         %tmp.6 = add %tmp.4 %tmp.5;
@@ -150,7 +150,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchOutils_mc
         %tmp.71 = getv ? :System;
         symbol [ println %tmp.72 17 13 20 ];
         %tmp.72 = getv function %tmp.71 :println;
-        %tmp.73 = "fin store donnÃ©es =";
+        %tmp.73 = "fin store données =";
         %tmp.74 = lgetv %st.1;
         symbol [ st %tmp.74 17 43 45 ];
         %tmp.75 = add %tmp.73 %tmp.74;
