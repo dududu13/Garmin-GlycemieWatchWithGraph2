@@ -1,0 +1,43 @@
+<resources>
+<drawables>
+    <drawable-list id="settingsDuree1">
+        <shape type="rectangle" x="5%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+     <drawable-list id="settingsDuree2">
+        <shape type="rectangle" x="29%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsDuree3">
+        <shape type="rectangle" x="53%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+   <drawable-list id="settingsDuree4">
+        <shape type="rectangle" x="77%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+
+    <drawable-list id="settingsDureeActive1">
+        <shape type="rectangle" x="5%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+     <drawable-list id="settingsDureeActive2">
+        <shape type="rectangle" x="29%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsDureeActive3">
+        <shape type="rectangle" x="53%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+   <drawable-list id="settingsDureeActive4">
+        <shape type="rectangle" x="77%" y="28%" corner_radius="5" width="18%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+
+
+    <drawable-list id="settingsScale1">
+        <shape type="rectangle" x="20%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+     <drawable-list id="settingsScaleActive1">
+        <shape type="rectangle" x="20%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsScale2">
+        <shape type="rectangle" x="55%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+     <drawable-list id="settingsScaleActive2">
+        <shape type="rectangle" x="55%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+</drawables>
+</resources>

@@ -1,0 +1,71 @@
+<resources>
+
+<layouts>
+
+<layout id="layoutSettingsHeuresGraph">
+    <drawable id="backgroundGrey"  />
+    <button x="0" y="0" width="800" height="800" >
+        <state id="stateDefault" bitmap="@Drawables.BoutonVide" />
+    </button>
+
+    <label x="50%" y="15%" text="Durée du graphique ?" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+
+
+    <label x="8%" y="30%" id="un" text="1 h" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
+     <button  x="5%" y="28%" width="18%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsDuree1" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsDureeActive1" />
+        <param name="behavior">UN</param>
+    </button>  
+    <label x="32%" y="30%" id="deux" text="2 h" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
+     <button x="29%" y="28%" width="18%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsDuree2" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsDureeActive2" />
+        <param name="behavior">DEUX</param>
+    </button>
+    <label x="56%" y="30%" id="quatre" text="4 h" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
+     <button x="53%" y="28%" width="18%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsDuree3" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsDureeActive3" />
+        <param name="behavior">QUATRE</param>
+    </button>
+    <label x="80%" y="30%" id="six" text="6 h" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
+     <button x="77%" y="28%" width="18%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsDuree4" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsDureeActive4" />
+        <param name="behavior">SIX</param>
+    </button>
+
+
+
+    <label x="50%" y="45%" text="Graph scale" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+
+
+
+    <label x="32%" y="60%" text="log" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+     <button x="20%" y="60%" width="25%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsScale1" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsScaleActive1" />
+        <param name="behavior">LOG</param>
+    </button>
+    <label x="68%" y="60%" text="linear" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+    
+     <button x="55%" y="60%" width="25%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsScale2" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsScaleActive2" />
+        <param name="behavior">LINEAR</param>
+    </button>
+
+
+
+     <button  x="40%" y="80%" width="20%" height="20%" >
+        <state id="stateDefault" bitmap="@Drawables.back" />
+        <param name="behavior">back</param>
+    </button>
+
+
+</layout>
+
+</layouts>
+
+</resources>

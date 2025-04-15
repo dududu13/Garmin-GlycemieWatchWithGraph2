@@ -1,0 +1,174 @@
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 1; @symbol_usingdef<0> = [Toybox,1,6,12]; @symbol_usingdef<1> = [WatchUi,1,13,20]; @symbol_usingAlias = [Ui,1,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [System,2,13,19]; ]
+using Toybox.System;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [Graphics,3,13,21]; @symbol_usingAlias = [Gfx,3,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Application,4,13,24]; @symbol_usingAlias = [App,4,28,31]; ]
+using Toybox.Application as :App;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 7; onlyWithSettingOnWatchface = true; @symbol_classdef = [ViewSettingsDelegate,7,6,26]; @symbol_extends<0> = [Ui,7,35,37]; @symbol_extends<1> = [BehaviorDelegate,7,38,54]; ]
+class ViewSettingsDelegate extends Ui.BehaviorDelegate {
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 7; ]
+    <init> {
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 9; @symbol_functiondef = [initialize,9,13,23]; ]
+    function initialize() as Void {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_9_26_11_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 10 8 ]
+        symbol [ InputDelegate %tmp.2 10 8 21 ];
+        %tmp.2 = getv ? :InputDelegate;
+        symbol [ initialize %tmp.3 10 22 32 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_9_26_11_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 13; @symbol_functiondef = [seconds,13,14,21]; ]
+    function seconds() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_13_24_17_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 14 8 ]
+        symbol [ afficheSecondes %tmp.2 14 28 43 ];
+        %tmp.2 = getv ? :afficheSecondes;
+        %tmp.3 = not %tmp.2;
+        symbol [ afficheSecondes ? 14 8 23 ];
+        putv self :afficheSecondes %tmp.3;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 15 8 ]
+        symbol [ App %tmp.4 15 8 11 ];
+        %tmp.4 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.5 15 12 18 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ setProperty %tmp.7 15 21 32 ];
+        %tmp.7 = getv function %tmp.6 :setProperty;
+        %tmp.8 = "afficheSecondes";
+        symbol [ afficheSecondes %tmp.10 15 51 66 ];
+        %tmp.10 = getv ? :afficheSecondes;
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.10);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 16 8 ]
+        %tmp.11 = true;
+        ret %tmp.11;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_13_24_17_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 19; @symbol_functiondef = [meteo,19,13,18]; ]
+    function meteo() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_19_21_22_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 20 8 ]
+        symbol [ afficheMeteo %tmp.2 20 25 37 ];
+        %tmp.2 = getv ? :afficheMeteo;
+        %tmp.3 = not %tmp.2;
+        symbol [ afficheMeteo ? 20 8 20 ];
+        putv self :afficheMeteo %tmp.3;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 21 8 ]
+        symbol [ App %tmp.4 21 8 11 ];
+        %tmp.4 = getm $.Toybox.Application;
+        symbol [ getApp %tmp.5 21 12 18 ];
+        %tmp.5 = getv function %tmp.4 :getApp;
+        %tmp.6 = invoke %tmp.4 %tmp.5();
+        symbol [ setProperty %tmp.7 21 21 32 ];
+        %tmp.7 = getv function %tmp.6 :setProperty;
+        %tmp.8 = "afficheMeteo";
+        symbol [ afficheMeteo %tmp.10 21 48 60 ];
+        %tmp.10 = getv ? :afficheMeteo;
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.10);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_19_21_22_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 24; @symbol_functiondef = [graph,24,13,18]; ]
+    function graph() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_24_21_27_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 25 12 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_24_21_27_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_24_21_27_4_stop" ]
+        %settingsDureeGraphView.1 = local;
+        symbol [ settingsDureeGraphView %settingsDureeGraphView.1 25 16 38 ];
+        symbol [ $ %tmp.4 25 45 46 ];
+        %tmp.4 = getm $;
+        symbol [ ViewSettingGraphOptions %tmp.5 25 47 70 ];
+        %tmp.5 = getv %tmp.4 :ViewSettingGraphOptions;
+        %tmp.1 = newc %tmp.5 ();
+        lputv %settingsDureeGraphView.1 %tmp.1;
+        symbol [ settingsDureeGraphView %settingsDureeGraphView.1 25 16 38 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 26 12 ]
+        symbol [ Ui %tmp.6 26 12 14 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.7 26 15 23 ];
+        %tmp.7 = getv function %tmp.6 :pushView;
+        %tmp.8 = lgetv %settingsDureeGraphView.1;
+        symbol [ settingsDureeGraphView %tmp.8 26 24 46 ];
+        symbol [ $ %tmp.12 26 52 53 ];
+        %tmp.12 = getm $;
+        symbol [ ViewSettingGraphOptionsDelegate %tmp.13 26 54 85 ];
+        %tmp.13 = getv %tmp.12 :ViewSettingGraphOptionsDelegate;
+        %tmp.9 = newc %tmp.13 ();
+        %tmp.14 = 0;
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.14);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_24_21_27_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 29; @symbol_functiondef = [back,29,13,17]; ]
+    function back() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_29_20_31_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 30 8 ]
+        %tmp.1 = self;
+        symbol [ onBack %tmp.2 30 8 14 ];
+        %tmp.2 = getv function %tmp.1 :onBack;
+        invoke %tmp.1 %tmp.2();
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_29_20_31_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 33; @symbol_functiondef = [sourceBG,33,13,21]; ]
+    function sourceBG() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_33_24_36_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 34 8 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_33_24_36_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_33_24_36_4_stop" ]
+        %settingsSourceBGView.1 = local;
+        symbol [ settingsSourceBGView %settingsSourceBGView.1 34 12 32 ];
+        symbol [ $ %tmp.4 34 39 40 ];
+        %tmp.4 = getm $;
+        symbol [ ViewSettingSourceBG %tmp.5 34 41 60 ];
+        %tmp.5 = getv %tmp.4 :ViewSettingSourceBG;
+        %tmp.1 = newc %tmp.5 ();
+        lputv %settingsSourceBGView.1 %tmp.1;
+        symbol [ settingsSourceBGView %settingsSourceBGView.1 34 12 32 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 35 8 ]
+        symbol [ Ui %tmp.6 35 8 10 ];
+        %tmp.6 = getm $.Toybox.WatchUi;
+        symbol [ pushView %tmp.7 35 11 19 ];
+        %tmp.7 = getv function %tmp.6 :pushView;
+        %tmp.8 = lgetv %settingsSourceBGView.1;
+        symbol [ settingsSourceBGView %tmp.8 35 20 40 ];
+        symbol [ $ %tmp.12 35 46 47 ];
+        %tmp.12 = getm $;
+        symbol [ ViewSettingSourceBGDelegate %tmp.13 35 48 75 ];
+        %tmp.13 = getv %tmp.12 :ViewSettingSourceBGDelegate;
+        %tmp.9 = newc %tmp.13 ();
+        %tmp.14 = 0;
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.14);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_33_24_36_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 39; @symbol_functiondef = [onBack,39,13,19]; ]
+    function onBack() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_39_22_42_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 40 8 ]
+        symbol [ Ui %tmp.1 40 8 10 ];
+        %tmp.1 = getm $.Toybox.WatchUi;
+        symbol [ popView %tmp.2 40 11 18 ];
+        %tmp.2 = getv function %tmp.1 :popView;
+        %tmp.3 = 0;
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 41 8 ]
+        %tmp.4 = true;
+        ret %tmp.4;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_39_22_42_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 43; @symbol_functiondef = [onSelect,43,13,21]; ]
+    function onSelect() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_43_24_45_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc" 44 8 ]
+        %tmp.1 = true;
+        ret %tmp.1;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_ViewSettingsDelegate_mc_43_24_45_4_stop:
+    }
+}
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\ViewSettingsDelegate.mc"; @line = 1; ]
+<init> {
+}

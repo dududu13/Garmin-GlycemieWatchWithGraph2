@@ -1,0 +1,27 @@
+<settings>
+    <setting propertyKey="@Properties.sourceBG" title="@Strings.sourceBG" >
+        <settingConfig type="list">
+            <listEntry value="0">URL NightScout</listEntry>
+            <listEntry value="1">AAPS</listEntry>
+            <listEntry value="2">Xdrip+</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.url" title="@Strings.url" >
+        <settingConfig type="alphanumeric" required="false" /></setting>
+    <setting propertyKey="@Properties.tokenNS" title="@Strings.token" >
+        <settingConfig type="alphanumeric" required="false" /></setting>
+    <setting propertyKey="@Properties.afficheSecondes" title="@Strings.secondsPrompt" >
+        <settingConfig type="boolean" /></setting>
+    <setting propertyKey="@Properties.afficheMeteo" title="@Strings.meteoPrompt" >
+        <settingConfig type="boolean" /></setting>
+    <setting propertyKey="@Properties.nbHGraph" title="@Strings.nbHGraph" >
+        <settingConfig type="list">
+            <listEntry value="0">1h</listEntry>
+            <listEntry value="1">2h</listEntry>
+            <listEntry value="2">4h</listEntry>
+            <listEntry value="3">6h</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.logarithmique" title="@Strings.logarithmique" >
+        <settingConfig type="boolean" /></setting>
+</settings>

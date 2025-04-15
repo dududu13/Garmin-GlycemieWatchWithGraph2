@@ -1,0 +1,12 @@
+<resources>
+<drawables>
+    <bitmap id="Coche" filename="coche.png" />
+    <bitmap id="back" filename="back.png" />
+    <bitmap id="blueTooth" filename="blueTooth.png" />
+
+</drawables>
+
+
+
+
+</resources>

@@ -1,0 +1,13 @@
+project.manifest = manifest.xml
+
+d2delta.excludeAnnotations="onlyWithSettingOnWatchface"
+d2deltapx.excludeAnnotations="onlyWithSettingOnWatchface"
+d2deltas.excludeAnnotations="onlyWithSettingOnWatchface"
+fenix5.excludeAnnotations="onlyWithSettingOnWatchface"
+fenix5s.excludeAnnotations="onlyWithSettingOnWatchface"
+fenix5x.excludeAnnotations="onlyWithSettingOnWatchface"
+fenixchronos.excludeAnnotations="onlyWithSettingOnWatchface"
+fr645.excludeAnnotations="onlyWithSettingOnWatchface"
+fr935.excludeAnnotations="onlyWithSettingOnWatchface"
+vivoactive3.excludeAnnotations="onlyWithSettingOnWatchface"
+vivoactive3mlte.excludeAnnotations="onlyWithSettingOnWatchface"

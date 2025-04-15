@@ -1,0 +1,60 @@
+<resources>
+<drawables>
+
+    <drawable-list id="settingsGraph">
+        <shape type="rectangle" x="15%" y="45%" corner_radius="5" width="50%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsGraphActive">
+        <shape type="rectangle" x="15%" y="45%" corner_radius="5" width="50%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+
+
+
+    <drawable-list id="settingsCoche0">
+        <shape type="rectangle" x="70%" y="15%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCoche1">
+        <shape type="rectangle" x="70%" y="30%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCoche2">
+        <shape type="rectangle" x="70%" y="45%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCoche3">
+        <shape type="rectangle" x="15%" y="60%" corner_radius="5" width="70%" height="18%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+
+
+    <drawable-list id="settingsCocheActive0">
+        <shape type="rectangle" x="70%" y="15%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCocheActive1">
+        <shape type="rectangle" x="70%" y="30%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCocheActive2">
+        <shape type="rectangle" x="70%" y="45%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCocheActive3">
+        <shape type="rectangle" x="15%" y="60%" corner_radius="5" width="70%" height="18%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+
+
+
+    <drawable-list id="settingsSurligneLine0">
+        <shape type="rectangle" x="15%" y="27%" width="45%" height="2%" color="Gfx.COLOR_WHITE"></shape>
+    </drawable-list>
+    <drawable-list id="settingsSurligneLine1">
+        <shape type="rectangle" x="15%" y="42%" width="45%" height="2%" color="Gfx.COLOR_WHITE"></shape>
+    </drawable-list>
+    <drawable-list id="settingsSurligneLine2">
+        <shape type="rectangle" x="15%" y="57%" width="45%" height="2%" color="Gfx.COLOR_WHITE"></shape>
+    </drawable-list>
+    <drawable-list id="settingsSurligneLine3">
+        <shape type="rectangle" x="28%" y="73%" width="48%" height="2%" color="Gfx.COLOR_WHITE"></shape>
+    </drawable-list>
+
+</drawables>
+
+
+
+
+</resources>

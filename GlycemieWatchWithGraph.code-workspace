@@ -1,0 +1,12 @@
+{
+	"folders": [
+		{
+			"path": "."
+		},
+		{
+			"name": "Glycemie",
+			"path": "../DatafieldGlycemie/Glycemie"
+		}
+	],
+	"settings": {}
+}

@@ -1,0 +1,889 @@
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 2; @symbol_usingdef<0> = [Toybox,2,6,12]; @symbol_usingdef<1> = [WatchUi,2,13,20]; @symbol_usingAlias = [Ui,2,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 3; @symbol_usingdef<0> = [Toybox,3,6,12]; @symbol_usingdef<1> = [System,3,13,19]; @symbol_usingAlias = [Sys,3,23,26]; ]
+using Toybox.System as :Sys;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; @symbol_usingAlias = [Gfx,4,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 7; onlyWithSettingOnWatchface = true; @symbol_classdef = [MenuView,7,6,14]; @symbol_extends<0> = [Ui,7,23,25]; @symbol_extends<1> = [View,7,26,30]; ]
+class MenuView extends Ui.View {
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 7; ]
+    <init> {
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 17 5 ]
+        symbol [ Gfx %tmp.1 17 19 22 ];
+        %tmp.1 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.2 17 23 40 ];
+        %tmp.2 = getv %tmp.1 :COLOR_TRANSPARENT;
+        putv self :transparent %tmp.2;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 20 5 ]
+        symbol [ Gfx %tmp.3 20 12 15 ];
+        %tmp.3 = getm $.Toybox.Graphics;
+        symbol [ FONT_MEDIUM %tmp.4 20 16 27 ];
+        %tmp.4 = getv %tmp.3 :FONT_MEDIUM;
+        putv self :font %tmp.4;
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 7; ]
+    static
+    <init> {
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 8; @position = 5; @symbol_vardef = [_titre,8,5,11]; ]
+    var _titre;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 9; @position = 5; @symbol_vardef = [_tab,9,5,9]; ]
+    var _tab;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 10; @position = 5; @symbol_vardef = [_nbre,10,5,10]; ]
+    var _nbre;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 11; @position = 5; @symbol_vardef = [_x,11,5,7]; ]
+    var _x;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 12; @position = 5; @symbol_vardef = [_posAff,12,5,12]; ]
+    var _posAff;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 13; @position = 5; @symbol_vardef = [itemEnCours,13,5,16]; ]
+    var itemEnCours;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 14; @position = 5; @symbol_vardef = [item0,14,5,10]; ]
+    var item0;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 15; @position = 5; @symbol_vardef = [nbreAff,15,5,12]; ]
+    var nbreAff;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 15; @position = 13; @symbol_vardef = [nbreAffDepart,15,13,26]; ]
+    var nbreAffDepart;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 16; @position = 5; @symbol_vardef = [centrex,16,5,12]; ]
+    var centrex;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 16; @position = 13; @symbol_vardef = [centrey,16,13,20]; ]
+    var centrey;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 17; @position = 5; @symbol_vardef = [transparent,17,5,16]; ]
+    var transparent;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 18; @position = 5; @symbol_vardef = [coeff,18,5,10]; ]
+    var coeff;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 19; @position = 5; @symbol_vardef = [hFont,19,5,10]; ]
+    var hFont;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 20; @position = 5; @symbol_vardef = [font,20,5,9]; ]
+    var font;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 24; @symbol_functiondef = [initialize,24,13,23]; @symbol_param<0> = [titre,24,24,29]; @symbol_param<1> = [tab,24,30,33]; @symbol_param<2> = [posAff,24,34,40]; ]
+    function initialize(titre, tab, posAff) as Void {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_24_42_39_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 26 2 ]
+        symbol [ View %tmp.2 26 2 6 ];
+        %tmp.2 = getv ? :View;
+        symbol [ initialize %tmp.3 26 7 17 ];
+        %tmp.3 = getv function %tmp.2 :initialize;
+        invoke %tmp.2 %tmp.3();
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 27 5 ]
+        %tmp.4 = lgetv %tab;
+        symbol [ tab %tmp.4 27 12 15 ];
+        symbol [ _tab ? 27 5 9 ];
+        putv self :_tab %tmp.4;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 28 2 ]
+        %tmp.5 = lgetv %titre;
+        symbol [ titre %tmp.5 28 11 16 ];
+        symbol [ _titre ? 28 2 8 ];
+        putv self :_titre %tmp.5;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 29 5 ]
+        %tmp.6 = lgetv %posAff;
+        symbol [ posAff %tmp.6 29 19 25 ];
+        symbol [ itemEnCours ? 29 5 16 ];
+        putv self :itemEnCours %tmp.6;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 31 5 ]
+        %tmp.7 = lgetv %tab;
+        symbol [ tab %tmp.7 31 13 16 ];
+        symbol [ size %tmp.8 31 17 21 ];
+        %tmp.8 = getv function %tmp.7 :size;
+        %tmp.9 = invoke %tmp.7 %tmp.8();
+        %tmp.10 = 1;
+        %tmp.11 = sub %tmp.9 %tmp.10;
+        symbol [ _nbre ? 31 5 10 ];
+        putv self :_nbre %tmp.11;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 32 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_2_32_51_if_stmt:
+        symbol [ itemEnCours %tmp.13 32 6 17 ];
+        %tmp.13 = getv ? :itemEnCours;
+        %tmp.14 = lgetv %tab;
+        symbol [ tab %tmp.14 32 18 21 ];
+        symbol [ size %tmp.15 32 22 26 ];
+        %tmp.15 = getv function %tmp.14 :size;
+        %tmp.16 = invoke %tmp.14 %tmp.15();
+        %tmp.17 = gt %tmp.13 %tmp.16;
+        bf %tmp.17 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_2_32_51_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_2_32_51_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_30_32_51_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 32 31 ]
+        symbol [ _nbre %tmp.19 32 45 50 ];
+        %tmp.19 = getv ? :_nbre;
+        symbol [ itemEnCours ? 32 31 42 ];
+        putv self :itemEnCours %tmp.19;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_30_32_51_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_2_32_51_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_32_2_32_51_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 33 2 ]
+        %tmp.20 = 5;
+        symbol [ nbreAff ? 33 2 9 ];
+        putv self :nbreAff %tmp.20;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 34 2 ]
+        %tmp.21 = 0;
+        symbol [ item0 ? 34 2 7 ];
+        putv self :item0 %tmp.21;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 35 2 ]
+        symbol [ nbreAff %tmp.23 35 18 25 ];
+        %tmp.23 = getv ? :nbreAff;
+        symbol [ nbreAffDepart ? 35 2 15 ];
+        putv self :nbreAffDepart %tmp.23;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 36 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_2_36_41_if_stmt:
+        symbol [ nbreAff %tmp.25 36 6 13 ];
+        %tmp.25 = getv ? :nbreAff;
+        symbol [ _nbre %tmp.27 36 16 21 ];
+        %tmp.27 = getv ? :_nbre;
+        %tmp.28 = gt %tmp.25 %tmp.27;
+        bf %tmp.28 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_2_36_41_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_2_36_41_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_24_36_41_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 36 25 ]
+        symbol [ _nbre %tmp.30 36 35 40 ];
+        %tmp.30 = getv ? :_nbre;
+        symbol [ nbreAff ? 36 25 32 ];
+        putv self :nbreAff %tmp.30;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_24_36_41_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_2_36_41_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_36_2_36_41_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 38 2 ]
+        symbol [ System %tmp.32 38 2 8 ];
+        %tmp.32 = getv ? :System;
+        symbol [ println %tmp.33 38 9 16 ];
+        %tmp.33 = getv function %tmp.32 :println;
+        %tmp.34 = "Initialize MenuView ";
+        symbol [ _titre %tmp.36 38 40 46 ];
+        %tmp.36 = getv ? :_titre;
+        %tmp.37 = add %tmp.34 %tmp.36;
+        invoke %tmp.32 %tmp.33(%tmp.37);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_24_42_39_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 41; @symbol_functiondef = [onLayout,41,13,21]; @symbol_param<0> = [dc,41,22,24]; ]
+    function onLayout(dc) {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_41_26_53_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 42 2 ]
+        symbol [ System %tmp.2 42 2 8 ];
+        %tmp.2 = getv ? :System;
+        symbol [ println %tmp.3 42 9 16 ];
+        %tmp.3 = getv function %tmp.2 :println;
+        %tmp.4 = "onLayout MenuView ";
+        symbol [ _titre %tmp.6 42 38 44 ];
+        %tmp.6 = getv ? :_titre;
+        %tmp.7 = add %tmp.4 %tmp.6;
+        invoke %tmp.2 %tmp.3(%tmp.7);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 43 2 ]
+        symbol [ Gfx %tmp.8 43 10 13 ];
+        %tmp.8 = getm $.Toybox.Graphics;
+        symbol [ getFontHeight %tmp.9 43 14 27 ];
+        %tmp.9 = getv function %tmp.8 :getFontHeight;
+        symbol [ font %tmp.11 43 28 32 ];
+        %tmp.11 = getv ? :font;
+        %tmp.12 = invoke %tmp.8 %tmp.9(%tmp.11);
+        symbol [ hFont ? 43 2 7 ];
+        putv self :hFont %tmp.12;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 44 2 ]
+        %tmp.13 = self;
+        symbol [ calculeItem0 %tmp.14 44 16 28 ];
+        %tmp.14 = getv function %tmp.13 :calculeItem0;
+        %tmp.15 = 0;
+        %tmp.16 = invoke %tmp.13 %tmp.14(%tmp.15);
+        symbol [ itemEnCours ? 44 2 13 ];
+        putv self :itemEnCours %tmp.16;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 45 2 ]
+        %tmp.17 = lgetv %dc;
+        symbol [ dc %tmp.17 45 7 9 ];
+        symbol [ getWidth %tmp.18 45 10 18 ];
+        %tmp.18 = getv function %tmp.17 :getWidth;
+        %tmp.19 = invoke %tmp.17 %tmp.18();
+        %tmp.20 = 2;
+        %tmp.21 = div %tmp.19 %tmp.20;
+        symbol [ _x ? 45 2 4 ];
+        putv self :_x %tmp.21;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 46 2 ]
+        %tmp.22 = lgetv %dc;
+        symbol [ dc %tmp.22 46 10 12 ];
+        symbol [ getWidth %tmp.23 46 13 21 ];
+        %tmp.23 = getv function %tmp.22 :getWidth;
+        %tmp.24 = invoke %tmp.22 %tmp.23();
+        %tmp.25 = 218.0;
+        %tmp.26 = div %tmp.24 %tmp.25;
+        symbol [ coeff ? 46 2 7 ];
+        putv self :coeff %tmp.26;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 48 8 ]
+        %tmp.27 = lgetv %dc;
+        symbol [ dc %tmp.27 48 8 10 ];
+        symbol [ setColor %tmp.28 48 11 19 ];
+        %tmp.28 = getv function %tmp.27 :setColor;
+        symbol [ Graphics %tmp.30 48 20 28 ];
+        %tmp.30 = getv ? :Graphics;
+        symbol [ COLOR_BLACK %tmp.31 48 29 40 ];
+        %tmp.31 = getv %tmp.30 :COLOR_BLACK;
+        symbol [ Graphics %tmp.33 48 42 50 ];
+        %tmp.33 = getv ? :Graphics;
+        symbol [ COLOR_BLACK %tmp.34 48 51 62 ];
+        %tmp.34 = getv %tmp.33 :COLOR_BLACK;
+        invoke %tmp.27 %tmp.28(%tmp.31, %tmp.34);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 49 8 ]
+        %tmp.35 = lgetv %dc;
+        symbol [ dc %tmp.35 49 8 10 ];
+        symbol [ clear %tmp.36 49 11 16 ];
+        %tmp.36 = getv function %tmp.35 :clear;
+        invoke %tmp.35 %tmp.36();
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 50 8 ]
+        %tmp.37 = lgetv %dc;
+        symbol [ dc %tmp.37 50 8 10 ];
+        symbol [ setColor %tmp.38 50 11 19 ];
+        %tmp.38 = getv function %tmp.37 :setColor;
+        symbol [ Graphics %tmp.40 50 20 28 ];
+        %tmp.40 = getv ? :Graphics;
+        symbol [ COLOR_WHITE %tmp.41 50 29 40 ];
+        %tmp.41 = getv %tmp.40 :COLOR_WHITE;
+        symbol [ Graphics %tmp.43 50 42 50 ];
+        %tmp.43 = getv ? :Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.44 50 51 68 ];
+        %tmp.44 = getv %tmp.43 :COLOR_TRANSPARENT;
+        invoke %tmp.37 %tmp.38(%tmp.41, %tmp.44);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 51 2 ]
+        %tmp.45 = lgetv %dc;
+        symbol [ dc %tmp.45 51 2 4 ];
+        symbol [ setPenWidth %tmp.46 51 5 16 ];
+        %tmp.46 = getv function %tmp.45 :setPenWidth;
+        %tmp.47 = 3;
+        symbol [ coeff %tmp.49 51 19 24 ];
+        %tmp.49 = getv ? :coeff;
+        %tmp.50 = mul %tmp.47 %tmp.49;
+        invoke %tmp.45 %tmp.46(%tmp.50);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_41_26_53_4_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 57; @symbol_functiondef = [onUpdate,57,13,21]; @symbol_param<0> = [dc,57,22,24]; ]
+    function onUpdate(dc) {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 58 0 ]
+        symbol [ System %tmp.2 58 0 6 ];
+        %tmp.2 = getv ? :System;
+        symbol [ println %tmp.3 58 7 14 ];
+        %tmp.3 = getv function %tmp.2 :println;
+        %tmp.4 = "UPDATE nbre=";
+        symbol [ _nbre %tmp.6 58 30 35 ];
+        %tmp.6 = getv ? :_nbre;
+        %tmp.7 = add %tmp.4 %tmp.6;
+        %tmp.8 = "  nbreAff=";
+        %tmp.9 = add %tmp.7 %tmp.8;
+        symbol [ nbreAff %tmp.11 58 49 56 ];
+        %tmp.11 = getv ? :nbreAff;
+        %tmp.12 = add %tmp.9 %tmp.11;
+        %tmp.13 = "  item0=";
+        %tmp.14 = add %tmp.12 %tmp.13;
+        symbol [ item0 %tmp.16 58 68 73 ];
+        %tmp.16 = getv ? :item0;
+        %tmp.17 = add %tmp.14 %tmp.16;
+        %tmp.18 = "  itemEnCours=";
+        %tmp.19 = add %tmp.17 %tmp.18;
+        symbol [ itemEnCours %tmp.21 58 91 102 ];
+        %tmp.21 = getv ? :itemEnCours;
+        %tmp.22 = add %tmp.19 %tmp.21;
+        invoke %tmp.2 %tmp.3(%tmp.22);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 59 5 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_stop" ]
+        %y.1 = local;
+        symbol [ y %y.1 59 9 10 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 60 2 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_stop" ]
+        %coulFond.2 = local;
+        symbol [ coulFond %coulFond.2 60 6 14 ];
+        symbol [ Gfx %tmp.23 60 17 20 ];
+        %tmp.23 = getm $.Toybox.Graphics;
+        symbol [ COLOR_BLACK %tmp.24 60 21 32 ];
+        %tmp.24 = getv %tmp.23 :COLOR_BLACK;
+        lputv %coulFond.2 %tmp.24;
+        symbol [ coulFond %coulFond.2 60 6 14 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 61 2 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_stop" ]
+        %coulPP.3 = local;
+        symbol [ coulPP %coulPP.3 61 6 12 ];
+        symbol [ Gfx %tmp.25 61 15 18 ];
+        %tmp.25 = getm $.Toybox.Graphics;
+        symbol [ COLOR_WHITE %tmp.26 61 19 30 ];
+        %tmp.26 = getv %tmp.25 :COLOR_WHITE;
+        lputv %coulPP.3 %tmp.26;
+        symbol [ coulPP %coulPP.3 61 6 12 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 62 5 ]
+        %tmp.27 = lgetv %dc;
+        symbol [ dc %tmp.27 62 5 7 ];
+        symbol [ setColor %tmp.28 62 8 16 ];
+        %tmp.28 = getv function %tmp.27 :setColor;
+        %tmp.29 = lgetv %coulPP.3;
+        symbol [ coulPP %tmp.29 62 17 23 ];
+        %tmp.30 = lgetv %coulFond.2;
+        symbol [ coulFond %tmp.30 62 25 33 ];
+        invoke %tmp.27 %tmp.28(%tmp.29, %tmp.30);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 63 2 ]
+        %tmp.31 = lgetv %dc;
+        symbol [ dc %tmp.31 63 2 4 ];
+        symbol [ clear %tmp.32 63 5 10 ];
+        %tmp.32 = getv function %tmp.31 :clear;
+        invoke %tmp.31 %tmp.32();
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 65 2 ]
+        symbol [ hFont %tmp.34 65 6 11 ];
+        %tmp.34 = getv ? :hFont;
+        %tmp.35 = 25;
+        symbol [ coeff %tmp.37 65 15 20 ];
+        %tmp.37 = getv ? :coeff;
+        %tmp.38 = mul %tmp.35 %tmp.37;
+        %tmp.39 = add %tmp.34 %tmp.38;
+        lputv %y.1 %tmp.39;
+        symbol [ y %y.1 65 2 3 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 66 2 ]
+        %tmp.40 = lgetv %dc;
+        symbol [ dc %tmp.40 66 2 4 ];
+        symbol [ setColor %tmp.41 66 5 13 ];
+        %tmp.41 = getv function %tmp.40 :setColor;
+        %tmp.42 = lgetv %coulPP.3;
+        symbol [ coulPP %tmp.42 66 15 21 ];
+        symbol [ Gfx %tmp.43 66 23 26 ];
+        %tmp.43 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.44 66 27 44 ];
+        %tmp.44 = getv %tmp.43 :COLOR_TRANSPARENT;
+        invoke %tmp.40 %tmp.41(%tmp.42, %tmp.44);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 67 2 ]
+        %tmp.45 = lgetv %dc;
+        symbol [ dc %tmp.45 67 2 4 ];
+        symbol [ fillRectangle %tmp.46 67 5 18 ];
+        %tmp.46 = getv function %tmp.45 :fillRectangle;
+        %tmp.47 = 0;
+        %tmp.48 = 0;
+        %tmp.49 = lgetv %dc;
+        symbol [ dc %tmp.49 67 25 27 ];
+        symbol [ getWidth %tmp.50 67 28 36 ];
+        %tmp.50 = getv function %tmp.49 :getWidth;
+        %tmp.51 = invoke %tmp.49 %tmp.50();
+        %tmp.52 = lgetv %y.1;
+        symbol [ y %tmp.52 67 40 41 ];
+        %tmp.53 = 2;
+        %tmp.54 = sub %tmp.52 %tmp.53;
+        invoke %tmp.45 %tmp.46(%tmp.47, %tmp.48, %tmp.51, %tmp.54);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 68 2 ]
+        %tmp.55 = lgetv %dc;
+        symbol [ dc %tmp.55 68 2 4 ];
+        symbol [ setColor %tmp.56 68 5 13 ];
+        %tmp.56 = getv function %tmp.55 :setColor;
+        %tmp.57 = lgetv %coulFond.2;
+        symbol [ coulFond %tmp.57 68 15 23 ];
+        symbol [ Gfx %tmp.58 68 25 28 ];
+        %tmp.58 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.59 68 29 46 ];
+        %tmp.59 = getv %tmp.58 :COLOR_TRANSPARENT;
+        invoke %tmp.55 %tmp.56(%tmp.57, %tmp.59);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 69 2 ]
+        %tmp.60 = lgetv %dc;
+        symbol [ dc %tmp.60 69 2 4 ];
+        symbol [ drawText %tmp.61 69 5 13 ];
+        %tmp.61 = getv function %tmp.60 :drawText;
+        %tmp.62 = lgetv %dc;
+        symbol [ dc %tmp.62 69 14 16 ];
+        symbol [ getWidth %tmp.63 69 17 25 ];
+        %tmp.63 = getv function %tmp.62 :getWidth;
+        %tmp.64 = invoke %tmp.62 %tmp.63();
+        %tmp.65 = 2;
+        %tmp.66 = div %tmp.64 %tmp.65;
+        %tmp.67 = lgetv %y.1;
+        symbol [ y %tmp.67 69 31 32 ];
+        %tmp.68 = 2;
+        %tmp.69 = div %tmp.67 %tmp.68;
+        symbol [ font %tmp.71 69 36 40 ];
+        %tmp.71 = getv ? :font;
+        symbol [ _titre %tmp.73 69 42 48 ];
+        %tmp.73 = getv ? :_titre;
+        symbol [ Gfx %tmp.74 69 50 53 ];
+        %tmp.74 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.75 69 54 73 ];
+        %tmp.75 = getv %tmp.74 :TEXT_JUSTIFY_CENTER;
+        symbol [ Gfx %tmp.76 69 74 77 ];
+        %tmp.76 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_VCENTER %tmp.77 69 78 98 ];
+        %tmp.77 = getv %tmp.76 :TEXT_JUSTIFY_VCENTER;
+        %tmp.78 = add %tmp.75 %tmp.77;
+        invoke %tmp.60 %tmp.61(%tmp.66, %tmp.69, %tmp.71, %tmp.73, %tmp.78);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 72 2 ]
+        %tmp.79 = lgetv %dc;
+        symbol [ dc %tmp.79 72 2 4 ];
+        symbol [ setColor %tmp.80 72 5 13 ];
+        %tmp.80 = getv function %tmp.79 :setColor;
+        %tmp.81 = lgetv %coulPP.3;
+        symbol [ coulPP %tmp.81 72 15 21 ];
+        symbol [ Gfx %tmp.82 72 23 26 ];
+        %tmp.82 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.83 72 27 44 ];
+        %tmp.83 = getv %tmp.82 :COLOR_TRANSPARENT;
+        invoke %tmp.79 %tmp.80(%tmp.81, %tmp.83);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 73 2 ]
+        for @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_test @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_incr @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_init:
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_begin" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 73 11 12 ];
+        symbol [ item0 %tmp.85 73 13 18 ];
+        %tmp.85 = getv ? :item0;
+        lputv %i.4 %tmp.85;
+        symbol [ i %i.4 73 11 12 ];
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_test:
+        %tmp.86 = lgetv %i.4;
+        symbol [ i %tmp.86 73 19 20 ];
+        symbol [ item0 %tmp.88 73 21 26 ];
+        %tmp.88 = getv ? :item0;
+        symbol [ nbreAff %tmp.90 73 27 34 ];
+        %tmp.90 = getv ? :nbreAff;
+        %tmp.91 = add %tmp.88 %tmp.90;
+        %tmp.92 = lt %tmp.86 %tmp.91;
+        bf %tmp.92 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_begin:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_40_82_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 74 3 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_3_77_3_if_stmt:
+        %tmp.93 = lgetv %i.4;
+        symbol [ i %tmp.93 74 7 8 ];
+        symbol [ itemEnCours %tmp.95 74 10 21 ];
+        %tmp.95 = getv ? :itemEnCours;
+        %tmp.96 = eq %tmp.93 %tmp.95;
+        bf %tmp.96 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_3_77_3_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_3_77_3_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_23_77_3_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 75 4 ]
+        %tmp.97 = lgetv %dc;
+        symbol [ dc %tmp.97 75 4 6 ];
+        symbol [ fillRectangle %tmp.98 75 7 20 ];
+        %tmp.98 = getv function %tmp.97 :fillRectangle;
+        %tmp.99 = 0;
+        %tmp.100 = lgetv %y.1;
+        symbol [ y %tmp.100 75 23 24 ];
+        %tmp.101 = lgetv %dc;
+        symbol [ dc %tmp.101 75 25 27 ];
+        symbol [ getWidth %tmp.102 75 28 36 ];
+        %tmp.102 = getv function %tmp.101 :getWidth;
+        %tmp.103 = invoke %tmp.101 %tmp.102();
+        symbol [ hFont %tmp.105 75 39 44 ];
+        %tmp.105 = getv ? :hFont;
+        invoke %tmp.97 %tmp.98(%tmp.99, %tmp.100, %tmp.103, %tmp.105);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 76 4 ]
+        %tmp.106 = lgetv %dc;
+        symbol [ dc %tmp.106 76 4 6 ];
+        symbol [ setColor %tmp.107 76 7 15 ];
+        %tmp.107 = getv function %tmp.106 :setColor;
+        %tmp.108 = lgetv %coulFond.2;
+        symbol [ coulFond %tmp.108 76 17 25 ];
+        symbol [ Gfx %tmp.109 76 26 29 ];
+        %tmp.109 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.110 76 30 47 ];
+        %tmp.110 = getv %tmp.109 :COLOR_TRANSPARENT;
+        invoke %tmp.106 %tmp.107(%tmp.108, %tmp.110);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_23_77_3_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_3_77_3_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_74_3_77_3_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 78 3 ]
+        %tmp.111 = lgetv %dc;
+        symbol [ dc %tmp.111 78 3 5 ];
+        symbol [ drawText %tmp.112 78 6 14 ];
+        %tmp.112 = getv function %tmp.111 :drawText;
+        symbol [ _x %tmp.114 78 15 17 ];
+        %tmp.114 = getv ? :_x;
+        %tmp.115 = lgetv %y.1;
+        symbol [ y %tmp.115 78 19 20 ];
+        symbol [ font %tmp.117 78 22 26 ];
+        %tmp.117 = getv ? :font;
+        symbol [ _tab %tmp.119 78 28 32 ];
+        %tmp.119 = getv ? :_tab;
+        %tmp.120 = lgetv %i.4;
+        symbol [ i %tmp.120 78 33 34 ];
+        %tmp.121 = agetv %tmp.119 %tmp.120;
+        symbol [ Gfx %tmp.122 78 37 40 ];
+        %tmp.122 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.123 78 41 60 ];
+        %tmp.123 = getv %tmp.122 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.111 %tmp.112(%tmp.114, %tmp.115, %tmp.117, %tmp.121, %tmp.123);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 79 3 ]
+        %tmp.124 = lgetv %dc;
+        symbol [ dc %tmp.124 79 3 5 ];
+        symbol [ setColor %tmp.125 79 6 14 ];
+        %tmp.125 = getv function %tmp.124 :setColor;
+        %tmp.126 = lgetv %coulPP.3;
+        symbol [ coulPP %tmp.126 79 15 21 ];
+        symbol [ Gfx %tmp.127 79 23 26 ];
+        %tmp.127 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.128 79 27 44 ];
+        %tmp.128 = getv %tmp.127 :COLOR_TRANSPARENT;
+        invoke %tmp.124 %tmp.125(%tmp.126, %tmp.128);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 80 3 ]
+        %tmp.129 = lgetv %y.1;
+        symbol [ y %tmp.129 80 7 8 ];
+        symbol [ hFont %tmp.131 80 11 16 ];
+        %tmp.131 = getv ? :hFont;
+        %tmp.132 = add %tmp.129 %tmp.131;
+        lputv %y.1 %tmp.132;
+        symbol [ y %y.1 80 3 4 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 81 3 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_3_81_57_if_stmt:
+        %tmp.133 = lgetv %i.4;
+        symbol [ i %tmp.133 81 7 8 ];
+        symbol [ itemEnCours %tmp.135 81 10 21 ];
+        %tmp.135 = getv ? :itemEnCours;
+        %tmp.136 = ne %tmp.133 %tmp.135;
+        bf %tmp.136 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_3_81_57_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_3_81_57_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_23_81_57_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 81 24 ]
+        %tmp.137 = lgetv %dc;
+        symbol [ dc %tmp.137 81 24 26 ];
+        symbol [ drawLine %tmp.138 81 27 35 ];
+        %tmp.138 = getv function %tmp.137 :drawLine;
+        %tmp.139 = 0;
+        %tmp.140 = lgetv %y.1;
+        symbol [ y %tmp.140 81 38 39 ];
+        %tmp.141 = lgetv %dc;
+        symbol [ dc %tmp.141 81 40 42 ];
+        symbol [ getWidth %tmp.142 81 43 51 ];
+        %tmp.142 = getv function %tmp.141 :getWidth;
+        %tmp.143 = invoke %tmp.141 %tmp.142();
+        %tmp.144 = lgetv %y.1;
+        symbol [ y %tmp.144 81 54 55 ];
+        invoke %tmp.137 %tmp.138(%tmp.139, %tmp.140, %tmp.143, %tmp.144);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_23_81_57_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_3_81_57_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_81_3_81_57_if_end:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_40_82_2_stop:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_incr:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 73 ]
+        %tmp.147 = lgetv %i.4;
+        symbol [ i %tmp.147 73 35 36 ];
+        %tmp.148 = add %tmp.147 1;
+        lputv %i.4 %tmp.148;
+        symbol [ i %i.4 73 35 36 ];
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_test;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_73_2_82_2_for_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 83 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_2_86_2_if_stmt:
+        symbol [ item0 %tmp.150 83 6 11 ];
+        %tmp.150 = getv ? :item0;
+        symbol [ nbreAff %tmp.152 83 12 19 ];
+        %tmp.152 = getv ? :nbreAff;
+        %tmp.153 = add %tmp.150 %tmp.152;
+        symbol [ _tab %tmp.155 83 22 26 ];
+        %tmp.155 = getv ? :_tab;
+        symbol [ size %tmp.156 83 27 31 ];
+        %tmp.156 = getv function %tmp.155 :size;
+        %tmp.157 = invoke %tmp.155 %tmp.156();
+        %tmp.158 = lt %tmp.153 %tmp.157;
+        bf %tmp.158 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_2_86_2_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_2_86_2_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_35_86_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 84 3 ]
+        %tmp.159 = lgetv %dc;
+        symbol [ dc %tmp.159 84 3 5 ];
+        symbol [ drawText %tmp.160 84 6 14 ];
+        %tmp.160 = getv function %tmp.159 :drawText;
+        symbol [ _x %tmp.162 84 15 17 ];
+        %tmp.162 = getv ? :_x;
+        %tmp.163 = lgetv %y.1;
+        symbol [ y %tmp.163 84 19 20 ];
+        symbol [ font %tmp.165 84 22 26 ];
+        %tmp.165 = getv ? :font;
+        symbol [ _tab %tmp.167 84 28 32 ];
+        %tmp.167 = getv ? :_tab;
+        symbol [ item0 %tmp.169 84 33 38 ];
+        %tmp.169 = getv ? :item0;
+        symbol [ nbreAff %tmp.171 84 39 46 ];
+        %tmp.171 = getv ? :nbreAff;
+        %tmp.172 = add %tmp.169 %tmp.171;
+        %tmp.173 = agetv %tmp.167 %tmp.172;
+        symbol [ Gfx %tmp.174 84 50 53 ];
+        %tmp.174 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.175 84 54 73 ];
+        %tmp.175 = getv %tmp.174 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.159 %tmp.160(%tmp.162, %tmp.163, %tmp.165, %tmp.173, %tmp.175);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_35_86_2_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_2_86_2_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_83_2_86_2_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 87 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_2_91_2_if_stmt:
+        symbol [ item0 %tmp.177 87 6 11 ];
+        %tmp.177 = getv ? :item0;
+        %tmp.178 = 1;
+        %tmp.179 = add %tmp.177 %tmp.178;
+        symbol [ nbreAff %tmp.181 87 14 21 ];
+        %tmp.181 = getv ? :nbreAff;
+        %tmp.182 = add %tmp.179 %tmp.181;
+        symbol [ _tab %tmp.184 87 24 28 ];
+        %tmp.184 = getv ? :_tab;
+        symbol [ size %tmp.185 87 29 33 ];
+        %tmp.185 = getv function %tmp.184 :size;
+        %tmp.186 = invoke %tmp.184 %tmp.185();
+        %tmp.187 = lt %tmp.182 %tmp.186;
+        bf %tmp.187 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_2_91_2_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_2_91_2_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_37_91_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 88 3 ]
+        %tmp.188 = lgetv %dc;
+        symbol [ dc %tmp.188 88 3 5 ];
+        symbol [ drawLine %tmp.189 88 6 14 ];
+        %tmp.189 = getv function %tmp.188 :drawLine;
+        %tmp.190 = 0;
+        %tmp.191 = lgetv %y.1;
+        symbol [ y %tmp.191 88 17 18 ];
+        symbol [ hFont %tmp.193 88 20 25 ];
+        %tmp.193 = getv ? :hFont;
+        %tmp.194 = add %tmp.191 %tmp.193;
+        %tmp.195 = lgetv %dc;
+        symbol [ dc %tmp.195 88 26 28 ];
+        symbol [ getWidth %tmp.196 88 29 37 ];
+        %tmp.196 = getv function %tmp.195 :getWidth;
+        %tmp.197 = invoke %tmp.195 %tmp.196();
+        %tmp.198 = lgetv %y.1;
+        symbol [ y %tmp.198 88 40 41 ];
+        symbol [ hFont %tmp.200 88 43 48 ];
+        %tmp.200 = getv ? :hFont;
+        %tmp.201 = add %tmp.198 %tmp.200;
+        invoke %tmp.188 %tmp.189(%tmp.190, %tmp.194, %tmp.197, %tmp.201);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 89 3 ]
+        %tmp.202 = lgetv %y.1;
+        symbol [ y %tmp.202 89 7 8 ];
+        symbol [ hFont %tmp.204 89 11 16 ];
+        %tmp.204 = getv ? :hFont;
+        %tmp.205 = add %tmp.202 %tmp.204;
+        lputv %y.1 %tmp.205;
+        symbol [ y %y.1 89 3 4 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 90 3 ]
+        %tmp.206 = lgetv %dc;
+        symbol [ dc %tmp.206 90 3 5 ];
+        symbol [ drawText %tmp.207 90 6 14 ];
+        %tmp.207 = getv function %tmp.206 :drawText;
+        symbol [ _x %tmp.209 90 15 17 ];
+        %tmp.209 = getv ? :_x;
+        %tmp.210 = lgetv %y.1;
+        symbol [ y %tmp.210 90 19 20 ];
+        symbol [ font %tmp.212 90 22 26 ];
+        %tmp.212 = getv ? :font;
+        symbol [ _tab %tmp.214 90 28 32 ];
+        %tmp.214 = getv ? :_tab;
+        symbol [ item0 %tmp.216 90 33 38 ];
+        %tmp.216 = getv ? :item0;
+        %tmp.217 = 1;
+        %tmp.218 = add %tmp.216 %tmp.217;
+        symbol [ nbreAff %tmp.220 90 41 48 ];
+        %tmp.220 = getv ? :nbreAff;
+        %tmp.221 = add %tmp.218 %tmp.220;
+        %tmp.222 = agetv %tmp.214 %tmp.221;
+        symbol [ Gfx %tmp.223 90 52 55 ];
+        %tmp.223 = getm $.Toybox.Graphics;
+        symbol [ TEXT_JUSTIFY_CENTER %tmp.224 90 56 75 ];
+        %tmp.224 = getv %tmp.223 :TEXT_JUSTIFY_CENTER;
+        invoke %tmp.206 %tmp.207(%tmp.209, %tmp.210, %tmp.212, %tmp.222, %tmp.224);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_37_91_2_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_2_91_2_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_87_2_91_2_if_end:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_57_26_92_1_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 95; @symbol_functiondef = [calculeItem0,95,10,22]; @symbol_param<0> = [delta,95,23,28]; ]
+    function calculeItem0(delta) {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_95_30_109_1_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 97 2 ]
+        symbol [ nbreAffDepart %tmp.2 97 12 25 ];
+        %tmp.2 = getv ? :nbreAffDepart;
+        symbol [ nbreAff ? 97 2 9 ];
+        putv self :nbreAff %tmp.2;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 98 2 ]
+        symbol [ itemEnCours %tmp.4 98 17 28 ];
+        %tmp.4 = getv ? :itemEnCours;
+        %tmp.5 = lgetv %delta;
+        symbol [ delta %tmp.5 98 29 34 ];
+        %tmp.6 = add %tmp.4 %tmp.5;
+        symbol [ _nbre %tmp.8 98 35 40 ];
+        %tmp.8 = getv ? :_nbre;
+        %tmp.9 = add %tmp.6 %tmp.8;
+        %tmp.10 = 1;
+        %tmp.11 = add %tmp.9 %tmp.10;
+        symbol [ _nbre %tmp.13 98 47 52 ];
+        %tmp.13 = getv ? :_nbre;
+        %tmp.14 = 1;
+        %tmp.15 = add %tmp.13 %tmp.14;
+        %tmp.16 = mod %tmp.11 %tmp.15;
+        symbol [ itemEnCours ? 98 2 13 ];
+        putv self :itemEnCours %tmp.16;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 99 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_2_99_44_if_stmt:
+        symbol [ item0 %tmp.18 99 6 11 ];
+        %tmp.18 = getv ? :item0;
+        symbol [ itemEnCours %tmp.20 99 12 23 ];
+        %tmp.20 = getv ? :itemEnCours;
+        %tmp.21 = gt %tmp.18 %tmp.20;
+        bf %tmp.21 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_2_99_44_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_2_99_44_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_25_99_44_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 99 26 ]
+        symbol [ itemEnCours %tmp.23 99 32 43 ];
+        %tmp.23 = getv ? :itemEnCours;
+        symbol [ item0 ? 99 26 31 ];
+        putv self :item0 %tmp.23;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_25_99_44_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_2_99_44_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_99_2_99_44_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 100 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_2_100_64_if_stmt:
+        symbol [ itemEnCours %tmp.25 100 6 17 ];
+        %tmp.25 = getv ? :itemEnCours;
+        symbol [ nbreAff %tmp.27 100 18 25 ];
+        %tmp.27 = getv ? :nbreAff;
+        %tmp.28 = 1;
+        %tmp.29 = sub %tmp.27 %tmp.28;
+        symbol [ item0 %tmp.31 100 28 33 ];
+        %tmp.31 = getv ? :item0;
+        %tmp.32 = add %tmp.29 %tmp.31;
+        %tmp.33 = gt %tmp.25 %tmp.32;
+        bf %tmp.33 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_2_100_64_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_2_100_64_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_35_100_64_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 100 36 ]
+        symbol [ itemEnCours %tmp.35 100 42 53 ];
+        %tmp.35 = getv ? :itemEnCours;
+        symbol [ nbreAff %tmp.37 100 54 61 ];
+        %tmp.37 = getv ? :nbreAff;
+        %tmp.38 = sub %tmp.35 %tmp.37;
+        %tmp.39 = 1;
+        %tmp.40 = add %tmp.38 %tmp.39;
+        symbol [ item0 ? 100 36 41 ];
+        putv self :item0 %tmp.40;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_35_100_64_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_2_100_64_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_100_2_100_64_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 101 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_2_101_44_if_stmt:
+        symbol [ itemEnCours %tmp.42 101 6 17 ];
+        %tmp.42 = getv ? :itemEnCours;
+        symbol [ item0 %tmp.44 101 18 23 ];
+        %tmp.44 = getv ? :item0;
+        %tmp.45 = lt %tmp.42 %tmp.44;
+        bf %tmp.45 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_2_101_44_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_2_101_44_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_25_101_44_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 101 26 ]
+        symbol [ itemEnCours %tmp.47 101 32 43 ];
+        %tmp.47 = getv ? :itemEnCours;
+        symbol [ item0 ? 101 26 31 ];
+        putv self :item0 %tmp.47;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_25_101_44_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_2_101_44_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_101_2_101_44_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 102 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_2_102_64_if_stmt:
+        symbol [ itemEnCours %tmp.49 102 6 17 ];
+        %tmp.49 = getv ? :itemEnCours;
+        symbol [ nbreAff %tmp.51 102 18 25 ];
+        %tmp.51 = getv ? :nbreAff;
+        %tmp.52 = 1;
+        %tmp.53 = sub %tmp.51 %tmp.52;
+        symbol [ item0 %tmp.55 102 28 33 ];
+        %tmp.55 = getv ? :item0;
+        %tmp.56 = add %tmp.53 %tmp.55;
+        %tmp.57 = gt %tmp.49 %tmp.56;
+        bf %tmp.57 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_2_102_64_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_2_102_64_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_35_102_64_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 102 36 ]
+        symbol [ itemEnCours %tmp.59 102 42 53 ];
+        %tmp.59 = getv ? :itemEnCours;
+        symbol [ nbreAff %tmp.61 102 54 61 ];
+        %tmp.61 = getv ? :nbreAff;
+        %tmp.62 = sub %tmp.59 %tmp.61;
+        %tmp.63 = 1;
+        %tmp.64 = add %tmp.62 %tmp.63;
+        symbol [ item0 ? 102 36 41 ];
+        putv self :item0 %tmp.64;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_35_102_64_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_2_102_64_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_102_2_102_64_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 103 2 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_2_106_2_if_stmt:
+        symbol [ _nbre %tmp.66 103 6 11 ];
+        %tmp.66 = getv ? :_nbre;
+        symbol [ nbreAff %tmp.68 103 12 19 ];
+        %tmp.68 = getv ? :nbreAff;
+        %tmp.69 = lt %tmp.66 %tmp.68;
+        bf %tmp.69 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_2_106_2_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_2_106_2_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_21_106_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 104 3 ]
+        symbol [ _nbre %tmp.71 104 13 18 ];
+        %tmp.71 = getv ? :_nbre;
+        %tmp.72 = 1;
+        %tmp.73 = add %tmp.71 %tmp.72;
+        symbol [ nbreAff ? 104 3 10 ];
+        putv self :nbreAff %tmp.73;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 105 3 ]
+        %tmp.74 = 0;
+        symbol [ item0 ? 105 3 8 ];
+        putv self :item0 %tmp.74;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_21_106_2_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_2_106_2_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_103_2_106_2_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 107 0 ]
+        symbol [ System %tmp.76 107 0 6 ];
+        %tmp.76 = getv ? :System;
+        symbol [ println %tmp.77 107 7 14 ];
+        %tmp.77 = getv function %tmp.76 :println;
+        %tmp.78 = "APRES CALCUL nbre=";
+        symbol [ _nbre %tmp.80 107 36 41 ];
+        %tmp.80 = getv ? :_nbre;
+        %tmp.81 = add %tmp.78 %tmp.80;
+        %tmp.82 = "  nbreAff=";
+        %tmp.83 = add %tmp.81 %tmp.82;
+        symbol [ nbreAff %tmp.85 107 55 62 ];
+        %tmp.85 = getv ? :nbreAff;
+        %tmp.86 = add %tmp.83 %tmp.85;
+        %tmp.87 = "  item0=";
+        %tmp.88 = add %tmp.86 %tmp.87;
+        symbol [ item0 %tmp.90 107 74 79 ];
+        %tmp.90 = getv ? :item0;
+        %tmp.91 = add %tmp.88 %tmp.90;
+        %tmp.92 = "  itemEnCours=";
+        %tmp.93 = add %tmp.91 %tmp.92;
+        symbol [ itemEnCours %tmp.95 107 97 108 ];
+        %tmp.95 = getv ? :itemEnCours;
+        %tmp.96 = add %tmp.93 %tmp.95;
+        invoke %tmp.76 %tmp.77(%tmp.96);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 108 0 ]
+        symbol [ itemEnCours %tmp.98 108 7 18 ];
+        %tmp.98 = getv ? :itemEnCours;
+        ret %tmp.98;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_95_30_109_1_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 111; @symbol_functiondef = [prev,111,10,14]; ]
+    function prev() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_111_17_114_1_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 112 2 ]
+        %tmp.1 = self;
+        symbol [ calculeItem0 %tmp.2 112 2 14 ];
+        %tmp.2 = getv function %tmp.1 :calculeItem0;
+        %tmp.3 = -1;
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 113 2 ]
+        symbol [ Ui %tmp.4 113 2 4 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.5 113 5 18 ];
+        %tmp.5 = getv function %tmp.4 :requestUpdate;
+        invoke %tmp.4 %tmp.5();
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_111_17_114_1_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 116; @symbol_functiondef = [next,116,13,17]; ]
+    function next() {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_116_20_119_1_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 117 2 ]
+        %tmp.1 = self;
+        symbol [ calculeItem0 %tmp.2 117 2 14 ];
+        %tmp.2 = getv function %tmp.1 :calculeItem0;
+        %tmp.3 = 1;
+        invoke %tmp.1 %tmp.2(%tmp.3);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc" 118 2 ]
+        symbol [ Ui %tmp.4 118 2 4 ];
+        %tmp.4 = getm $.Toybox.WatchUi;
+        symbol [ requestUpdate %tmp.5 118 5 18 ];
+        %tmp.5 = getv function %tmp.4 :requestUpdate;
+        invoke %tmp.4 %tmp.5();
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuView_mc_116_20_119_1_stop:
+    }
+}
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 2; ]
+<init> {
+}

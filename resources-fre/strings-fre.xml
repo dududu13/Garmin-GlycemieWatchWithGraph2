@@ -1,0 +1,17 @@
+<strings>
+    <string id="AppName">Watch Glycemie</string>
+    <string id="url">Online site URL, avec / à la fin </string>
+    <string id="token">Utilisateur NS, à configurer dans les outils de NS</string>
+    <string id="Meteo">Météo</string>
+    <string id="Graph">Graph</string>
+    <string id="Seconds">Secondes, sinon décompte capteur ?</string>
+    <string id="secondsPrompt">Affiche les secondes ?</string>
+    <string id="meteoPrompt">Affiche la météo, sinon graphique ?</string>
+    <string id="choixProvenanceBG">Provenance glycemie</string>
+    <string id="sourceBG">Source glycemie</string>
+    <string id="nbHGraph">Nbre d'heures graphique</string>
+    <string id="logarithmique">Echelle logarithmique ?</string>
+    
+    <string id="version">V. 1</string>
+
+</strings>

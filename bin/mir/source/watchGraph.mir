@@ -1,0 +1,827 @@
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 1; @symbol_importdef<0> = [Toybox,1,7,13]; @symbol_importdef<1> = [Lang,1,14,18]; ]
+import Toybox.Lang;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Application,4,13,24]; @symbol_usingdef<2> = [Properties,4,25,35]; ]
+using Toybox.Application.Properties;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 5; @symbol_usingdef<0> = [Toybox,5,6,12]; @symbol_usingdef<1> = [Graphics,5,13,21]; @symbol_usingAlias = [Gfx,5,25,28]; ]
+using Toybox.Graphics as :Gfx;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 6; @symbol_usingdef<0> = [Toybox,6,6,12]; @symbol_usingdef<1> = [System,6,13,19]; @symbol_usingAlias = [Sys,6,23,26]; ]
+using Toybox.System as :Sys;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 7; @symbol_usingdef<0> = [Toybox,7,6,12]; @symbol_usingdef<1> = [Time,7,13,17]; ]
+using Toybox.Time;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 8; @symbol_usingdef<0> = [Toybox,8,6,12]; @symbol_usingdef<1> = [WatchUi,8,13,20]; @symbol_usingAlias = [Ui,8,24,26]; ]
+using Toybox.WatchUi as :Ui;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 9; @symbol_usingdef<0> = [Toybox,9,6,12]; @symbol_usingdef<1> = [Math,9,13,17]; ]
+using Toybox.Math;
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 12; @symbol_classdef = [watchGraph,12,6,16]; ]
+class watchGraph {
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 12; ]
+    <init> {
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 21 14 ]
+        symbol [ System %tmp.2 21 22 28 ];
+        %tmp.2 = getv ? :System;
+        symbol [ getDeviceSettings %tmp.3 21 29 46 ];
+        %tmp.3 = getv function %tmp.2 :getDeviceSettings;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        symbol [ screenHeight %tmp.5 21 49 61 ];
+        %tmp.5 = getv %tmp.4 :screenHeight;
+        %tmp.6 = 416.0;
+        %tmp.7 = div %tmp.5 %tmp.6;
+        putv self :coeff %tmp.7;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 23 14 ]
+        symbol [ HAUTEUR_GRAPH_EPIX %tmp.9 23 30 48 ];
+        %tmp.9 = getv ? :HAUTEUR_GRAPH_EPIX;
+        symbol [ coeff %tmp.11 23 51 56 ];
+        %tmp.11 = getv ? :coeff;
+        %tmp.12 = mul %tmp.9 %tmp.11;
+        putv self :HAUTEUR_GRAPH %tmp.12;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 24 14 ]
+        symbol [ posY_EPIX %tmp.14 24 21 30 ];
+        %tmp.14 = getv ? :posY_EPIX;
+        symbol [ coeff %tmp.16 24 33 38 ];
+        %tmp.16 = getv ? :coeff;
+        %tmp.17 = mul %tmp.14 %tmp.16;
+        putv self :posY %tmp.17;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 25 14 ]
+        symbol [ XoffsetDroite_EPIX %tmp.19 25 30 48 ];
+        %tmp.19 = getv ? :XoffsetDroite_EPIX;
+        symbol [ coeff %tmp.21 25 51 56 ];
+        %tmp.21 = getv ? :coeff;
+        %tmp.22 = mul %tmp.19 %tmp.21;
+        putv self :XoffsetDroite %tmp.22;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 26 14 ]
+        symbol [ XoffsetGauche_EPIX %tmp.24 26 30 48 ];
+        %tmp.24 = getv ? :XoffsetGauche_EPIX;
+        symbol [ coeff %tmp.26 26 51 56 ];
+        %tmp.26 = getv ? :coeff;
+        %tmp.27 = mul %tmp.24 %tmp.26;
+        putv self :XoffsetGauche %tmp.27;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 29 14 ]
+        %tmp.28 = 5;
+        %tmp.29 = 60;
+        %tmp.30 = mul %tmp.28 %tmp.29;
+        putv self :glucoseBarWidthSec %tmp.30;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 32 14 ]
+        %tmp.32 = 0;
+        %tmp.31 = newa %tmp.32;
+        putv self :data %tmp.31;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 33 14 ]
+        symbol [ MIN_GLUCOSE %tmp.34 33 27 38 ];
+        %tmp.34 = getv ? :MIN_GLUCOSE;
+        putv self :maxGlucose %tmp.34;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 39 14 ]
+        symbol [ Gfx %tmp.35 39 32 35 ];
+        %tmp.35 = getm $.Toybox.Graphics;
+        symbol [ COLOR_RED %tmp.36 39 36 45 ];
+        %tmp.36 = getv %tmp.35 :COLOR_RED;
+        putv self :lowGlucoseColor %tmp.36;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 40 14 ]
+        symbol [ Gfx %tmp.37 40 41 44 ];
+        %tmp.37 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_RED %tmp.38 40 45 57 ];
+        %tmp.38 = getv %tmp.37 :COLOR_DK_RED;
+        putv self :lowGlucoseHighlightColor %tmp.38;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 42 14 ]
+        symbol [ Gfx %tmp.39 42 44 47 ];
+        %tmp.39 = getm $.Toybox.Graphics;
+        symbol [ COLOR_DK_GREEN %tmp.40 42 48 62 ];
+        %tmp.40 = getv %tmp.39 :COLOR_DK_GREEN;
+        putv self :normalGlucoseHighlightColor %tmp.40;
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 12; ]
+    static
+    <init> {
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 13; @position = 16; @symbol_constdef = [HAUTEUR_GRAPH_EPIX,13,16,34]; @symbol_type<0> = [Number,13,38,44]; ]
+    private
+    const HAUTEUR_GRAPH_EPIX as Number = 80.0;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 14; @position = 16; @symbol_constdef = [MIN_GLUCOSE,14,16,27]; ]
+    private
+    const MIN_GLUCOSE = 50;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 15; @position = 16; @symbol_constdef = [BG_BAS,15,16,22]; ]
+    private
+    const BG_BAS = 70;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 16; @position = 16; @symbol_constdef = [BG_HAUT,16,16,23]; ]
+    private
+    const BG_HAUT = 170;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 17; @position = 16; @symbol_constdef = [posY_EPIX,17,16,25]; ]
+    private
+    const posY_EPIX = 300;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 18; @position = 16; @symbol_constdef = [XoffsetDroite_EPIX,18,16,34]; ]
+    private
+    const XoffsetDroite_EPIX = 80;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 19; @position = 16; @symbol_constdef = [XoffsetGauche_EPIX,19,16,34]; ]
+    private
+    const XoffsetGauche_EPIX = 30;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 21; @position = 14; @symbol_vardef = [coeff,21,14,19]; ]
+    private
+    var coeff;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 23; @position = 14; @symbol_vardef = [HAUTEUR_GRAPH,23,14,27]; ]
+    private
+    var HAUTEUR_GRAPH;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 24; @position = 14; @symbol_vardef = [posY,24,14,18]; ]
+    private
+    var posY;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 25; @position = 14; @symbol_vardef = [XoffsetDroite,25,14,27]; ]
+    private
+    var XoffsetDroite;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 26; @position = 14; @symbol_vardef = [XoffsetGauche,26,14,27]; ]
+    private
+    var XoffsetGauche;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 29; @position = 14; @symbol_vardef = [glucoseBarWidthSec,29,14,32]; @symbol_type<0> = [Number,29,36,42]; ]
+    private
+    var glucoseBarWidthSec as Number;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 30; @position = 14; @symbol_vardef = [glucoseBarPaddingPixel,30,14,36]; @symbol_type<0> = [Number,30,40,46]; ]
+    private
+    var glucoseBarPaddingPixel as Number = 1;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 31; @position = 14; @symbol_vardef = [glucoseBarWidthPixel,31,14,34]; ]
+    private
+    var glucoseBarWidthPixel;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 32; @position = 14; @symbol_vardef = [data,32,14,18]; ]
+    private
+    var data;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 33; @position = 14; @symbol_vardef = [maxGlucose,33,14,24]; ]
+    private
+    var maxGlucose;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 34; @position = 14; @symbol_vardef = [MIN_GLUCOSE1,34,14,26]; ]
+    private
+    var MIN_GLUCOSE1;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 35; @position = 14; @symbol_vardef = [BG_BAS1,35,14,21]; ]
+    private
+    var BG_BAS1;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 36; @position = 14; @symbol_vardef = [BG_HAUT1,36,14,22]; ]
+    private
+    var BG_HAUT1;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 39; @position = 14; @symbol_vardef = [lowGlucoseColor,39,14,29]; ]
+    private
+    var lowGlucoseColor;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 40; @position = 14; @symbol_vardef = [lowGlucoseHighlightColor,40,14,38]; ]
+    private
+    var lowGlucoseHighlightColor;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 41; @position = 14; @symbol_vardef = [normalGlucoseColor,41,14,32]; ]
+    private
+    var normalGlucoseColor = 0x55FF55;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 42; @position = 14; @symbol_vardef = [normalGlucoseHighlightColor,42,14,41]; ]
+    private
+    var normalGlucoseHighlightColor;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 43; @position = 14; @symbol_vardef = [highGlucoseColor,43,14,30]; ]
+    private
+    var highGlucoseColor = 0xFFFF55;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 44; @position = 14; @symbol_vardef = [highGlucoseHighlightColor,44,14,39]; ]
+    private
+    var highGlucoseHighlightColor = 0xFFFF00;
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 46; @symbol_functiondef = [initialize,46,11,21]; ]
+    function initialize() as Void {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_46_24_49_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 47 4 ]
+        symbol [ System %tmp.2 47 4 10 ];
+        %tmp.2 = getv ? :System;
+        symbol [ println %tmp.3 47 11 18 ];
+        %tmp.3 = getv function %tmp.2 :println;
+        %tmp.4 = "Graph INIT";
+        invoke %tmp.2 %tmp.3(%tmp.4);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_46_24_49_2_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 50; @symbol_functiondef = [calcule_tout,50,11,23]; @symbol_param<0> = [data,50,24,28]; ]
+    function calcule_tout(data) {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_50_30_52_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 51 4 ]
+        symbol [ self %self 51 4 6 ];
+        %tmp.1 = lgetv %data;
+        symbol [ data %tmp.1 51 14 18 ];
+        symbol [ data ? 51 7 11 ];
+        putv self :data %tmp.1;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_50_30_52_2_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 54; @symbol_functiondef = [log,54,11,14]; @symbol_param<0> = [val,54,15,18]; ]
+    function log(val) {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_54_20_62_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 55 4 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_4_55_38_if_stmt:
+        symbol [ logarithmique %tmp.2 55 10 23 ];
+        %tmp.2 = getv ? :logarithmique;
+        %tmp.3 = not %tmp.2;
+        bf %tmp.3 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_4_55_38_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_4_55_38_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_25_55_38_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 55 27 ]
+        %tmp.4 = lgetv %val;
+        symbol [ val %tmp.4 55 34 37 ];
+        ret %tmp.4;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_25_55_38_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_4_55_38_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_55_4_55_38_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 56 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_54_20_62_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_54_20_62_2_stop" ]
+        %log.1 = local;
+        symbol [ log %log.1 56 8 11 ];
+        symbol [ Math %tmp.5 56 14 18 ];
+        %tmp.5 = getm $.Toybox.Math;
+        symbol [ ln %tmp.6 56 19 21 ];
+        %tmp.6 = getv function %tmp.5 :ln;
+        %tmp.7 = lgetv %val;
+        symbol [ val %tmp.7 56 22 25 ];
+        %tmp.8 = invoke %tmp.5 %tmp.6(%tmp.7);
+        lputv %log.1 %tmp.8;
+        symbol [ log %log.1 56 8 11 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 57 4 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_4_59_4_if_stmt:
+        %tmp.9 = lgetv %log.1;
+        symbol [ log %tmp.9 57 8 11 ];
+        symbol [ MIN_GLUCOSE1 %tmp.11 57 14 26 ];
+        %tmp.11 = getv ? :MIN_GLUCOSE1;
+        %tmp.12 = lt %tmp.9 %tmp.11;
+        bf %tmp.12 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_4_59_4_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_4_59_4_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_28_59_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 58 6 ]
+        symbol [ MIN_GLUCOSE1 %tmp.14 58 12 24 ];
+        %tmp.14 = getv ? :MIN_GLUCOSE1;
+        %tmp.15 = .1;
+        %tmp.16 = add %tmp.14 %tmp.15;
+        lputv %log.1 %tmp.16;
+        symbol [ log %log.1 58 6 9 ];
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_28_59_4_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_4_59_4_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_57_4_59_4_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 61 4 ]
+        %tmp.17 = lgetv %log.1;
+        symbol [ log %tmp.17 61 11 14 ];
+        ret %tmp.17;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_54_20_62_2_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 64; @symbol_functiondef = [dessine_tout,64,11,23]; @symbol_param<0> = [dc,64,24,26]; ]
+    function dessine_tout(dc) {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 65 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop" ]
+        %size.1 = local;
+        symbol [ size %size.1 65 8 12 ];
+        symbol [ data %tmp.2 65 15 19 ];
+        %tmp.2 = getv ? :data;
+        symbol [ size %tmp.3 65 20 24 ];
+        %tmp.3 = getv function %tmp.2 :size;
+        %tmp.4 = invoke %tmp.2 %tmp.3();
+        lputv %size.1 %tmp.4;
+        symbol [ size %size.1 65 8 12 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 66 4 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_4_69_4_if_stmt:
+        %tmp.5 = lgetv %size.1;
+        symbol [ size %tmp.5 66 8 12 ];
+        %tmp.6 = 0;
+        %tmp.7 = eq %tmp.5 %tmp.6;
+        bf %tmp.7 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_4_69_4_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_4_69_4_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_17_69_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 67 6 ]
+        %tmp.8 = lgetv %dc;
+        symbol [ dc %tmp.8 67 6 8 ];
+        symbol [ drawText %tmp.9 67 9 17 ];
+        %tmp.9 = getv function %tmp.8 :drawText;
+        %tmp.10 = 200;
+        %tmp.11 = 320;
+        %tmp.12 = 13;
+        %tmp.13 = "no data";
+        %tmp.14 = 1;
+        invoke %tmp.8 %tmp.9(%tmp.10, %tmp.11, %tmp.12, %tmp.13, %tmp.14);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 68 6 ]
+        ret ?;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_17_69_4_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_4_69_4_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_66_4_69_4_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 70 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop" ]
+        %totalPixel.2 = local;
+        symbol [ totalPixel %totalPixel.2 70 8 18 ];
+        %tmp.15 = lgetv %dc;
+        symbol [ dc %tmp.15 70 21 23 ];
+        symbol [ getWidth %tmp.16 70 24 32 ];
+        %tmp.16 = getv function %tmp.15 :getWidth;
+        %tmp.17 = invoke %tmp.15 %tmp.16();
+        symbol [ XoffsetGauche %tmp.19 70 35 48 ];
+        %tmp.19 = getv ? :XoffsetGauche;
+        %tmp.20 = sub %tmp.17 %tmp.19;
+        symbol [ XoffsetDroite %tmp.22 70 49 62 ];
+        %tmp.22 = getv ? :XoffsetDroite;
+        %tmp.23 = sub %tmp.20 %tmp.22;
+        lputv %totalPixel.2 %tmp.23;
+        symbol [ totalPixel %totalPixel.2 70 8 18 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 71 4 ]
+        %tmp.24 = lgetv %totalPixel.2;
+        symbol [ totalPixel %tmp.24 71 28 38 ];
+        %tmp.25 = newa 4;
+        %tmp.26 = 1;
+        %tmp.27 = dup %tmp.25;
+        %tmp.28 = aputv %tmp.27 0 %tmp.26;
+        %tmp.29 = 2;
+        %tmp.30 = dup %tmp.28;
+        %tmp.31 = aputv %tmp.30 1 %tmp.29;
+        %tmp.32 = 4;
+        %tmp.33 = dup %tmp.31;
+        %tmp.34 = aputv %tmp.33 2 %tmp.32;
+        %tmp.35 = 6;
+        %tmp.36 = dup %tmp.34;
+        %tmp.37 = aputv %tmp.36 3 %tmp.35;
+        symbol [ nbHGraph %tmp.39 71 50 58 ];
+        %tmp.39 = getv ? :nbHGraph;
+        %tmp.40 = agetv %tmp.37 %tmp.39;
+        %tmp.41 = 12;
+        %tmp.42 = mul %tmp.40 %tmp.41;
+        %tmp.43 = div %tmp.24 %tmp.42;
+        symbol [ glucoseBarPaddingPixel %tmp.45 71 65 87 ];
+        %tmp.45 = getv ? :glucoseBarPaddingPixel;
+        %tmp.46 = sub %tmp.43 %tmp.45;
+        symbol [ toNumber %tmp.47 71 89 97 ];
+        %tmp.47 = getv function %tmp.46 :toNumber;
+        %tmp.48 = invoke %tmp.46 %tmp.47();
+        symbol [ glucoseBarWidthPixel ? 71 4 24 ];
+        putv self :glucoseBarWidthPixel %tmp.48;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 74 4 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_4_75_37_if_stmt:
+        symbol [ logarithmique %tmp.50 74 8 21 ];
+        %tmp.50 = getv ? :logarithmique;
+        bf %tmp.50 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_4_75_37_if_else_false;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_4_75_37_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_23_74_61_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 74 25 ]
+        symbol [ Math %tmp.51 74 40 44 ];
+        %tmp.51 = getm $.Toybox.Math;
+        symbol [ ln %tmp.52 74 45 47 ];
+        %tmp.52 = getv function %tmp.51 :ln;
+        symbol [ MIN_GLUCOSE %tmp.54 74 48 59 ];
+        %tmp.54 = getv ? :MIN_GLUCOSE;
+        %tmp.55 = invoke %tmp.51 %tmp.52(%tmp.54);
+        symbol [ MIN_GLUCOSE1 ? 74 25 37 ];
+        putv self :MIN_GLUCOSE1 %tmp.55;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_23_74_61_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_4_75_37_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_4_75_37_if_else_false:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_75_9_75_37_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 75 10 ]
+        symbol [ MIN_GLUCOSE %tmp.57 75 25 36 ];
+        %tmp.57 = getv ? :MIN_GLUCOSE;
+        symbol [ MIN_GLUCOSE1 ? 75 10 22 ];
+        putv self :MIN_GLUCOSE1 %tmp.57;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_75_9_75_37_stop:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_74_4_75_37_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 76 4 ]
+        %tmp.58 = self;
+        symbol [ log %tmp.59 76 14 17 ];
+        %tmp.59 = getv function %tmp.58 :log;
+        symbol [ BG_BAS %tmp.61 76 18 24 ];
+        %tmp.61 = getv ? :BG_BAS;
+        %tmp.62 = invoke %tmp.58 %tmp.59(%tmp.61);
+        symbol [ BG_BAS1 ? 76 4 11 ];
+        putv self :BG_BAS1 %tmp.62;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 77 4 ]
+        %tmp.63 = self;
+        symbol [ log %tmp.64 77 15 18 ];
+        %tmp.64 = getv function %tmp.63 :log;
+        symbol [ BG_HAUT %tmp.66 77 19 26 ];
+        %tmp.66 = getv ? :BG_HAUT;
+        %tmp.67 = invoke %tmp.63 %tmp.64(%tmp.66);
+        symbol [ BG_HAUT1 ? 77 4 12 ];
+        putv self :BG_HAUT1 %tmp.67;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 78 4 ]
+        symbol [ MIN_GLUCOSE1 %tmp.69 78 17 29 ];
+        %tmp.69 = getv ? :MIN_GLUCOSE1;
+        symbol [ maxGlucose ? 78 4 14 ];
+        putv self :maxGlucose %tmp.69;
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 79 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop" ]
+        %tabData.3 = local;
+        symbol [ tabData %tabData.3 79 8 15 ];
+        %tmp.71 = 0;
+        %tmp.70 = newa %tmp.71;
+        lputv %tabData.3 %tmp.70;
+        symbol [ tabData %tabData.3 79 8 15 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 80 4 ]
+        for @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_test @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_incr @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_init:
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_begin" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_end" ]
+        %i.4 = local;
+        symbol [ i %i.4 80 13 14 ];
+        %tmp.72 = 0;
+        lputv %i.4 %tmp.72;
+        symbol [ i %i.4 80 13 14 ];
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_test:
+        %tmp.73 = lgetv %i.4;
+        symbol [ i %tmp.73 80 19 20 ];
+        %tmp.74 = lgetv %size.1;
+        symbol [ size %tmp.74 80 21 25 ];
+        %tmp.75 = lt %tmp.73 %tmp.74;
+        bf %tmp.75 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_begin:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_33_86_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 81 6 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_33_86_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_33_86_4_stop" ]
+        %gl.5 = local;
+        symbol [ gl %gl.5 81 10 12 ];
+        %tmp.76 = self;
+        symbol [ log %tmp.77 81 15 18 ];
+        %tmp.77 = getv function %tmp.76 :log;
+        symbol [ data %tmp.79 81 19 23 ];
+        %tmp.79 = getv ? :data;
+        %tmp.80 = lgetv %i.4;
+        symbol [ i %tmp.80 81 24 25 ];
+        %tmp.81 = agetv %tmp.79 %tmp.80;
+        %tmp.82 = 0;
+        %tmp.83 = agetv %tmp.81 %tmp.82;
+        %tmp.84 = invoke %tmp.76 %tmp.77(%tmp.83);
+        lputv %gl.5 %tmp.84;
+        symbol [ gl %gl.5 81 10 12 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 82 6 ]
+        %tmp.85 = lgetv %tabData.3;
+        symbol [ tabData %tmp.85 82 6 13 ];
+        symbol [ add %tmp.86 82 14 17 ];
+        %tmp.86 = getv function %tmp.85 :add;
+        %tmp.87 = lgetv %gl.5;
+        symbol [ gl %tmp.87 82 18 20 ];
+        invoke %tmp.85 %tmp.86(%tmp.87);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 83 6 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_6_85_6_if_stmt:
+        %tmp.88 = lgetv %gl.5;
+        symbol [ gl %tmp.88 83 11 13 ];
+        symbol [ maxGlucose %tmp.90 83 14 24 ];
+        %tmp.90 = getv ? :maxGlucose;
+        %tmp.91 = gt %tmp.88 %tmp.90;
+        bf %tmp.91 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_6_85_6_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_6_85_6_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_26_85_6_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 84 8 ]
+        %tmp.92 = lgetv %gl.5;
+        symbol [ gl %tmp.92 84 21 23 ];
+        symbol [ maxGlucose ? 84 8 18 ];
+        putv self :maxGlucose %tmp.92;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_26_85_6_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_6_85_6_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_83_6_85_6_if_end:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_33_86_4_stop:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_incr:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 80 ]
+        %tmp.95 = lgetv %i.4;
+        symbol [ i %tmp.95 80 28 29 ];
+        %tmp.96 = add %tmp.95 1;
+        lputv %i.4 %tmp.96;
+        symbol [ i %i.4 80 28 29 ];
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_test;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_80_4_86_4_for_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 87 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop" ]
+        %x.6 = local;
+        symbol [ x %x.6 87 8 9 ];
+        %tmp.97 = lgetv %dc;
+        symbol [ dc %tmp.97 87 13 15 ];
+        symbol [ getWidth %tmp.98 87 16 24 ];
+        %tmp.98 = getv function %tmp.97 :getWidth;
+        %tmp.99 = invoke %tmp.97 %tmp.98();
+        symbol [ XoffsetDroite %tmp.101 87 27 40 ];
+        %tmp.101 = getv ? :XoffsetDroite;
+        %tmp.102 = sub %tmp.99 %tmp.101;
+        lputv %x.6 %tmp.102;
+        symbol [ x %x.6 87 8 9 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 88 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop" ]
+        %yLow.7 = local;
+        symbol [ yLow %yLow.7 88 8 12 ];
+        %tmp.103 = self;
+        symbol [ getYForGlucose %tmp.104 88 15 29 ];
+        %tmp.104 = getv function %tmp.103 :getYForGlucose;
+        symbol [ BG_BAS1 %tmp.106 88 30 37 ];
+        %tmp.106 = getv ? :BG_BAS1;
+        %tmp.107 = invoke %tmp.103 %tmp.104(%tmp.106);
+        lputv %yLow.7 %tmp.107;
+        symbol [ yLow %yLow.7 88 8 12 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 89 4 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop" ]
+        %yHigh.8 = local;
+        symbol [ yHigh %yHigh.8 89 8 13 ];
+        %tmp.108 = self;
+        symbol [ getYForGlucose %tmp.109 89 16 30 ];
+        %tmp.109 = getv function %tmp.108 :getYForGlucose;
+        symbol [ BG_HAUT1 %tmp.111 89 31 39 ];
+        %tmp.111 = getv ? :BG_HAUT1;
+        %tmp.112 = invoke %tmp.108 %tmp.109(%tmp.111);
+        lputv %yHigh.8 %tmp.112;
+        symbol [ yHigh %yHigh.8 89 8 13 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 90 4 ]
+        for @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_test @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_incr @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_init:
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_begin" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_end" ]
+        %i.9 = local;
+        symbol [ i %i.9 90 13 14 ];
+        %tmp.113 = lgetv %tabData.3;
+        symbol [ tabData %tmp.113 90 17 24 ];
+        symbol [ size %tmp.114 90 25 29 ];
+        %tmp.114 = getv function %tmp.113 :size;
+        %tmp.115 = invoke %tmp.113 %tmp.114();
+        %tmp.116 = 1;
+        %tmp.117 = sub %tmp.115 %tmp.116;
+        lputv %i.9 %tmp.117;
+        symbol [ i %i.9 90 13 14 ];
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_test:
+        %tmp.118 = lgetv %i.9;
+        symbol [ i %tmp.118 90 36 37 ];
+        %tmp.119 = 0;
+        %tmp.120 = gte %tmp.118 %tmp.119;
+        bf %tmp.120 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_begin:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 91 6 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_stop" ]
+        %BG.10 = local;
+        symbol [ BG %BG.10 91 10 12 ];
+        %tmp.121 = lgetv %tabData.3;
+        symbol [ tabData %tmp.121 91 16 23 ];
+        %tmp.122 = lgetv %i.9;
+        symbol [ i %tmp.122 91 24 25 ];
+        %tmp.123 = agetv %tmp.121 %tmp.122;
+        lputv %BG.10 %tmp.123;
+        symbol [ BG %BG.10 91 10 12 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 92 6 ]
+        %tmp.124 = lgetv %x.6;
+        symbol [ x %tmp.124 92 10 11 ];
+        symbol [ glucoseBarWidthPixel %tmp.126 92 12 32 ];
+        %tmp.126 = getv ? :glucoseBarWidthPixel;
+        %tmp.127 = sub %tmp.124 %tmp.126;
+        %tmp.128 = 1;
+        %tmp.129 = sub %tmp.127 %tmp.128;
+        lputv %x.6 %tmp.129;
+        symbol [ x %x.6 92 6 7 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 93 6 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_6_95_6_if_stmt:
+        %tmp.130 = lgetv %x.6;
+        symbol [ x %tmp.130 93 10 11 ];
+        symbol [ XoffsetGauche %tmp.132 93 12 25 ];
+        %tmp.132 = getv ? :XoffsetGauche;
+        %tmp.133 = lt %tmp.130 %tmp.132;
+        bf %tmp.133 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_6_95_6_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_6_95_6_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_27_95_6_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 94 8 ]
+        goto break @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_27_95_6_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_6_95_6_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_93_6_95_6_if_end:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 96 6 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_stop" ]
+        %gl.11 = local;
+        symbol [ gl %gl.11 96 10 12 ];
+        %tmp.134 = lgetv %BG.10;
+        symbol [ BG %tmp.134 96 15 17 ];
+        lputv %gl.11 %tmp.134;
+        symbol [ gl %gl.11 96 10 12 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 97 6 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_stop" ]
+        %y.12 = local;
+        symbol [ y %y.12 97 10 11 ];
+        %tmp.135 = self;
+        symbol [ getYForGlucose %tmp.136 97 14 28 ];
+        %tmp.136 = getv function %tmp.135 :getYForGlucose;
+        %tmp.137 = lgetv %gl.11;
+        symbol [ gl %tmp.137 97 29 31 ];
+        %tmp.138 = invoke %tmp.135 %tmp.136(%tmp.137);
+        lputv %y.12 %tmp.138;
+        symbol [ y %y.12 97 10 11 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 98 6 ]
+        [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_stop" ]
+        %yHaut.13 = local;
+        symbol [ yHaut %yHaut.13 98 10 15 ];
+        %tmp.139 = lgetv %y.12;
+        symbol [ y %tmp.139 98 18 19 ];
+        symbol [ posY %tmp.141 98 20 24 ];
+        %tmp.141 = getv ? :posY;
+        %tmp.142 = add %tmp.139 %tmp.141;
+        lputv %yHaut.13 %tmp.142;
+        symbol [ yHaut %yHaut.13 98 10 15 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 103 6 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_6_114_6_if_stmt:
+        %tmp.143 = lgetv %gl.11;
+        symbol [ gl %tmp.143 103 10 12 ];
+        symbol [ BG_BAS1 %tmp.145 103 15 22 ];
+        %tmp.145 = getv ? :BG_BAS1;
+        %tmp.146 = lt %tmp.143 %tmp.145;
+        bf %tmp.146 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_6_114_6_if_false;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_6_114_6_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_24_106_6_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 104 8 ]
+        %tmp.147 = self;
+        symbol [ drawRectangle %tmp.148 104 8 21 ];
+        %tmp.148 = getv function %tmp.147 :drawRectangle;
+        %tmp.149 = lgetv %dc;
+        symbol [ dc %tmp.149 104 22 24 ];
+        symbol [ lowGlucoseColor %tmp.151 104 26 41 ];
+        %tmp.151 = getv ? :lowGlucoseColor;
+        %tmp.152 = lgetv %x.6;
+        symbol [ x %tmp.152 104 43 44 ];
+        %tmp.153 = lgetv %yHaut.13;
+        symbol [ yHaut %tmp.153 104 46 51 ];
+        symbol [ glucoseBarWidthPixel %tmp.155 104 53 73 ];
+        %tmp.155 = getv ? :glucoseBarWidthPixel;
+        symbol [ HAUTEUR_GRAPH %tmp.157 104 75 88 ];
+        %tmp.157 = getv ? :HAUTEUR_GRAPH;
+        %tmp.158 = lgetv %y.12;
+        symbol [ y %tmp.158 104 91 92 ];
+        %tmp.159 = sub %tmp.157 %tmp.158;
+        invoke %tmp.147 %tmp.148(%tmp.149, %tmp.151, %tmp.152, %tmp.153, %tmp.155, %tmp.159);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_24_106_6_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_6_114_6_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_6_114_6_if_false:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 106 13 ]
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_13_114_6_if_stmt:
+        %tmp.160 = lgetv %gl.11;
+        symbol [ gl %tmp.160 106 17 19 ];
+        symbol [ BG_HAUT1 %tmp.162 106 22 30 ];
+        %tmp.162 = getv ? :BG_HAUT1;
+        %tmp.163 = lt %tmp.160 %tmp.162;
+        bf %tmp.163 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_13_114_6_if_else_false;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_13_114_6_if_true:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_32_110_6_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 107 8 ]
+        %tmp.164 = self;
+        symbol [ drawRectangle %tmp.165 107 8 21 ];
+        %tmp.165 = getv function %tmp.164 :drawRectangle;
+        %tmp.166 = lgetv %dc;
+        symbol [ dc %tmp.166 107 22 24 ];
+        symbol [ lowGlucoseColor %tmp.168 107 26 41 ];
+        %tmp.168 = getv ? :lowGlucoseColor;
+        %tmp.169 = lgetv %x.6;
+        symbol [ x %tmp.169 107 43 44 ];
+        %tmp.170 = lgetv %yLow.7;
+        symbol [ yLow %tmp.170 107 46 50 ];
+        symbol [ posY %tmp.172 107 51 55 ];
+        %tmp.172 = getv ? :posY;
+        %tmp.173 = add %tmp.170 %tmp.172;
+        symbol [ glucoseBarWidthPixel %tmp.175 107 57 77 ];
+        %tmp.175 = getv ? :glucoseBarWidthPixel;
+        symbol [ HAUTEUR_GRAPH %tmp.177 107 79 92 ];
+        %tmp.177 = getv ? :HAUTEUR_GRAPH;
+        %tmp.178 = lgetv %yLow.7;
+        symbol [ yLow %tmp.178 107 95 99 ];
+        %tmp.179 = sub %tmp.177 %tmp.178;
+        invoke %tmp.164 %tmp.165(%tmp.166, %tmp.168, %tmp.169, %tmp.173, %tmp.175, %tmp.179);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 108 8 ]
+        %tmp.180 = self;
+        symbol [ drawRectangle %tmp.181 108 8 21 ];
+        %tmp.181 = getv function %tmp.180 :drawRectangle;
+        %tmp.182 = lgetv %dc;
+        symbol [ dc %tmp.182 108 22 24 ];
+        symbol [ normalGlucoseColor %tmp.184 108 26 44 ];
+        %tmp.184 = getv ? :normalGlucoseColor;
+        %tmp.185 = lgetv %x.6;
+        symbol [ x %tmp.185 108 46 47 ];
+        %tmp.186 = lgetv %yHaut.13;
+        symbol [ yHaut %tmp.186 108 49 54 ];
+        symbol [ glucoseBarWidthPixel %tmp.188 108 56 76 ];
+        %tmp.188 = getv ? :glucoseBarWidthPixel;
+        %tmp.189 = lgetv %yLow.7;
+        symbol [ yLow %tmp.189 108 78 82 ];
+        %tmp.190 = lgetv %y.12;
+        symbol [ y %tmp.190 108 85 86 ];
+        %tmp.191 = sub %tmp.189 %tmp.190;
+        invoke %tmp.180 %tmp.181(%tmp.182, %tmp.184, %tmp.185, %tmp.186, %tmp.188, %tmp.191);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_32_110_6_stop:
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_13_114_6_if_end;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_13_114_6_if_else_false:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_110_13_114_6_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 111 8 ]
+        %tmp.192 = self;
+        symbol [ drawRectangle %tmp.193 111 8 21 ];
+        %tmp.193 = getv function %tmp.192 :drawRectangle;
+        %tmp.194 = lgetv %dc;
+        symbol [ dc %tmp.194 111 22 24 ];
+        symbol [ lowGlucoseColor %tmp.196 111 26 41 ];
+        %tmp.196 = getv ? :lowGlucoseColor;
+        %tmp.197 = lgetv %x.6;
+        symbol [ x %tmp.197 111 43 44 ];
+        %tmp.198 = lgetv %yLow.7;
+        symbol [ yLow %tmp.198 111 46 50 ];
+        symbol [ posY %tmp.200 111 51 55 ];
+        %tmp.200 = getv ? :posY;
+        %tmp.201 = add %tmp.198 %tmp.200;
+        symbol [ glucoseBarWidthPixel %tmp.203 111 57 77 ];
+        %tmp.203 = getv ? :glucoseBarWidthPixel;
+        symbol [ HAUTEUR_GRAPH %tmp.205 111 79 92 ];
+        %tmp.205 = getv ? :HAUTEUR_GRAPH;
+        %tmp.206 = lgetv %yLow.7;
+        symbol [ yLow %tmp.206 111 95 99 ];
+        %tmp.207 = sub %tmp.205 %tmp.206;
+        invoke %tmp.192 %tmp.193(%tmp.194, %tmp.196, %tmp.197, %tmp.201, %tmp.203, %tmp.207);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 112 8 ]
+        %tmp.208 = self;
+        symbol [ drawRectangle %tmp.209 112 8 21 ];
+        %tmp.209 = getv function %tmp.208 :drawRectangle;
+        %tmp.210 = lgetv %dc;
+        symbol [ dc %tmp.210 112 22 24 ];
+        symbol [ normalGlucoseColor %tmp.212 112 26 44 ];
+        %tmp.212 = getv ? :normalGlucoseColor;
+        %tmp.213 = lgetv %x.6;
+        symbol [ x %tmp.213 112 46 47 ];
+        %tmp.214 = lgetv %yHigh.8;
+        symbol [ yHigh %tmp.214 112 49 54 ];
+        symbol [ posY %tmp.216 112 55 59 ];
+        %tmp.216 = getv ? :posY;
+        %tmp.217 = add %tmp.214 %tmp.216;
+        symbol [ glucoseBarWidthPixel %tmp.219 112 61 81 ];
+        %tmp.219 = getv ? :glucoseBarWidthPixel;
+        %tmp.220 = lgetv %yLow.7;
+        symbol [ yLow %tmp.220 112 83 87 ];
+        %tmp.221 = lgetv %yHigh.8;
+        symbol [ yHigh %tmp.221 112 90 95 ];
+        %tmp.222 = sub %tmp.220 %tmp.221;
+        invoke %tmp.208 %tmp.209(%tmp.210, %tmp.212, %tmp.213, %tmp.217, %tmp.219, %tmp.222);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 113 8 ]
+        %tmp.223 = self;
+        symbol [ drawRectangle %tmp.224 113 8 21 ];
+        %tmp.224 = getv function %tmp.223 :drawRectangle;
+        %tmp.225 = lgetv %dc;
+        symbol [ dc %tmp.225 113 22 24 ];
+        symbol [ highGlucoseColor %tmp.227 113 26 42 ];
+        %tmp.227 = getv ? :highGlucoseColor;
+        %tmp.228 = lgetv %x.6;
+        symbol [ x %tmp.228 113 44 45 ];
+        %tmp.229 = lgetv %yHaut.13;
+        symbol [ yHaut %tmp.229 113 47 52 ];
+        symbol [ glucoseBarWidthPixel %tmp.231 113 54 74 ];
+        %tmp.231 = getv ? :glucoseBarWidthPixel;
+        %tmp.232 = lgetv %yHigh.8;
+        symbol [ yHigh %tmp.232 113 76 81 ];
+        %tmp.233 = lgetv %y.12;
+        symbol [ y %tmp.233 113 84 85 ];
+        %tmp.234 = sub %tmp.232 %tmp.233;
+        invoke %tmp.223 %tmp.224(%tmp.225, %tmp.227, %tmp.228, %tmp.229, %tmp.231, %tmp.234);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_110_13_114_6_stop:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_106_13_114_6_if_end:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_103_6_114_6_if_end:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_52_116_4_stop:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_incr:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 90 ]
+        %tmp.235 = lgetv %i.9;
+        symbol [ i %tmp.235 90 47 48 ];
+        %tmp.236 = 1;
+        %tmp.237 = sub %tmp.235 %tmp.236;
+        lputv %i.9 %tmp.237;
+        symbol [ i %i.9 90 43 44 ];
+        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_test;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_90_4_116_4_for_end:
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_64_28_118_2_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 120; @symbol_functiondef = [getYForGlucose,120,19,33]; @symbol_param<0> = [glucose,120,34,41]; @symbol_param<0>_type<0> = [Number,120,45,51]; @symbol_return<0> = [Number,120,56,62]; ]
+    private
+    function getYForGlucose(glucose as Number) as Number {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_120_63_122_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 121 4 ]
+        symbol [ HAUTEUR_GRAPH %tmp.2 121 12 25 ];
+        %tmp.2 = getv ? :HAUTEUR_GRAPH;
+        symbol [ maxGlucose %tmp.4 121 29 39 ];
+        %tmp.4 = getv ? :maxGlucose;
+        %tmp.5 = lgetv %glucose;
+        symbol [ glucose %tmp.5 121 42 49 ];
+        %tmp.6 = sub %tmp.4 %tmp.5;
+        %tmp.7 = mul %tmp.2 %tmp.6;
+        symbol [ maxGlucose %tmp.9 121 54 64 ];
+        %tmp.9 = getv ? :maxGlucose;
+        symbol [ MIN_GLUCOSE1 %tmp.11 121 67 79 ];
+        %tmp.11 = getv ? :MIN_GLUCOSE1;
+        %tmp.12 = sub %tmp.9 %tmp.11;
+        %tmp.13 = div %tmp.7 %tmp.12;
+        symbol [ toNumber %tmp.14 121 82 90 ];
+        %tmp.14 = getv function %tmp.13 :toNumber;
+        %tmp.15 = invoke %tmp.13 %tmp.14();
+        ret %tmp.15;
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_120_63_122_2_stop:
+    }
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 125; @symbol_functiondef = [drawRectangle,125,11,24]; @symbol_param<0> = [dc,125,25,27]; @symbol_param<1> = [color,125,29,34]; @symbol_param<2> = [x,125,35,36]; @symbol_param<3> = [y,125,39,40]; @symbol_param<4> = [w,125,43,44]; @symbol_param<5> = [h,125,46,47]; ]
+    function drawRectangle(dc, color, x, y, w, h) as Void {
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_125_57_129_2_start:
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 127 4 ]
+        %tmp.1 = lgetv %dc;
+        symbol [ dc %tmp.1 127 4 6 ];
+        symbol [ setColor %tmp.2 127 7 15 ];
+        %tmp.2 = getv function %tmp.1 :setColor;
+        %tmp.3 = lgetv %color;
+        symbol [ color %tmp.3 127 16 21 ];
+        symbol [ Gfx %tmp.4 127 23 26 ];
+        %tmp.4 = getm $.Toybox.Graphics;
+        symbol [ COLOR_TRANSPARENT %tmp.5 127 27 44 ];
+        %tmp.5 = getv %tmp.4 :COLOR_TRANSPARENT;
+        invoke %tmp.1 %tmp.2(%tmp.3, %tmp.5);
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 128 4 ]
+        %tmp.6 = lgetv %dc;
+        symbol [ dc %tmp.6 128 4 6 ];
+        symbol [ fillRectangle %tmp.7 128 7 20 ];
+        %tmp.7 = getv function %tmp.6 :fillRectangle;
+        %tmp.8 = lgetv %x;
+        symbol [ x %tmp.8 128 21 22 ];
+        %tmp.9 = lgetv %y;
+        symbol [ y %tmp.9 128 23 24 ];
+        %tmp.10 = lgetv %w;
+        symbol [ w %tmp.10 128 26 27 ];
+        %tmp.11 = lgetv %h;
+        symbol [ h %tmp.11 128 29 30 ];
+        invoke %tmp.6 %tmp.7(%tmp.8, %tmp.9, %tmp.10, %tmp.11);
+D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_125_57_129_2_stop:
+    }
+}
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 1; ]
+<init> {
+}
