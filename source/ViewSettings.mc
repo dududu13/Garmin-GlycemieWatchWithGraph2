@@ -19,7 +19,7 @@ class ViewSettings extends Ui.View {
     function onUpdate(dc) {
 		View.onUpdate( dc );
         var drawable = View.findDrawableById("choixSource");
-        drawable.setText("Source " + (sourceBG == 0) ? "(NS)" : (sourceBG ==1) ? "(AAPS)" : "(Xdrip)");
+        drawable.setText("Source " + ((sourceBG == 0) ? "(NS)" : (sourceBG ==1) ? "(AAPS)" : "(Xdrip)"));
         dessineCoches(dc);
    }
 

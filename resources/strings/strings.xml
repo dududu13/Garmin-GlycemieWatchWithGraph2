@@ -1,5 +1,8 @@
 <strings>
-    <string id="AppName">Blood Glucode Watch</string>
+    <string id="version">V. 1</string>
+    <string id="AppName">Blood Glucose Watch</string>
+
+
     <string id="url">Online site URL</string>
     <string id="token">Access token NS user, if necessary</string>
     <string id="secondsPrompt">Affiche les secondes ?</string>
@@ -7,7 +10,6 @@
     <string id="sourceBG">Blood glucose source</string>
     <string id="nbHGraph">Hours for graph</string>
     <string id="logarithmique">Log scale for graph ?</string>
+    <string id="logCourt">Scale</string>
     
-    <string id="version">V. 1</string>
-
 </strings>

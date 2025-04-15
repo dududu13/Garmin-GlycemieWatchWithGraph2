@@ -796,7 +796,7 @@ module Rez {
 
             var rez_cmp_local_custom_selectable_46428211913725765358 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
 
-            var rez_cmp_local_text_2042061750 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (15 / 100.0)), :text=>"Durée du graphique ?", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+            var rez_cmp_local_text_2042061750 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (10 / 100.0)), :text=>"Graph options", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
 
             var rez_cmp_local_text_un = new WatchUi.Text({:identifier=>"un", :color=>Gfx.COLOR_WHITE, :locX=>(416 * (8 / 100.0)), :locY=>(416 * (30 / 100.0)), :text=>"1 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
 
@@ -814,7 +814,7 @@ module Rez {
 
             var rez_cmp_local_custom_selectable_13272225842016372201 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive4(), :stateDefault=>new $.Rez.Drawables.settingsDuree4(), :width=>(416 * (18 / 100.0)), :locX=>(416 * (77 / 100.0)), :locY=>(416 * (28 / 100.0)), :behavior=>:SIX, :height=>(416 * (16 / 100.0))});
 
-            var rez_cmp_local_text_5456945618 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (45 / 100.0)), :text=>"Graph scale", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+            var rez_cmp_local_text_5456945618 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (50 / 100.0)), :locY=>(416 * (47 / 100.0)), :text=>$.Rez.Strings.logCourt, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
             var rez_cmp_local_text_1703529506 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(416 * (32 / 100.0)), :locY=>(416 * (60 / 100.0)), :text=>"log", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
@@ -908,11 +908,12 @@ module Rez {
         (:initialized) var nbHGraph as ResourceId;
         (:initialized) var sourceBG as ResourceId;
         (:initialized) var logarithmique as ResourceId;
+        (:initialized) var logCourt as ResourceId;
         (:initialized) var version as ResourceId;
         (:initialized) var url as ResourceId;
         (:initialized) var meteoPrompt as ResourceId;
-        (:initialized) var AppName as ResourceId;
         (:initialized) var token as ResourceId;
+        (:initialized) var AppName as ResourceId;
     } // Strings
 
     module Styles {

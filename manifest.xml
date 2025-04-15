@@ -110,7 +110,9 @@
             <iq:uses-permission id="Background"/>
             <iq:uses-permission id="Communications"/>
         </iq:permissions>
-        <iq:languages/>
+        <iq:languages>
+            <iq:language>fre</iq:language>
+        </iq:languages>
         <iq:barrels/>
     </iq:application>
 </iq:manifest>

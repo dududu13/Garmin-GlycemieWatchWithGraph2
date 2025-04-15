@@ -7,9 +7,7 @@
     <button x="0" y="0" width="800" height="800" >
         <state id="stateDefault" bitmap="@Drawables.BoutonVide" />
     </button>
-
-    <label x="50%" y="15%" text="Durée du graphique ?" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
-
+    <label x="50%" y="10%" text="Graph options" font="Gfx.FONT_LARGE" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 
     <label x="8%" y="30%" id="un" text="1 h" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
      <button  x="5%" y="28%" width="18%" height="16%" >
@@ -38,7 +36,7 @@
 
 
 
-    <label x="50%" y="45%" text="Graph scale" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+    <label x="50%" y="47%" text="@Strings.logCourt" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 
 
 
