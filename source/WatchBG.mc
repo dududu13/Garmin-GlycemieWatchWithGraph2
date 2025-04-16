@@ -37,8 +37,8 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 
     function requestNS() {
       Sys.println("request NS start ");
-// https://glycemie.fin-tech.com/api/v2/properties/buckets[0],buckets[1]
-// https://glycemie.fin-tech.com/api/v2/properties/buckets[0],buckets[1]/?token=watchface-0da8d01b0c8b3595
+// https://lien/api/v2/properties/buckets[0],buckets[1]
+// https://lien/api/v2/properties/buckets[0],buckets[1]/?token=3595
 		  var url = Application.getApp().getProperty("url");
       var utilisateurNS = Application.getApp().getProperty("tokenNS");
 		  if ((url != null) && (! url.equals(""))) {
@@ -101,17 +101,17 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 
 
 
-function verifie(tab) {
-  System.println("Verifie tab "+tab);
-  for (var i =0;i<tab.size();i++) {
-    if ((tab[i] instanceof Number) || (tab[i] instanceof Long)) {
-//      tab[i] = tab[i].toLong();
-    } else {
-      return null;
+  function verifie(tab) {
+    System.println("Verifie tab "+tab);
+    for (var i =0;i<tab.size();i++) {
+      if ((tab[i] instanceof Number) || (tab[i] instanceof Long)) {
+  //      tab[i] = tab[i].toLong();
+      } else {
+        return null;
+      }
     }
+    return tab;
   }
-  return tab;
-}
 
 
 
