@@ -22,25 +22,9 @@ var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique;
 (:background)
 class WatchApp extends App.AppBase {
 
-
     function initialize() {
         AppBase.initialize();       
-    }
-
-(:onlyWithSettingOnWatchface)
-    function getSettingsView() {
-        if (Sys.getDeviceSettings().isTouchScreen) {
-            var view = new $.ViewSettings();
-            return [view, new $.ViewSettingsDelegate()];
-        } else {
-            var menuSettings =  menuPrincipal(0);
-            return [menuSettings, new $.MenuPrincipalDelegate(menuSettings),Ui.SLIDE_RIGHT];
-        }
-    }
-
-
-
-
+    }   
 
     function onSettingsChanged() {
         if (myView != null) {myView.readSettingsAndInitGraph();}
@@ -48,31 +32,29 @@ class WatchApp extends App.AppBase {
     }
 
     function getInitialView() {
-        System.println("start getInitialView()");
+        //System.println("start getInitialView()");
         myView = new WatchView();
         return [ myView, new WatchDelegate()];
-        //var myView2 = new SettingsDureeGraphView();
-        //return [ myView2, new WatchDelegate()];
     }
-
-    function onBackgroundData(capteur) {
-        if (myView == null) {return;}
-        if (capteur==null) { return;}
-        if (! (capteur instanceof Toybox.Lang.Array)) {return;}
-        if (capteur.size()<1) {return;}
-        if (capteur[0]>0) {
-            myView.addCapteur(capteur);
-
-        }
-    }
-
-
 
     function getServiceDelegate() { //lance le service Background, et le premier appel
-        System.println("APP call gestService Delegate");
+        //System.println("APP call gestService Delegate");
         var BGservice = new WatchBG();
         return [BGservice];
     }
+
+
+
+(:onlyWithSettingOnWatchface)
+    function getSettingsView() {
+        if (Sys.getDeviceSettings().isTouchScreen) {
+            return [new $.ViewSettings(), new $.ViewSettingsDelegate()];
+        } else {
+            var menuSettings =  menuPrincipal(0);
+            return [menuSettings, new $.MenuPrincipalDelegate(menuSettings),Ui.SLIDE_RIGHT];
+        }
+    }
+
 
 (:onlyWithSettingOnWatchface)
     public function menuPrincipal(position) {

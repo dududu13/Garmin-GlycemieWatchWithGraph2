@@ -13,14 +13,14 @@ using Toybox.Application;
 class WatchView extends Ui.WatchFace {
 
     public var valeursCapteur = new[3];
-    var BGAffiche;
-    var secCapteurAffiche;
-    var deltaBGAffiche;
     const prov = ["NS","AAPS","Xd"];  
     var BTlogo = WatchUi.loadResource(Rez.Drawables.blueTooth);  
     
     var graph;
     var tabData = new[0];
+    var AffichageBgValue =0;
+    var AffichageSecondesCapteur = 0;
+    var AffichageBgDelta = 0;
 
     var decalageY_OLED = 0;
 
@@ -29,6 +29,8 @@ class WatchView extends Ui.WatchFace {
     var largeurEcran = System.getDeviceSettings().screenWidth;
     var hauteurEcran = System.getDeviceSettings().screenHeight;//dc.getHeight();;
     var OledModel  = Sys.getDeviceSettings().requiresBurnInProtection; 
+
+    var lastBG,nowSec;
 
 var x = {
 "date"=>(0.5 * largeurEcran),
@@ -107,25 +109,11 @@ var justification = {
     function initialize() {
         
         WatchFace.initialize();
-
-
-        //graphBuffer = Gfx.createBufferedBitmap({:width=>hauteurGraph,:height=>largeurGraph,:alphaBlending=>1}).get();
-        tabData = WatchOutils.readStoredData();
-
-        /*
-        var simulationTabForGraph =[123,125,115,102,93,86,81,82,92,101,120,134,144,147,152,154,151,146,140,134,131,136,146,157,167,174,176,172,164,155,
-            149,141,136,130,126,121,117,114,111,110,111,110,110,111,111,109,106,105,103,107,109,109,110,109,109,106,101,102,107,108,110,110,109,106,107,107,
-            109,107,120,139,148,150,147,146,144,141,135,123,114,113,118,125,128,138,154,166,170,171,177,185,193,196,190,185,183,179,175,172,170,172,173];
-        var t = Time.now().value();
-        tabData = new[0];
-        for (var i=1 ;i<simulationTabForGraph.size();i++) {
-            tabData.add([simulationTabForGraph[i],simulationTabForGraph[i]-simulationTabForGraph[i-1],t]);
-        }
-        */
-
+        System.println("View debut init");
         readSettingsAndInitGraph();
-        readValeursAffichage();
-        Background.registerForTemporalEvent(Time.now().add(new Time.Duration(WatchBG.DelaiTemporalEventMinRestant()))); 
+        nowSec = 0;
+        Background.registerForTemporalEvent(Time.now().add(new Time.Duration(WatchBG.DelaiTemporalEventSecondRestant()))); 
+        System.println("View fin init");
 
         
     }
@@ -146,13 +134,23 @@ var justification = {
 
 
     function onUpdate(dc) {
-        var infoTime = Calendar.info(Time.now(), Time.FORMAT_LONG);
+        var timeNow = Time.now();
+        if (WatchBG.isCapteurChanged()) {
+            tabData = WatchBG.readAlldData();
+            var size = tabData.size();
+            if (size >0) {
+                AffichageBgValue = tabData[size-1][0];
+                AffichageBgDelta = tabData[size-1][1];
+                AffichageSecondesCapteur = tabData[size-1][2];
+                WatchBG.setCapteurChanged(false);                
+            }
+        }
+        var infoTime = Calendar.info(timeNow, Time.FORMAT_LONG);
 		dc.setColor( Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
         dc.clear();
-        //View.onUpdate(dc);
+
         drawMeteoIfNotLowPower(dc);
         drawDeltaValue(dc);
-        drawNextCall(dc);
         drawClock(dc,infoTime);
         drawElapsedTime(dc);
         drawBG(dc);
@@ -164,31 +162,25 @@ var justification = {
         drawDeltaCadre(dc);
         drawBlueTooth(dc,infoTime);        
 		ereaseOLEDifLowPower(dc);
+        var nextBG = drawNextCall(dc);
+        //System.println("onUpdate nextBG = "+nextBG + "  lastBG = "+lastBG);
+        if ((nextBG == lastBG) and (timeNow.value != nowSec)) { //lors de l'init on a 2 update au meme moment
+            System.println("onUpdate registerForTemporalEvent 5mn");
+            var eventTime = timeNow.add(new Time.Duration(5 * 60));
+            Background.registerForTemporalEvent(eventTime);            
+        }
+        lastBG = nextBG;
+        nowSec = timeNow.value;
+
 
     }
 
     public function drawLabel(dc,labelId, labelText,color)  {
         dc.setColor(color,trans);
-        //System.println(labelId+"  x="+x.get(labelId)+"  y="+y.get(labelId));
         if ((labelText !=null) and (x.get(labelId) != null)) {
             dc.drawText(x.get(labelId),y.get(labelId),font.get(labelId),labelText,justification.get(labelId)+Gfx.TEXT_JUSTIFY_VCENTER);
         }
     }
-
-
-    function prochainBackground() {
-        var prochainBackground = Background.getTemporalEventRegisteredTime();// as Time.Moment or Time.Duration or Null
-        var delaiRestant = 0;
-        if (prochainBackground != null) {
-            delaiRestant = prochainBackground.value()-Time.now().value();
-        } else { 
-            delaiRestant = 3;
-        }
-        return delaiRestant;
-    }
-
-
-
 
     function drawClock(dc,info) {
         dc.setColor(white,trans);
@@ -201,12 +193,23 @@ var justification = {
        }    
     }
 
-    function drawNextCall(dc) {
-        drawLabel(dc,"NextCall",prochainBackground(),white);
- 
+    function prochainBackground() {
+        var prochainBackground = Background.getTemporalEventRegisteredTime();// as Time.Moment or Time.Duration or Null
+        var delaiRestant = 0;
+        if (prochainBackground != null) {
+            delaiRestant = prochainBackground.value()-Time.now().value();
+        } else { 
+            delaiRestant = 3;
+        }
+        //if (delaiRestant != nextBG) {}
+        return delaiRestant;
     }
 
-
+    function drawNextCall(dc) {
+        var nextBG2 = prochainBackground();
+        drawLabel(dc,"NextCall",prochainBackground(),white);
+        return nextBG2;
+    }
 
     function coordMarkBattery(angle){
         var Coord = [[0,195*coeff],[0,205*coeff]];
@@ -325,16 +328,16 @@ var justification = {
     }
 
 	function drawBG(dc) {
-        if (BGAffiche !=null) {
+        if (AffichageBgValue !=null) {
             var colorBG = Gfx.COLOR_YELLOW;//jaune
-            if (BGAffiche <170 ) {colorBG = Gfx.COLOR_GREEN;} //vert
-            if (BGAffiche < 70 ) {colorBG = Gfx.COLOR_RED;} //rouge
-           drawLabel(dc,"BG", BGAffiche,colorBG);
+            if (AffichageBgValue <170 ) {colorBG = Gfx.COLOR_GREEN;} //vert
+            if (AffichageBgValue < 70 ) {colorBG = Gfx.COLOR_RED;} //rouge
+           drawLabel(dc,"BG", AffichageBgValue,colorBG);
         } 
 	}
 
     function barreBGsiBesoin(dc) {
-        var elapsedMinutes = ((Time.now().value() - secCapteurAffiche)/60).toNumber();
+        var elapsedMinutes = ((Time.now().value() - AffichageSecondesCapteur)/60).toNumber();
         if (elapsedMinutes>11) {
             dc.setPenWidth(5*coeff);
             dc.setColor(Gfx.COLOR_RED,trans);
@@ -345,8 +348,8 @@ var justification = {
     }
 
     function drawElapsedTime(dc) {
-        if (secCapteurAffiche != null) {
-            var elapsedMinutes = ((Time.now().value() - secCapteurAffiche)/60).toNumber();
+        if (AffichageSecondesCapteur != null) {
+            var elapsedMinutes = ((Time.now().value() - AffichageSecondesCapteur)/60).toNumber();
             var colorMinutes = white;
             if (elapsedMinutes >10 ) {colorMinutes = Gfx.COLOR_YELLOW;} //jaune
             if (elapsedMinutes >30 ) {colorMinutes = Gfx.COLOR_ORANGE;} //orange
@@ -360,8 +363,8 @@ var justification = {
     function drawDeltaValue(dc) {
         //System.println("sourceBG="+sourceBG);
         drawLabel(dc,"sourceBG", prov[sourceBG],white);
-        if (deltaBGAffiche != null) {
-            var delta = deltaBGAffiche.toNumber();
+        if (AffichageBgDelta != null) {
+            var delta = AffichageBgDelta.toNumber();
             var signe = "";
             if (delta>0) {signe="+";}
             drawLabel(dc,"Delta", signe+delta,white);
@@ -369,8 +372,8 @@ var justification = {
     }
 
     function drawDeltaCadre(dc) {
-        if (deltaBGAffiche != null) {
-            var delta = deltaBGAffiche.toNumber();
+        if (AffichageBgDelta != null) {
+            var delta = AffichageBgDelta.toNumber();
             var colorDelta = Gfx.COLOR_GREEN;
             if (delta == 99) {delta = 0;}
             if (delta > 4 ) {colorDelta = Gfx.COLOR_YELLOW;} 
@@ -444,35 +447,6 @@ var justification = {
         graph.calcule_tout(tabData);
     }
 
-    function addCapteur(tab) {
-        tabData.add(tab);
-        if (tabData.size()>NBRE_MAXI_DATA) {
-            tabData.remove(tabData[0]);
-        }
-        WatchOutils.storeData(tabData);
-        readValeursAffichage();
-    }
-
-
-
-    function readValeursAffichage() {
-        BGAffiche = 0;
-        deltaBGAffiche = 0;
-        secCapteurAffiche = Time.now().value() - 99*60;
-        var size = tabData.size();
-        if (size>0) {
-            BGAffiche = tabData[size-1][0];
-            deltaBGAffiche = tabData[size-1][1];
-            secCapteurAffiche = tabData[size-1][2];
-        }
-        capteur_seconde = secCapteurAffiche;
-        //if (! afficheMeteo) {
-        //    drawLabel(dc,"Temperature", "");
-        //    drawLabel(dc,"Wind", "");
-        //    drawLabel(dc,"Batterie", "");
-        //}
-        Ui.requestUpdate();
-    }
 
 
 

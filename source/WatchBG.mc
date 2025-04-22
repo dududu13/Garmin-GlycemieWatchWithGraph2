@@ -12,6 +12,7 @@ using Toybox.System as Sys;
 (:background)
 class WatchBG extends Toybox.System.ServiceDelegate {
 
+var timer;
 
 
     function initialize() {
@@ -52,6 +53,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 		  }
     }
 
+
     function requestAAPS() {
 //    message = " AA "+  message;
 		  var url = "http://127.0.0.1:28891/sgv.json?count=3&brief_mode=true"; //AAPS
@@ -69,48 +71,116 @@ class WatchBG extends Toybox.System.ServiceDelegate {
     function onReceiveNS(responseCode, data) {
       System.println("onreceiveNS code="+responseCode+"   data="+data);
       var capteur = traiteNS(responseCode, data); //return [backGd_capteur_BG,backGd_capteur_delta,backGd_capteur_seconde];
-      calculeSynchro(capteur[2], DelaiTemporalEventMinRestant());
-      Background.exit(capteur);
+      calculeSynchro(capteur[2], DelaiTemporalEventSecondRestant());
+      enregistreDernierCapteur(capteur);   
     }
 
     function onReceiveXdripOrAAPS(responseCode, data) {
       var capteur = traiteXdripOrAAPS(responseCode, data); //return [backGd_capteur_BG,backGd_capteur_delta,backGd_capteur_seconde];
-      calculeSynchro(capteur[2], DelaiTemporalEventMinRestant());
-      Background.exit(capteur);
+      calculeSynchro(capteur[2], DelaiTemporalEventSecondRestant());
+      enregistreDernierCapteur(capteur);
+
     }
   
+    function enregistreDernierCapteur(capteur) {
+      System.println("enregistreDernierCapteur "+capteur);
+      var allData = readAlldData();
+      allData.add(capteur);// ajoute a la fin
+      if (allData.size()>NBRE_MAXI_DATA) {
+          allData.remove(allData[0]); // enleve le 1er
+      }
+      storeAllData(allData);
+      setCapteurChanged(true);
+    }
+    
+    function readAlldData() {
+        System.println("start readAlldData ");
+        var st = Application.Storage.getValue("data");
+        var tab=new[0];
+        if ((st == null) || (st.length() < 3)) {
+            return tab;
+        }
+        var	n1 = st.find(";");
+        while (n1 != null) {
+            var st2 = st.substring(0,n1);
+            st = st.substring(n1+1,st.length());
+            n1 = st.find(";");
 
-    function DelaiTemporalEventMinRestant() {
+            var tab2 = new[0];
+            var	n2 = st2.find(",");
+            tab2.add(st2.substring(0,n2).toNumber()); //BG
+            st2 = st2.substring(n2+1,st2.length());
+
+            n2 = st2.find(",");
+            tab2.add(st2.substring(0,n2).toNumber()); //BG,delta
+            st2 = st2.substring(n2+1,st2.length());
+
+            tab2.add(st2.toNumber()); //BG,delta,secondes
+
+            tab.add(tab2); //[BG,delta,secondes]
+        }
+        //System.println("fin charge data ="+tab);
+        return tab;
+    }
+
+    function storeAllData(myTab) {
+      System.println("debut storeAllData");
+      var st = "";
+      for (var i = 0;i<myTab.size();i++) {
+        if ((myTab[i] !=null) && (myTab[i][0] !=null) && (myTab[i][1] !=null) && (myTab[i][2] !=null)) {
+        st=st+myTab[i][0].toString()+","+myTab[i][1].toString()+","+myTab[i][2].toString()+";";
+        }
+      }
+      Application.Storage.setValue("data",st);
+      App.Storage.setValue("capteur_seconde",myTab[myTab.size()-1][2].toString());//pour la synchro background, la seconde de la dernière lecture
+      System.println("fin storeAllData dernier capteur secondes = "+myTab[myTab.size()-1][2]+"  BG="+myTab[myTab.size()-1][0]);
+     }
+
+
+    function setCapteurChanged(isChanged) {
+      Application.Storage.setValue("CapteurChanged",isChanged);
+    }
+
+    function isCapteurChanged() {
+      var isChanged = Application.Storage.getValue("CapteurChanged");
+      if (isChanged == null) {
+        isChanged = true;
+        Application.Storage.setValue("CapteurChanged",isChanged);
+      }
+      return isChanged;
+    }
+
+    function DelaiTemporalEventSecondRestant() {
         
         //var message;
         //var temporalMinRestant;
 
         var lastBackgroundMoment = Background.getLastTemporalEventTime();// as Time.Moment or Time.Duration or Null
-        var delaiRestant=0;
+        var delaiRestantSecondes=0;
         if (lastBackgroundMoment != null) {
-          Sys.println("DelaiTemporalEventMinRestant temporal depuis = "+(Time.now().value() - lastBackgroundMoment.value()) +" sec");
-            delaiRestant = 300 -Time.now().value() + lastBackgroundMoment.value();
+          Sys.println("DelaiTemporalEventSecondRestant temporal depuis = "+(Time.now().value() - lastBackgroundMoment.value()) +" sec");
+            delaiRestantSecondes = 300 -Time.now().value() + lastBackgroundMoment.value();
         } else {
-          Sys.println("DelaiTemporalEventMinRestant temporal null, delai = 0");
+          Sys.println("DelaiTemporalEventSecondRestant temporal null, delai = 0");
 
         }
-        if (delaiRestant<2) {delaiRestant = 2;}
-        Sys.println("DelaiTemporalEventMinRestant = "+delaiRestant);
-        return delaiRestant;
+        if (delaiRestantSecondes<2) {delaiRestantSecondes = 2;}
+        Sys.println("DelaiTemporalEventSecondRestant = "+delaiRestantSecondes);
+        return delaiRestantSecondes;
     }
 
 
 
   function verifie(tab) {
-    System.println("Verifie tab "+tab);
+    
     for (var i =0;i<tab.size();i++) {
-      if ((tab[i] instanceof Number) || (tab[i] instanceof Long)) {
-  //      tab[i] = tab[i].toLong();
-      } else {
+      if ((! tab[i] instanceof Number) && (! tab[i] instanceof Long)) {
+        System.println("Verifie tab pas ok : "+tab);
         return null;
       }
     }
     return tab;
+    System.println("Verifie tab OK : "+tab);
   }
 
 
@@ -143,6 +213,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
                 backGd_capteur_BG = dataV[0];
                 backGd_capteur_delta = (backGd_capteur_BG-dataV[1]);
                 backGd_capteur_seconde = dataV[2] / 1000;
+                //Sys.println("traiteNS OK : BG="+backGd_capteur_BG+"  delta="+backGd_capteur_delta+"  sec="+backGd_capteur_seconde);
                 
               }
 //              Sys.println("TROUVE 1--> BG="+backGd_capteur_BG+"  backGd_capteur_delta="+backGd_capteur_delta+"  il a "+(Time.now().value() - backGd_capteur_seconde)+" backGd_capteur_seconde");
@@ -150,6 +221,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
         }
       }
     }
+    Sys.println("traiteNS return : BG="+backGd_capteur_BG+"  delta="+backGd_capteur_delta+"  sec="+backGd_capteur_seconde);
     return [backGd_capteur_BG,backGd_capteur_delta,backGd_capteur_seconde];
   }
 

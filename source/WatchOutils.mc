@@ -6,7 +6,7 @@ using Toybox.System as Sys;
 
 class WatchOutils {
 
-    function storeData(tabData) {
+    function storeData1(tabData) {
       System.println("debut store données ="+tabData);
       var st = "";
       for (var i = 0;i<tabData.size();i++) {
@@ -17,7 +17,7 @@ class WatchOutils {
       System.println("fin store données ="+st);
     }
 
-    function readStoredData() {
+    function readStoredData1() {
       System.println("readStoredData");
         var st = Application.Storage.getValue("data");
         var tab=new[0];

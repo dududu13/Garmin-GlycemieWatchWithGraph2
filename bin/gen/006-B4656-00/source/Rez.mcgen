@@ -829,77 +829,37 @@ module Rez {
             return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_46428211913725765358, rez_cmp_local_text_2042061750, rez_cmp_local_text_un, rez_cmp_local_custom_selectable_12328022382134557307, rez_cmp_local_text_deux, rez_cmp_local_custom_selectable_17851008573871416621, rez_cmp_local_text_quatre, rez_cmp_local_custom_selectable_46325576237776306214, rez_cmp_local_text_six, rez_cmp_local_custom_selectable_13272225842016372201, rez_cmp_local_text_5456945618, rez_cmp_local_text_1703529506, rez_cmp_local_custom_selectable_15260318648349617469, rez_cmp_local_text_5888599076, rez_cmp_local_custom_selectable_34586036052120301210, rez_cmp_local_custom_selectable_17748645114869502951] as Array<WatchUi.Drawable>;
         }
 
-        function main(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-            var rez_cmp_local_custom_drawable_backgroundBlack = new $.Rez.Drawables.backgroundBlack();
-            if (rez_cmp_local_custom_drawable_backgroundBlack.identifier == null) {
-                rez_cmp_local_custom_drawable_backgroundBlack.identifier = "backgroundBlack";
-            }
-
-            var rez_cmp_local_custom_drawable_cercleNotif = new $.Rez.Drawables.cercleNotif();
-            if (rez_cmp_local_custom_drawable_cercleNotif.identifier == null) {
-                rez_cmp_local_custom_drawable_cercleNotif.identifier = "cercleNotif";
-            }
-
-            var rez_cmp_local_text_date = new WatchUi.Text({:identifier=>"date", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (6 / 100.0)), :text=>"date", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
-
-            var rez_cmp_local_text_heure = new WatchUi.Text({:identifier=>"heure", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (15 / 100.0)), :text=>"00:00", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_NUMBER_HOT});
-
-            var rez_cmp_local_text_notif = new WatchUi.Text({:identifier=>"notif", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (12 / 100.0)), :locY=>(390 * (32 / 100.0)), :text=>"1", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
-
-            var rez_cmp_local_text_BG = new WatchUi.Text({:identifier=>"BG", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (75 / 100.0)), :locY=>(390 * (41 / 100.0)), :text=>"000", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_NUMBER_HOT});
-
-            var rez_cmp_local_text_Delta = new WatchUi.Text({:identifier=>"Delta", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (24 / 100.0)), :locY=>(390 * (50 / 100.0)), :text=>"0", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_NUMBER_MILD});
-
-            var rez_cmp_local_text_Elapsed = new WatchUi.Text({:identifier=>"Elapsed", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (96 / 100.0)), :locY=>(390 * (44 / 100.0)), :text=>"+0", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_NUMBER_MILD});
-
-            var rez_cmp_local_text_1782126954 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (93 / 100.0)), :locY=>(390 * (62 / 100.0)), :text=>"min", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_SYSTEM_XTINY});
-
-            var rez_cmp_local_text_ProvenanceBG = new WatchUi.Text({:identifier=>"ProvenanceBG", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (2 / 100.0)), :locY=>(390 * (46 / 100.0)), :text=>"aaps", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_XTINY});
-
-            var rez_cmp_local_text_Secondes = new WatchUi.Text({:identifier=>"Secondes", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (96 / 100.0)), :locY=>(390 * (36 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_VCENTER, :font=>Gfx.FONT_NUMBER_MILD});
-
-            var rez_cmp_local_text_NextCall = new WatchUi.Text({:identifier=>"NextCall", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (25 / 100.0)), :locY=>(390 * (46 / 100.0)), :text=>"000", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_XTINY});
-
-            var rez_cmp_local_text_Temperature = new WatchUi.Text({:identifier=>"Temperature", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (17 / 100.0)), :locY=>(390 * (71 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_LARGE});
-
-            var rez_cmp_local_text_Wind = new WatchUi.Text({:identifier=>"Wind", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (83 / 100.0)), :locY=>(390 * (71 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_LARGE});
-
-            var rez_cmp_local_text_Batterie = new WatchUi.Text({:identifier=>"Batterie", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (85 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
-
-            return [rez_cmp_local_custom_drawable_backgroundBlack, rez_cmp_local_custom_drawable_cercleNotif, rez_cmp_local_text_date, rez_cmp_local_text_heure, rez_cmp_local_text_notif, rez_cmp_local_text_BG, rez_cmp_local_text_Delta, rez_cmp_local_text_Elapsed, rez_cmp_local_text_1782126954, rez_cmp_local_text_ProvenanceBG, rez_cmp_local_text_Secondes, rez_cmp_local_text_NextCall, rez_cmp_local_text_Temperature, rez_cmp_local_text_Wind, rez_cmp_local_text_Batterie] as Array<WatchUi.Drawable>;
-        }
-
         function Settings(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
             var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
             if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
                 rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
             }
 
-            var rez_cmp_local_custom_selectable_16122490334801152041 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+            var rez_cmp_local_custom_selectable_17821269541612249033 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
 
-            var rez_cmp_local_text_3933768662 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (2 / 100.0)), :text=>$.Rez.Strings.version, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+            var rez_cmp_local_text_4801152041 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (2 / 100.0)), :text=>$.Rez.Strings.version, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
-            var rez_cmp_local_text_1001319800 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (15 / 100.0)), :text=>"Seconds ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
+            var rez_cmp_local_text_3933768662 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (15 / 100.0)), :text=>"Seconds ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
 
-            var rez_cmp_local_text_6533765161 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"Meteo ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
+            var rez_cmp_local_text_1001319800 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"Meteo ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
 
-            var rez_cmp_local_text_1270778381 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (39 / 100.0)), :locY=>(390 * (45 / 100.0)), :text=>"Graph", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+            var rez_cmp_local_text_6533765161 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (39 / 100.0)), :locY=>(390 * (45 / 100.0)), :text=>"Graph", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
-            var rez_cmp_local_custom_selectable_18095357191819288205 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsGraphActive(), :stateDefault=>new $.Rez.Drawables.settingsGraph(), :width=>(390 * (50 / 100.0)), :locX=>(390 * (15 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:graph, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_12707783813440318791 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsGraphActive(), :stateDefault=>new $.Rez.Drawables.settingsGraph(), :width=>(390 * (50 / 100.0)), :locX=>(390 * (15 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:graph, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_19326560501831638704 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive0(), :stateDefault=>new $.Rez.Drawables.settingsCoche0(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (15 / 100.0)), :behavior=>:seconds, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_18192882051932656050 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive0(), :stateDefault=>new $.Rez.Drawables.settingsCoche0(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (15 / 100.0)), :behavior=>:seconds, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_11518148902605879919 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive1(), :stateDefault=>new $.Rez.Drawables.settingsCoche1(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (30 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_18316387041151814890 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive1(), :stateDefault=>new $.Rez.Drawables.settingsCoche1(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (30 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_15462855821831568521 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive2(), :stateDefault=>new $.Rez.Drawables.settingsCoche2(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_26058799196504269215 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive2(), :stateDefault=>new $.Rez.Drawables.settingsCoche2(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_12041833774482362831 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive3(), :stateDefault=>new $.Rez.Drawables.settingsCoche3(), :width=>(390 * (68 / 100.0)), :locX=>(390 * (18 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:sourceBG, :height=>(390 * (18 / 100.0))});
+            var rez_cmp_local_custom_selectable_18315685213172229881 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive3(), :stateDefault=>new $.Rez.Drawables.settingsCoche3(), :width=>(390 * (68 / 100.0)), :locX=>(390 * (18 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:sourceBG, :height=>(390 * (18 / 100.0))});
 
             var rez_cmp_local_text_choixSource = new WatchUi.Text({:identifier=>"choixSource", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (52 / 100.0)), :locY=>(390 * (63.4 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
-            var rez_cmp_local_custom_selectable_29458775411742547317 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
+            var rez_cmp_local_custom_selectable_44823628319916390294 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
 
-            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_16122490334801152041, rez_cmp_local_text_3933768662, rez_cmp_local_text_1001319800, rez_cmp_local_text_6533765161, rez_cmp_local_text_1270778381, rez_cmp_local_custom_selectable_18095357191819288205, rez_cmp_local_custom_selectable_19326560501831638704, rez_cmp_local_custom_selectable_11518148902605879919, rez_cmp_local_custom_selectable_15462855821831568521, rez_cmp_local_custom_selectable_12041833774482362831, rez_cmp_local_text_choixSource, rez_cmp_local_custom_selectable_29458775411742547317] as Array<WatchUi.Drawable>;
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_17821269541612249033, rez_cmp_local_text_4801152041, rez_cmp_local_text_3933768662, rez_cmp_local_text_1001319800, rez_cmp_local_text_6533765161, rez_cmp_local_custom_selectable_12707783813440318791, rez_cmp_local_custom_selectable_18192882051932656050, rez_cmp_local_custom_selectable_18316387041151814890, rez_cmp_local_custom_selectable_26058799196504269215, rez_cmp_local_custom_selectable_18315685213172229881, rez_cmp_local_text_choixSource, rez_cmp_local_custom_selectable_44823628319916390294] as Array<WatchUi.Drawable>;
         }
     } // Layouts
 
