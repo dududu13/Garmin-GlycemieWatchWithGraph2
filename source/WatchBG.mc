@@ -251,7 +251,7 @@ var timer;
 //data = [ {  "date"=> 1721305582, "sgv"=> 77, "delta"=> 3, "aaps-ts"=> 1721305307 }, {  "date"=> 1721305282, "sgv"=> 74, "delta"=> 0 }, {  "date"=> 1721304982, "sgv"=> 74, "delta"=> -5} ];
     function traiteXdripOrAAPS(responseCode, data) {
   
-        Sys.println("traiteXdripOrAAPS");
+        Sys.println("traiteXdripOrAAPS") ;
         var backGd_capteur_BG = 0;
         var backGd_capteur_delta = 0;
         var backGd_capteur_seconde = Time.now().value() - 99*60;
