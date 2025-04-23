@@ -62,11 +62,6 @@ class watchGraph  {
   }
 
   function dessine_tout(dc) {
-    var size = data.size();
-    if (size==0) {
-      dc.drawText(200,320,13,"no data",1);
-      return;
-    }
     var totalPixel = dc.getWidth()-XoffsetGauche-XoffsetDroite;
     glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel).toNumber();
     //System.println("param = "+nbHGraph+"  nbh = "+[1,2,4,6][nbHGraph] +"  log ? "+logarithmique);
@@ -77,7 +72,7 @@ class watchGraph  {
     BG_HAUT1 = log(BG_HAUT);
     maxGlucose = MIN_GLUCOSE1;
     var tabData = new[0];
-    for (var i=0 ; i<size ; i++) {
+    for (var i=0 ; i<data.size() ; i++) {
       var gl = log(data[i][0]);
       tabData.add(gl);
       if ( gl>maxGlucose) {

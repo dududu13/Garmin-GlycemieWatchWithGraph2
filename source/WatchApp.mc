@@ -28,6 +28,7 @@ class WatchApp extends App.AppBase {
 
     function onSettingsChanged() {
         if (myView != null) {myView.readSettingsAndInitGraph();}
+        WatchBG.registerASAP();
 		return true; 
     }
 
@@ -39,7 +40,10 @@ class WatchApp extends App.AppBase {
 
     function getServiceDelegate() { //lance le service Background, et le premier appel
         //System.println("APP call gestService Delegate");
+        Background.deleteTemporalEvent();
         var BGservice = new WatchBG();
+        WatchBG.registerASAP();
+        WatchBG.setCapteurChanged(true);
         return [BGservice];
     }
 

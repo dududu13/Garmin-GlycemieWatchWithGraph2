@@ -12,16 +12,15 @@ using Toybox.System as Sys;
 (:background)
 class WatchBG extends Toybox.System.ServiceDelegate {
 
-var timer;
-
 
     function initialize() {
       Sys.println("BG initialize start");
+      Background.deleteTemporalEvent();
       Sys.ServiceDelegate.initialize();
     }
 
     function onTemporalEvent() {
-      Sys.println("BG onTemporalEvent");
+      Sys.println("BG onTemporalEvent()");
       var sourceBG = Application.getApp().getProperty("sourceBG");
       if ((sourceBG == 0) || (sourceBG == null)) {
         requestNS();
@@ -31,21 +30,43 @@ var timer;
       else  { //xdrip
         requestXdrip();
       }
+      Background.registerForTemporalEvent(Time.now().add(new Time.Duration((5 * 60)))); // au pire dans 5 minutes
+      //Background.registerForTemporalEvent(new Time.Duration(5 * 60)); //par sécurité on demande un temporal toutes les 5 min       
+
     }
 
+    function registerASAP() {
+        var lastTime = Background.getLastTemporalEventTime();
+        if (lastTime != null) {
+            // tomorrow.compare(today)) = 86400
+            var nextTime = lastTime.add(new Time.Duration(5 * 60));
+            var delai = nextTime.compare(Time.now());
+            if (delai<3) {
+                System.println("registerASAP dans 3 sec");
+                Background.registerForTemporalEvent(Time.now().add(new Time.Duration(3)));
+            } else {
+                System.println("registerASAP lastTime < 5min, prevu dans " + delai +" sec");
+                Background.registerForTemporalEvent(Time.now().add(new Time.Duration(delai)));
+            }
+        } else {
+            System.println("registerASAP lastTime null, register dans 3 sec");
+            Background.registerForTemporalEvent(Time.now().add(new Time.Duration(3)));
+        }
+    }
 
 
 
     function requestNS() {
       Sys.println("request NS start ");
-// https://lien/api/v2/properties/buckets[0],buckets[1]
-// https://lien/api/v2/properties/buckets[0],buckets[1]/?token=3595
 		  var url = Application.getApp().getProperty("url");
+
       var utilisateurNS = Application.getApp().getProperty("tokenNS");
+
 		  if ((url != null) && (! url.equals(""))) {
         var token = "";
         if ((utilisateurNS != null) || (utilisateurNS.equals(""))) {token = "/?token="+utilisateurNS;}
 		  	url = url + "api/v2/properties/buckets[0],buckets[1]"+token;  
+        
 			  Communications.makeWebRequest(url, {}, { :method => Communications.HTTP_REQUEST_METHOD_GET,
                                                          :headers => { "Content-Type" => Communications.REQUEST_CONTENT_TYPE_URL_ENCODED},
                                                          :responseType => Communications.HTTP_RESPONSE_CONTENT_TYPE_JSON
@@ -83,6 +104,7 @@ var timer;
     }
   
     function enregistreDernierCapteur(capteur) {
+      if (capteur[0] ==0) { return;}
       System.println("enregistreDernierCapteur "+capteur);
       var allData = readAlldData();
       allData.add(capteur);// ajoute a la fin
@@ -119,7 +141,7 @@ var timer;
 
             tab.add(tab2); //[BG,delta,secondes]
         }
-        //System.println("fin charge data ="+tab);
+        System.println("fin readAlldData  ="+tab);
         return tab;
     }
 
@@ -152,20 +174,20 @@ var timer;
 
     function DelaiTemporalEventSecondRestant() {
         
-        //var message;
-        //var temporalMinRestant;
+        var delaiMin = 5;
 
         var lastBackgroundMoment = Background.getLastTemporalEventTime();// as Time.Moment or Time.Duration or Null
         var delaiRestantSecondes=0;
         if (lastBackgroundMoment != null) {
           Sys.println("DelaiTemporalEventSecondRestant temporal depuis = "+(Time.now().value() - lastBackgroundMoment.value()) +" sec");
-            delaiRestantSecondes = 300 -Time.now().value() + lastBackgroundMoment.value();
+          delaiRestantSecondes = 300 -Time.now().value() + lastBackgroundMoment.value();
         } else {
           Sys.println("DelaiTemporalEventSecondRestant temporal null, delai = 0");
 
         }
-        if (delaiRestantSecondes<2) {delaiRestantSecondes = 2;}
-        Sys.println("DelaiTemporalEventSecondRestant = "+delaiRestantSecondes);
+        var delaiCalcule = delaiRestantSecondes;
+        if (delaiCalcule<delaiMin) {delaiRestantSecondes = delaiMin;}
+        Sys.println("DelaiTemporalEventSecondRestant = "+delaiRestantSecondes+ "  (calculé = "+delaiCalcule+")");
         return delaiRestantSecondes;
     }
 
@@ -187,7 +209,7 @@ var timer;
 
   
   function traiteNS(responseCode, data) {
-    Sys.println("traiteNS");
+    Sys.println("traiteNS \n"+data);
     var backGd_capteur_BG = 0;
     var backGd_capteur_delta = 0;
     var backGd_capteur_seconde = Time.now().value() - 99*60;
@@ -233,6 +255,13 @@ var timer;
  {  "date": 1721305282000, "sgv": 74, "delta": 0 },
  {  "date": 1721304982000, "sgv": 74, "delta": -5}
  ]
+
+ {"_id":"1192423f-4468-4f3b-a801-d609219c2d65","device":"G7","dateString":"2025-04-23T16:47:28.646+0200","sysTime":"2025-04-23T16:47:28.646+0200","date":1745419648646,"sgv":110,"delta":-2.5,"direction":"Flat","noise":1,"filtered":0,"unfiltered":-127,"rssi":100,"type":"sgv","units_hint":"mgdl"},
+ {"_id":"5843c116-952e-4c55-8c89-8cf80ed01164","device":"G7","dateString":"2025-04-23T16:42:28.398+0200","sysTime":"2025-04-23T16:42:28.398+0200","date":1745419348398,"sgv":115,"delta":-1.500,"direction":"Flat","noise":1,"filtered":0,"unfiltered":-127,"rssi":100,"type":"sgv"},
+ {"_id":"e18d9e5a-b309-4ee9-a8c5-3565491e4c57","device":"G7","dateString":"2025-04-23T16:37:28.131+0200","sysTime":"2025-04-23T16:37:28.131+0200","date":1745419048131,"sgv":122,"delta":1,"direction":"Flat","noise":1,"filtered":0,"unfiltered":-127,"rssi":100,"type":"sgv"}
+
+
+
 */
 
 
@@ -242,6 +271,17 @@ var timer;
 [ { "date": 1721304381000, "sgv": 85, "delta": -7,"iob": 1.4554161003308, "tbr": 0, "cob": 11.2548235294118 }, 
 { "date": 1721304081000, "sgv": 92, "delta": -5.02 }, 
 { "date": 1721303782000, "sgv": 97 } ]
+
+{"date":1745419648646,"sgv":110,"delta":-5.00,"direction":"Flat","units_hint":"mgdl","iob":0.4332122659391232,"tbr":0,"cob":0.0},
+{"date":1745419348398,"sgv":115,"delta":-6.99,"direction":"Flat"},{"date":1745419048131,"sgv":122,"delta":2.00,"direction":"Flat"}
+
+{"date":1745419648646,"sgv":110,"delta":-5.00,"direction":"Flat","units_hint":"mgdl","iob":0.4332122659391232,"tbr":0,"cob":0.0},
+{"date":1745419348398,"sgv":115,"delta":-6.99,"direction":"Flat"},{"date":1745419048131,"sgv":122,"delta":2.00,"direction":"Flat"}
+
+
+
+
+
 */
 
  
@@ -251,7 +291,7 @@ var timer;
 //data = [ {  "date"=> 1721305582, "sgv"=> 77, "delta"=> 3, "aaps-ts"=> 1721305307 }, {  "date"=> 1721305282, "sgv"=> 74, "delta"=> 0 }, {  "date"=> 1721304982, "sgv"=> 74, "delta"=> -5} ];
     function traiteXdripOrAAPS(responseCode, data) {
   
-        Sys.println("traiteXdripOrAAPS") ;
+        Sys.println("traiteXdripOrAAPS \n"+data);
         var backGd_capteur_BG = 0;
         var backGd_capteur_delta = 0;
         var backGd_capteur_seconde = Time.now().value() - 99*60;

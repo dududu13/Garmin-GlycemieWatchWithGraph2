@@ -19,7 +19,7 @@ class WatchView extends Ui.WatchFace {
     var graph;
     var tabData = new[0];
     var AffichageBgValue =0;
-    var AffichageSecondesCapteur = 0;
+    var AffichageSecondesCapteur = Time.now().value()- 99*60; 
     var AffichageBgDelta = 0;
 
     var decalageY_OLED = 0;
@@ -30,7 +30,8 @@ class WatchView extends Ui.WatchFace {
     var hauteurEcran = System.getDeviceSettings().screenHeight;//dc.getHeight();;
     var OledModel  = Sys.getDeviceSettings().requiresBurnInProtection; 
 
-    var lastBG,nowSec;
+    var lastBG;
+    var nowSec = 0;
 
 var x = {
 "date"=>(0.5 * largeurEcran),
@@ -111,11 +112,8 @@ var justification = {
         WatchFace.initialize();
         System.println("View debut init");
         readSettingsAndInitGraph();
-        nowSec = 0;
-        Background.registerForTemporalEvent(Time.now().add(new Time.Duration(WatchBG.DelaiTemporalEventSecondRestant()))); 
-        System.println("View fin init");
+        System.println("View fin init");    
 
-        
     }
 
     function onLayout(dc) {
@@ -142,9 +140,11 @@ var justification = {
                 AffichageBgValue = tabData[size-1][0];
                 AffichageBgDelta = tabData[size-1][1];
                 AffichageSecondesCapteur = tabData[size-1][2];
-                WatchBG.setCapteurChanged(false);                
+                                
             }
+            WatchBG.setCapteurChanged(false);
         }
+        
         var infoTime = Calendar.info(timeNow, Time.FORMAT_LONG);
 		dc.setColor( Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
         dc.clear();
@@ -163,11 +163,13 @@ var justification = {
         drawBlueTooth(dc,infoTime);        
 		ereaseOLEDifLowPower(dc);
         var nextBG = drawNextCall(dc);
-        //System.println("onUpdate nextBG = "+nextBG + "  lastBG = "+lastBG);
+        if (lastBG == null) {
+            lastBG = nextBG -1;
+        }
+        System.println("onUpdate nextBG = "+nextBG + "  lastBG = "+lastBG);
         if ((nextBG == lastBG) and (timeNow.value != nowSec)) { //lors de l'init on a 2 update au meme moment
-            System.println("onUpdate registerForTemporalEvent 5mn");
-            var eventTime = timeNow.add(new Time.Duration(5 * 60));
-            Background.registerForTemporalEvent(eventTime);            
+            //System.println("onUpdate call registerASAP()");
+            //Background.registerASAP(); 
         }
         lastBG = nextBG;
         nowSec = timeNow.value;
@@ -194,21 +196,28 @@ var justification = {
     }
 
     function prochainBackground() {
-        var prochainBackground = Background.getTemporalEventRegisteredTime();// as Time.Moment or Time.Duration or Null
+        var prochainBackground = Background.getTemporalEventRegisteredTime();// Time.Moment or Time.Duration or Null
         var delaiRestant = 0;
-        if (prochainBackground != null) {
-            delaiRestant = prochainBackground.value()-Time.now().value();
-        } else { 
+        if (prochainBackground == null) {
+            System.println("prochainBackground null, registerasap");
             delaiRestant = 3;
+            WatchBG.registerASAP();
+        } else { 
+            if (prochainBackground.compare(Time.now())<0) {
+                System.println("prochainBackground < now, registerasap");
+                WatchBG.registerASAP();
+                delaiRestant = 3;
+            } else {
+                delaiRestant = prochainBackground.value()-Time.now().value();
+            }
         }
-        //if (delaiRestant != nextBG) {}
         return delaiRestant;
     }
 
     function drawNextCall(dc) {
-        var nextBG2 = prochainBackground();
-        drawLabel(dc,"NextCall",prochainBackground(),white);
-        return nextBG2;
+        var _nextBG = prochainBackground();
+        drawLabel(dc,"NextCall",_nextBG,white);
+        return _nextBG;
     }
 
     function coordMarkBattery(angle){
@@ -262,6 +271,11 @@ var justification = {
         
     function drawGraphIfNotLowPower(dc) {
         if (((! afficheMeteo) and ((! OledModel) || (! inLowPower)))) {
+            var size = tabData.size();
+            if (size==0) {
+                dc.drawText(.5*largeurEcran,.65*hauteurEcran,Gfx.FONT_LARGE,"No BG data,check\nsettings",Gfx.TEXT_JUSTIFY_CENTER);
+            return;
+            }
             graph.calcule_tout(tabData);
             graph.dessine_tout(dc);
         }
@@ -351,9 +365,12 @@ var justification = {
         if (AffichageSecondesCapteur != null) {
             var elapsedMinutes = ((Time.now().value() - AffichageSecondesCapteur)/60).toNumber();
             var colorMinutes = white;
-            if (elapsedMinutes >10 ) {colorMinutes = Gfx.COLOR_YELLOW;} //jaune
-            if (elapsedMinutes >30 ) {colorMinutes = Gfx.COLOR_ORANGE;} //orange
-            if (elapsedMinutes >99 ) {colorMinutes = Gfx.COLOR_RED;} //rouge
+            if (elapsedMinutes >10 ) {colorMinutes = Gfx.COLOR_YELLOW;} 
+            if (elapsedMinutes >30 ) {colorMinutes = Gfx.COLOR_ORANGE;} 
+            if (elapsedMinutes >=99 ) {
+                colorMinutes = Gfx.COLOR_RED;
+                elapsedMinutes = 99;
+                } 
             drawLabel(dc,"Elapsed",elapsedMinutes,colorMinutes);
             drawLabel(dc,"labelMin","min",white);
 
