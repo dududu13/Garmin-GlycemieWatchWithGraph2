@@ -437,11 +437,14 @@ var justification = {
     function drawBlueTooth(dc,infoTime) {
         if (! System.getDeviceSettings().phoneConnected) {
             if (infoTime.sec %2 == 1) {
-                dc.drawBitmap(largeurEcran/2- 50*coeff, y.get("Secondes"),BTlogo);
+                var l = BTlogo.getWidth();
+                var h = BTlogo.getHeight();
+                dc.drawBitmap(largeurEcran/2- l/2, hauteurEcran/2-h/2,BTlogo);
+            } else {
+                dc.setColor(Gfx.COLOR_RED,trans);
+                dc.setPenWidth(15);
+                dc.drawCircle(largeurEcran/2, largeurEcran/2, largeurEcran/2-3);       	
             }
-            dc.setColor(Gfx.COLOR_RED,trans);
-            dc.setPenWidth(15);
-            dc.drawCircle(largeurEcran/2, largeurEcran/2, largeurEcran/2-3);       	
         } 
         
     }

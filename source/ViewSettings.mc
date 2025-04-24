@@ -9,7 +9,11 @@ class ViewSettings extends Ui.View {
 
     public function initialize() {
         View.initialize();
-        caseAcocher = Ui.loadResource(Rez.Drawables.Coche);
+        //caseAcocher = Ui.loadResource(Rez.Drawables.Coche);
+        var h = (System.getDeviceSettings().screenHeight*.15).toNumber();
+        caseAcocher = new WatchUi.Bitmap({:rezId=>Rez.Drawables.Cocher});
+        caseAcocher.setSize(h, h);
+System.println("hauteur "+h);
     }
 
     function onLayout(dc) {
@@ -29,7 +33,9 @@ class ViewSettings extends Ui.View {
         for (var i=0;i<3;i++) {
             if (tab[i]) {
                 var Y = dc.getHeight() *  (.14 + i *.15) ;
-                dc.drawBitmap(X, Y, caseAcocher);
+                caseAcocher.setLocation(X, Y);
+                caseAcocher.draw(dc);
+                //dc.drawBitmap(X, Y, caseAcocher);
             }
         }
    }

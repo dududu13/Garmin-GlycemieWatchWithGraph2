@@ -6,11 +6,49 @@ using Toybox.Graphics as Gfx;
 
 module Rez {
     module Drawables {
-        (:initialized) var BoutonVide as ResourceId;
-        (:initialized) var Coche as ResourceId;
+        (:initialized) var Cocher as ResourceId;
         (:initialized) var back as ResourceId;
         (:initialized) var blueTooth as ResourceId;
+        (:initialized) var BoutonVide as ResourceId;
         (:initialized) var LauncherIcon as ResourceId;
+
+        class backgroundGrey extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + 0) + 0, ((0 + 0) + 0) + 0, ((416 - 0) - 0) - (2 * 0), ((416 - 0) - 0) - (2 * 0));
+            }
+        }
+
+        class backgroundBlack extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
+                dc.fillRectangle(((0 + 0) + 0) + 0, ((0 + 0) + 0) + 0, ((416 - 0) - 0) - (2 * 0), ((416 - 0) - 0) - (2 * 0));
+            }
+        }
 
         class settingsGraph extends WatchUi.Drawable {
 
@@ -229,82 +267,6 @@ module Rez {
                 dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (60 / 100.0))) + (5 / 2)), (((416 - 0) * (70 / 100.0)) - 5), (((416 - 0) * (18 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
                 dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (60 / 100.0))) + 5, ((416 - 0) * (70 / 100.0)) - (2 * 5), ((416 - 0) * (18 / 100.0)) - (2 * 5), 5);
-            }
-        }
-
-        class settingsSurligneLine0 extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                dc.fillRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (27 / 100.0))) + 0, ((416 - 0) * (45 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
-            }
-        }
-
-        class settingsSurligneLine1 extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                dc.fillRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (42 / 100.0))) + 0, ((416 - 0) * (45 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
-            }
-        }
-
-        class settingsSurligneLine2 extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                dc.fillRectangle(((0 + 0) + ((416 - 0) * (15 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (57 / 100.0))) + 0, ((416 - 0) * (45 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
-            }
-        }
-
-        class settingsSurligneLine3 extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
-                dc.fillRectangle(((0 + 0) + ((416 - 0) * (28 / 100.0))) + 0, ((0 + 0) + ((416 - 0) * (73 / 100.0))) + 0, ((416 - 0) * (48 / 100.0)) - (2 * 0), ((416 - 0) * (2 / 100.0)) - (2 * 0));
             }
         }
 
@@ -701,63 +663,6 @@ module Rez {
                 dc.drawRoundedRectangle((((0 + 0) + ((416 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((416 - 0) * (58 / 100.0))) + (5 / 2)), (((416 - 0) * (25 / 100.0)) - 5), (((416 - 0) * (16 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
                 dc.fillRoundedRectangle(((0 + 0) + ((416 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((416 - 0) * (58 / 100.0))) + 5, ((416 - 0) * (25 / 100.0)) - (2 * 5), ((416 - 0) * (16 / 100.0)) - (2 * 5), 5);
-            }
-        }
-
-        class backgroundGrey extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_DK_GRAY, Graphics.COLOR_TRANSPARENT);
-                dc.fillRectangle(((0 + 0) + 0) + 0, ((0 + 0) + 0) + 0, ((416 - 0) - 0) - (2 * 0), ((416 - 0) - 0) - (2 * 0));
-            }
-        }
-
-        class backgroundBlack extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_BLACK, Graphics.COLOR_TRANSPARENT);
-                dc.fillRectangle(((0 + 0) + 0) + 0, ((0 + 0) + 0) + 0, ((416 - 0) - 0) - (2 * 0), ((416 - 0) - 0) - (2 * 0));
-            }
-        }
-
-        class cercleNotif extends WatchUi.Drawable {
-
-            function initialize() {
-                Drawable.initialize({});
-            }
-
-            function draw(dc as Graphics.Dc) as Void {
-                if (self has :isVisible) {
-                    if (!self.isVisible) {
-                        return;
-                    }
-                }
-
-
-                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
-                dc.fillCircle(((0 + 0) + ((416 - 0) * (12 / 100.0))), ((0 + 0) + ((416 - 0) * (39 / 100.0))), (((416 - 0) * (6 / 100.0)) - 0));
             }
         }
     } // Drawables

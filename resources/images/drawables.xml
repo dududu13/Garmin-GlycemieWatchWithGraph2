@@ -1,7 +1,0 @@
-<resources>
-    <bitmap id="LauncherIcon" filename="launcher_icon.png" />
-    <bitmap id="BoutonVide" filename="vide.png" />
-    <drawable-list id="backgroundGrey"><shape type="rectangle" x="0" y="0" width="fill" height="fill" color="Gfx.COLOR_DK_GRAY"></shape></drawable-list>
-    <drawable-list id="backgroundBlack"><shape type="rectangle" x="0" y="0" width="fill" height="fill" color="Gfx.COLOR_BLACK"></shape></drawable-list>
-    <drawable-list id="cercleNotif"><shape type="circle" x="12%" y="39%" radius="6%" color="Gfx.COLOR_RED"></shape></drawable-list>
-</resources>
