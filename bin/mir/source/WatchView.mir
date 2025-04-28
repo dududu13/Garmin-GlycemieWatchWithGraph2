@@ -871,57 +871,42 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_1
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_166_28_168_8_stop:
         goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_166_8_168_8_if_end;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_166_8_168_8_if_end:
-[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 169 8 ]
-        symbol [ System %tmp.115 169 8 14 ];
-        %tmp.115 = getv ? :System;
-        symbol [ println %tmp.116 169 15 22 ];
-        %tmp.116 = getv function %tmp.115 :println;
-        %tmp.117 = "onUpdate nextBG = ";
-        %tmp.118 = lgetv %nextBG.4;
-        symbol [ nextBG %tmp.118 169 44 50 ];
-        %tmp.119 = add %tmp.117 %tmp.118;
-        %tmp.120 = "  lastBG = ";
-        %tmp.121 = add %tmp.119 %tmp.120;
-        symbol [ lastBG %tmp.123 169 67 73 ];
-        %tmp.123 = getv ? :lastBG;
-        %tmp.124 = add %tmp.121 %tmp.123;
-        invoke %tmp.115 %tmp.116(%tmp.124);
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 170 8 ]
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_stmt:
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_12_170_59_begin:
-        %tmp.125 = lgetv %nextBG.4;
-        symbol [ nextBG %tmp.125 170 13 19 ];
-        symbol [ lastBG %tmp.127 170 23 29 ];
-        %tmp.127 = getv ? :lastBG;
-        %tmp.128 = eq %tmp.125 %tmp.127;
-        bf %tmp.128 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_end;
+        %tmp.114 = lgetv %nextBG.4;
+        symbol [ nextBG %tmp.114 170 13 19 ];
+        symbol [ lastBG %tmp.116 170 23 29 ];
+        %tmp.116 = getv ? :lastBG;
+        %tmp.117 = eq %tmp.114 %tmp.116;
+        bf %tmp.117 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_end;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_35_170_59_true:
-        %tmp.129 = lgetv %timeNow.1;
-        symbol [ timeNow %tmp.129 170 36 43 ];
-        symbol [ value %tmp.130 170 44 49 ];
-        %tmp.130 = getv %tmp.129 :value;
-        symbol [ nowSec %tmp.132 170 53 59 ];
-        %tmp.132 = getv ? :nowSec;
-        %tmp.133 = ne %tmp.130 %tmp.132;
-        push %tmp.133;
+        %tmp.118 = lgetv %timeNow.1;
+        symbol [ timeNow %tmp.118 170 36 43 ];
+        symbol [ value %tmp.119 170 44 49 ];
+        %tmp.119 = getv %tmp.118 :value;
+        symbol [ nowSec %tmp.121 170 53 59 ];
+        %tmp.121 = getv ? :nowSec;
+        %tmp.122 = ne %tmp.119 %tmp.121;
+        push %tmp.122;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_35_170_59_end:
-        %tmp.134 = phi [%tmp.128 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_12_170_59_begin] [%tmp.133 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_35_170_59_true] [%tmp.134 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_35_170_59_end];
-        bf %tmp.134 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_end;
+        %tmp.123 = phi [%tmp.117 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_12_170_59_begin] [%tmp.122 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_35_170_59_true] [%tmp.123 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_35_170_59_end];
+        bf %tmp.123 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_end;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_true:
         goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_end;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_170_8_173_8_if_end:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 174 8 ]
-        %tmp.135 = lgetv %nextBG.4;
-        symbol [ nextBG %tmp.135 174 17 23 ];
+        %tmp.124 = lgetv %nextBG.4;
+        symbol [ nextBG %tmp.124 174 17 23 ];
         symbol [ lastBG ? 174 8 14 ];
-        putv self :lastBG %tmp.135;
+        putv self :lastBG %tmp.124;
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 175 8 ]
-        %tmp.136 = lgetv %timeNow.1;
-        symbol [ timeNow %tmp.136 175 17 24 ];
-        symbol [ value %tmp.137 175 25 30 ];
-        %tmp.137 = getv %tmp.136 :value;
+        %tmp.125 = lgetv %timeNow.1;
+        symbol [ timeNow %tmp.125 175 17 24 ];
+        symbol [ value %tmp.126 175 25 30 ];
+        %tmp.126 = getv %tmp.125 :value;
         symbol [ nowSec ? 175 8 14 ];
-        putv self :nowSec %tmp.137;
+        putv self :nowSec %tmp.126;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_134_26_178_4_stop:
     }
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc"; @line = 180; @symbol_functiondef = [drawLabel,180,20,29]; @symbol_param<0> = [dc,180,30,32]; @symbol_param<1> = [labelId,180,33,40]; @symbol_param<2> = [labelText,180,42,51]; @symbol_param<3> = [color,180,52,57]; ]
@@ -2089,7 +2074,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_2
         %tmp.64 = getv function %tmp.63 :format;
         %tmp.65 = "%2.1f";
         %tmp.66 = invoke %tmp.63 %tmp.64(%tmp.65);
-        %tmp.67 = "Â°C";
+        %tmp.67 = "°C";
         %tmp.68 = add %tmp.66 %tmp.67;
         lputv %texte.3 %tmp.68;
         symbol [ texte %texte.3 298 24 29 ];

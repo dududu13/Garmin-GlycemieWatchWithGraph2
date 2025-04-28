@@ -1409,7 +1409,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchBG_mc_189
         %tmp.48 = lgetv %delaiRestantSecondes.3;
         symbol [ delaiRestantSecondes %tmp.48 190 57 77 ];
         %tmp.49 = add %tmp.47 %tmp.48;
-        %tmp.50 = "  (calculÃ© = ";
+        %tmp.50 = "  (calculé = ";
         %tmp.51 = add %tmp.49 %tmp.50;
         %tmp.52 = lgetv %delaiCalcule.4;
         symbol [ delaiCalcule %tmp.52 190 95 107 ];

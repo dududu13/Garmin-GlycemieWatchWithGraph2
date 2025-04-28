@@ -166,7 +166,7 @@ var justification = {
         if (lastBG == null) {
             lastBG = nextBG -1;
         }
-        System.println("onUpdate nextBG = "+nextBG + "  lastBG = "+lastBG);
+        //System.println("onUpdate nextBG = "+nextBG + "  lastBG = "+lastBG);
         if ((nextBG == lastBG) and (timeNow.value != nowSec)) { //lors de l'init on a 2 update au meme moment
             //System.println("onUpdate call registerASAP()");
             //Background.registerASAP(); 

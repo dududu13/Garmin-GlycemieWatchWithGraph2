@@ -64,7 +64,6 @@ class watchGraph  {
   function dessine_tout(dc) {
     var totalPixel = dc.getWidth()-XoffsetGauche-XoffsetDroite;
     glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel).toNumber();
-    //System.println("param = "+nbHGraph+"  nbh = "+[1,2,4,6][nbHGraph] +"  log ? "+logarithmique);
 
     if (logarithmique) { MIN_GLUCOSE1 = Math.ln(MIN_GLUCOSE);}
     else {MIN_GLUCOSE1 = MIN_GLUCOSE;}
@@ -109,6 +108,10 @@ class watchGraph  {
       }
       //drawRectangle(dc, hlColor, x, yHaut, glucoseBarWidthPixel, 3);
     }
+    var text = ["1 h","2 h","4 h","6h"][nbHGraph];
+    dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+    dc.drawText(dc.getWidth()/2,posY + HAUTEUR_GRAPH ,Gfx.FONT_SYSTEM_XTINY,text,Gfx.TEXT_JUSTIFY_CENTER);
+    //System.println("low="+(posY + HAUTEUR_GRAPH));
 
   }
 
