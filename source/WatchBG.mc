@@ -104,7 +104,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
     }
   
     function enregistreDernierCapteur(capteur) {
-      if (capteur[0] ==0) { return;}
+      //if (capteur[0] ==0) { return;}
       System.println("enregistreDernierCapteur "+capteur);
       var allData = readAlldData();
       allData.add(capteur);// ajoute a la fin
@@ -321,7 +321,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
               }
 
       }
-        return [backGd_capteur_BG,backGd_capteur_delta,backGd_capteur_seconde];
+      return [backGd_capteur_BG,backGd_capteur_delta,backGd_capteur_seconde];
     }
 
     function calculeSynchro(backGd_capteur_seconde,temporalMinRestant) { // réglage prochain temporal event, 5 min au moins après le précédent, et juste après la prochaine lecture du capteur + tempo

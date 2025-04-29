@@ -111,7 +111,8 @@ var justification = {
         
         WatchFace.initialize();
         System.println("View debut init");
-        readSettingsAndInitGraph();
+        readSettings();
+        graph = new watchGraph();
         System.println("View fin init");    
 
     }
@@ -130,18 +131,28 @@ var justification = {
        	WatchUi.requestUpdate(); 
     }
 
+    function readLastValues() {
+        AffichageBgValue = 0;
+        AffichageBgDelta = 0;
+        AffichageSecondesCapteur = 0;                                
+        var size = tabData.size();
+        for (var i=size-1;i>=0;i=i-1) {
+            if (tabData[i][0] > 0) {
+                AffichageBgValue = tabData[i][0];
+                AffichageBgDelta = tabData[i][1];
+                AffichageSecondesCapteur = tabData[i][2]; 
+                return;
+            }
+        }
+
+    }
 
     function onUpdate(dc) {
         var timeNow = Time.now();
         if (WatchBG.isCapteurChanged()) {
             tabData = WatchBG.readAlldData();
-            var size = tabData.size();
-            if (size >0) {
-                AffichageBgValue = tabData[size-1][0];
-                AffichageBgDelta = tabData[size-1][1];
-                AffichageSecondesCapteur = tabData[size-1][2];
-                                
-            }
+            readLastValues();
+            graph.calcule_tout(tabData);
             WatchBG.setCapteurChanged(false);
         }
         
@@ -276,7 +287,7 @@ var justification = {
                 dc.drawText(.5*largeurEcran,.65*hauteurEcran,Gfx.FONT_LARGE,"No BG data,check\nsettings",Gfx.TEXT_JUSTIFY_CENTER);
             return;
             }
-            graph.calcule_tout(tabData);
+            //graph.calcule_tout(tabData);
             graph.dessine_tout(dc);
         }
     }
@@ -456,15 +467,15 @@ var justification = {
         if (property == null) {property = defaultVal;}
         return property;
     }
-    function readSettingsAndInitGraph() {
+    function readSettings() {
         sourceBG = getProp("sourceBG",0);
         afficheSecondes = getProp("afficheSecondes",false);
         afficheMeteo = getProp("afficheMeteo",false);
         nbHGraph  = getProp("nbHGraph",2);
         if (nbHGraph>3) {nbHGraph = 3;}
         logarithmique = getProp("logarithmique",true);
-        graph = new watchGraph();
-        graph.calcule_tout(tabData);
+        //graph = new watchGraph();
+        //graph.calcule_tout(tabData);
     }
 
 

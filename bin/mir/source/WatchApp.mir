@@ -48,33 +48,20 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_25
     function onSettingsChanged() {
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_29_33_33_4_start:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc" 30 8 ]
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_8_30_63_if_stmt:
-        symbol [ myView %tmp.2 30 12 18 ];
+        symbol [ myView %tmp.2 30 8 14 ];
         %tmp.2 = getv ? :myView;
-        %tmp.3 = null;
-        %tmp.4 = ne %tmp.2 %tmp.3;
-        bf %tmp.4 @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_8_30_63_if_end;
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_8_30_63_if_true:
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_28_30_63_start:
-[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc" 30 29 ]
-        symbol [ myView %tmp.6 30 29 35 ];
-        %tmp.6 = getv ? :myView;
-        %tmp.7 = as %tmp.6 { (!Null) };
-        symbol [ readSettingsAndInitGraph %tmp.8 30 36 60 ];
-        %tmp.8 = getv function %tmp.7 :readSettingsAndInitGraph;
-        invoke %tmp.7 %tmp.8();
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_28_30_63_stop:
-        goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_8_30_63_if_end;
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_30_8_30_63_if_end:
+        symbol [ readSettings %tmp.3 30 15 27 ];
+        %tmp.3 = getv function %tmp.2 :readSettings;
+        invoke %tmp.2 %tmp.3();
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc" 31 8 ]
-        symbol [ WatchBG %tmp.10 31 8 15 ];
-        %tmp.10 = getv ? :WatchBG;
-        symbol [ registerASAP %tmp.11 31 16 28 ];
-        %tmp.11 = getv function %tmp.10 :registerASAP;
-        invoke %tmp.10 %tmp.11();
+        symbol [ WatchBG %tmp.5 31 8 15 ];
+        %tmp.5 = getv ? :WatchBG;
+        symbol [ registerASAP %tmp.6 31 16 28 ];
+        %tmp.6 = getv function %tmp.5 :registerASAP;
+        invoke %tmp.5 %tmp.6();
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc" 32 2 ]
-        %tmp.12 = true;
-        ret %tmp.12;
+        %tmp.7 = true;
+        ret %tmp.7;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_29_33_33_4_stop:
     }
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc"; @line = 35; @symbol_functiondef = [getInitialView,35,13,27]; ]

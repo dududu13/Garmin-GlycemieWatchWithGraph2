@@ -35,6 +35,10 @@ class watchGraph  {
   private var BG_BAS1;
   private var BG_HAUT1;
 
+ var tabData;
+    var x ;
+    var yLow ;
+    var yHigh;
 
   private var lowGlucoseColor = Gfx.COLOR_RED;
   private var lowGlucoseHighlightColor = Gfx.COLOR_DK_RED;
@@ -48,7 +52,29 @@ class watchGraph  {
 
   }
   function calcule_tout(data) {
+    System.println("graph calcul tout");
     me.data = data;
+    var witdth = System.getDeviceSettings().screenWidth;
+    var totalPixel = witdth-XoffsetGauche-XoffsetDroite;
+    glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel).toNumber();
+
+    if (logarithmique) { MIN_GLUCOSE1 = Math.ln(MIN_GLUCOSE);}
+    else {MIN_GLUCOSE1 = MIN_GLUCOSE;}
+    BG_BAS1 = log(BG_BAS);
+    BG_HAUT1 = log(BG_HAUT);
+    maxGlucose = MIN_GLUCOSE1;
+     tabData = new[0];
+    for (var i=0 ; i<data.size() ; i++) {
+      var gl;
+      if (data[i][0] == 0) {gl = 0;}
+      else {gl = log(data[i][0]);}
+      tabData.add(gl);
+      if ( gl>maxGlucose) {
+        maxGlucose = gl;
+      }
+    }
+     yLow = getYForGlucose(BG_BAS1);
+     yHigh = getYForGlucose(BG_HAUT1);
   }
 
   function log(val) {
@@ -62,25 +88,8 @@ class watchGraph  {
   }
 
   function dessine_tout(dc) {
-    var totalPixel = dc.getWidth()-XoffsetGauche-XoffsetDroite;
-    glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel).toNumber();
+    x = (System.getDeviceSettings().screenWidth-XoffsetDroite);
 
-    if (logarithmique) { MIN_GLUCOSE1 = Math.ln(MIN_GLUCOSE);}
-    else {MIN_GLUCOSE1 = MIN_GLUCOSE;}
-    BG_BAS1 = log(BG_BAS);
-    BG_HAUT1 = log(BG_HAUT);
-    maxGlucose = MIN_GLUCOSE1;
-    var tabData = new[0];
-    for (var i=0 ; i<data.size() ; i++) {
-      var gl = log(data[i][0]);
-      tabData.add(gl);
-      if ( gl>maxGlucose) {
-        maxGlucose = gl;
-      }
-    }
-    var x = (dc.getWidth()-XoffsetDroite);
-    var yLow = getYForGlucose(BG_BAS1);
-    var yHigh = getYForGlucose(BG_HAUT1);
     for (var i = tabData.size()-1 ; i>=0 ; i = i-1) {
       var BG = (tabData[i]);
       x = x-glucoseBarWidthPixel-1;
@@ -90,17 +99,12 @@ class watchGraph  {
       var gl = BG;
       var y = getYForGlucose(gl);
       var yHaut = y+posY;
-      //System.println("yhight="+yHigh+"  yLow="+yLow+"  x="+x);
-      
-
-      //var hlColor = highGlucoseHighlightColor;
-      if (gl < BG_BAS1) {
+      if (gl == 0) {} // un vide si plycemie = 0
+      else if (gl < BG_BAS1) {
         drawRectangle(dc, lowGlucoseColor, x, yHaut, glucoseBarWidthPixel, HAUTEUR_GRAPH - y);
-        //hlColor = lowGlucoseHighlightColor;
       } else if (gl < BG_HAUT1) {
         drawRectangle(dc, lowGlucoseColor, x, yLow+posY, glucoseBarWidthPixel, HAUTEUR_GRAPH - yLow);
         drawRectangle(dc, normalGlucoseColor, x, yHaut, glucoseBarWidthPixel, yLow - y);
-        //hlColor = normalGlucoseHighlightColor;
       } else {
         drawRectangle(dc, lowGlucoseColor, x, yLow+posY, glucoseBarWidthPixel, HAUTEUR_GRAPH - yLow);
         drawRectangle(dc, normalGlucoseColor, x, yHigh+posY, glucoseBarWidthPixel, yLow - yHigh);
@@ -111,7 +115,6 @@ class watchGraph  {
     var text = ["1 h","2 h","4 h","6h"][nbHGraph];
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
     dc.drawText(dc.getWidth()/2,posY + HAUTEUR_GRAPH ,Gfx.FONT_SYSTEM_XTINY,text,Gfx.TEXT_JUSTIFY_CENTER);
-    //System.println("low="+(posY + HAUTEUR_GRAPH));
 
   }
 

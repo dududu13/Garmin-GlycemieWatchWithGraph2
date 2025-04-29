@@ -27,7 +27,7 @@ class WatchApp extends App.AppBase {
     }   
 
     function onSettingsChanged() {
-        if (myView != null) {myView.readSettingsAndInitGraph();}
+        myView.readSettings();
         WatchBG.registerASAP();
 		return true; 
     }
