@@ -39,6 +39,7 @@ class watchGraph  {
     var x ;
     var yLow ;
     var yHigh;
+    //var logarithmique,nbHGraph;
 
   private var lowGlucoseColor = Gfx.COLOR_RED;
   private var lowGlucoseHighlightColor = Gfx.COLOR_DK_RED;
@@ -47,13 +48,19 @@ class watchGraph  {
   private var highGlucoseColor = 0xFFFF55;
   private var highGlucoseHighlightColor = 0xFFFF00;
 
-  function initialize() {
+  function initialize(data) {
     System.println("Graph INIT");
-
+    calcule_tout(data);
   }
+
   function calcule_tout(data) {
+    System.println("GraphData calcule tout avec data="+data);
+    //logarithmique = Application.getApp().getProperty("logarithmique");
+    if (logarithmique == null) {logarithmique = false;}
+    //nbHGraph  = Application.getApp().getProperty("nbHGraph");
+    if ((nbHGraph == null) || (nbHGraph>3)) {nbHGraph = 3;}
     System.println("graph calcul tout");
-    me.data = data;
+    //me.data = data;
     var witdth = System.getDeviceSettings().screenWidth;
     var totalPixel = witdth-XoffsetGauche-XoffsetDroite;
     glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel).toNumber();
@@ -89,7 +96,7 @@ class watchGraph  {
 
   function dessine_tout(dc) {
     x = (System.getDeviceSettings().screenWidth-XoffsetDroite);
-
+System.println("dessine tout graph tabdata="+tabData);
     for (var i = tabData.size()-1 ; i>=0 ; i = i-1) {
       var BG = (tabData[i]);
       x = x-glucoseBarWidthPixel-1;
@@ -119,6 +126,7 @@ class watchGraph  {
   }
 
   private function getYForGlucose(glucose as Number) as Number {
+    if (maxGlucose == MIN_GLUCOSE1) {return HAUTEUR_GRAPH;}
     return (HAUTEUR_GRAPH * (maxGlucose - glucose) / (maxGlucose - MIN_GLUCOSE1)).toNumber();
   }
 

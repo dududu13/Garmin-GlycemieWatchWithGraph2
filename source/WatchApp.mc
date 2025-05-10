@@ -1,61 +1,261 @@
+/*
+ * NightscoutWatch Garmin Connect IQ watchface
+ * Copyright (C) 2017-2018 tynbendad@gmail.com
+ * #WeAreNotWaiting
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3 of the License.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   A copy of the GNU General Public License is available at
+ *   https://www.gnu.org/licenses/gpl-3.0.txt
+ */
 
 using Toybox.Application as App;
 using Toybox.Background;
 using Toybox.Time;
 using Toybox.System as Sys;
-using Toybox.WatchUi as Ui;
+using Toybox.Time.Gregorian as Calendar;
 
 // NOTE: every object created here uses memory in the background process (as well as the watchface process.)
 //       the background app is extremely limited in memory (32KB), so only define what is absolutely needed.
 
+// cgm sync state
 const NBRE_MAXI_DATA = 72;//6h
 
 (:background)
-var myView;
+var myView = null;
+var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage;
 
-
-(:background)
-var capteur_seconde=0;
-
-var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique;
+var nextEventSecs = 0;
 
 (:background)
 class WatchApp extends App.AppBase {
+    
+    var bgdataPreView = null;
+
+	// cgm sync state
+	const defaultOffsetSeconds = 30;
+	var offsetSeconds = defaultOffsetSeconds;
+	var shiftingOffset = false;
+	var syncAtSecond = -1;
+    var secAfterCapteur = [20,10,10]; 
+
+
+
 
     function initialize() {
-        AppBase.initialize();       
-    }   
+		Sys.println("app initialize");
+        //this gets called in both the foreground and background
+        AppBase.initialize();
+    }
 
     function onSettingsChanged() {
-        myView.readSettings();
-        WatchBG.registerASAP();
-		return true; 
+		Sys.println("onSettingsChanged");
+        if (myView != null) {
+	        myView.onSettingsChanged();
+	        //WatchApp.resync(0);
+        }
     }
 
+    // Return the initial view of your application here
     function getInitialView() {
-        //System.println("start getInitialView()");
-        myView = new WatchView();
-        return [ myView, new WatchDelegate()];
+		Sys.println("getInitialView");
+        myView = new watchView();
+        Background.deleteTemporalEvent();
+        var thisApp = Application.getApp();
+        var lastBGmillis = myView.bgSecondes;
+        Sys.println("Initialize sync with offsetMillis="+lastBGmillis);
+        resync(lastBGmillis);
+        return [ myView, new bgbgDelegate()];
     }
 
-    function getServiceDelegate() { //lance le service Background, et le premier appel
-        //System.println("APP call gestService Delegate");
-        Background.deleteTemporalEvent();
-        var BGservice = new WatchBG();
-        WatchBG.registerASAP();
-        WatchBG.setCapteurChanged(true);
-        return [BGservice];
+
+    function DelaiTemporalEventSecondRestant() {
+        
+        var delaiMin = 1;
+
+        var lastBackgroundMoment = Background.getLastTemporalEventTime();// as Time.Moment or Time.Duration or Null
+        var delaiRestantSecondes=0;
+        if (lastBackgroundMoment != null) {
+          //Sys.println("DelaiTemporalEventSecondRestant temporal depuis = "+(Time.now().value() - lastBackgroundMoment.value()) +" sec");
+          delaiRestantSecondes = 300 -Time.now().value() + lastBackgroundMoment.value();
+        } else {
+          //Sys.println("DelaiTemporalEventSecondRestant temporal null, delai = 0");
+
+        }
+        var delaiCalcule = delaiRestantSecondes;
+        if (delaiCalcule<delaiMin) {delaiRestantSecondes = delaiMin;}
+        //s.println("DelaiTemporalEventSecondRestant = "+delaiRestantSecondes);
+        return delaiRestantSecondes;
     }
+
+    function resync(last_capteur_seconds) { // réglage prochain temporal event, 5 min au moins après le précédent, et juste après la prochaine lecture du capteur + tempo
+        Sys.println("start RESYNC : last_capteur_seconds = "+last_capteur_seconds);
+        var TEMPO_WEB = [15,10,15];  //tempo pour que la nouvelle glycemie soit dispo sur Nightscout, Xdrip ou AAPS 
+        var tempoWeb = TEMPO_WEB[Application.getApp().getProperty("sourceBG")];
+        var timeNowValue = Time.now().value();
+        var delaiCapteurRestantMini = 0;
+        //var last_capteur_seconde;
+        if ((last_capteur_seconds == null) || (last_capteur_seconds == 0)){
+            last_capteur_seconds = timeNowValue - 600 - tempoWeb -60; //pour synchro des que possible
+        }
+
+        var capteurElapsed = timeNowValue - last_capteur_seconds;
+        delaiCapteurRestantMini =  300 - capteurElapsed + tempoWeb; //
+        var delaicapteurCorrige=delaiCapteurRestantMini;
+        if ((delaiCapteurRestantMini >-300 ) && (delaiCapteurRestantMini <295)){
+            delaicapteurCorrige = delaiCapteurRestantMini % 300 +300; // de 300 à 599
+        }
+        var temporalMinRestant = WatchApp.DelaiTemporalEventSecondRestant();
+        var timeTempo = temporalMinRestant;
+
+        if ((delaicapteurCorrige < 595) && (temporalMinRestant<delaicapteurCorrige)) {
+            timeTempo = delaicapteurCorrige; //correction en rallongeant
+        }
+
+        Sys.println("RESYNC 0 timeNowValue            = " +timeNowValue);
+        Sys.println("RESYNC 1 capteurElapsed          = " +capteurElapsed);
+        Sys.println("RESYNC 2 delaiCapteurRestantMini = " +delaiCapteurRestantMini);
+        Sys.println("RESYNC 3 delaicapteurCorrige     = " +delaicapteurCorrige);
+        Sys.println("RESYNC 4 temporalMinRestant      = " +temporalMinRestant);
+        Sys.println("RESYNC 5 tempofinal              = " +timeTempo);
+        Background.registerForTemporalEvent(Time.now().add(new Time.Duration(timeTempo))); 
+        Sys.println("RESYNC fin OK---Tempo final posee = " + timeTempo);
+    }
+
+
+    function onBackgroundData(data) {
+		Sys.println("onBackground "+data);
+        enregistreDernierCapteur(data[0]);
+        var CapteurSeconds = data[0][2];
+		Sys.println("onBackground "+CapteurSeconds);
+        if ((CapteurSeconds != null) &&
+            (CapteurSeconds > 0)) {
+            Sys.println("onBackgroundData call resync(elapsedMills) "+CapteurSeconds);
+            resync(CapteurSeconds);            
+        } else {
+            Sys.println("onBackgroundData invalid data: "+CapteurSeconds + "pose 300 sec");
+            Background.registerForTemporalEvent(new Time.Duration(300));
+            resync(0);
+        }
+    
+
+        //App.getApp().setProperty("offsetSeconds", offsetSeconds);
+
+    }
+
+
+	function traiteDebugRecue(responseCode,data,backGd_capteur_millis) {
+        
+        var bb = ["NS","AAPS","Xd+"][Application.getApp().getProperty("sourceBG")];
+        var info = Calendar.info(Time.now(), Time.FORMAT_LONG);
+        var timeString = Lang.format("$1$:$2$:$3$", [info.hour, info.min.format("%02d"),info.sec.format("%02d")]);
+
+		var st2 = "";
+        if (data == null) {
+            st2 = "Data = null";
+            data="---";
+        }
+        else {
+			var timeCapt = new Time.Moment(backGd_capteur_millis);
+			var infoCapt = Calendar.info(timeCapt, Time.FORMAT_LONG);
+
+			var timeS = Lang.format("$1$:$2$:$3$", [infoCapt.hour, infoCapt.min.format("%02d"),infoCapt.sec.format("%02d")]);
+            st2 = "capt. "+ timeS;
+        }
+        var debugInfos = bb + "  code rep = "+responseCode ;
+        debugInfos =  debugInfos + "\n\n" +st2 + "    sync. "+timeString;                           
+		
+
+        //System.println(debugInfos);
+        Application.Storage.setValue("debugData", data.toString());
+        Application.Storage.setValue("debugInfos", debugInfos);
+
+	}
+
+    function enregistreDernierCapteur(capteur) {
+        //if (capteur[0] ==0) { return;}
+        System.println("enregistreDernierCapteur "+capteur);
+        var allData = readAlldData();
+        allData.add(capteur);// ajoute a la fin
+        if (allData.size()>NBRE_MAXI_DATA) {
+            allData.remove(allData[0]); // enleve le 1er
+        }
+        storeAllData(allData);
+        Application.Storage.setValue("CapteurChanged",true);
+        System.println("enregistreDernierCapteur FIN, call backgrounddata avec millis = "+capteur[2]);
+        //Background.onBackgroundData(capteur[2]);
+
+    }
+    
+    function readAlldData() {
+        System.println("start readAlldData ");
+        var st = Application.Storage.getValue("data");
+       
+        var tab=new[0];
+        if ((st == null) || (st.length() < 3)) {
+            return tab;
+        }
+        var	n1 = st.find(";");
+        while (n1 != null) {
+            var st2 = st.substring(0,n1);
+            st = st.substring(n1+1,st.length());
+            n1 = st.find(";");
+
+            var tab2 = new[0];
+            var	n2 = st2.find(",");
+            tab2.add(st2.substring(0,n2).toNumber()); //BG
+            st2 = st2.substring(n2+1,st2.length());
+
+            n2 = st2.find(",");
+            tab2.add(st2.substring(0,n2).toNumber()); //BG,delta
+            st2 = st2.substring(n2+1,st2.length());
+
+            tab2.add(st2.toNumber()); //BG,delta,secondes
+
+            tab.add(tab2); //[BG,delta,secondes]
+        }
+        System.println("fin readAlldData  ="+tab);
+        return tab;
+    }
+
+    function storeAllData(myTab) {
+      System.println("debut storeAllData "+myTab);
+      var st = "";
+      for (var i = 0;i<myTab.size();i++) {
+        if ((myTab[i] !=null) && (myTab[i][0] !=null) && (myTab[i][1] !=null) && (myTab[i][2] !=null)) {
+        st=st+myTab[i][0].toString()+","+myTab[i][1].toString()+","+myTab[i][2].toString()+";";
+        }
+      }
+      Application.Storage.setValue("data",st);
+      System.println("fin storeAllData st = "+st);
+     }
+
+
+
+    function getServiceDelegate(){
+		//Sys.println("getServiceDelegate");
+        return [new WatchBG()];
+    }
+
+
 
 
 
 (:onlyWithSettingOnWatchface)
     function getSettingsView() {
-        if (Sys.getDeviceSettings().isTouchScreen) {
+        Application.Storage.setValue("CapteurChanged",true);
+         if (Sys.getDeviceSettings().isTouchScreen) {
             return [new $.ViewSettings(), new $.ViewSettingsDelegate()];
         } else {
             var menuSettings =  menuPrincipal(0);
-            return [menuSettings, new $.MenuPrincipalDelegate(menuSettings),Ui.SLIDE_RIGHT];
+            return [menuSettings, new $.MenuPrincipalDelegate(menuSettings),WatchUi.SLIDE_RIGHT];
         }
     }
 
@@ -64,7 +264,7 @@ class WatchApp extends App.AppBase {
     public function menuPrincipal(position) {
         var ligne1 = afficheMeteo ?  "Graph I/O meteo" : "Meteo I/O graph";
         var ligne0 = afficheSecondes ? "Set seconds OFF" : "Set seconds ON" ;
-        return  new $.MenuView("Settings "+Ui.loadResource(Rez.Strings.version),[ligne0,ligne1,"Graph options","BG source"],position);
+        return  new $.MenuView("Settings "+WatchUi.loadResource(Rez.Strings.version),[ligne0,ligne1,"Graph options","BG source"],position);
     }
-}
 
+}

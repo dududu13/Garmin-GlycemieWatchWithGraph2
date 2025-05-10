@@ -37,6 +37,7 @@ class ViewSettingsDelegate extends Ui.BehaviorDelegate {
 
 
     function onBack() {
+        WatchApp.onSettingsChanged();
         Ui.popView(0);
         return true;
     }

@@ -34,6 +34,10 @@ var _menu_principalview;
         Ui.requestUpdate();
 	}    
 
+    function onBack() {
+        WatchApp.onSettingsChanged();
+    }
+
 
     function onSelect()    {
 /*

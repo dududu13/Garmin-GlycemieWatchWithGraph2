@@ -6,10 +6,11 @@
             <listEntry value="2">Xdrip+</listEntry>
         </settingConfig>
     </setting>
-    <setting propertyKey="@Properties.url" title="@Strings.url" >
+    <setting propertyKey="@Properties.NSurl" title="@Strings.NSurlPrompt" prompt="@Strings.NSurlPrompt">
         <settingConfig type="alphanumeric" required="false" /></setting>
-    <setting propertyKey="@Properties.tokenNS" title="@Strings.token" >
+    <setting propertyKey="@Properties.NStoken" title="NStokenPrompt" prompt="@Strings.NStokenPrompt">
         <settingConfig type="alphanumeric" required="false" /></setting>
+
     <setting propertyKey="@Properties.afficheSecondes" title="@Strings.secondsPrompt" >
         <settingConfig type="boolean" /></setting>
     <setting propertyKey="@Properties.afficheMeteo" title="@Strings.meteoPrompt" >
@@ -24,4 +25,8 @@
     </setting>
     <setting propertyKey="@Properties.logarithmique" title="@Strings.logarithmique" >
         <settingConfig type="boolean" /></setting>
+    <setting propertyKey="@Properties.debuging" title="Debug ?" >
+        <settingConfig type="boolean" /></setting>
+
+
 </settings>

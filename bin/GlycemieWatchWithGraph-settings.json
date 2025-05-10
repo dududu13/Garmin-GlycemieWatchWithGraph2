@@ -24,11 +24,11 @@
     "configMax" : null,
     "configMaxLength" : null
   }, {
-    "key" : "url",
+    "key" : "NSurl",
     "valueType" : "string",
-    "defaultValue" : "",
-    "configTitle" : "url",
-    "configPrompt" : null,
+    "defaultValue" : "https://glycemie.fin-tech.com/",
+    "configTitle" : "NSurlPrompt",
+    "configPrompt" : "NSurlPrompt",
     "configType" : "alphaNumeric",
     "configError" : null,
     "configHelpUrl" : null,
@@ -39,11 +39,11 @@
     "configMax" : null,
     "configMaxLength" : null
   }, {
-    "key" : "tokenNS",
+    "key" : "NStoken",
     "valueType" : "string",
-    "defaultValue" : "",
-    "configTitle" : "token",
-    "configPrompt" : null,
+    "defaultValue" : "watchface-0da8d01b0c8b3595",
+    "configTitle" : "NStokenPrompt",
+    "configPrompt" : "NStokenPrompt",
     "configType" : "alphaNumeric",
     "configError" : null,
     "configHelpUrl" : null,
@@ -125,38 +125,33 @@
     "configMin" : null,
     "configMax" : null,
     "configMaxLength" : null
+  }, {
+    "key" : "debuging",
+    "valueType" : "boolean",
+    "defaultValue" : false,
+    "configTitle" : "$literal7$",
+    "configPrompt" : null,
+    "configType" : "boolean",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : null,
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
   } ],
   "supportsLiveValidation" : false,
   "languages" : {
-    "fra" : {
-      "secondsPrompt" : "Affiche les secondes ?",
-      "nbHGraph" : "Heures du graph",
-      "sourceBG" : "Source pour les données de glycémie",
-      "logarithmique" : "Echelle logarithmique du graphique ?",
-      "logCourt" : "Echelle",
-      "url" : "Url Nightscout",
-      "meteoPrompt" : "Meteo, ou graphique ?",
-      "token" : "Code utilisateur Nightscout, si besoin"
-    },
-    "fre" : {
-      "secondsPrompt" : "Affiche les secondes ?",
-      "nbHGraph" : "Heures du graph",
-      "sourceBG" : "Source pour les données de glycémie",
-      "logarithmique" : "Echelle logarithmique du graphique ?",
-      "logCourt" : "Echelle",
-      "url" : "Url Nightscout",
-      "meteoPrompt" : "Meteo, ou graphique ?",
-      "token" : "Code utilisateur Nightscout, si besoin"
-    },
     "valyrian" : {
       "secondsPrompt" : "Affiche les secondes ?",
+      "NStokenPrompt" : "Access token NS user, if necessary",
+      "NSurlPrompt" : "Online site Nightscout URL",
       "nbHGraph" : "Hours for graph",
       "logarithmique" : "Log scale for graph ?",
       "version" : "V. 1",
-      "url" : "Online site URL",
       "meteoPrompt" : "Meteo, or graph ?",
       "AppName" : "Blood Glucose Watch",
-      "token" : "Access token NS user, if necessary",
       "$literal1$" : "AAPS",
       "$literal0$" : "URL NightScout",
       "$literal3$" : "1h",
@@ -164,6 +159,7 @@
       "$literal5$" : "4h",
       "$literal4$" : "2h",
       "sourceBG" : "Blood glucose source",
+      "$literal7$" : "Debug ?",
       "$literal6$" : "6h",
       "logCourt" : "Scale"
     }

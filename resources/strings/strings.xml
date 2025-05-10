@@ -3,8 +3,8 @@
     <string id="AppName">Blood Glucose Watch</string>
 
 
-    <string id="url">Online site URL</string>
-    <string id="token">Access token NS user, if necessary</string>
+    <string id="NSurlPrompt">Online site Nightscout URL</string>
+    <string id="NStokenPrompt">Access token NS user, if necessary</string>
     <string id="secondsPrompt">Affiche les secondes ?</string>
     <string id="meteoPrompt">Meteo, or graph ?</string>
     <string id="sourceBG">Blood glucose source</string>

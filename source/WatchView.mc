@@ -1,37 +1,56 @@
+/*
+ * NightscoutWatch Garmin Connect IQ watchface
+ * Copyright (C) 2017-2018 tynbendad@gmail.com
+ * #WeAreNotWaiting
+ *
+ *  This program is free software: you can redistribute it and/or modify
+ *  it under the terms of the GNU General Public License as published by
+ *  the Free Software Foundation, version 3 of the License.
+ *
+ *   This program is distributed in the hope that it will be useful,
+ *   but WITHOUT ANY WARRANTY; without even the implied warranty of
+ *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
+ *   GNU General Public License for more details.
+ *
+ *   A copy of the GNU General Public License is available at
+ *   https://www.gnu.org/licenses/gpl-3.0.txt
+ */
 
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
-using Toybox.System as Sys;
+using Toybox.System;
 using Toybox.Lang as Lang;
 using Toybox.Application as App;
 using Toybox.Time;
 using Toybox.Time.Gregorian as Calendar;
-using Toybox.Application;
 
 
+class watchView extends Ui.WatchFace {
 
-class WatchView extends Ui.WatchFace {
 
-    public var valeursCapteur = new[3];
+    var partialUpdatesAllowed = false;
+
+    var inLowPower = false;
+    //var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage,CapteurChanged;
+
+
     const prov = ["NS","AAPS","Xd"];  
-    var BTlogo = WatchUi.loadResource(Rez.Drawables.blueTooth);  
+    var BTlogo = Ui.loadResource(Rez.Drawables.blueTooth);  
     
     var graph;
     var tabData = new[0];
-    var AffichageBgValue =0;
-    var AffichageSecondesCapteur = Time.now().value()- 99*60; 
-    var AffichageBgDelta = 0;
+    var bgBg =0;
+    var bgSecondes = Time.now().value()- 99*60; 
+    var bgDelta = 0;
 
     var decalageY_OLED = 0;
 
 
-	var inLowPower=false;
+
     var largeurEcran = System.getDeviceSettings().screenWidth;
     var hauteurEcran = System.getDeviceSettings().screenHeight;//dc.getHeight();;
-    var OledModel  = Sys.getDeviceSettings().requiresBurnInProtection; 
+    var OledModel  = System.getDeviceSettings().requiresBurnInProtection; 
 
-    var lastBG;
-    var nowSec = 0;
 
 var x = {
 "date"=>(0.5 * largeurEcran),
@@ -105,60 +124,168 @@ var justification = {
     var white = Gfx.COLOR_WHITE;
     var trans = Gfx.COLOR_TRANSPARENT;
 
-    
+ 
 
-    function initialize() {
-        
-        WatchFace.initialize();
-        System.println("View debut init");
+// keys to the object store data
+
+    function onSettingsChanged() {
         readSettings();
-        graph = new watchGraph();
-        System.println("View fin init");    
-
+		return true; // always register the event now, since we attempt xdrip or spike regardless of empty urls
     }
 
-    function onLayout(dc) {
-   }
+    function readSettings() {
+        sourceBG = getProp("sourceBG",2);
+        afficheSecondes = getProp("afficheSecondes",false);
+        afficheMeteo = getProp("afficheMeteo",false);
+        
+        debugage = getProp("debuging",false);
+        //CapteurChanged = true;
+    }
 
+    function getProp(key,defaultValue) {
+        var property = Application.getApp().getProperty(key);
+        if (property == null) {property = defaultValue;}
+        return property;
+    }
 
-    function onExitSleep() {
-        inLowPower = false;
+    function getStorage(key,defaultValue) {
+        var data = App.Storage.getValue(key);
+        if (data == null) {return defaultValue;}
+        return data;
     }
 
 
-    function onEnterSleep() {
-    	inLowPower = true;
-       	WatchUi.requestUpdate(); 
+    function readAllData() {
+        var data = WatchApp.readAlldData();
+        getLastData(data);
+        return data;
     }
 
-    function readLastValues() {
-        AffichageBgValue = 0;
-        AffichageBgDelta = 0;
-        AffichageSecondesCapteur = 0;                                
-        var size = tabData.size();
+
+    function getLastData(data) {
+        bgBg = 0;
+        bgDelta = 0;
+        bgSecondes = 0;                                
+        var size = data.size();
         for (var i=size-1;i>=0;i=i-1) {
-            if (tabData[i][0] > 0) {
-                AffichageBgValue = tabData[i][0];
-                AffichageBgDelta = tabData[i][1];
-                AffichageSecondesCapteur = tabData[i][2]; 
+            System.println("getlastdata "+data[i]);
+            if (data[i][0] > 0) {
+                bgBg = data[i][0];
+                bgDelta = data[i][1];
+                bgSecondes = data[i][2]; 
                 return;
             }
         }
 
     }
 
+
+    function initialize() {
+    	System.println("view.initialize()");
+        readSettings();
+        tabData = readAllData();
+        graph = new watchGraph(tabData);
+        WatchFace.initialize();
+    }
+
+    function onLayout(dc) {
+     }
+    function onShow() {
+    }
+
+
+    function prochainBackground() { //avec moment
+        var prochainBackground = Background.getTemporalEventRegisteredTime();// Time.Moment or Time.Duration or Null
+        var delaiRestant = 0;
+        var prochainTime = "";
+        if (prochainBackground == null) {
+            System.println("prochainBackground null, registerasap");
+            delaiRestant = "...";
+            //WatchApp.resync(0);
+        } else { 
+            if (prochainBackground.compare(Time.now())<0) {
+                System.println("prochainBackground < now, registerasap");
+                delaiRestant = "ERR";
+                //WatchApp.resync(0);
+            } else {
+                delaiRestant = prochainBackground.value()-Time.now().value();
+                var info = Calendar.info(prochainBackground, Time.FORMAT_LONG);
+                prochainTime = Lang.format("$1$:$2$:$3$", [info.hour.format("%02d"),info.min.format("%02d"),info.sec.format("%02d")]);
+
+            }
+        }
+        return [delaiRestant,prochainTime];
+    }
+
+    function afficheDebug(dc) {
+        var largeurEcran = System.getDeviceSettings().screenWidth;
+        var stInfos;
+        var prochainBackground = prochainBackground();
+        stInfos = ["NS","AAPS","Xdrip"][sourceBG]+"  next "+prochainBackground[0]+"\n\n                          next "+prochainBackground[1];
+        //if (nextEventSecs!=0) {stInfos = ["NS","AAPS","Xdrip"][sourceBG] + "  next-e "+nextEventSecs;}
+        dc.clearClip();
+        dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
+        dc.clear();
+        dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
+        dc.drawText(0.5 * largeurEcran,0.02 * largeurEcran,Gfx.FONT_XTINY,stInfos,Gfx.TEXT_JUSTIFY_CENTER);
+
+        var nextTemproral = Background.getTemporalEventRegisteredTime();//Get the Moment or Duration
+
+        var st =Application.Storage.getValue("debugData");
+        if (st == null) {st = "null";}
+        var font = st.substring(0,5).equals("Atten") ? Gfx.FONT_LARGE : Gfx.FONT_XTINY;
+
+        stInfos = Application.Storage.getValue("debugInfos");
+        var long1car = (dc.getTextWidthInPixels("abcd ?Phij", Gfx.FONT_XTINY)/10).toNumber();
+        var nbcar = (dc.getWidth()*.85)/long1car;
+
+        var stData = "";
+        for (var i = 0;i<st.length();i=i+nbcar) {
+            if (i+nbcar > st.length()) {
+                stData=stData+st.substring(i,st.length()) ;
+            } else {
+                stData=stData+st.substring(i,i+nbcar) + "\n";
+            }
+        }
+        var sep = 0.33 * largeurEcran;
+        dc.drawText(0.5 * largeurEcran,0.09 * largeurEcran,Gfx.FONT_XTINY,stInfos,Gfx.TEXT_JUSTIFY_CENTER);
+        dc.setPenWidth(1);
+        dc.drawLine(0,sep,largeurEcran,sep);
+
+        var info = Calendar.info(Time.now(), Time.FORMAT_LONG);
+        var timeString = Lang.format("$1$:$2$:$3$", [info.hour.format("%02d"),info.min.format("%02d"),info.sec.format("%02d")]);
+        dc.drawText(0.15 * largeurEcran,0.17 * largeurEcran,Gfx.FONT_SYSTEM_TINY,timeString,Gfx.TEXT_JUSTIFY_LEFT);
+        dc.setColor(Gfx.COLOR_LT_GRAY,Gfx.COLOR_TRANSPARENT);
+        dc.drawText(0.5 * largeurEcran,sep,font,stData,Gfx.TEXT_JUSTIFY_CENTER);
+        dc.setColor(Gfx.COLOR_GREEN,Gfx.COLOR_TRANSPARENT);
+        dc.drawText(0.5 * largeurEcran,0.6 * largeurEcran,Gfx.FONT_NUMBER_THAI_HOT,bgBg,Gfx.TEXT_JUSTIFY_CENTER);
+
+        //var elapsedSec = Time.now().value()-bgSecondes;
+        var elapsedMin = ((Time.now().value() - bgSecondes)/60).toNumber();
+        dc.drawText(0.5 * largeurEcran,0.44 * largeurEcran,Gfx.FONT_SYSTEM_LARGE,elapsedMin+" min",Gfx.TEXT_JUSTIFY_CENTER);
+        dc.drawText(0.15 * largeurEcran,0.44 * largeurEcran,Gfx.FONT_SYSTEM_LARGE,bgDelta,Gfx.TEXT_JUSTIFY_LEFT);
+    }
+
+    function isCapteurChanged() {
+        var temp = Application.Storage.getValue("CapteurChanged");
+        if (temp == null) {return true;}
+        else {return temp;}
+    }
     function onUpdate(dc) {
+		dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
+        dc.clear();
+        if (debugage) {
+            afficheDebug(dc);
+            return;
+        }
         var timeNow = Time.now();
-        if (WatchBG.isCapteurChanged()) {
-            tabData = WatchBG.readAlldData();
-            readLastValues();
+        if (isCapteurChanged()) {
+            tabData = readAllData();
             graph.calcule_tout(tabData);
-            WatchBG.setCapteurChanged(false);
+            Application.Storage.setValue("CapteurChanged",false);
         }
         
         var infoTime = Calendar.info(timeNow, Time.FORMAT_LONG);
-		dc.setColor( Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
-        dc.clear();
 
         drawMeteoIfNotLowPower(dc);
         drawDeltaValue(dc);
@@ -174,6 +301,7 @@ var justification = {
         drawBlueTooth(dc,infoTime);        
 		ereaseOLEDifLowPower(dc);
         var nextBG = drawNextCall(dc);
+        /*
         if (lastBG == null) {
             lastBG = nextBG -1;
         }
@@ -184,7 +312,7 @@ var justification = {
         }
         lastBG = nextBG;
         nowSec = timeNow.value;
-
+        */
 
     }
 
@@ -206,27 +334,8 @@ var justification = {
        }    
     }
 
-    function prochainBackground() {
-        var prochainBackground = Background.getTemporalEventRegisteredTime();// Time.Moment or Time.Duration or Null
-        var delaiRestant = 0;
-        if (prochainBackground == null) {
-            System.println("prochainBackground null, registerasap");
-            delaiRestant = 3;
-            WatchBG.registerASAP();
-        } else { 
-            if (prochainBackground.compare(Time.now())<0) {
-                System.println("prochainBackground < now, registerasap");
-                WatchBG.registerASAP();
-                delaiRestant = 3;
-            } else {
-                delaiRestant = prochainBackground.value()-Time.now().value();
-            }
-        }
-        return delaiRestant;
-    }
-
     function drawNextCall(dc) {
-        var _nextBG = prochainBackground();
+        var _nextBG = prochainBackground()[0];
         drawLabel(dc,"NextCall",_nextBG,white);
         return _nextBG;
     }
@@ -250,7 +359,7 @@ var justification = {
     }
 
     function drawBatterieAnalog(dc) {
-        var batterie = Sys.getSystemStats().battery;
+        var batterie = System.getSystemStats().battery;
         var colorBatt = Gfx.COLOR_RED; //rouge
         if (batterie >10 ) {colorBatt = Gfx.COLOR_ORANGE;} //orange
         if (batterie >20 ) {colorBatt = Gfx.COLOR_YELLOW;} //jaune
@@ -291,7 +400,8 @@ var justification = {
             graph.dessine_tout(dc);
         }
     }
-	function drawMeteoIfNotLowPower(dc) {
+
+    function drawMeteoIfNotLowPower(dc) {
         if (((afficheMeteo) and ((! OledModel) || (! inLowPower)))) {
             if (Toybox has :Weather) {
                 var CC = Toybox.Weather.getCurrentConditions();
@@ -326,7 +436,7 @@ var justification = {
                 } else {
                     drawLabel(dc,"Temperature", "No weather",white);
                 } 
-                var batterie = Sys.getSystemStats().battery;
+                var batterie = System.getSystemStats().battery;
                 var colorBatt = Gfx.COLOR_RED; //rouge
                 if (batterie >10 ) {colorBatt = Gfx.COLOR_ORANGE;} //orange
                 if (batterie >20 ) {colorBatt = Gfx.COLOR_YELLOW;} //jaune
@@ -337,8 +447,6 @@ var justification = {
             }
         } 
     }
-
-
 
     function ereaseOLEDifLowPower(dc) {
         if ((inLowPower) and (OledModel)) {
@@ -353,16 +461,16 @@ var justification = {
     }
 
 	function drawBG(dc) {
-        if (AffichageBgValue !=null) {
+        if (bgBg !=null) {
             var colorBG = Gfx.COLOR_YELLOW;//jaune
-            if (AffichageBgValue <170 ) {colorBG = Gfx.COLOR_GREEN;} //vert
-            if (AffichageBgValue < 70 ) {colorBG = Gfx.COLOR_RED;} //rouge
-           drawLabel(dc,"BG", AffichageBgValue,colorBG);
+            if (bgBg <170 ) {colorBG = Gfx.COLOR_GREEN;} //vert
+            if (bgBg < 70 ) {colorBG = Gfx.COLOR_RED;} //rouge
+           drawLabel(dc,"BG", bgBg,colorBG);
         } 
 	}
 
     function barreBGsiBesoin(dc) {
-        var elapsedMinutes = ((Time.now().value() - AffichageSecondesCapteur)/60).toNumber();
+        var elapsedMinutes = ((Time.now().value() - bgSecondes)/60).toNumber();
         if (elapsedMinutes>11) {
             dc.setPenWidth(5*coeff);
             dc.setColor(Gfx.COLOR_RED,trans);
@@ -373,8 +481,8 @@ var justification = {
     }
 
     function drawElapsedTime(dc) {
-        if (AffichageSecondesCapteur != null) {
-            var elapsedMinutes = ((Time.now().value() - AffichageSecondesCapteur)/60).toNumber();
+        if (bgSecondes != null) {
+            var elapsedMinutes = ((Time.now().value() - bgSecondes)/60).toNumber();
             var colorMinutes = white;
             if (elapsedMinutes >10 ) {colorMinutes = Gfx.COLOR_YELLOW;} 
             if (elapsedMinutes >30 ) {colorMinutes = Gfx.COLOR_ORANGE;} 
@@ -391,8 +499,8 @@ var justification = {
     function drawDeltaValue(dc) {
         //System.println("sourceBG="+sourceBG);
         drawLabel(dc,"sourceBG", prov[sourceBG],white);
-        if (AffichageBgDelta != null) {
-            var delta = AffichageBgDelta.toNumber();
+        if (bgDelta != null) {
+            var delta = bgDelta.toNumber();
             var signe = "";
             if (delta>0) {signe="+";}
             drawLabel(dc,"Delta", signe+delta,white);
@@ -400,8 +508,8 @@ var justification = {
     }
 
     function drawDeltaCadre(dc) {
-        if (AffichageBgDelta != null) {
-            var delta = AffichageBgDelta.toNumber();
+        if (bgDelta != null) {
+            var delta = bgDelta.toNumber();
             var colorDelta = Gfx.COLOR_GREEN;
             if (delta == 99) {delta = 0;}
             if (delta > 4 ) {colorDelta = Gfx.COLOR_YELLOW;} 
@@ -432,7 +540,7 @@ var justification = {
     } 
 
     function drawNotifs(dc) {
-        var notificationCount = Sys.getDeviceSettings().notificationCount;
+        var notificationCount = System.getDeviceSettings().notificationCount;
         if  (notificationCount > 0) { // notifications
             dc.setColor(Gfx.COLOR_RED,trans);
             dc.fillCircle(x.get("notif"),y.get("notif"),.06*largeurEcran);
@@ -460,32 +568,24 @@ var justification = {
         
     }
 
-// --------------------------LECTURES SETTINGS ET DATA-----------------------------------------------------------------------------------------------------
-
-    function getProp(key,defaultVal) {
-        var property = Application.getApp().getProperty(key);
-        if (property == null) {property = defaultVal;}
-        return property;
-    }
-    function readSettings() {
-        sourceBG = getProp("sourceBG",0);
-        afficheSecondes = getProp("afficheSecondes",false);
-        afficheMeteo = getProp("afficheMeteo",false);
-        nbHGraph  = getProp("nbHGraph",2);
-        if (nbHGraph>3) {nbHGraph = 3;}
-        logarithmique = getProp("logarithmique",true);
-        //graph = new watchGraph();
-        //graph.calcule_tout(tabData);
+    function onExitSleep() {
+    	//myPrintLn("view.onExitSleep(), ctr=" + ctr); ctr++;
+    	inLowPower = false;
+    	Ui.requestUpdate(); 
     }
 
-
-
+    function onEnterSleep() {
+    	//myPrintLn("view.onEnterSleep(), ctr=" + ctr); ctr++;
+    	inLowPower = true;
+    	Ui.requestUpdate(); 
+    }
 
 }
 
-class WatchDelegate extends Ui.WatchFaceDelegate {
+class bgbgDelegate extends Ui.WatchFaceDelegate {
 
     function onPowerBudgetExceeded(powerInfo) {
+         partialUpdatesAllowed = false;
     }
 
     function initialize() {
