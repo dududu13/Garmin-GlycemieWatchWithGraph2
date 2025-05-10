@@ -396,10 +396,10 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_10
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc" 110 8 ]
         %tmp.49 = 300;
         %tmp.50 = lgetv %capteurElapsed.5;
-        symbol [ capteurElapsed %tmp.50 110 41 55 ];
+        symbol [ capteurElapsed %tmp.50 110 40 54 ];
         %tmp.51 = sub %tmp.49 %tmp.50;
         %tmp.52 = lgetv %tempoWeb.2;
-        symbol [ tempoWeb %tmp.52 110 58 66 ];
+        symbol [ tempoWeb %tmp.52 110 57 65 ];
         %tmp.53 = add %tmp.51 %tmp.52;
         lputv %delaiCapteurRestantMini.4 %tmp.53;
         symbol [ delaiCapteurRestantMini %delaiCapteurRestantMini.4 110 8 31 ];
@@ -408,7 +408,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchApp_mc_10
         %delaicapteurCorrige.6 = local;
         symbol [ delaicapteurCorrige %delaicapteurCorrige.6 111 12 31 ];
         %tmp.54 = lgetv %delaiCapteurRestantMini.4;
-        symbol [ delaiCapteurRestantMini %tmp.54 111 32 55 ];
+        symbol [ delaiCapteurRestantMini %tmp.54 111 34 57 ];
         lputv %delaicapteurCorrige.6 %tmp.54;
         symbol [ delaicapteurCorrige %delaicapteurCorrige.6 111 12 31 ];
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchApp.mc" 112 8 ]

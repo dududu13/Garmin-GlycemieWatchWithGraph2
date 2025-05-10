@@ -107,8 +107,8 @@ class WatchApp extends App.AppBase {
         }
 
         var capteurElapsed = timeNowValue - last_capteur_seconds;
-        delaiCapteurRestantMini =  300 - capteurElapsed + tempoWeb; //
-        var delaicapteurCorrige=delaiCapteurRestantMini;
+        delaiCapteurRestantMini = 300 - capteurElapsed + tempoWeb; //
+        var delaicapteurCorrige = delaiCapteurRestantMini;
         if ((delaiCapteurRestantMini >-300 ) && (delaiCapteurRestantMini <295)){
             delaicapteurCorrige = delaiCapteurRestantMini % 300 +300; // de 300 à 599
         }

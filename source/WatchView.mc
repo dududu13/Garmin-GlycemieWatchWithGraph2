@@ -61,7 +61,6 @@ var x = {
 "Elapsed"=>(0.96 * largeurEcran),
 "sourceBG"=>(0.02 * largeurEcran),
 "Secondes"=>(0.96 * largeurEcran),
-"NextCall"=>(0.25 * largeurEcran),
 "Temperature"=>(0.17 * largeurEcran),
 "Wind"=>(0.83 * largeurEcran),
 "Batterie"=>(0.5 * largeurEcran),
@@ -77,7 +76,6 @@ var y = {
 "Elapsed"=>0.545 * hauteurEcran,
 "sourceBG"=>0.49 * hauteurEcran,
 "Secondes"=>0.356 * hauteurEcran,
-"NextCall"=>0.49 * hauteurEcran,
 "Temperature"=>0.78 * hauteurEcran,
 "Wind"=>0.78 * hauteurEcran,
 "Batterie"=>0.92 * hauteurEcran,
@@ -93,7 +91,6 @@ var font = {
 "Elapsed"=>Gfx.FONT_NUMBER_MILD,
 "sourceBG"=>Gfx.FONT_XTINY,
 "Secondes"=>Gfx.FONT_NUMBER_MILD,
-"NextCall"=>Gfx.FONT_XTINY,
 "Temperature"=>Gfx.FONT_LARGE,
 "Wind"=>Gfx.FONT_LARGE,
 "Batterie"=>Gfx.FONT_LARGE,
@@ -109,7 +106,6 @@ var justification = {
 "Elapsed"=>Gfx.TEXT_JUSTIFY_RIGHT,
 "sourceBG"=>Gfx.TEXT_JUSTIFY_LEFT,
 "Secondes"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"NextCall"=>Gfx.TEXT_JUSTIFY_RIGHT,
 "Temperature"=>Gfx.TEXT_JUSTIFY_LEFT,
 "Wind"=>Gfx.TEXT_JUSTIFY_RIGHT,
 "Batterie"=>Gfx.TEXT_JUSTIFY_CENTER,
@@ -299,20 +295,8 @@ var justification = {
         drawBatterieAnalog(dc);
         drawDeltaCadre(dc);
         drawBlueTooth(dc,infoTime);        
-		ereaseOLEDifLowPower(dc);
         var nextBG = drawNextCall(dc);
-        /*
-        if (lastBG == null) {
-            lastBG = nextBG -1;
-        }
-        //System.println("onUpdate nextBG = "+nextBG + "  lastBG = "+lastBG);
-        if ((nextBG == lastBG) and (timeNow.value != nowSec)) { //lors de l'init on a 2 update au meme moment
-            //System.println("onUpdate call registerASAP()");
-            //Background.registerASAP(); 
-        }
-        lastBG = nextBG;
-        nowSec = timeNow.value;
-        */
+		ereaseOLEDifLowPower(dc);
 
     }
 
@@ -336,7 +320,7 @@ var justification = {
 
     function drawNextCall(dc) {
         var _nextBG = prochainBackground()[0];
-        drawLabel(dc,"NextCall",_nextBG,white);
+        drawLabel(dc,"sourceBG", prov[sourceBG] + " "+_nextBG,white);
         return _nextBG;
     }
 
@@ -498,7 +482,6 @@ var justification = {
 
     function drawDeltaValue(dc) {
         //System.println("sourceBG="+sourceBG);
-        drawLabel(dc,"sourceBG", prov[sourceBG],white);
         if (bgDelta != null) {
             var delta = bgDelta.toNumber();
             var signe = "";
