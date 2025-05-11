@@ -770,14 +770,14 @@ module Rez {
 
     module Strings {
         (:initialized) var secondsPrompt as ResourceId;
+        (:initialized) var NStokenPrompt as ResourceId;
+        (:initialized) var NSurlPrompt as ResourceId;
         (:initialized) var nbHGraph as ResourceId;
         (:initialized) var sourceBG as ResourceId;
         (:initialized) var logarithmique as ResourceId;
-        (:initialized) var logCourt as ResourceId;
         (:initialized) var version as ResourceId;
-        (:initialized) var url as ResourceId;
+        (:initialized) var logCourt as ResourceId;
         (:initialized) var meteoPrompt as ResourceId;
-        (:initialized) var token as ResourceId;
         (:initialized) var AppName as ResourceId;
     } // Strings
 

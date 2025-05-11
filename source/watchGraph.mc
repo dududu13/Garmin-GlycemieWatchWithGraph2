@@ -16,7 +16,7 @@ class watchGraph  {
   private const BG_HAUT = 170;
   private const posY_EPIX = 300;
   private const XoffsetDroite_EPIX = 80;
-  private const XoffsetGauche_EPIX = 30;
+  private const XoffsetGauche_EPIX = 70;
 
   private var coeff = System.getDeviceSettings().screenHeight/416.0;
 
@@ -96,7 +96,7 @@ class watchGraph  {
 
   function dessine_tout(dc) {
     x = (System.getDeviceSettings().screenWidth-XoffsetDroite);
-System.println("dessine tout graph tabdata="+tabData);
+    //System.println("dessine tout graph tabdata="+tabData);
     for (var i = tabData.size()-1 ; i>=0 ; i = i-1) {
       var BG = (tabData[i]);
       x = x-glucoseBarWidthPixel-1;
@@ -119,9 +119,26 @@ System.println("dessine tout graph tabdata="+tabData);
       }
       //drawRectangle(dc, hlColor, x, yHaut, glucoseBarWidthPixel, 3);
     }
-    var text = ["1 h","2 h","4 h","6h"][nbHGraph];
+    drawScale(dc);
+  }
+
+  private function drawScale(dc) {
+    var nbH = [1,2,4,6][nbHGraph];
+    //var y = posY + HAUTEUR_GRAPH;
+    var y = posY;
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-    dc.drawText(dc.getWidth()/2,posY + HAUTEUR_GRAPH ,Gfx.FONT_SYSTEM_XTINY,text,Gfx.TEXT_JUSTIFY_CENTER);
+    dc.drawText(dc.getWidth()/2,y+ HAUTEUR_GRAPH ,Gfx.FONT_SYSTEM_XTINY,nbH+" h",Gfx.TEXT_JUSTIFY_CENTER);
+
+    var witdth = System.getDeviceSettings().screenWidth;
+    var totalPixelHour = (witdth-XoffsetGauche-XoffsetDroite)/nbH;
+    var x1 = XoffsetGauche;
+    //System.println("yLow="+yLow+ "  X1="+x1);
+    dc.setPenWidth(1);
+    dc.drawLine(x1,y-1,x1+totalPixelHour*nbH,y-1);
+    for (var i = 0;i<nbH;i++) {
+      dc.drawLine(x1,y+5,x1,y);
+      x1 = x1 + totalPixelHour;
+    }
 
   }
 

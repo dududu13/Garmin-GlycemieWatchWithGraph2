@@ -3,7 +3,7 @@
 <iq:manifest xmlns:iq="http://www.garmin.com/xml/connectiq" version="0">
     <!--nouveau     <iq:application entry="WatchApp" id="bcc09a58-9696-4d3a-ade8-d9c861b1ccb5" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="2.3.0" name="@Strings.AppName" type="watchface"> -->
     <!--Origine    <iq:application entry="NightscoutWatchApp" id="5b52b187-36b0-4a2b-8def-8fc4ab1778c8" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="2.3.0" name="@Strings.AppName" type="watchface"> -->
-    <iq:application entry="WatchApp" id="5b52b187-36b0-4a2b-8def-8fc4ab1778c8" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="3.1.0" name="@Strings.AppName" type="watchface">
+    <iq:application entry="WatchApp" id="bcc09a58-9696-4d3a-ade8-d9c861b1ccb5" launcherIcon="@Drawables.LauncherIcon" minSdkVersion="3.1.0" name="@Strings.AppName" type="watchface">
         <iq:products>
             <iq:product id="approachs50"/>
             <iq:product id="approachs7042mm"/>

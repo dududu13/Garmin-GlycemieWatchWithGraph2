@@ -163,13 +163,14 @@ class WatchBG extends Toybox.System.ServiceDelegate {
         }
         Sys.println("onReceiveSGV receiveCtr = "+receiveCtr);
 		receiveCtr--;
+        var capteur;
         if  (validData) {
-            var capteur = [sgv,delta,timeMillis/1000];
-            Sys.println("onReceiveSGV call OnBackground.exit capteur="+capteur);
-            Background.exit([capteur, data]);
+            capteur = [sgv,delta,timeMillis/1000];
+        } else {
+            capteur = [0,0,0];
         }
-        
-        Sys.println("out OnReceiveSGV pas bon");
+        Sys.println("onReceiveSGV call OnBackground.exit capteur="+capteur);
+        Background.exit([capteur, data]);
     }
 
 

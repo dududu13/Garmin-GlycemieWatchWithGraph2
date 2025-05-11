@@ -2958,7 +2958,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchView_mc_4
         %tmp.64 = getv function %tmp.63 :format;
         %tmp.65 = "%2.1f";
         %tmp.66 = invoke %tmp.63 %tmp.64(%tmp.65);
-        %tmp.67 = "°C";
+        %tmp.67 = "Â°C";
         %tmp.68 = add %tmp.66 %tmp.67;
         lputv %texte.3 %tmp.68;
         symbol [ texte %texte.3 403 24 29 ];
