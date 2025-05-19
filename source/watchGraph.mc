@@ -136,7 +136,7 @@ class watchGraph  {
     dc.setPenWidth(1);
     dc.drawLine(x1,y-1,x1+totalPixelHour*nbH,y-1);
     for (var i = 0;i<nbH;i++) {
-      dc.drawLine(x1,y+5,x1,y);
+      dc.drawLine(x1,y + HAUTEUR_GRAPH,x1,y);
       x1 = x1 + totalPixelHour;
     }
 

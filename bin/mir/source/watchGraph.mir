@@ -1018,28 +1018,29 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_
         symbol [ x1 %tmp.82 139 18 20 ];
         %tmp.83 = lgetv %y.2;
         symbol [ y %tmp.83 139 21 22 ];
-        %tmp.84 = 5;
-        %tmp.85 = add %tmp.83 %tmp.84;
-        %tmp.86 = lgetv %x1.5;
-        symbol [ x1 %tmp.86 139 25 27 ];
-        %tmp.87 = lgetv %y.2;
-        symbol [ y %tmp.87 139 28 29 ];
-        invoke %tmp.80 %tmp.81(%tmp.82, %tmp.85, %tmp.86, %tmp.87);
+        symbol [ HAUTEUR_GRAPH %tmp.85 139 25 38 ];
+        %tmp.85 = getv ? :HAUTEUR_GRAPH;
+        %tmp.86 = add %tmp.83 %tmp.85;
+        %tmp.87 = lgetv %x1.5;
+        symbol [ x1 %tmp.87 139 39 41 ];
+        %tmp.88 = lgetv %y.2;
+        symbol [ y %tmp.88 139 42 43 ];
+        invoke %tmp.80 %tmp.81(%tmp.82, %tmp.86, %tmp.87, %tmp.88);
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 140 6 ]
-        %tmp.88 = lgetv %x1.5;
-        symbol [ x1 %tmp.88 140 11 13 ];
-        %tmp.89 = lgetv %totalPixelHour.4;
-        symbol [ totalPixelHour %tmp.89 140 16 30 ];
-        %tmp.90 = add %tmp.88 %tmp.89;
-        lputv %x1.5 %tmp.90;
+        %tmp.89 = lgetv %x1.5;
+        symbol [ x1 %tmp.89 140 11 13 ];
+        %tmp.90 = lgetv %totalPixelHour.4;
+        symbol [ totalPixelHour %tmp.90 140 16 30 ];
+        %tmp.91 = add %tmp.89 %tmp.90;
+        lputv %x1.5 %tmp.91;
         symbol [ x1 %x1.5 140 6 8 ];
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_138_30_141_4_stop:
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_138_4_141_4_for_incr:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 138 ]
-        %tmp.93 = lgetv %i.6;
-        symbol [ i %tmp.93 138 25 26 ];
-        %tmp.94 = add %tmp.93 1;
-        lputv %i.6 %tmp.94;
+        %tmp.94 = lgetv %i.6;
+        symbol [ i %tmp.94 138 25 26 ];
+        %tmp.95 = add %tmp.94 1;
+        lputv %i.6 %tmp.95;
         symbol [ i %i.6 138 25 26 ];
         goto @D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_138_4_141_4_for_test;
 D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_watchGraph_mc_138_4_141_4_for_end:
