@@ -190,7 +190,6 @@ class WatchApp extends App.AppBase {
         storeAllData(allData);
         Application.Storage.setValue("CapteurChanged",true);
         System.println("enregistreDernierCapteur FIN, call backgrounddata avec millis = "+capteur[2]);
-        //Background.onBackgroundData(capteur[2]);
 
     }
     

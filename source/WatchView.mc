@@ -26,7 +26,81 @@ using Toybox.Time.Gregorian as Calendar;
 
 
 class watchView extends Ui.WatchFace {
+var debug = [
+[120,3,0],
+[200,80,0],
+[159,-41,0],
+[220,61,0],
+[147,-73,0],
+[199,52,0],
+[251,52,0],
+[248,-3,0],
+[249,1,0],
+[139,-110,0],
+[134,-5,0],
+[248,114,0],
+[218,-30,0],
+[200,-18,0],
+[147,-53,0],
+[265,118,0],
+[176,-89,0],
+[244,68,0],
+[272,28,0],
+[131,-141,0],
+[264,133,0],
+[185,-79,0],
+[259,74,0],
+[203,-56,0],
+[197,-6,0],
+[193,-4,0],
+[194,1,0],
+[210,16,0],
+[257,47,0],
+[240,-17,0],
+[164,-76,0],
+[181,17,0],
+[208,27,0],
+[155,-53,0],
+[270,115,0],
+[272,2,0],
+[188,-84,0],
+[241,53,0],
+[218,-23,0],
+[231,13,0],
+[199,-32,0],
+[212,13,0],
+[180,-32,0],
+[274,94,0],
+[212,-62,0],
+[137,-75,0],
+[179,42,0],
+[220,41,0],
+[137,-83,0],
+[227,90,0],
+[198,-29,0],
+[271,73,0],
+[142,-129,0],
+[197,55,0],
+[180,-17,0],
+[264,84,0],
+[146,-118,0],
+[248,102,0],
+[144,-104,0],
+[262,118,0],
+[269,7,0],
+[222,-47,0],
+[221,-1,0],
+[220,-1,0],
+[151,-69,0],
+[170,19,0],
+[182,12,0],
+[122,-60,0],
+[270,148,0],
+[171,-99,0],
+[168,-3,0],
+[250,82,0],
 
+];
 
     var partialUpdatesAllowed = false;
 
@@ -122,7 +196,17 @@ var justification = {
 
  
 
-// keys to the object store data
+
+    function initialize() {
+    	System.println("view.initialize()");
+        readSettings();
+        tabData = readAllData();
+        //tabData = debug;
+        //WatchApp.storeAllData(tabData);
+        graph = new watchGraph(tabData);
+        WatchFace.initialize();
+    }
+
 
     function onSettingsChanged() {
         readSettings();
@@ -175,19 +259,6 @@ var justification = {
 
     }
 
-
-    function initialize() {
-    	System.println("view.initialize()");
-        readSettings();
-        tabData = readAllData();
-        graph = new watchGraph(tabData);
-        WatchFace.initialize();
-    }
-
-    function onLayout(dc) {
-     }
-    function onShow() {
-    }
 
 
     function prochainBackground() { //avec moment

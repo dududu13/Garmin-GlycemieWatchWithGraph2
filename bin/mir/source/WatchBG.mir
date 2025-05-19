@@ -753,7 +753,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchBG_mc_122
         [ "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchBG_mc_122_38_131_1_start" "D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchBG_mc_122_38_131_1_stop" ]
         %debugInfos.4 = local;
         symbol [ debugInfos %debugInfos.4 127 12 22 ];
-        %tmp.47 = "demandÃ© Ã  \n";
+        %tmp.47 = "demandé à \n";
         %tmp.48 = lgetv %timeString.3;
         symbol [ timeString %tmp.48 127 41 51 ];
         %tmp.49 = add %tmp.47 %tmp.48;
@@ -769,7 +769,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchBG_mc_122
         symbol [ setValue %tmp.55 129 28 36 ];
         %tmp.55 = getv function %tmp.54 :setValue;
         %tmp.56 = "debugData";
-        %tmp.57 = "Attente rÃ©ponse\nde ";
+        %tmp.57 = "Attente réponse\nde ";
         %tmp.58 = lgetv %sourceText.1;
         symbol [ sourceText %tmp.58 129 73 83 ];
         %tmp.59 = add %tmp.57 %tmp.58;

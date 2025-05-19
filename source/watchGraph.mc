@@ -63,7 +63,8 @@ class watchGraph  {
     //me.data = data;
     var witdth = System.getDeviceSettings().screenWidth;
     var totalPixel = witdth-XoffsetGauche-XoffsetDroite;
-    glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel).toNumber();
+    glucoseBarWidthPixel = (totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel+.5).toNumber();
+//System.println("(totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel) = "+(totalPixel/([1,2,4,6][nbHGraph]*12)- glucoseBarPaddingPixel)+"  glucoseBarWidthPixel = "+glucoseBarWidthPixel);
 
     if (logarithmique) { MIN_GLUCOSE1 = Math.ln(MIN_GLUCOSE);}
     else {MIN_GLUCOSE1 = MIN_GLUCOSE;}
@@ -96,11 +97,12 @@ class watchGraph  {
 
   function dessine_tout(dc) {
     x = (System.getDeviceSettings().screenWidth-XoffsetDroite);
+    //var x0 = x;
     //System.println("dessine tout graph tabdata="+tabData);
     for (var i = tabData.size()-1 ; i>=0 ; i = i-1) {
       var BG = (tabData[i]);
       x = x-glucoseBarWidthPixel-1;
-      if (x<XoffsetGauche) {
+      if (x<0) {
         break;
       }
       var gl = BG;
@@ -124,20 +126,18 @@ class watchGraph  {
 
   private function drawScale(dc) {
     var nbH = [1,2,4,6][nbHGraph];
-    //var y = posY + HAUTEUR_GRAPH;
-    var y = posY;
+    var y = posY + HAUTEUR_GRAPH;
     dc.setColor(Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-    dc.drawText(dc.getWidth()/2,y+ HAUTEUR_GRAPH ,Gfx.FONT_SYSTEM_XTINY,nbH+" h",Gfx.TEXT_JUSTIFY_CENTER);
+    dc.drawText(dc.getWidth()/2, y ,Gfx.FONT_SYSTEM_XTINY,nbH+" h",Gfx.TEXT_JUSTIFY_CENTER);
 
     var witdth = System.getDeviceSettings().screenWidth;
-    var totalPixelHour = (witdth-XoffsetGauche-XoffsetDroite)/nbH;
-    var x1 = XoffsetGauche;
-    //System.println("yLow="+yLow+ "  X1="+x1);
-    dc.setPenWidth(1);
-    dc.drawLine(x1,y-1,x1+totalPixelHour*nbH,y-1);
-    for (var i = 0;i<nbH;i++) {
-      dc.drawLine(x1,y + HAUTEUR_GRAPH,x1,y);
-      x1 = x1 + totalPixelHour;
+    var hourPixel = (glucoseBarWidthPixel+1)*12;
+    var x = witdth - XoffsetDroite;
+    dc.setPenWidth(2);
+    for (var i = 0;i<=nbH;i++) {
+      dc.drawLine(x,y-1,x- hourPixel,y-1);
+      dc.drawLine(x,y+5,x,y);
+      x = x - hourPixel;
     }
 
   }
