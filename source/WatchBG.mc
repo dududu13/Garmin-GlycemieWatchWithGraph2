@@ -132,7 +132,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 
     function onReceiveSGV(responseCode, data) {//si coderesponse 404=pas de réseau
         Sys.println("in OnReceiveSGV  responseCode="+ responseCode);
-		var timeMillis=0;
+		var timeSecondes=0;
 		var sgv=0;
 		var delta=0;
         var validData = false;
@@ -150,10 +150,10 @@ class WatchBG extends Toybox.System.ServiceDelegate {
                 data[0].hasKey("date") &&
                 data[0].hasKey("delta")
                 ) {
-                timeMillis = data[0]["date"].toLong();
+                timeSecondes= data[0]["date"].toLong()/1000;
 				sgv = data[0]["sgv"].toNumber();
 				delta = data[0]["delta"].toNumber();
-	            Sys.println("onReceiveSGV valid data: " + sgv + "  "+delta + "  "+timeMillis);
+	            Sys.println("onReceiveSGV valid data: " + sgv + "  "+delta + "  "+timeSecondes);
                 validData = true;
             }
             //bgdata["elapsedMills"] = elapsedMills;
@@ -165,13 +165,41 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 		receiveCtr--;
         var capteur;
         if  (validData) {
-            capteur = [sgv,delta,timeMillis/1000];
+            traiteDebugRecue(responseCode,data,timeSecondes);
+            capteur = [sgv,delta,timeSecondes];
         } else {
+            traiteDebugRecue(responseCode,data,0);
             capteur = [0,0,0];
         }
         Sys.println("onReceiveSGV call OnBackground.exit capteur="+capteur);
         Background.exit([capteur, data]);
     }
+
+	function traiteDebugRecue(responseCode,data,capteur_secondes) {
+        
+        var source = ["NS","AAPS","Xd+"][Application.getApp().getProperty("sourceBG")];
+        var info = Calendar.info(Time.now(), Time.FORMAT_LONG);
+        var timeString = Lang.format("$1$:$2$:$3$", [info.hour, info.min.format("%02d"),info.sec.format("%02d")]);
+
+		var timeS = "";
+        if (data == null) {
+            timeS="---";
+            data = "Data null";
+        }
+        else {
+			var timeCapt = new Time.Moment(capteur_secondes);
+			var infoCapt = Calendar.info(timeCapt, Time.FORMAT_LONG);
+
+			timeS = Lang.format("$1$:$2$:$3$", [infoCapt.hour, infoCapt.min.format("%02d"),infoCapt.sec.format("%02d")]);
+        }
+        var debugInfos =  source + "  code rep = "+responseCode + "\n" +"capt. "+ timeS + "    sync. "+timeString;                           
+		
+
+        //System.println(debugInfos);
+        Application.Storage.setValue("debugInfos", debugInfos);
+        Application.Storage.setValue("debugData", data.toString());
+
+	}
 
 
 }

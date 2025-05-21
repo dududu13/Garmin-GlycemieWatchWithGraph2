@@ -1,7 +1,7 @@
 <properties>
     <property id="sourceBG" type="number">0</property>
-    <property id="NSurl" type="string">https://glycemie.fin-tech.com/</property>
-    <property id="NStoken" type="string">watchface-0da8d01b0c8b3595</property>
+    <property id="NSurl" type="string"></property>
+    <property id="NStoken" type="string"></property>
     <property id="afficheSecondes" type="boolean">false</property>
     <property id="afficheMeteo" type="boolean">false</property>
     <property id="nbHGraph" type="number">1</property>

@@ -26,7 +26,7 @@
   }, {
     "key" : "NSurl",
     "valueType" : "string",
-    "defaultValue" : "https://glycemie.fin-tech.com/",
+    "defaultValue" : "",
     "configTitle" : "NSurlPrompt",
     "configPrompt" : "NSurlPrompt",
     "configType" : "alphaNumeric",
@@ -41,7 +41,7 @@
   }, {
     "key" : "NStoken",
     "valueType" : "string",
-    "defaultValue" : "watchface-0da8d01b0c8b3595",
+    "defaultValue" : "",
     "configTitle" : "NStokenPrompt",
     "configPrompt" : "NStokenPrompt",
     "configType" : "alphaNumeric",

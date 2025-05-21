@@ -132,15 +132,16 @@ class WatchApp extends App.AppBase {
 
     function onBackgroundData(data) {
 		Sys.println("onBackground "+data);
+        
         enregistreDernierCapteur(data[0]);
-        var CapteurSeconds = data[0][2];
-		Sys.println("onBackground "+CapteurSeconds);
-        if ((CapteurSeconds != null) &&
-            (CapteurSeconds > 0)) {
-            Sys.println("onBackgroundData call resync(elapsedMills) "+CapteurSeconds);
-            resync(CapteurSeconds);            
+        var capteurSecondes = data[0][2];
+		Sys.println("onBackground "+capteurSecondes);
+        if ((capteurSecondes != null) &&
+            (capteurSecondes > 0)) {
+            Sys.println("onBackgroundData call resync(capteurSecondes) "+capteurSecondes);
+            resync(capteurSecondes);            
         } else {
-            Sys.println("onBackgroundData invalid data: "+CapteurSeconds + "pose 300 sec");
+            Sys.println("onBackgroundData invalid data: "+capteurSecondes + "pose 300 sec");
             Background.registerForTemporalEvent(new Time.Duration(300));
             resync(0);
         }
@@ -151,33 +152,6 @@ class WatchApp extends App.AppBase {
     }
 
 
-	function traiteDebugRecue(responseCode,data,backGd_capteur_millis) {
-        
-        var bb = ["NS","AAPS","Xd+"][Application.getApp().getProperty("sourceBG")];
-        var info = Calendar.info(Time.now(), Time.FORMAT_LONG);
-        var timeString = Lang.format("$1$:$2$:$3$", [info.hour, info.min.format("%02d"),info.sec.format("%02d")]);
-
-		var st2 = "";
-        if (data == null) {
-            st2 = "Data = null";
-            data="---";
-        }
-        else {
-			var timeCapt = new Time.Moment(backGd_capteur_millis);
-			var infoCapt = Calendar.info(timeCapt, Time.FORMAT_LONG);
-
-			var timeS = Lang.format("$1$:$2$:$3$", [infoCapt.hour, infoCapt.min.format("%02d"),infoCapt.sec.format("%02d")]);
-            st2 = "capt. "+ timeS;
-        }
-        var debugInfos = bb + "  code rep = "+responseCode ;
-        debugInfos =  debugInfos + "\n\n" +st2 + "    sync. "+timeString;                           
-		
-
-        //System.println(debugInfos);
-        Application.Storage.setValue("debugData", data.toString());
-        Application.Storage.setValue("debugInfos", debugInfos);
-
-	}
 
     function enregistreDernierCapteur(capteur) {
         //if (capteur[0] ==0) { return;}
@@ -189,7 +163,7 @@ class WatchApp extends App.AppBase {
         }
         storeAllData(allData);
         Application.Storage.setValue("CapteurChanged",true);
-        System.println("enregistreDernierCapteur FIN, call backgrounddata avec millis = "+capteur[2]);
+        System.println("enregistreDernierCapteur FIN, secondes = "+capteur[2]);
 
     }
     

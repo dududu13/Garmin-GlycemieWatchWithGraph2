@@ -286,51 +286,51 @@ var justification = {
 
     function afficheDebug(dc) {
         var largeurEcran = System.getDeviceSettings().screenWidth;
-        var stInfos;
-        var prochainBackground = prochainBackground();
-        stInfos = ["NS","AAPS","Xdrip"][sourceBG]+"  next "+prochainBackground[0]+"\n\n                          next "+prochainBackground[1];
-        //if (nextEventSecs!=0) {stInfos = ["NS","AAPS","Xdrip"][sourceBG] + "  next-e "+nextEventSecs;}
+
         dc.clearClip();
         dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
         dc.clear();
+        dc.setColor(Gfx.COLOR_GREEN,Gfx.COLOR_TRANSPARENT);
+        dc.drawText(0.5 * largeurEcran,0.6 * largeurEcran,Gfx.FONT_NUMBER_THAI_HOT,bgBg,Gfx.TEXT_JUSTIFY_CENTER);
+        if (bgSecondes == null) {bgSecondes = 0;}
+        //var elapsedSec = Time.now().value()-bgSecondes;
+        var elapsedMin = ((Time.now().value() - bgSecondes)/60).toNumber();
+        dc.drawText(0.7 * largeurEcran,0.34 * largeurEcran,Gfx.FONT_NUMBER_HOT,elapsedMin,Gfx.TEXT_JUSTIFY_RIGHT);
+        dc.drawText(0.7 * largeurEcran,0.44 * largeurEcran,Gfx.FONT_SYSTEM_LARGE,"min",Gfx.TEXT_JUSTIFY_LEFT);
+        dc.drawText(0.15 * largeurEcran,0.34 * largeurEcran,Gfx.FONT_NUMBER_HOT,bgDelta,Gfx.TEXT_JUSTIFY_LEFT);
+
+
+        var prochainBackground = prochainBackground(); //[delaiRestant,prochainTime]
         dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_TRANSPARENT);
-        dc.drawText(0.5 * largeurEcran,0.02 * largeurEcran,Gfx.FONT_XTINY,stInfos,Gfx.TEXT_JUSTIFY_CENTER);
 
-        var nextTemproral = Background.getTemporalEventRegisteredTime();//Get the Moment or Duration
+        var InfosActuelles = ["NS","AAPS","Xdrip"][sourceBG]+"  next "+prochainBackground[0]+"\n\n\n                          next "+prochainBackground[1];
+        dc.drawText(0.5 * largeurEcran,0.02 * largeurEcran,Gfx.FONT_XTINY,InfosActuelles,Gfx.TEXT_JUSTIFY_CENTER);
 
-        var st =Application.Storage.getValue("debugData");
-        if (st == null) {st = "null";}
-        var font = st.substring(0,5).equals("Atten") ? Gfx.FONT_LARGE : Gfx.FONT_XTINY;
-
-        stInfos = Application.Storage.getValue("debugInfos");
-        var long1car = (dc.getTextWidthInPixels("abcd ?Phij", Gfx.FONT_XTINY)/10).toNumber();
-        var nbcar = (dc.getWidth()*.85)/long1car;
-
-        var stData = "";
-        for (var i = 0;i<st.length();i=i+nbcar) {
-            if (i+nbcar > st.length()) {
-                stData=stData+st.substring(i,st.length()) ;
-            } else {
-                stData=stData+st.substring(i,i+nbcar) + "\n";
-            }
-        }
-        var sep = 0.33 * largeurEcran;
-        dc.drawText(0.5 * largeurEcran,0.09 * largeurEcran,Gfx.FONT_XTINY,stInfos,Gfx.TEXT_JUSTIFY_CENTER);
-        dc.setPenWidth(1);
-        dc.drawLine(0,sep,largeurEcran,sep);
+        var debugInfos = Application.Storage.getValue("debugInfos");
+        dc.drawText(0.5 * largeurEcran,0.1 * largeurEcran,Gfx.FONT_XTINY,debugInfos,Gfx.TEXT_JUSTIFY_CENTER);
 
         var info = Calendar.info(Time.now(), Time.FORMAT_LONG);
         var timeString = Lang.format("$1$:$2$:$3$", [info.hour.format("%02d"),info.min.format("%02d"),info.sec.format("%02d")]);
-        dc.drawText(0.15 * largeurEcran,0.17 * largeurEcran,Gfx.FONT_SYSTEM_TINY,timeString,Gfx.TEXT_JUSTIFY_LEFT);
-        dc.setColor(Gfx.COLOR_LT_GRAY,Gfx.COLOR_TRANSPARENT);
-        dc.drawText(0.5 * largeurEcran,sep,font,stData,Gfx.TEXT_JUSTIFY_CENTER);
-        dc.setColor(Gfx.COLOR_GREEN,Gfx.COLOR_TRANSPARENT);
-        dc.drawText(0.5 * largeurEcran,0.6 * largeurEcran,Gfx.FONT_NUMBER_THAI_HOT,bgBg,Gfx.TEXT_JUSTIFY_CENTER);
+        dc.drawText(0.15 * largeurEcran,0.24 * largeurEcran,Gfx.FONT_SYSTEM_TINY,timeString,Gfx.TEXT_JUSTIFY_LEFT);
 
-        //var elapsedSec = Time.now().value()-bgSecondes;
-        var elapsedMin = ((Time.now().value() - bgSecondes)/60).toNumber();
-        dc.drawText(0.5 * largeurEcran,0.44 * largeurEcran,Gfx.FONT_SYSTEM_LARGE,elapsedMin+" min",Gfx.TEXT_JUSTIFY_CENTER);
-        dc.drawText(0.15 * largeurEcran,0.44 * largeurEcran,Gfx.FONT_SYSTEM_LARGE,bgDelta,Gfx.TEXT_JUSTIFY_LEFT);
+        var debugData =Application.Storage.getValue("debugData"); 
+        if (debugData == null) {debugData = "null";}
+        var font = debugData.substring(0,5).equals("Atten") ? Gfx.FONT_LARGE : Gfx.FONT_XTINY;
+        var long1car = (dc.getTextWidthInPixels("abcd ?Phij", Gfx.FONT_XTINY)/10).toNumber();
+        var nbcar = (dc.getWidth()*.85)/long1car;
+        var stData = "";
+        for (var i = 0;i<debugData.length();i=i+nbcar) {
+            if (i+nbcar > debugData.length()) {
+                stData=stData+debugData.substring(i,debugData.length()) ;
+            } else {
+                stData=stData+debugData.substring(i,i+nbcar) + "\n";
+            }
+        }
+        debugData = stData;
+        dc.setPenWidth(1);
+        dc.drawLine(0,0.33 * largeurEcran,largeurEcran,0.33 * largeurEcran);
+        dc.setColor(Gfx.COLOR_LT_GRAY,Gfx.COLOR_TRANSPARENT);
+        dc.drawText(0.5 * largeurEcran,0.33 * largeurEcran,font,debugData,Gfx.TEXT_JUSTIFY_CENTER);
     }
 
     function isCapteurChanged() {
@@ -341,6 +341,11 @@ var justification = {
     function onUpdate(dc) {
 		dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
         dc.clear();
+        if (isCapteurChanged()) {
+            tabData = readAllData();
+            graph.calcule_tout(tabData);
+            Application.Storage.setValue("CapteurChanged",false);
+        }
         if (debugage) {
             afficheDebug(dc);
             return;
