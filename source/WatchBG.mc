@@ -40,7 +40,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
     }
 
     function onTemporalEvent() {
-        Sys.println("in onTemporalEvent");
+        //Sys.println("in onTemporalEvent");
         receiveCtr = 0;
         reqNum = 0;
         myWebRequest(true, 1, false);
@@ -131,9 +131,10 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 	}
 
     function onReceiveSGV(responseCode, data) {//si coderesponse 404=pas de réseau
-        Sys.println("in OnReceiveSGV  responseCode="+ responseCode);
+        //Sys.println("in OnReceiveSGV  responseCode="+ responseCode);
 		var timeSecondes=0;
 		var sgv=0;
+        var sgvPrevious=0;
 		var delta=0;
         var validData = false;
         if ((responseCode == 200) &&
@@ -153,15 +154,19 @@ class WatchBG extends Toybox.System.ServiceDelegate {
                 timeSecondes= data[0]["date"].toLong()/1000;
 				sgv = data[0]["sgv"].toNumber();
 				delta = data[0]["delta"].toNumber();
-	            Sys.println("onReceiveSGV valid data: " + sgv + "  "+delta + "  "+timeSecondes);
+	            //Sys.println("onReceiveSGV valid data: " + sgv + "  "+delta + "  "+timeSecondes);
                 validData = true;
+            }
+            if (data[1].hasKey("sgv")) { //pour Xdrip et Dexcom, le delta est une moyenne des 3 dernieres valeurs, il faut donc recuperer le svg precedent pour calculer le delta
+				sgvPrevious = data[1]["sgv"].toNumber();
+                delta = sgv-sgvPrevious;
             }
             //bgdata["elapsedMills"] = elapsedMills;
         } else {
-            Sys.println("onReceiveSGV SGV resp: " + responseCode.toString());
-            Sys.println("onReceiveSGV data: " + data);
+            //Sys.println("onReceiveSGV SGV resp: " + responseCode.toString());
+            //Sys.println("onReceiveSGV data: " + data);
         }
-        Sys.println("onReceiveSGV receiveCtr = "+receiveCtr);
+        //Sys.println("onReceiveSGV receiveCtr = "+receiveCtr);
 		receiveCtr--;
         var capteur;
         if  (validData) {
@@ -171,7 +176,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
             traiteDebugRecue(responseCode,data,0);
             capteur = [0,0,0];
         }
-        Sys.println("onReceiveSGV call OnBackground.exit capteur="+capteur);
+        //Sys.println("onReceiveSGV call OnBackground.exit capteur="+capteur);
         Background.exit([capteur, data]);
     }
 
