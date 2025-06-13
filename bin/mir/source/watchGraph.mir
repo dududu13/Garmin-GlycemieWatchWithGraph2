@@ -68,22 +68,22 @@ class watchGraph {
         symbol [ MIN_GLUCOSE %tmp.34 33 27 38 ];
         %tmp.34 = getv ? :MIN_GLUCOSE;
         putv self :maxGlucose %tmp.34;
-[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 44 14 ]
-        symbol [ Gfx %tmp.35 44 32 35 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 43 14 ]
+        symbol [ Gfx %tmp.35 43 32 35 ];
         %tmp.35 = getm $.Toybox.Graphics;
-        symbol [ COLOR_RED %tmp.36 44 36 45 ];
+        symbol [ COLOR_RED %tmp.36 43 36 45 ];
         %tmp.36 = getv %tmp.35 :COLOR_RED;
         putv self :lowGlucoseColor %tmp.36;
-[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 45 14 ]
-        symbol [ Gfx %tmp.37 45 41 44 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 44 14 ]
+        symbol [ Gfx %tmp.37 44 41 44 ];
         %tmp.37 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_RED %tmp.38 45 45 57 ];
+        symbol [ COLOR_DK_RED %tmp.38 44 45 57 ];
         %tmp.38 = getv %tmp.37 :COLOR_DK_RED;
         putv self :lowGlucoseHighlightColor %tmp.38;
-[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 47 14 ]
-        symbol [ Gfx %tmp.39 47 44 47 ];
+[ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc" 46 14 ]
+        symbol [ Gfx %tmp.39 46 44 47 ];
         %tmp.39 = getm $.Toybox.Graphics;
-        symbol [ COLOR_DK_GREEN %tmp.40 47 48 62 ];
+        symbol [ COLOR_DK_GREEN %tmp.40 46 48 62 ];
         %tmp.40 = getv %tmp.39 :COLOR_DK_GREEN;
         putv self :normalGlucoseHighlightColor %tmp.40;
     }
@@ -159,22 +159,22 @@ class watchGraph {
     var yLow;
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 41; @position = 8; @symbol_vardef = [yHigh,41,8,13]; ]
     var yHigh;
-    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 44; @position = 14; @symbol_vardef = [lowGlucoseColor,44,14,29]; ]
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 43; @position = 14; @symbol_vardef = [lowGlucoseColor,43,14,29]; ]
     private
     var lowGlucoseColor;
-    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 45; @position = 14; @symbol_vardef = [lowGlucoseHighlightColor,45,14,38]; ]
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 44; @position = 14; @symbol_vardef = [lowGlucoseHighlightColor,44,14,38]; ]
     private
     var lowGlucoseHighlightColor;
-    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 46; @position = 14; @symbol_vardef = [normalGlucoseColor,46,14,32]; ]
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 45; @position = 14; @symbol_vardef = [normalGlucoseColor,45,14,32]; ]
     private
     var normalGlucoseColor = 0x55FF55;
-    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 47; @position = 14; @symbol_vardef = [normalGlucoseHighlightColor,47,14,41]; ]
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 46; @position = 14; @symbol_vardef = [normalGlucoseHighlightColor,46,14,41]; ]
     private
     var normalGlucoseHighlightColor;
-    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 48; @position = 14; @symbol_vardef = [highGlucoseColor,48,14,30]; ]
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 47; @position = 14; @symbol_vardef = [highGlucoseColor,47,14,30]; ]
     private
     var highGlucoseColor = 0xFFFF55;
-    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 49; @position = 14; @symbol_vardef = [highGlucoseHighlightColor,49,14,39]; ]
+    [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 48; @position = 14; @symbol_vardef = [highGlucoseHighlightColor,48,14,39]; ]
     private
     var highGlucoseHighlightColor = 0xFFFF00;
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\watchGraph.mc"; @line = 51; @symbol_functiondef = [initialize,51,11,21]; @symbol_param<0> = [data,51,22,26]; ]
