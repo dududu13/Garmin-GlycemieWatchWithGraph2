@@ -58,7 +58,7 @@ class WatchApp extends App.AppBase {
     function onSettingsChanged() {
 	    //Sys.println("onSettingsChanged");
         if (myView != null) {
-	        myView.onSettingsChanged();
+	        myView.readSettings();
 	        //WatchApp.resync(0);
         }
     }
@@ -71,7 +71,9 @@ class WatchApp extends App.AppBase {
         var thisApp = Application.getApp();
         var lastBGmillis = myView.bgSecondes;
         //Sys.println("Initialize sync with offsetMillis="+lastBGmillis);
-        resync(lastBGmillis);
+        var next = watchView.prochainBackground(); //return [delaiRestant,prochainTime];
+        System.println("Delai restant="+next[0]);
+            resync(lastBGmillis);
         return [ myView, new bgbgDelegate()];
     }
 
@@ -218,9 +220,6 @@ class WatchApp extends App.AppBase {
     }
 
 
-
-
-
 (:onlyWithSettingOnWatchface)
     function getSettingsView() {
         Application.Storage.setValue("CapteurChanged",true);
@@ -235,9 +234,11 @@ class WatchApp extends App.AppBase {
 
 (:onlyWithSettingOnWatchface)
     public function menuPrincipal(position) {
-        var ligne1 = afficheMeteo ?  "Graph I/O meteo" : "Meteo I/O graph";
-        var ligne0 = afficheSecondes ? "Set seconds OFF" : "Set seconds ON" ;
-        return  new $.MenuView("Settings "+WatchUi.loadResource(Rez.Strings.version),[ligne0,ligne1,"Graph options","BG source"],position);
+        var tab = [afficheSecondes ? "Set seconds OFF" : "Set seconds ON",
+                    afficheMeteo ?  "Graph I/O meteo" : "Meteo I/O graph",
+                    "Graph options",
+                    "BG source"];
+        return  new $.MenuView("Settings "+WatchUi.loadResource(Rez.Strings.version),tab,position);
     }
 
 }

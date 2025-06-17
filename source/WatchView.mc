@@ -1,20 +1,3 @@
-/*
- * NightscoutWatch Garmin Connect IQ watchface
- * Copyright (C) 2017-2018 tynbendad@gmail.com
- * #WeAreNotWaiting
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, version 3 of the License.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   A copy of the GNU General Public License is available at
- *   https://www.gnu.org/licenses/gpl-3.0.txt
- */
 
 using Toybox.WatchUi as Ui;
 using Toybox.Graphics as Gfx;
@@ -109,7 +92,6 @@ var debug = [
 
 
     const prov = ["NS","AAPS","Xd"];  
-    var BTlogo = Ui.loadResource(Rez.Drawables.blueTooth);  
     
     var graph;
     var tabData = new[0];
@@ -210,21 +192,26 @@ var justification = {
 
     function onSettingsChanged() {
         readSettings();
-		return true; // always register the event now, since we attempt xdrip or spike regardless of empty urls
+		return true; 
     }
+
+    //var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage;
 
     function readSettings() {
         sourceBG = getProp("sourceBG",2);
         afficheSecondes = getProp("afficheSecondes",false);
         afficheMeteo = getProp("afficheMeteo",false);
-        
+        nbHGraph = getProp("nbHGraph",2);
+        logarithmique = getProp("logarithmique",false);
         debugage = getProp("debuging",false);
-        //CapteurChanged = true;
     }
 
     function getProp(key,defaultValue) {
         var property = Application.getApp().getProperty(key);
-        if (property == null) {property = defaultValue;}
+        if (property == null) {
+            property = defaultValue;
+            Application.getApp().setProperty(key,defaultValue);
+        }
         return property;
     }
 
@@ -583,11 +570,10 @@ var justification = {
 
     function drawCadre(dc,color) {// dessin cadre
         var epaisseur = 6;
-        dc.setColor( color,trans);
         dc.setPenWidth(epaisseur*coeff);
+        dc.setColor(Gfx.COLOR_WHITE,trans);
         dc.drawLine(0,separationLine*coeff,largeurEcran,separationLine*coeff);
-         dc.setPenWidth(epaisseur*coeff);  
-        //afficheMeteo = true;
+        dc.setColor( color,trans);
         if (afficheMeteo) {
             dc.drawArc(centreEcran,centreEcran,centreEcran-1, Gfx.ARC_CLOCKWISE,205,175);
             dc.drawArc(centreEcran,centreEcran,centreEcran-1, Gfx.ARC_CLOCKWISE,5,335);
@@ -614,19 +600,31 @@ var justification = {
 
     function drawBlueTooth(dc,infoTime) {
         if (! System.getDeviceSettings().phoneConnected) {
+            dc.setColor(Gfx.COLOR_RED,trans);
+            var L = largeurEcran;
+            var H = hauteurEcran;
+            var centrex = L/2;
+            var centrey = H/2;
+            dc.setPenWidth(12*L/416);
             if (infoTime.sec %2 == 1) {
-                var l = BTlogo.getWidth();
-                var h = BTlogo.getHeight();
-                dc.drawBitmap(largeurEcran/2- l/2, hauteurEcran/2-h/2,BTlogo);
+                dc.fillCircle(L/2,H*.375,L*.16);
+                dc.fillCircle(L/2,H*.625,L*.16);
+                dc.fillRectangle(L*.34,H*.375,L*.32,H*.25);
+                dc.setColor(Gfx.COLOR_WHITE,trans);
+                var tailleLogo = H*.40;
+                dc.drawLine(centrex+0*tailleLogo,centrey+-0.5*tailleLogo,centrex+0*tailleLogo,centrey+0.5*tailleLogo);
+                dc.drawLine(centrex+-0.25*tailleLogo,centrey+-0.25*tailleLogo,centrex+0.25*tailleLogo,centrey+0.25*tailleLogo);
+                dc.drawLine(centrex+-0.25*tailleLogo,centrey+0.25*tailleLogo,centrex+0.25*tailleLogo,centrey+-0.25*tailleLogo);
+                dc.drawLine(centrex+0*tailleLogo,centrey+-0.5*tailleLogo,centrex+0.25*tailleLogo,centrey+-0.25*tailleLogo);
+                dc.drawLine(centrex+0*tailleLogo,centrey+0.5*tailleLogo,centrex+0.25*tailleLogo,centrey+0.25*tailleLogo);
+                
             } else {
-                dc.setColor(Gfx.COLOR_RED,trans);
-                dc.setPenWidth(15);
-                dc.drawCircle(largeurEcran/2, largeurEcran/2, largeurEcran/2-3);       	
+            dc.setColor(Gfx.COLOR_RED,trans);
+                dc.drawCircle(centrex, centrey, centrex-3);       	
             }
         } 
-        
-    }
 
+    }
     function onExitSleep() {
     	//myPrintLn("view.onExitSleep(), ctr=" + ctr); ctr++;
     	inLowPower = false;

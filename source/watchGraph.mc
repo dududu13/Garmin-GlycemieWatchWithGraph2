@@ -39,7 +39,6 @@ class watchGraph  {
     var x ;
     var yLow ;
     var yHigh;
-    //var logarithmique,nbHGraph;
 
   private var lowGlucoseColor = Gfx.COLOR_RED;
   private var lowGlucoseHighlightColor = Gfx.COLOR_DK_RED;
@@ -47,6 +46,7 @@ class watchGraph  {
   private var normalGlucoseHighlightColor = Gfx.COLOR_DK_GREEN;
   private var highGlucoseColor = 0xFFFF55;
   private var highGlucoseHighlightColor = 0xFFFF00;
+  //private var 
 
   function initialize(data) {
     System.println("Graph INIT");

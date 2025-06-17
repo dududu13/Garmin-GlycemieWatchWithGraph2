@@ -3,7 +3,6 @@
 
     <bitmap id="Cocher" filename="coche.png" scaleX="15%" scaleY="15%" scaleRelativeTo="screen"/>
     <bitmap id="back" filename="back.png" scaleX="15%" scaleY="15%" scaleRelativeTo="screen"/>
-    <bitmap id="blueTooth" filename="blueTooth.png" scaleX="40%" scaleY="50%" scaleRelativeTo="screen"/>
     <bitmap id="LauncherIcon" filename="launcher_icon.png" />
     <bitmap id="BoutonVide" filename="vide.png" />
 

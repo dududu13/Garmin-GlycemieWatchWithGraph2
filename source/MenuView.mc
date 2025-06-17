@@ -3,7 +3,7 @@ using Toybox.WatchUi as Ui;
 using Toybox.System as Sys;
 using Toybox.Graphics as Gfx;
 
-(:onlyWithSettingOnWatchface)
+(:onlyWionlyWithSettingOnWatchfacethMenus)
 class MenuView extends Ui.View {
 	var _titre;
 	var _tab;
