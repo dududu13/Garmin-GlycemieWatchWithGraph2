@@ -4,7 +4,7 @@ using Toybox.WatchUi as :Ui;
 using Toybox.System as :Sys;
 [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 4; @symbol_usingdef<0> = [Toybox,4,6,12]; @symbol_usingdef<1> = [Graphics,4,13,21]; @symbol_usingAlias = [Gfx,4,25,28]; ]
 using Toybox.Graphics as :Gfx;
-[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 7; onlyWithSettingOnWatchface = true; @symbol_classdef = [MenuView,7,6,14]; @symbol_extends<0> = [Ui,7,23,25]; @symbol_extends<1> = [View,7,26,30]; ]
+[ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 7; onlyWionlyWithSettingOnWatchfacethMenus = true; @symbol_classdef = [MenuView,7,6,14]; @symbol_extends<0> = [Ui,7,23,25]; @symbol_extends<1> = [View,7,26,30]; ]
 class MenuView extends Ui.View {
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuView.mc"; @line = 7; ]
     <init> {

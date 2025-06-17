@@ -8,7 +8,6 @@ module Rez {
     module Drawables {
         (:initialized) var Cocher as ResourceId;
         (:initialized) var back as ResourceId;
-        (:initialized) var blueTooth as ResourceId;
         (:initialized) var BoutonVide as ResourceId;
         (:initialized) var LauncherIcon as ResourceId;
 
