@@ -5,11 +5,7 @@ using Toybox.Application as App;
 
 
 (:onlyWithSettingOnWatchface)
-class MenuGraphScaleDelegate extends Ui.BehaviorDelegate {
-
-    enum {
-    linear,log
-    }
+class MenuSetUnitsDelegate extends Ui.BehaviorDelegate {
 
 
 var menuView;
@@ -31,14 +27,11 @@ var menuView;
 
 
     function onSelect()    {
-      	if (menuView.itemEnCours == log) { 
-            logarithmique = true;
-      	} else if (menuView.itemEnCours == linear) { 
-            logarithmique = false;
-        } 
-        Application.getApp().setProperty("logarithmique",logarithmique);
-        System.println("LOGartihm="+logarithmique);
-        WatchUi.popView(WatchUi.SLIDE_LEFT);
+        units = menuView.itemEnCours;
+        App.getApp().setProperty("units",units);
+        Ui.popView(Ui.SLIDE_IMMEDIATE);
+        var menuSettings =  WatchApp.menuPrincipal(4);
+        switchToView(menuSettings, new $.MenuSetPrincipalDelegate(menuSettings),WatchUi.SLIDE_RIGHT);
     }
 
 }

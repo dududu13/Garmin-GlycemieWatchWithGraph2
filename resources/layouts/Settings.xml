@@ -45,7 +45,15 @@
     <label x="52%" y="63.4%" id="choixSource" text="" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 
 
-     <button  x="40%" y="80%" width="20%" height="20%" >
+    <label x="65%" y="82%" text="Units" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+     <button  x="50%" y="80%" width="30%" height="15%" >
+        <state id="stateDefault" drawable="@Drawables.settingsUnits" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsUnitsActive" />
+        <param name="behavior">units</param>
+    </button>
+
+
+     <button  x="30%" y="80%" width="20%" height="20%" >
         <state id="stateDefault" bitmap="@Drawables.back" />
         <param name="behavior">back</param>
     </button>

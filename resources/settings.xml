@@ -25,6 +25,13 @@
     </setting>
     <setting propertyKey="@Properties.logarithmique" title="@Strings.logarithmique" >
         <settingConfig type="boolean" /></setting>
+    <setting propertyKey="@Properties.units" title="@Strings.units" >
+        <settingConfig type="list">
+            <listEntry value="0">Don't force</listEntry>
+            <listEntry value="1">Force to mg/l</listEntry>
+            <listEntry value="2">Force to mmol/l</listEntry>
+        </settingConfig>
+    </setting>
     <setting propertyKey="@Properties.debuging" title="Debug ?" >
         <settingConfig type="boolean" /></setting>
 

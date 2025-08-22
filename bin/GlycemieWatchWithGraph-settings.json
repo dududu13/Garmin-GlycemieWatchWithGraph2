@@ -126,10 +126,34 @@
     "configMax" : null,
     "configMaxLength" : null
   }, {
+    "key" : "units",
+    "valueType" : "number",
+    "defaultValue" : 0,
+    "configTitle" : "units",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "$literal7$",
+      "value" : 0
+    }, {
+      "display" : "$literal8$",
+      "value" : 1
+    }, {
+      "display" : "$literal9$",
+      "value" : 2
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
     "key" : "debuging",
     "valueType" : "boolean",
     "defaultValue" : false,
-    "configTitle" : "$literal7$",
+    "configTitle" : "$literal10$",
     "configPrompt" : null,
     "configType" : "boolean",
     "configError" : null,
@@ -149,7 +173,8 @@
       "NSurlPrompt" : "Online site Nightscout URL",
       "nbHGraph" : "Hours for graph",
       "logarithmique" : "Log scale for graph ?",
-      "version" : "V. 1",
+      "units" : "Units",
+      "version" : "V. 2",
       "meteoPrompt" : "Meteo, or graph ?",
       "AppName" : "Blood Glucose Watch",
       "$literal1$" : "AAPS",
@@ -159,9 +184,12 @@
       "$literal5$" : "4h",
       "$literal4$" : "2h",
       "sourceBG" : "Blood glucose source",
-      "$literal7$" : "Debug ?",
+      "$literal7$" : "Don't force",
       "$literal6$" : "6h",
-      "logCourt" : "Scale"
+      "$literal9$" : "Force to mmol/l",
+      "$literal8$" : "Force to mg/l",
+      "logCourt" : "Scale",
+      "$literal10$" : "Debug ?"
     }
   }
 }

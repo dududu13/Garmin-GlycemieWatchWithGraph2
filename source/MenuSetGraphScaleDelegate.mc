@@ -4,11 +4,15 @@ using Toybox.Graphics as Gfx;
 using Toybox.Application as App;
 
 
-
 (:onlyWithSettingOnWatchface)
-class MenuSourceBGViewDelegate extends Ui.BehaviorDelegate {
+class MenuSetGraphScaleDelegate extends Ui.BehaviorDelegate {
 
-    var menuView;
+    enum {
+    linear,log
+    }
+
+
+var menuView;
 
 
     function initialize(menuV) {
@@ -27,9 +31,15 @@ class MenuSourceBGViewDelegate extends Ui.BehaviorDelegate {
 
 
     function onSelect()    {
-        sourceBG = menuView.itemEnCours;
-        Application.getApp().setProperty("sourceBG",sourceBG);
+      	if (menuView.itemEnCours == log) { 
+            logarithmique = true;
+      	} else if (menuView.itemEnCours == linear) { 
+            logarithmique = false;
+        } 
+        Application.getApp().setProperty("logarithmique",logarithmique);
+        System.println("LOGartihm="+logarithmique);
         WatchUi.popView(WatchUi.SLIDE_LEFT);
     }
 
 }
+

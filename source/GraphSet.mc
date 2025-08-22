@@ -4,7 +4,7 @@ using Toybox.Graphics as Gfx;
 using Toybox.Application as App;
 
 (:onlyWithSettingOnWatchface)
-class ViewSettings extends Ui.View {
+class GraphSet_View extends Ui.View {
     var caseAcocher;
 
     public function initialize() {
@@ -42,5 +42,59 @@ System.println("hauteur "+h);
 
 
  }
+
+ 
+(:onlyWithSettingOnWatchface)
+class GraphSet_Delegate extends Ui.BehaviorDelegate {
+
+    function initialize() {
+        InputDelegate.initialize();
+    }
+
+     function seconds() { 
+        afficheSecondes = ! afficheSecondes;
+        App.getApp().setProperty("afficheSecondes",afficheSecondes);
+        return true;
+    }
+
+    function meteo() {
+        afficheMeteo = ! afficheMeteo;
+        App.getApp().setProperty("afficheMeteo",afficheMeteo);
+    }
+
+    function graph() { 
+            var settingsDureeGraphView = new $.GraphSetGraphOptions_view();
+            Ui.pushView(settingsDureeGraphView, new $.GraphSetGraphOptions_Delegate(),0);
+    }
+
+    function back() {
+        onBack();
+    }
+
+    function sourceBG() { 
+        var settingsSourceBGView = new $.GraphSetSourceBG_View();
+        Ui.pushView(settingsSourceBGView, new $.GraphSetSourceBG_Delegate(),0);
+    }
+
+    function units() {
+        var settingsUnitsView = new $.GraphSetUnits_View();
+        Ui.pushView(settingsUnitsView, new $.GraphSetUnits_Delegate(),0);
+
+    }
+
+
+    function onBack() {
+        WatchApp.onSettingsChanged();
+        Ui.popView(0);
+        return true;
+    }
+    function onSelect() {
+        return true;
+    }
+
+}
+
+
+
 
 

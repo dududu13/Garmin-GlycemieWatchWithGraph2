@@ -6,7 +6,7 @@ using Toybox.Application as App;
 
 
 (:onlyWithSettingOnWatchface)
-class MenuGraphDureeDelegate extends Ui.BehaviorDelegate {
+class MenuSetGraphDureeDelegate extends Ui.BehaviorDelegate {
 
     var menuView;
 

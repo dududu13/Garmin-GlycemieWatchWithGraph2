@@ -8,7 +8,6 @@ module Rez {
     module Drawables {
         (:initialized) var Cocher as ResourceId;
         (:initialized) var back as ResourceId;
-        (:initialized) var blueTooth as ResourceId;
         (:initialized) var BoutonVide as ResourceId;
         (:initialized) var LauncherIcon as ResourceId;
 
@@ -91,6 +90,50 @@ module Rez {
                 dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (45 / 100.0))) + (5 / 2)), (((390 - 0) * (50 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
                 dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (45 / 100.0))) + 5, ((390 - 0) * (50 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsUnits extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (50 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (80 / 100.0))) + (5 / 2)), (((390 - 0) * (30 / 100.0)) - 5), (((390 - 0) * (15 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (50 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (80 / 100.0))) + 5, ((390 - 0) * (30 / 100.0)) - (2 * 5), ((390 - 0) * (15 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsUnitsActive extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (50 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (80 / 100.0))) + (5 / 2)), (((390 - 0) * (30 / 100.0)) - 5), (((390 - 0) * (15 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (50 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (80 / 100.0))) + 5, ((390 - 0) * (30 / 100.0)) - (2 * 5), ((390 - 0) * (15 / 100.0)) - (2 * 5), 5);
             }
         }
 
@@ -267,6 +310,138 @@ module Rez {
                 dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (15 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (60 / 100.0))) + (5 / 2)), (((390 - 0) * (70 / 100.0)) - 5), (((390 - 0) * (18 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
                 dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (15 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (60 / 100.0))) + 5, ((390 - 0) * (70 / 100.0)) - (2 * 5), ((390 - 0) * (18 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche10 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (30 / 100.0))) + (5 / 2)), (((390 - 0) * (12 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (30 / 100.0))) + 5, ((390 - 0) * (12 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive10 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (30 / 100.0))) + (5 / 2)), (((390 - 0) * (12 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (30 / 100.0))) + 5, ((390 - 0) * (12 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche11 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (45 / 100.0))) + (5 / 2)), (((390 - 0) * (12 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (45 / 100.0))) + 5, ((390 - 0) * (12 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive11 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (45 / 100.0))) + (5 / 2)), (((390 - 0) * (12 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (45 / 100.0))) + 5, ((390 - 0) * (12 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCoche12 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (60 / 100.0))) + (5 / 2)), (((390 - 0) * (12 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (60 / 100.0))) + 5, ((390 - 0) * (12 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
+            }
+        }
+
+        class settingsCocheActive12 extends WatchUi.Drawable {
+
+            function initialize() {
+                Drawable.initialize({});
+            }
+
+            function draw(dc as Graphics.Dc) as Void {
+                if (self has :isVisible) {
+                    if (!self.isVisible) {
+                        return;
+                    }
+                }
+
+
+                dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
+                dc.setPenWidth(5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (70 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (60 / 100.0))) + (5 / 2)), (((390 - 0) * (12 / 100.0)) - 5), (((390 - 0) * (12 / 100.0)) - 5), 5);
+                dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (70 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (60 / 100.0))) + 5, ((390 - 0) * (12 / 100.0)) - (2 * 5), ((390 - 0) * (12 / 100.0)) - (2 * 5), 5);
             }
         }
 
@@ -594,9 +769,9 @@ module Rez {
 
                 dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
                 dc.setPenWidth(5);
-                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (20 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (58 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (20 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (63 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
-                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (20 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (58 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (20 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (63 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
             }
         }
 
@@ -616,9 +791,9 @@ module Rez {
 
                 dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
                 dc.setPenWidth(5);
-                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (20 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (58 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (20 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (63 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
-                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (20 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (58 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (20 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (63 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
             }
         }
 
@@ -638,9 +813,9 @@ module Rez {
 
                 dc.setColor(Gfx.COLOR_WHITE, Graphics.COLOR_TRANSPARENT);
                 dc.setPenWidth(5);
-                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (58 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (63 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
-                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (58 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (63 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
             }
         }
 
@@ -660,111 +835,130 @@ module Rez {
 
                 dc.setColor(Gfx.COLOR_RED, Graphics.COLOR_TRANSPARENT);
                 dc.setPenWidth(5);
-                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (58 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
+                dc.drawRoundedRectangle((((0 + 0) + ((390 - 0) * (55 / 100.0))) + (5 / 2)), (((0 + 0) + ((390 - 0) * (63 / 100.0))) + (5 / 2)), (((390 - 0) * (25 / 100.0)) - 5), (((390 - 0) * (16 / 100.0)) - 5), 5);
                 dc.setColor(Gfx.COLOR_TRANSPARENT, Graphics.COLOR_TRANSPARENT);
-                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (58 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
+                dc.fillRoundedRectangle(((0 + 0) + ((390 - 0) * (55 / 100.0))) + 5, ((0 + 0) + ((390 - 0) * (63 / 100.0))) + 5, ((390 - 0) * (25 / 100.0)) - (2 * 5), ((390 - 0) * (16 / 100.0)) - (2 * 5), 5);
             }
         }
     } // Drawables
 
     module Layouts {
-        function layoutSettingsChoixSourceBG(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
-            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
-                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
-            }
-
-            var rez_cmp_local_text_1193959466 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (21 / 100.0)), :text=>"NigthScout", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
-
-            var rez_cmp_local_text_1139614796 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (41 / 100.0)), :text=>"AAPS", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
-
-            var rez_cmp_local_text_8374157491 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (61 / 100.0)), :text=>"Xdrip", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
-
-            var rez_cmp_local_custom_selectable_14295387131182493329 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
-
-            var rez_cmp_local_custom_selectable_13016745771638067850 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive1(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG1(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(390 * (59 / 100.0)), :locX=>(390 * (22 / 100.0)), :locY=>(390 * (20 / 100.0)), :behavior=>:nigthscout, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_custom_selectable_12797518701618786051 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive2(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG2(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(390 * (59 / 100.0)), :locX=>(390 * (22 / 100.0)), :locY=>(390 * (40 / 100.0)), :behavior=>:aaps, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_custom_selectable_10684974341016840512 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive3(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG3(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(390 * (59 / 100.0)), :locX=>(390 * (22 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:xdrip, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_custom_selectable_11478969152092624704 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
-
-            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_text_1193959466, rez_cmp_local_text_1139614796, rez_cmp_local_text_8374157491, rez_cmp_local_custom_selectable_14295387131182493329, rez_cmp_local_custom_selectable_13016745771638067850, rez_cmp_local_custom_selectable_12797518701618786051, rez_cmp_local_custom_selectable_10684974341016840512, rez_cmp_local_custom_selectable_11478969152092624704] as Array<WatchUi.Drawable>;
-        }
-
-        function layoutSettingsHeuresGraph(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
-            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
-            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
-                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
-            }
-
-            var rez_cmp_local_custom_selectable_46428211913725765358 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
-
-            var rez_cmp_local_text_2042061750 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (10 / 100.0)), :text=>"Graph options", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
-
-            var rez_cmp_local_text_un = new WatchUi.Text({:identifier=>"un", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (8 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"1 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_custom_selectable_12328022382134557307 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive1(), :stateDefault=>new $.Rez.Drawables.settingsDuree1(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (5 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:UN, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_text_deux = new WatchUi.Text({:identifier=>"deux", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (32 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"2 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_custom_selectable_17851008573871416621 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive2(), :stateDefault=>new $.Rez.Drawables.settingsDuree2(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (29 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:DEUX, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_text_quatre = new WatchUi.Text({:identifier=>"quatre", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (56 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"4 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_custom_selectable_46325576237776306214 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive3(), :stateDefault=>new $.Rez.Drawables.settingsDuree3(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (53 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:QUATRE, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_text_six = new WatchUi.Text({:identifier=>"six", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (80 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"6 h", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_custom_selectable_13272225842016372201 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive4(), :stateDefault=>new $.Rez.Drawables.settingsDuree4(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (77 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:SIX, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_text_5456945618 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (47 / 100.0)), :text=>$.Rez.Strings.logCourt, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_text_1703529506 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (32 / 100.0)), :locY=>(390 * (60 / 100.0)), :text=>"log", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_custom_selectable_15260318648349617469 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsScaleActive1(), :stateDefault=>new $.Rez.Drawables.settingsScale1(), :width=>(390 * (25 / 100.0)), :locX=>(390 * (20 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:LOG, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_text_5888599076 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (68 / 100.0)), :locY=>(390 * (60 / 100.0)), :text=>"linear", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
-
-            var rez_cmp_local_custom_selectable_34586036052120301210 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsScaleActive2(), :stateDefault=>new $.Rez.Drawables.settingsScale2(), :width=>(390 * (25 / 100.0)), :locX=>(390 * (55 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:LINEAR, :height=>(390 * (16 / 100.0))});
-
-            var rez_cmp_local_custom_selectable_17748645114869502951 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
-
-            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_46428211913725765358, rez_cmp_local_text_2042061750, rez_cmp_local_text_un, rez_cmp_local_custom_selectable_12328022382134557307, rez_cmp_local_text_deux, rez_cmp_local_custom_selectable_17851008573871416621, rez_cmp_local_text_quatre, rez_cmp_local_custom_selectable_46325576237776306214, rez_cmp_local_text_six, rez_cmp_local_custom_selectable_13272225842016372201, rez_cmp_local_text_5456945618, rez_cmp_local_text_1703529506, rez_cmp_local_custom_selectable_15260318648349617469, rez_cmp_local_text_5888599076, rez_cmp_local_custom_selectable_34586036052120301210, rez_cmp_local_custom_selectable_17748645114869502951] as Array<WatchUi.Drawable>;
-        }
-
         function Settings(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
             var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
             if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
                 rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
             }
 
-            var rez_cmp_local_custom_selectable_17821269541612249033 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+            var rez_cmp_local_custom_selectable_11939594661139614796 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
 
-            var rez_cmp_local_text_4801152041 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (2 / 100.0)), :text=>$.Rez.Strings.version, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+            var rez_cmp_local_text_8374157491 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (2 / 100.0)), :text=>$.Rez.Strings.version, :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
-            var rez_cmp_local_text_3933768662 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (15 / 100.0)), :text=>"Seconds ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
+            var rez_cmp_local_text_1429538713 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (15 / 100.0)), :text=>"Seconds ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
 
-            var rez_cmp_local_text_1001319800 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"Meteo ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
+            var rez_cmp_local_text_1182493329 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (15 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"Meteo ?", :justification=>Gfx.TEXT_JUSTIFY_LEFT, :font=>Gfx.FONT_MEDIUM});
 
-            var rez_cmp_local_text_6533765161 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (39 / 100.0)), :locY=>(390 * (45 / 100.0)), :text=>"Graph", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+            var rez_cmp_local_text_1301674577 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (39 / 100.0)), :locY=>(390 * (45 / 100.0)), :text=>"Graph", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
-            var rez_cmp_local_custom_selectable_12707783813440318791 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsGraphActive(), :stateDefault=>new $.Rez.Drawables.settingsGraph(), :width=>(390 * (50 / 100.0)), :locX=>(390 * (15 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:graph, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_16380678501279751870 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsGraphActive(), :stateDefault=>new $.Rez.Drawables.settingsGraph(), :width=>(390 * (50 / 100.0)), :locX=>(390 * (15 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:graph, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_18192882051932656050 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive0(), :stateDefault=>new $.Rez.Drawables.settingsCoche0(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (15 / 100.0)), :behavior=>:seconds, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_16187860511068497434 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive0(), :stateDefault=>new $.Rez.Drawables.settingsCoche0(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (15 / 100.0)), :behavior=>:seconds, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_18316387041151814890 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive1(), :stateDefault=>new $.Rez.Drawables.settingsCoche1(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (30 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_10168405121147896915 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive1(), :stateDefault=>new $.Rez.Drawables.settingsCoche1(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (30 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_26058799196504269215 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive2(), :stateDefault=>new $.Rez.Drawables.settingsCoche2(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
+            var rez_cmp_local_custom_selectable_20926247044642821191 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive2(), :stateDefault=>new $.Rez.Drawables.settingsCoche2(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:meteo, :height=>(390 * (16 / 100.0))});
 
-            var rez_cmp_local_custom_selectable_18315685213172229881 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive3(), :stateDefault=>new $.Rez.Drawables.settingsCoche3(), :width=>(390 * (68 / 100.0)), :locX=>(390 * (18 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:sourceBG, :height=>(390 * (18 / 100.0))});
+            var rez_cmp_local_custom_selectable_81627633920420617501 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive3(), :stateDefault=>new $.Rez.Drawables.settingsCoche3(), :width=>(390 * (68 / 100.0)), :locX=>(390 * (18 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:sourceBG, :height=>(390 * (18 / 100.0))});
 
             var rez_cmp_local_text_choixSource = new WatchUi.Text({:identifier=>"choixSource", :color=>Gfx.COLOR_WHITE, :locX=>(390 * (52 / 100.0)), :locY=>(390 * (63.4 / 100.0)), :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
 
+            var rez_cmp_local_text_2134557307 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (65 / 100.0)), :locY=>(390 * (82 / 100.0)), :text=>"Units", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_SMALL});
+
+            var rez_cmp_local_custom_selectable_17851008573871416621 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsUnitsActive(), :stateDefault=>new $.Rez.Drawables.settingsUnits(), :width=>(390 * (30 / 100.0)), :locX=>(390 * (50 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:units, :height=>(390 * (15 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_46325576237776306214 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (30 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
+
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_11939594661139614796, rez_cmp_local_text_8374157491, rez_cmp_local_text_1429538713, rez_cmp_local_text_1182493329, rez_cmp_local_text_1301674577, rez_cmp_local_custom_selectable_16380678501279751870, rez_cmp_local_custom_selectable_16187860511068497434, rez_cmp_local_custom_selectable_10168405121147896915, rez_cmp_local_custom_selectable_20926247044642821191, rez_cmp_local_custom_selectable_81627633920420617501, rez_cmp_local_text_choixSource, rez_cmp_local_text_2134557307, rez_cmp_local_custom_selectable_17851008573871416621, rez_cmp_local_custom_selectable_46325576237776306214] as Array<WatchUi.Drawable>;
+        }
+
+        function SettingsGraphOptions(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
+            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
+            }
+
+            var rez_cmp_local_custom_selectable_13272225842016372201 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+
+            var rez_cmp_local_text_5456945618 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (13 / 100.0)), :text=>"Graph options", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
+
+            var rez_cmp_local_custom_selectable_17035295061526031864 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive1(), :stateDefault=>new $.Rez.Drawables.settingsDuree1(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (5 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:UN, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_83496174692256880758 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive2(), :stateDefault=>new $.Rez.Drawables.settingsDuree2(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (29 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:DEUX, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_65017097534586036052 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive3(), :stateDefault=>new $.Rez.Drawables.settingsDuree3(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (53 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:QUATRE, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_10016308581774864511 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsDureeActive4(), :stateDefault=>new $.Rez.Drawables.settingsDuree4(), :width=>(390 * (18 / 100.0)), :locX=>(390 * (77 / 100.0)), :locY=>(390 * (28 / 100.0)), :behavior=>:SIX, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_text_4869502951 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (47 / 100.0)), :text=>"Scale", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_LARGE});
+
+            var rez_cmp_local_custom_selectable_17821269541612249033 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsScaleActive1(), :stateDefault=>new $.Rez.Drawables.settingsScale1(), :width=>(390 * (25 / 100.0)), :locX=>(390 * (20 / 100.0)), :locY=>(390 * (65 / 100.0)), :behavior=>:LOG, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_48011520411533607253 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsScaleActive2(), :stateDefault=>new $.Rez.Drawables.settingsScale2(), :width=>(390 * (25 / 100.0)), :locX=>(390 * (55 / 100.0)), :locY=>(390 * (65 / 100.0)), :behavior=>:LINEAR, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_20875129251001319800 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
+
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_13272225842016372201, rez_cmp_local_text_5456945618, rez_cmp_local_custom_selectable_17035295061526031864, rez_cmp_local_custom_selectable_83496174692256880758, rez_cmp_local_custom_selectable_65017097534586036052, rez_cmp_local_custom_selectable_10016308581774864511, rez_cmp_local_text_4869502951, rez_cmp_local_custom_selectable_17821269541612249033, rez_cmp_local_custom_selectable_48011520411533607253, rez_cmp_local_custom_selectable_20875129251001319800] as Array<WatchUi.Drawable>;
+        }
+
+        function SettingsSourceBG(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
+            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
+            }
+
+            var rez_cmp_local_text_6533765161 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (21 / 100.0)), :text=>"NigthScout", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_1270778381 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (41 / 100.0)), :text=>"AAPS", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_1809535719 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (61 / 100.0)), :text=>"Xdrip", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_custom_selectable_18192882051932656050 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+
+            var rez_cmp_local_custom_selectable_18316387041151814890 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive1(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG1(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(390 * (59 / 100.0)), :locX=>(390 * (22 / 100.0)), :locY=>(390 * (20 / 100.0)), :behavior=>:nigthscout, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_26058799196504269215 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive2(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG2(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(390 * (59 / 100.0)), :locX=>(390 * (22 / 100.0)), :locY=>(390 * (40 / 100.0)), :behavior=>:aaps, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_18315685213172229881 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsChoixBGActive3(), :stateDefault=>new $.Rez.Drawables.settingsChoixBG3(), :stateDisabled=>Graphics.COLOR_BLACK, :width=>(390 * (59 / 100.0)), :locX=>(390 * (22 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:xdrip, :height=>(390 * (16 / 100.0))});
+
             var rez_cmp_local_custom_selectable_44823628319916390294 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
 
-            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_17821269541612249033, rez_cmp_local_text_4801152041, rez_cmp_local_text_3933768662, rez_cmp_local_text_1001319800, rez_cmp_local_text_6533765161, rez_cmp_local_custom_selectable_12707783813440318791, rez_cmp_local_custom_selectable_18192882051932656050, rez_cmp_local_custom_selectable_18316387041151814890, rez_cmp_local_custom_selectable_26058799196504269215, rez_cmp_local_custom_selectable_18315685213172229881, rez_cmp_local_text_choixSource, rez_cmp_local_custom_selectable_44823628319916390294] as Array<WatchUi.Drawable>;
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_text_6533765161, rez_cmp_local_text_1270778381, rez_cmp_local_text_1809535719, rez_cmp_local_custom_selectable_18192882051932656050, rez_cmp_local_custom_selectable_18316387041151814890, rez_cmp_local_custom_selectable_26058799196504269215, rez_cmp_local_custom_selectable_18315685213172229881, rez_cmp_local_custom_selectable_44823628319916390294] as Array<WatchUi.Drawable>;
+        }
+
+        function SettingsUnits(dc as Graphics.Dc) as Array<WatchUi.Drawable> {
+            var rez_cmp_local_custom_drawable_backgroundGrey = new $.Rez.Drawables.backgroundGrey();
+            if (rez_cmp_local_custom_drawable_backgroundGrey.identifier == null) {
+                rez_cmp_local_custom_drawable_backgroundGrey.identifier = "backgroundGrey";
+            }
+
+            var rez_cmp_local_custom_selectable_11742547317135163541 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.BoutonVide}), :width=>800, :locX=>0, :locY=>0, :height=>800});
+
+            var rez_cmp_local_text_1548708383 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (50 / 100.0)), :locY=>(390 * (15 / 100.0)), :text=>"Force units to", :justification=>Gfx.TEXT_JUSTIFY_CENTER, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_1310258000 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (65 / 100.0)), :locY=>(390 * (30 / 100.0)), :text=>"don't force", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_1030900193 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (65 / 100.0)), :locY=>(390 * (45 / 100.0)), :text=>"mg/l", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_text_2106856486 = new WatchUi.Text({:color=>Gfx.COLOR_WHITE, :locX=>(390 * (65 / 100.0)), :locY=>(390 * (60 / 100.0)), :text=>"mmol/l", :justification=>Gfx.TEXT_JUSTIFY_RIGHT, :font=>Gfx.FONT_MEDIUM});
+
+            var rez_cmp_local_custom_selectable_36982031220348512321 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive10(), :stateDefault=>new $.Rez.Drawables.settingsCoche10(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (30 / 100.0)), :behavior=>:dontforce, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_15017051667531329212 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive11(), :stateDefault=>new $.Rez.Drawables.settingsCoche11(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (45 / 100.0)), :behavior=>:forcemgl, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_16890524999764183861 = new WatchUi.Button({:stateHighlighted=>new $.Rez.Drawables.settingsCocheActive12(), :stateDefault=>new $.Rez.Drawables.settingsCoche12(), :width=>(390 * (16 / 100.0)), :locX=>(390 * (70 / 100.0)), :locY=>(390 * (60 / 100.0)), :behavior=>:forcemmol, :height=>(390 * (16 / 100.0))});
+
+            var rez_cmp_local_custom_selectable_11835297424848077891 = new WatchUi.Button({:stateDefault=>new WatchUi.Bitmap({:rezId=>$.Rez.Drawables.back}), :width=>(390 * (20 / 100.0)), :locX=>(390 * (40 / 100.0)), :locY=>(390 * (80 / 100.0)), :behavior=>:back, :height=>(390 * (20 / 100.0))});
+
+            return [rez_cmp_local_custom_drawable_backgroundGrey, rez_cmp_local_custom_selectable_11742547317135163541, rez_cmp_local_text_1548708383, rez_cmp_local_text_1310258000, rez_cmp_local_text_1030900193, rez_cmp_local_text_2106856486, rez_cmp_local_custom_selectable_36982031220348512321, rez_cmp_local_custom_selectable_15017051667531329212, rez_cmp_local_custom_selectable_16890524999764183861, rez_cmp_local_custom_selectable_11835297424848077891] as Array<WatchUi.Drawable>;
         }
     } // Layouts
 
@@ -775,6 +969,7 @@ module Rez {
         (:initialized) var nbHGraph as ResourceId;
         (:initialized) var sourceBG as ResourceId;
         (:initialized) var logarithmique as ResourceId;
+        (:initialized) var units as ResourceId;
         (:initialized) var version as ResourceId;
         (:initialized) var logCourt as ResourceId;
         (:initialized) var meteoPrompt as ResourceId;

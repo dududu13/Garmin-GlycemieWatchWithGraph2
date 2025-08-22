@@ -1,29 +1,9 @@
-/*
- * NightscoutWatch Garmin Connect IQ watchface
- * Copyright (C) 2017-2018 tynbendad@gmail.com
- * #WeAreNotWaiting
- *
- *  This program is free software: you can redistribute it and/or modify
- *  it under the terms of the GNU General Public License as published by
- *  the Free Software Foundation, version 3 of the License.
- *
- *   This program is distributed in the hope that it will be useful,
- *   but WITHOUT ANY WARRANTY; without even the implied warranty of
- *   MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
- *   GNU General Public License for more details.
- *
- *   A copy of the GNU General Public License is available at
- *   https://www.gnu.org/licenses/gpl-3.0.txt
- */
 
 using Toybox.Background;
 using Toybox.Communications;
 using Toybox.System as Sys;
 using Toybox.Time.Gregorian as Calendar;
 
-// The Service Delegate is the main entry point for background processes
-// our onTemporalEvent() method will get run each time our periodic event
-// is triggered by the system.
 
 (:background)
 class WatchBG extends Toybox.System.ServiceDelegate {
@@ -93,10 +73,11 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 			url = url + "/api/v1/entries/sgv.json?count=3/";
 			url = url + options;
 	   	}
-		//System.println("makeNSURL "+url);
+		System.println("makeNSURL "+url);
         return url;
 	}
 
+// url = https://glycemie.fin-tech.com//api/v1/entries/sgv.json?count=3/?token=watchface-0da8d01b0c8b3595
     function myWebRequest(ns, fetchMode, loop) {
 		var url;
 		var sourceBG = Application.getApp().getProperty("sourceBG");

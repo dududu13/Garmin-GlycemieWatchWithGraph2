@@ -19,7 +19,7 @@ class MenuSourceBGViewDelegate extends Ui.BehaviorDelegate {
     var menuView;
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc"; @line = 14; @symbol_functiondef = [initialize,14,13,23]; @symbol_param<0> = [menuV,14,24,29]; ]
     function initialize(menuV) as Void {
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_14_31_17_4_start:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_14_31_17_4_start:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc" 15 5 ]
         symbol [ BehaviorDelegate %tmp.2 15 5 21 ];
         %tmp.2 = getv ? :BehaviorDelegate;
@@ -31,33 +31,33 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGVi
         symbol [ menuV %tmp.4 16 16 21 ];
         symbol [ menuView ? 16 5 13 ];
         putv self :menuView %tmp.4;
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_14_31_17_4_stop:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_14_31_17_4_stop:
     }
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc"; @line = 20; @symbol_functiondef = [onNextPage,20,13,23]; ]
     function onNextPage() {
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_20_29_22_4_start:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_20_29_22_4_start:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc" 21 5 ]
         symbol [ menuView %tmp.2 21 5 13 ];
         %tmp.2 = getv ? :menuView;
         symbol [ next %tmp.3 21 14 18 ];
         %tmp.3 = getv function %tmp.2 :next;
         invoke %tmp.2 %tmp.3();
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_20_29_22_4_stop:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_20_29_22_4_stop:
     }
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc"; @line = 24; @symbol_functiondef = [onPreviousPage,24,13,27]; ]
     function onPreviousPage() {
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_24_31_26_1_start:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_24_31_26_1_start:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc" 25 5 ]
         symbol [ menuView %tmp.2 25 5 13 ];
         %tmp.2 = getv ? :menuView;
         symbol [ prev %tmp.3 25 14 18 ];
         %tmp.3 = getv function %tmp.2 :prev;
         invoke %tmp.2 %tmp.3();
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_24_31_26_1_stop:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_24_31_26_1_stop:
     }
     [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc"; @line = 29; @symbol_functiondef = [onSelect,29,13,21]; ]
     function onSelect() {
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_29_27_33_4_start:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_29_27_33_4_start:
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc" 30 8 ]
         symbol [ menuView %tmp.2 30 19 27 ];
         %tmp.2 = getv ? :menuView;
@@ -87,7 +87,7 @@ D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGVi
         symbol [ SLIDE_LEFT %tmp.17 32 32 42 ];
         %tmp.17 = getv %tmp.16 :SLIDE_LEFT;
         invoke %tmp.13 %tmp.14(%tmp.17);
-D_gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_29_27_33_4_stop:
+D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_MenuSourceBGViewDelegate_mc_29_27_33_4_stop:
     }
 }
 [ @file = "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\MenuSourceBGViewDelegate.mc"; @line = 1; ]

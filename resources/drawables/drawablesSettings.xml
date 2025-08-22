@@ -18,6 +18,13 @@
         <shape type="rectangle" x="15%" y="45%" corner_radius="5" width="50%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
     </drawable-list>
 
+    <drawable-list id="settingsUnits">
+        <shape type="rectangle" x="50%" y="80%" corner_radius="5" width="30%" height="15%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsUnitsActive">
+        <shape type="rectangle" x="50%" y="80%" corner_radius="5" width="30%" height="15%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+
 
 
     <drawable-list id="settingsCoche0">
@@ -47,6 +54,24 @@
         <shape type="rectangle" x="15%" y="60%" corner_radius="5" width="70%" height="18%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
     </drawable-list>
 
+    <drawable-list id="settingsCoche10">
+        <shape type="rectangle" x="70%" y="30%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCocheActive10">
+        <shape type="rectangle" x="70%" y="30%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCoche11">
+        <shape type="rectangle" x="70%" y="45%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCocheActive11">
+        <shape type="rectangle" x="70%" y="45%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCoche12">
+        <shape type="rectangle" x="70%" y="60%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsCocheActive12">
+        <shape type="rectangle" x="70%" y="60%" corner_radius="5" width="12%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
 
 </drawables>
 

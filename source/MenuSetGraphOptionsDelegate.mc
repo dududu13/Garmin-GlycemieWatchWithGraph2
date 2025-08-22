@@ -5,7 +5,7 @@ using Toybox.Application as App;
 
 
 (:onlyWithSettingOnWatchface)
-class MenuGraphOptionsDelegate extends Ui.BehaviorDelegate {
+class MenuSetGraphOptionsDelegate extends Ui.BehaviorDelegate {
 
 enum {
 log,
@@ -36,12 +36,12 @@ var menuView;
             var position = logarithmique ? 1 : 0;
             var menuLog = new $.MenuView("Scale type",
             ["Linear","Logarithm"],position);
-            Ui.pushView(menuLog, new $.MenuGraphScaleDelegate(menuLog),Ui.SLIDE_RIGHT);
+            Ui.pushView(menuLog, new $.MenuSetGraphScaleDelegate(menuLog),Ui.SLIDE_RIGHT);
       	} else if (menuView.itemEnCours == duree) { 
             var position = Application.getApp().getProperty("nbHGraph");
             var menuDureeGraphView = new $.MenuView("Graph hours",
             ["1 h","2 h","4 h","6 h"],position);
-            Ui.pushView(menuDureeGraphView, new $.MenuGraphDureeDelegate(menuDureeGraphView),Ui.SLIDE_RIGHT);
+            Ui.pushView(menuDureeGraphView, new $.MenuSetGraphDureeDelegate(menuDureeGraphView),Ui.SLIDE_RIGHT);
         } 
         Ui.requestUpdate();
     }

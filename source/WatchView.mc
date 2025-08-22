@@ -8,7 +8,7 @@ using Toybox.Time;
 using Toybox.Time.Gregorian as Calendar;
 
 
-class watchView extends Ui.WatchFace {
+class WatchView extends Ui.WatchFace {
 var debug = [
 [120,3,0],
 [200,80,0],
@@ -112,8 +112,8 @@ var x = {
 "date"=>(0.5 * largeurEcran),
 "heure"=>(0.5 * largeurEcran),
 "notif"=>(0.12 * largeurEcran),
-"BG"=>(0.75 * largeurEcran),
-"Delta"=>(0.24 * largeurEcran),
+"BG"=>(0.78 * largeurEcran),
+"Delta"=>(0.29 * largeurEcran),
 "Elapsed"=>(0.96 * largeurEcran),
 "sourceBG"=>(0.02 * largeurEcran),
 "Secondes"=>(0.96 * largeurEcran),
@@ -185,7 +185,7 @@ var justification = {
         tabData = readAllData();
         //tabData = debug;
         //WatchApp.storeAllData(tabData);
-        graph = new watchGraph(tabData);
+        graph = new WatchGraphique(tabData);
         WatchFace.initialize();
     }
 
@@ -204,6 +204,7 @@ var justification = {
         nbHGraph = getProp("nbHGraph",2);
         logarithmique = getProp("logarithmique",false);
         debugage = getProp("debuging",false);
+        units  = getProp("units",0);
     }
 
     function getProp(key,defaultValue) {
@@ -344,19 +345,28 @@ var justification = {
             Application.Storage.setValue("CapteurChanged",false);
         }
         
+        var coeff = 1.0;
+        var format = "%01d";
+        if (units == 1) {
+            coeff = 18;
+        }
+        else if (units == 2) {
+            coeff = 1/18.0;
+            format = "%2.1f";
+        }
         var infoTime = Calendar.info(timeNow, Time.FORMAT_LONG);
 
         drawMeteoIfNotLowPower(dc);
-        drawDeltaValue(dc);
+        drawDeltaValue(dc,coeff,format);
         drawClock(dc,infoTime);
         drawElapsedTime(dc);
-        drawBG(dc);
+        drawBG(dc,coeff,format);
         drawNotifs(dc);
         drawDate(dc,infoTime);    
         barreBGsiBesoin(dc);
         drawGraphIfNotLowPower(dc);
         drawBatterieAnalog(dc);
-        drawDeltaCadre(dc);
+        drawDeltaCadre(dc,coeff,format);
         drawBlueTooth(dc,infoTime);        
         var nextBG = drawNextCall(dc);
 		ereaseOLEDifLowPower(dc);
@@ -507,12 +517,12 @@ var justification = {
         }
     }
 
-	function drawBG(dc) {
+	function drawBG(dc,coeff,format) {
         if (bgBg !=null) {
             var colorBG = Gfx.COLOR_YELLOW;//jaune
-            if (bgBg <170 ) {colorBG = Gfx.COLOR_GREEN;} //vert
-            if (bgBg < 70 ) {colorBG = Gfx.COLOR_RED;} //rouge
-           drawLabel(dc,"BG", bgBg,colorBG);
+            if (bgBg * coeff <170 * coeff ) {colorBG = Gfx.COLOR_GREEN;} //vert
+            if (bgBg * coeff< 70 * coeff ) {colorBG = Gfx.COLOR_RED;} //rouge
+           drawLabel(dc,"BG", (bgBg*coeff).format(format),colorBG);
         } 
 	}
 
@@ -543,26 +553,26 @@ var justification = {
         } 
     }
 
-    function drawDeltaValue(dc) {
+    function drawDeltaValue(dc,coeff,format) {
         //System.println("sourceBG="+sourceBG);
         if (bgDelta != null) {
-            var delta = bgDelta.toNumber();
+            var delta = (bgDelta*coeff);//.toNumber();
             var signe = "";
-            if (delta>0) {signe="+";}
-            drawLabel(dc,"Delta", signe+delta,white);
+            if (delta>=0) {signe="+";}
+            drawLabel(dc,"Delta", signe+delta.format(format),white);
         }
     }
 
-    function drawDeltaCadre(dc) {
+    function drawDeltaCadre(dc,coeff,format) {
         if (bgDelta != null) {
-            var delta = bgDelta.toNumber();
+            var delta = bgDelta*coeff;//.toNumber();
             var colorDelta = Gfx.COLOR_GREEN;
-            if (delta == 99) {delta = 0;}
-            if (delta > 4 ) {colorDelta = Gfx.COLOR_YELLOW;} 
-            if (delta > 10 ) {colorDelta = Gfx.COLOR_ORANGE;} 
-            if (delta < -4 ) {colorDelta = Gfx.COLOR_YELLOW;} 
-            if (delta < -10 ) {colorDelta = Gfx.COLOR_ORANGE;} 
-            if (delta < -15 ) {colorDelta = Gfx.COLOR_RED;} 
+            if (delta == 99*coeff) {delta = 0;}
+            if (delta > 4*coeff ) {colorDelta = Gfx.COLOR_YELLOW;} 
+            if (delta > 10*coeff ) {colorDelta = Gfx.COLOR_ORANGE;} 
+            if (delta < -4*coeff ) {colorDelta = Gfx.COLOR_YELLOW;} 
+            if (delta < -10*coeff ) {colorDelta = Gfx.COLOR_ORANGE;} 
+            if (delta < -15*coeff ) {colorDelta = Gfx.COLOR_RED;} 
             dc.setColor( colorDelta,trans);
             drawCadre(dc,colorDelta);
         }

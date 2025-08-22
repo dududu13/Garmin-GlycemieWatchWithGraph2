@@ -1,5 +1,5 @@
 <strings>
-    <string id="version">V. 1</string>
+    <string id="version">V. 3.0</string>
     <string id="AppName">Blood Glucose Watch</string>
 
 
@@ -11,5 +11,6 @@
     <string id="nbHGraph">Hours for graph</string>
     <string id="logarithmique">Log scale for graph ?</string>
     <string id="logCourt">Scale</string>
+    <string id="units">Units</string>
     
 </strings>

@@ -28,16 +28,16 @@
 
 
     <drawable-list id="settingsScale1">
-        <shape type="rectangle" x="20%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+        <shape type="rectangle" x="20%" y="63%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
     </drawable-list>
      <drawable-list id="settingsScaleActive1">
-        <shape type="rectangle" x="20%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+        <shape type="rectangle" x="20%" y="63%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
     </drawable-list>
     <drawable-list id="settingsScale2">
-        <shape type="rectangle" x="55%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+        <shape type="rectangle" x="55%" y="63%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
     </drawable-list>
      <drawable-list id="settingsScaleActive2">
-        <shape type="rectangle" x="55%" y="58%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+        <shape type="rectangle" x="55%" y="63%" corner_radius="5" width="25%" height="16%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
     </drawable-list>
 </drawables>
 </resources>

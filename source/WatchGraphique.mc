@@ -9,7 +9,7 @@ using Toybox.WatchUi as Ui;
 using Toybox.Math;
 
 
-class watchGraph  {
+class WatchGraphique  {
   private const HAUTEUR_GRAPH_EPIX as Number = 80.0;
   private const MIN_GLUCOSE = 50; // valeur mini sur affichage (pour ne pas afficher depuis zéro)
   private const BG_BAS = 70;

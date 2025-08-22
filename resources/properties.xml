@@ -7,4 +7,5 @@
     <property id="nbHGraph" type="number">1</property>
     <property id="logarithmique" type="boolean">true</property>
     <property id="debuging" type="boolean">false</property>
+    <property id="units" type="number">0</property>
  </properties>

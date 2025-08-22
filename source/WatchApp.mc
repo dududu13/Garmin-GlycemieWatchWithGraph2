@@ -30,7 +30,7 @@ const NBRE_MAXI_DATA = 72;//6h
 
 (:background)
 var myView = null;
-var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage;
+var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage,units;
 
 var nextEventSecs = 0;
 
@@ -66,12 +66,12 @@ class WatchApp extends App.AppBase {
     // Return the initial view of your application here
     function getInitialView() {
 	    //Sys.println("getInitialView");
-        myView = new watchView();
+        myView = new WatchView();
         Background.deleteTemporalEvent();
         var thisApp = Application.getApp();
         var lastBGmillis = myView.bgSecondes;
         //Sys.println("Initialize sync with offsetMillis="+lastBGmillis);
-        var next = watchView.prochainBackground(); //return [delaiRestant,prochainTime];
+        var next = WatchView.prochainBackground(); //return [delaiRestant,prochainTime];
         System.println("Delai restant="+next[0]);
             resync(lastBGmillis);
         return [ myView, new bgbgDelegate()];
@@ -224,20 +224,22 @@ class WatchApp extends App.AppBase {
     function getSettingsView() {
         Application.Storage.setValue("CapteurChanged",true);
          if (Sys.getDeviceSettings().isTouchScreen) {
-            return [new $.ViewSettings(), new $.ViewSettingsDelegate()];
+            return [new $.GraphSet_View(), new $.GraphSet_Delegate()];
         } else {
             var menuSettings =  menuPrincipal(0);
-            return [menuSettings, new $.MenuPrincipalDelegate(menuSettings),WatchUi.SLIDE_RIGHT];
+            return [menuSettings, new $.MenuSetPrincipalDelegate(menuSettings),WatchUi.SLIDE_RIGHT];
         }
     }
 
 
 (:onlyWithSettingOnWatchface)
     public function menuPrincipal(position) {
+        var unitStr = ["","(mg/l)","(mmol/l)"][units];
         var tab = [afficheSecondes ? "Set seconds OFF" : "Set seconds ON",
                     afficheMeteo ?  "Graph I/O meteo" : "Meteo I/O graph",
                     "Graph options",
-                    "BG source"];
+                    "BG source",
+                    "Units "+unitStr];
         return  new $.MenuView("Settings "+WatchUi.loadResource(Rez.Strings.version),tab,position);
     }
 
