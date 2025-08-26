@@ -11,6 +11,13 @@
     <drawable-list id="backgroundBlack"><shape type="rectangle" x="0" y="0" width="fill" height="fill" color="Gfx.COLOR_BLACK"></shape></drawable-list>
 
 
+    <drawable-list id="settingsField">
+        <shape type="rectangle" x="15%" y="30%" corner_radius="5" width="50%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
+    </drawable-list>
+    <drawable-list id="settingsFieldActive">
+        <shape type="rectangle" x="15%" y="30%" corner_radius="5" width="50%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_RED"  border_width="5" ></shape>
+    </drawable-list>
+
     <drawable-list id="settingsGraph">
         <shape type="rectangle" x="15%" y="45%" corner_radius="5" width="50%" height="12%" color="Gfx.COLOR_TRANSPARENT" border_color="Gfx.COLOR_WHITE"  border_width="5" ></shape>
     </drawable-list>

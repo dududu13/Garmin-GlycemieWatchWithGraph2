@@ -35,11 +35,11 @@ class MenuView extends Ui.View {
 		nbreAffDepart = nbreAff;
 		if (nbreAff > _nbre ) {nbreAff = _nbre;}
 
-		System.println("Initialize MenuView "+_titre);
+		//System.println("Initialize MenuView "+_titre);
     }
 
     function onLayout(dc) {
-		System.println("onLayout MenuView "+_titre);
+		//System.println("onLayout MenuView "+_titre);
 		hFont = Gfx.getFontHeight(font);
 		itemEnCours = calculeItem0(0);
 		_x = dc.getWidth()/2;
@@ -55,7 +55,7 @@ class MenuView extends Ui.View {
 
 
     function onUpdate(dc) {
-System.println("UPDATE nbre="+_nbre+"  nbreAff="+nbreAff+"  item0="+item0+"  itemEnCours="+itemEnCours);
+//System.println("UPDATE nbre="+_nbre+"  nbreAff="+nbreAff+"  item0="+item0+"  itemEnCours="+itemEnCours);
     	var y;
 		var coulFond = Gfx.COLOR_BLACK;
 		var coulPP = Gfx.COLOR_WHITE;
@@ -104,7 +104,7 @@ System.println("UPDATE nbre="+_nbre+"  nbreAff="+nbreAff+"  item0="+item0+"  ite
 			nbreAff = _nbre+1;
 			item0 = 0;
 		}
-System.println("APRES CALCUL nbre="+_nbre+"  nbreAff="+nbreAff+"  item0="+item0+"  itemEnCours="+itemEnCours);
+//System.println("APRES CALCUL nbre="+_nbre+"  nbreAff="+nbreAff+"  item0="+item0+"  itemEnCours="+itemEnCours);
 return itemEnCours;
 	}
 	

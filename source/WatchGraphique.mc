@@ -49,17 +49,17 @@ class WatchGraphique  {
   //private var 
 
   function initialize(data) {
-    System.println("Graph INIT");
+    //System.println("Graph INIT");
     calcule_tout(data);
   }
 
   function calcule_tout(data) {
-    System.println("GraphData calcule tout avec data="+data);
+    //System.println("GraphData calcule tout avec data="+data);
     //logarithmique = Application.getApp().getProperty("logarithmique");
     if (logarithmique == null) {logarithmique = false;}
     //nbHGraph  = Application.getApp().getProperty("nbHGraph");
     if ((nbHGraph == null) || (nbHGraph>3)) {nbHGraph = 3;}
-    System.println("graph calcul tout");
+    //System.println("graph calcul tout");
     //me.data = data;
     var witdth = System.getDeviceSettings().screenWidth;
     var totalPixel = witdth-XoffsetGauche-XoffsetDroite;

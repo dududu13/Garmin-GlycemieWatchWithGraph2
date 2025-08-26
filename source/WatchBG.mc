@@ -12,9 +12,6 @@ class WatchBG extends Toybox.System.ServiceDelegate {
     var reqNum = 0;
     //var propReq = {};
 
-
-
-
     function initialize() {
         Sys.ServiceDelegate.initialize();
     }

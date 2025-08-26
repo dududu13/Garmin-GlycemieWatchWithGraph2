@@ -11,7 +11,12 @@
     <label x="50%" y="2%" text="@Strings.version" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
 
     <label x="15%" y="15%" text="Seconds ?" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
-    <label x="15%" y="30%" text="Meteo ?" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
+    <label x="39%" y="30%" text="Fields ?" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+     <button x="15%" y="30%" width="50%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsField" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsFieldActive" />
+        <param name="behavior">field</param>
+    </button>
     <label x="39%" y="45%" text="Graph" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
      <button x="15%" y="45%" width="50%" height="16%" >
         <state id="stateDefault" drawable="@Drawables.settingsGraph" />

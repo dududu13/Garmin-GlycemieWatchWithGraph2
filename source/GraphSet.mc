@@ -29,7 +29,7 @@ System.println("hauteur "+h);
 
    function dessineCoches(dc) {
          var X = dc.getHeight() *  .68  ;
-        var tab = [afficheSecondes, afficheMeteo, ! afficheMeteo];
+        var tab = [afficheSecondes, afficheFields, ! afficheFields];
         for (var i=0;i<3;i++) {
             if (tab[i]) {
                 var Y = dc.getHeight() *  (.14 + i *.15) ;
@@ -58,13 +58,17 @@ class GraphSet_Delegate extends Ui.BehaviorDelegate {
     }
 
     function meteo() {
-        afficheMeteo = ! afficheMeteo;
-        App.getApp().setProperty("afficheMeteo",afficheMeteo);
+        afficheFields = ! afficheFields;
+        App.getApp().setProperty("afficheFields",afficheFields);
     }
 
     function graph() { 
             var settingsDureeGraphView = new $.GraphSetGraphOptions_view();
             Ui.pushView(settingsDureeGraphView, new $.GraphSetGraphOptions_Delegate(),0);
+    }
+    function field() { 
+            var settingsFieldsView = new $.GraphSetFields_View();
+            Ui.pushView(settingsFieldsView, new $.GraphSetFields_Delegate(),0);
     }
 
     function back() {

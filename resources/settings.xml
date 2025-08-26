@@ -13,7 +13,7 @@
 
     <setting propertyKey="@Properties.afficheSecondes" title="@Strings.secondsPrompt" >
         <settingConfig type="boolean" /></setting>
-    <setting propertyKey="@Properties.afficheMeteo" title="@Strings.meteoPrompt" >
+    <setting propertyKey="@Properties.afficheFields" title="3 Fields instead of BG graph" >
         <settingConfig type="boolean" /></setting>
     <setting propertyKey="@Properties.nbHGraph" title="@Strings.nbHGraph" >
         <settingConfig type="list">
@@ -30,6 +30,52 @@
             <listEntry value="0">Don't force</listEntry>
             <listEntry value="1">Force to mg/l</listEntry>
             <listEntry value="2">Force to mmol/l</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.field1" title="Field 1" >
+        <settingConfig type="list">
+            <listEntry value="0">Nothing</listEntry>
+            <listEntry value="1">Battery</listEntry>
+            <listEntry value="2">Temperature</listEntry>
+            <listEntry value="3">Wind speed (knots)</listEntry>
+            <listEntry value="4">Pressure</listEntry>
+            <listEntry value="5">Altitude</listEntry>
+            <listEntry value="6">Steps</listEntry>
+            <listEntry value="7">Distance</listEntry>
+            <listEntry value="8">Heart rate</listEntry>
+            <listEntry value="9">Floors climbed</listEntry>
+            <listEntry value="10">Calories</listEntry>
+
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.field2" title="Field 2" >
+        <settingConfig type="list">
+            <listEntry value="0">Nothing</listEntry>
+            <listEntry value="1">Battery</listEntry>
+            <listEntry value="2">Temperature</listEntry>
+            <listEntry value="3">Wind speed (knots)</listEntry>
+            <listEntry value="4">Pressure</listEntry>
+            <listEntry value="5">Altitude</listEntry>
+            <listEntry value="6">Steps</listEntry>
+            <listEntry value="7">Distance</listEntry>
+            <listEntry value="8">Heart rate</listEntry>
+            <listEntry value="9">Floors climbed</listEntry>
+            <listEntry value="10">Calories</listEntry>
+        </settingConfig>
+    </setting>
+    <setting propertyKey="@Properties.field3" title="Field 3" >
+        <settingConfig type="list">
+            <listEntry value="0">Nothing</listEntry>
+            <listEntry value="1">Battery</listEntry>
+            <listEntry value="2">Temperature</listEntry>
+            <listEntry value="3">Wind speed (knots)</listEntry>
+            <listEntry value="4">Pressure</listEntry>
+            <listEntry value="5">Altitude</listEntry>
+            <listEntry value="6">Steps</listEntry>
+            <listEntry value="7">Distance</listEntry>
+            <listEntry value="8">Heart rate</listEntry>
+            <listEntry value="9">Floors climbed</listEntry>
+            <listEntry value="10">Calories</listEntry>
         </settingConfig>
     </setting>
     <setting propertyKey="@Properties.debuging" title="Debug ?" >

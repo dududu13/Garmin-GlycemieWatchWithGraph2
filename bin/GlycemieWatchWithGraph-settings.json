@@ -69,10 +69,10 @@
     "configMax" : null,
     "configMaxLength" : null
   }, {
-    "key" : "afficheMeteo",
+    "key" : "afficheFields",
     "valueType" : "boolean",
     "defaultValue" : false,
-    "configTitle" : "meteoPrompt",
+    "configTitle" : "$literal3$",
     "configPrompt" : null,
     "configType" : "boolean",
     "configError" : null,
@@ -95,16 +95,16 @@
     "configReadonly" : false,
     "configRequired" : false,
     "configOptions" : [ {
-      "display" : "$literal3$",
+      "display" : "$literal4$",
       "value" : 0
     }, {
-      "display" : "$literal4$",
+      "display" : "$literal5$",
       "value" : 1
     }, {
-      "display" : "$literal5$",
+      "display" : "$literal6$",
       "value" : 2
     }, {
-      "display" : "$literal6$",
+      "display" : "$literal7$",
       "value" : 3
     } ],
     "configMin" : null,
@@ -137,14 +137,158 @@
     "configReadonly" : false,
     "configRequired" : false,
     "configOptions" : [ {
-      "display" : "$literal7$",
+      "display" : "$literal8$",
       "value" : 0
     }, {
-      "display" : "$literal8$",
+      "display" : "$literal9$",
       "value" : 1
     }, {
-      "display" : "$literal9$",
+      "display" : "$literal10$",
       "value" : 2
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "field1",
+    "valueType" : "number",
+    "defaultValue" : 1,
+    "configTitle" : "$literal11$",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "$literal12$",
+      "value" : 0
+    }, {
+      "display" : "$literal13$",
+      "value" : 1
+    }, {
+      "display" : "$literal14$",
+      "value" : 2
+    }, {
+      "display" : "$literal15$",
+      "value" : 3
+    }, {
+      "display" : "$literal16$",
+      "value" : 4
+    }, {
+      "display" : "$literal17$",
+      "value" : 5
+    }, {
+      "display" : "$literal18$",
+      "value" : 6
+    }, {
+      "display" : "$literal19$",
+      "value" : 7
+    }, {
+      "display" : "$literal20$",
+      "value" : 8
+    }, {
+      "display" : "$literal21$",
+      "value" : 9
+    }, {
+      "display" : "$literal22$",
+      "value" : 10
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "field2",
+    "valueType" : "number",
+    "defaultValue" : 2,
+    "configTitle" : "$literal23$",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "$literal12$",
+      "value" : 0
+    }, {
+      "display" : "$literal13$",
+      "value" : 1
+    }, {
+      "display" : "$literal14$",
+      "value" : 2
+    }, {
+      "display" : "$literal15$",
+      "value" : 3
+    }, {
+      "display" : "$literal16$",
+      "value" : 4
+    }, {
+      "display" : "$literal17$",
+      "value" : 5
+    }, {
+      "display" : "$literal18$",
+      "value" : 6
+    }, {
+      "display" : "$literal19$",
+      "value" : 7
+    }, {
+      "display" : "$literal20$",
+      "value" : 8
+    }, {
+      "display" : "$literal21$",
+      "value" : 9
+    }, {
+      "display" : "$literal22$",
+      "value" : 10
+    } ],
+    "configMin" : null,
+    "configMax" : null,
+    "configMaxLength" : null
+  }, {
+    "key" : "field3",
+    "valueType" : "number",
+    "defaultValue" : 3,
+    "configTitle" : "$literal24$",
+    "configPrompt" : null,
+    "configType" : "list",
+    "configError" : null,
+    "configHelpUrl" : null,
+    "configReadonly" : false,
+    "configRequired" : false,
+    "configOptions" : [ {
+      "display" : "$literal12$",
+      "value" : 0
+    }, {
+      "display" : "$literal13$",
+      "value" : 1
+    }, {
+      "display" : "$literal14$",
+      "value" : 2
+    }, {
+      "display" : "$literal15$",
+      "value" : 3
+    }, {
+      "display" : "$literal16$",
+      "value" : 4
+    }, {
+      "display" : "$literal17$",
+      "value" : 5
+    }, {
+      "display" : "$literal18$",
+      "value" : 6
+    }, {
+      "display" : "$literal19$",
+      "value" : 7
+    }, {
+      "display" : "$literal20$",
+      "value" : 8
+    }, {
+      "display" : "$literal21$",
+      "value" : 9
+    }, {
+      "display" : "$literal22$",
+      "value" : 10
     } ],
     "configMin" : null,
     "configMax" : null,
@@ -153,7 +297,7 @@
     "key" : "debuging",
     "valueType" : "boolean",
     "defaultValue" : false,
-    "configTitle" : "$literal10$",
+    "configTitle" : "$literal25$",
     "configPrompt" : null,
     "configType" : "boolean",
     "configError" : null,
@@ -170,26 +314,41 @@
     "valyrian" : {
       "secondsPrompt" : "Affiche les secondes ?",
       "NStokenPrompt" : "Access token NS user, if necessary",
-      "NSurlPrompt" : "Online site Nightscout URL",
       "nbHGraph" : "Hours for graph",
-      "logarithmique" : "Log scale for graph ?",
-      "units" : "Units",
-      "version" : "V. 2",
-      "meteoPrompt" : "Meteo, or graph ?",
+      "units" : "BG Units",
+      "meteoPrompt" : "Fields, or graph ?",
       "AppName" : "Blood Glucose Watch",
-      "$literal1$" : "AAPS",
       "$literal0$" : "URL NightScout",
-      "$literal3$" : "1h",
+      "$literal16$" : "Pressure",
+      "$literal24$" : "Field 3",
       "$literal2$" : "Xdrip+",
-      "$literal5$" : "4h",
-      "$literal4$" : "2h",
-      "sourceBG" : "Blood glucose source",
-      "$literal7$" : "Don't force",
-      "$literal6$" : "6h",
-      "$literal9$" : "Force to mmol/l",
-      "$literal8$" : "Force to mg/l",
+      "$literal14$" : "Temperature",
+      "$literal4$" : "1h",
+      "$literal6$" : "4h",
+      "$literal18$" : "Steps",
+      "$literal8$" : "Don't force",
+      "$literal22$" : "Calories",
       "logCourt" : "Scale",
-      "$literal10$" : "Debug ?"
+      "$literal12$" : "Nothing",
+      "$literal20$" : "Heart rate",
+      "$literal10$" : "Force to mmol/l",
+      "NSurlPrompt" : "Online site Nightscout URL",
+      "logarithmique" : "Log scale for graph ?",
+      "version" : "V. 3.0",
+      "$literal1$" : "AAPS",
+      "$literal15$" : "Wind speed (knots)",
+      "$literal3$" : "3 Fields instead of BG graph",
+      "$literal13$" : "Battery",
+      "$literal25$" : "Debug ?",
+      "$literal5$" : "2h",
+      "$literal19$" : "Distance",
+      "sourceBG" : "Blood glucose source",
+      "$literal7$" : "6h",
+      "$literal17$" : "Altitude",
+      "$literal9$" : "Force to mg/l",
+      "$literal11$" : "Field 1",
+      "$literal23$" : "Field 2",
+      "$literal21$" : "Floors climbed"
     }
   }
 }

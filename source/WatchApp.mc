@@ -30,7 +30,8 @@ const NBRE_MAXI_DATA = 72;//6h
 
 (:background)
 var myView = null;
-var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage,units;
+var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,debugage,units;
+var field1,field2,field3;
 
 var nextEventSecs = 0;
 
@@ -236,8 +237,8 @@ class WatchApp extends App.AppBase {
     public function menuPrincipal(position) {
         var unitStr = ["","(mg/l)","(mmol/l)"][units];
         var tab = [afficheSecondes ? "Set seconds OFF" : "Set seconds ON",
-                    afficheMeteo ?  "Graph I/O meteo" : "Meteo I/O graph",
-                    "Graph options",
+                    afficheFields ?  "Graph I/O fields" : "Fields I/O graph",
+                    afficheFields ? "Fields options" : "Graph options",
                     "BG source",
                     "Units "+unitStr];
         return  new $.MenuView("Settings "+WatchUi.loadResource(Rez.Strings.version),tab,position);

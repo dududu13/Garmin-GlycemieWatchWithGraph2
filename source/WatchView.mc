@@ -88,7 +88,7 @@ var debug = [
     var partialUpdatesAllowed = false;
 
     var inLowPower = false;
-    //var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage,CapteurChanged;
+    //var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,debugage,CapteurChanged;
 
 
     const prov = ["NS","AAPS","Xd"];  
@@ -117,9 +117,9 @@ var x = {
 "Elapsed"=>(0.96 * largeurEcran),
 "sourceBG"=>(0.02 * largeurEcran),
 "Secondes"=>(0.96 * largeurEcran),
-"Temperature"=>(0.17 * largeurEcran),
-"Wind"=>(0.83 * largeurEcran),
-"Batterie"=>(0.5 * largeurEcran),
+"field1"=>(0.46 * largeurEcran),
+"field2"=>(0.54 * largeurEcran),
+"field3"=>(0.5 * largeurEcran),
 "labelMin"=>(0.93 * largeurEcran),
 };
 
@@ -132,9 +132,9 @@ var y = {
 "Elapsed"=>0.545 * hauteurEcran,
 "sourceBG"=>0.49 * hauteurEcran,
 "Secondes"=>0.356 * hauteurEcran,
-"Temperature"=>0.78 * hauteurEcran,
-"Wind"=>0.78 * hauteurEcran,
-"Batterie"=>0.92 * hauteurEcran,
+"field1"=>0.78 * hauteurEcran,
+"field2"=>0.78 * hauteurEcran,
+"field3"=>0.92 * hauteurEcran,
 "labelMin"=>0.66 * hauteurEcran,
 };
 
@@ -147,9 +147,9 @@ var font = {
 "Elapsed"=>Gfx.FONT_NUMBER_MILD,
 "sourceBG"=>Gfx.FONT_XTINY,
 "Secondes"=>Gfx.FONT_NUMBER_MILD,
-"Temperature"=>Gfx.FONT_LARGE,
-"Wind"=>Gfx.FONT_LARGE,
-"Batterie"=>Gfx.FONT_LARGE,
+"field1"=>Gfx.FONT_LARGE,
+"field2"=>Gfx.FONT_LARGE,
+"field3"=>Gfx.FONT_LARGE,
 "labelMin"=>Gfx.FONT_XTINY,
 };
 
@@ -162,9 +162,9 @@ var justification = {
 "Elapsed"=>Gfx.TEXT_JUSTIFY_RIGHT,
 "sourceBG"=>Gfx.TEXT_JUSTIFY_LEFT,
 "Secondes"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"Temperature"=>Gfx.TEXT_JUSTIFY_LEFT,
-"Wind"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"Batterie"=>Gfx.TEXT_JUSTIFY_CENTER,
+"field1"=>Gfx.TEXT_JUSTIFY_RIGHT,
+"field2"=>Gfx.TEXT_JUSTIFY_LEFT,
+"field3"=>Gfx.TEXT_JUSTIFY_CENTER,
 "labelMin"=>Gfx.TEXT_JUSTIFY_RIGHT,
 };
 
@@ -195,16 +195,19 @@ var justification = {
 		return true; 
     }
 
-    //var sourceBG,afficheSecondes,afficheMeteo,nbHGraph,logarithmique,debugage;
+    //var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,debugage;
 
     function readSettings() {
         sourceBG = getProp("sourceBG",2);
         afficheSecondes = getProp("afficheSecondes",false);
-        afficheMeteo = getProp("afficheMeteo",false);
+        afficheFields = getProp("afficheFields",false);
         nbHGraph = getProp("nbHGraph",2);
         logarithmique = getProp("logarithmique",false);
         debugage = getProp("debuging",false);
         units  = getProp("units",0);
+        field1  = getProp("field1",1);
+        field2  = getProp("field2",2);
+        field3  = getProp("field3",3);
     }
 
     function getProp(key,defaultValue) {
@@ -356,7 +359,7 @@ var justification = {
         }
         var infoTime = Calendar.info(timeNow, Time.FORMAT_LONG);
 
-        drawMeteoIfNotLowPower(dc);
+        drawGraphOrFieldsIfNotLowPower(dc);
         drawDeltaValue(dc,coeff,format);
         drawClock(dc,infoTime);
         drawElapsedTime(dc);
@@ -364,7 +367,6 @@ var justification = {
         drawNotifs(dc);
         drawDate(dc,infoTime);    
         barreBGsiBesoin(dc);
-        drawGraphIfNotLowPower(dc);
         drawBatterieAnalog(dc);
         drawDeltaCadre(dc,coeff,format);
         drawBlueTooth(dc,infoTime);        
@@ -446,63 +448,35 @@ var justification = {
 
     }
         
-    function drawGraphIfNotLowPower(dc) {
-        if (((! afficheMeteo) and ((! OledModel) || (! inLowPower)))) {
-            var size = tabData.size();
-            if (size==0) {
-                dc.drawText(.5*largeurEcran,.65*hauteurEcran,Gfx.FONT_LARGE,"No BG data,check\nsettings",Gfx.TEXT_JUSTIFY_CENTER);
-            return;
+    function drawGraphOrFieldsIfNotLowPower(dc) {
+        if ((! OledModel) || (! inLowPower)) {
+            if (afficheFields) {
+                drawFields(dc);
+            } else {
+                if (tabData.size()==0) {
+                    dc.drawText(.5*largeurEcran,.65*hauteurEcran,Gfx.FONT_LARGE,"No BG data,check\nsettings",Gfx.TEXT_JUSTIFY_CENTER);
+                    return;
+                }
+                graph.dessine_tout(dc);
             }
-            //graph.calcule_tout(tabData);
-            graph.dessine_tout(dc);
         }
     }
 
-    function drawMeteoIfNotLowPower(dc) {
-        if (((afficheMeteo) and ((! OledModel) || (! inLowPower)))) {
-            if (Toybox has :Weather) {
-                var CC = Toybox.Weather.getCurrentConditions();
-                if (CC != null) {
-                    var colorTemp = white;
-                    var texte = "no temp";
-                    if (CC.temperature != null) {
-                        var temp = CC.temperature;
-                        colorTemp = Gfx.COLOR_RED; //rouge
-                        if (temp <35 ) {colorTemp = Gfx.COLOR_ORANGE;} //orange
-                        if (temp <28 ) {colorTemp = Gfx.COLOR_YELLOW;} //jaune
-                        if (temp <24 ) {colorTemp = Gfx.COLOR_GREEN;} //vert
-                        if (temp <18 ) {colorTemp = Gfx.COLOR_BLUE;} //bleu clair
-                        if (temp <6 ) {colorTemp = Gfx.COLOR_PURPLE;} // violet clair
-                        texte = temp.format("%2.1f") + "°C";
-                    }
-                    drawLabel(dc,"Temperature", texte,colorTemp);
-                    var colorWind = white;
-                    texte = "no wind";
-                    if (CC.windSpeed != null) {
-                        var windSpeed = (CC.windSpeed == null) ? 0 : (CC.windSpeed * 1.943844).toNumber();
-                        colorWind = Gfx.COLOR_RED; //rouge
-                        if (windSpeed <25 ) {colorWind = Gfx.COLOR_PURPLE;} // violet 
-                        if (windSpeed <20 ) {colorWind = Gfx.COLOR_ORANGE;} //orange
-                        if (windSpeed <15 ) {colorWind = Gfx.COLOR_GREEN;} //vert
-                        if (windSpeed <10 ) {colorWind = Gfx.COLOR_BLUE;} //bleu clair
-                        if (windSpeed <6 ) {colorWind = Gfx.COLOR_LT_GRAY;}  //blanc vert pale
-                        if (windSpeed <3 ) {colorWind = white;}  //blanc 
-                        texte = windSpeed.format("%01d") +" nd";
-                    }
-                    drawLabel(dc,"Wind", texte,colorWind);
-                } else {
-                    drawLabel(dc,"Temperature", "No weather",white);
-                } 
-                var batterie = System.getSystemStats().battery;
-                var colorBatt = Gfx.COLOR_RED; //rouge
-                if (batterie >10 ) {colorBatt = Gfx.COLOR_ORANGE;} //orange
-                if (batterie >20 ) {colorBatt = Gfx.COLOR_YELLOW;} //jaune
-                if (batterie >30 ) {colorBatt = Gfx.COLOR_GREEN;} //vert
-                drawLabel(dc,"Batterie",batterie.toNumber()+" %",colorBatt);
-            } else {
-                drawLabel(dc,"Temperature", "No weather",white);
-            }
-        } 
+    function drawFields(dc) {
+    
+        if (((afficheFields) and ((! OledModel) || (! inLowPower)))) {
+            var data = dataField(field1);
+            drawLabel(dc,"field1", data[0],data[1]);
+            data = dataField(field2);
+            drawLabel(dc,"field2", data[0],data[1]);
+            data = dataField(field3);
+            drawLabel(dc,"field3", data[0],data[1]);
+            dc.setPenWidth(2);
+            dc.setColor(white,Gfx.COLOR_TRANSPARENT);
+            var y1 = y.get("field2") + (y.get("field3") - y.get("field2"))/2;
+            dc.drawLine(0,y1,largeurEcran,y1);
+            dc.drawLine(0.5 * largeurEcran,separationLine2*coeff,0.5 * largeurEcran,y1);
+        }
     }
 
     function ereaseOLEDifLowPower(dc) {
@@ -584,7 +558,7 @@ var justification = {
         dc.setColor(Gfx.COLOR_WHITE,trans);
         dc.drawLine(0,separationLine*coeff,largeurEcran,separationLine*coeff);
         dc.setColor( color,trans);
-        if (afficheMeteo) {
+        if (afficheFields) {
             dc.drawArc(centreEcran,centreEcran,centreEcran-1, Gfx.ARC_CLOCKWISE,205,175);
             dc.drawArc(centreEcran,centreEcran,centreEcran-1, Gfx.ARC_CLOCKWISE,5,335);
             dc.drawLine(0,separationLine2*coeff,largeurEcran,separationLine2*coeff);
@@ -645,6 +619,113 @@ var justification = {
     	//myPrintLn("view.onEnterSleep(), ctr=" + ctr); ctr++;
     	inLowPower = true;
     	Ui.requestUpdate(); 
+    }
+
+    function dataField(num) {
+        //System.println("num = "+num);
+        if (num == 0) {//rien
+        return ["",white];
+        }
+        else if (num == 1) {//batterie
+            var batterie = System.getSystemStats().battery;
+            var colorBatt = Gfx.COLOR_RED; //rouge
+            if (batterie >10 ) {colorBatt = Gfx.COLOR_ORANGE;} //orange
+            if (batterie >20 ) {colorBatt = Gfx.COLOR_YELLOW;} //jaune
+            if (batterie >30 ) {colorBatt = Gfx.COLOR_GREEN;} //vert
+            return [batterie.toNumber()+" %",colorBatt];
+        } else if (num == 2) {//temperature
+            if (Toybox has :Weather) {
+                var CC = Toybox.Weather.getCurrentConditions();
+                if (CC != null) {
+                    if (CC.temperature != null) {
+                        var colorTemp;
+                        var temp = CC.temperature;
+                        colorTemp = Gfx.COLOR_RED; //rouge
+                        if (temp <35 ) {colorTemp = Gfx.COLOR_ORANGE;} //orange
+                        if (temp <28 ) {colorTemp = Gfx.COLOR_YELLOW;} //jaune
+                        if (temp <24 ) {colorTemp = Gfx.COLOR_GREEN;} //vert
+                        if (temp <18 ) {colorTemp = Gfx.COLOR_BLUE;} //bleu clair
+                        if (temp <6 ) {colorTemp = Gfx.COLOR_PURPLE;} // violet clair
+				var unitstr = "°C";
+				if (System.getDeviceSettings().temperatureUnits == System.UNIT_STATUTE ) {
+					temp = temp*1.8+32; 
+					unitstr = "°F";
+				}
+                        return [temp.format("%2.1f") + unitstr,colorTemp];
+                    }
+                }
+            }
+        } else if (num == 3) { //wind
+            if (Toybox has :Weather) {
+                var CC = Toybox.Weather.getCurrentConditions();
+                if (CC != null) {
+                    if (CC.windSpeed != null) {
+                        var windSpeed = (CC.windSpeed == null) ? 0 : (CC.windSpeed * 1.943844).toNumber();
+                        var colorWind;
+                        colorWind = Gfx.COLOR_RED; //rouge
+                        if (windSpeed <25 ) {colorWind = Gfx.COLOR_PURPLE;} // violet 
+                        if (windSpeed <20 ) {colorWind = Gfx.COLOR_ORANGE;} //orange
+                        if (windSpeed <15 ) {colorWind = Gfx.COLOR_GREEN;} //vert
+                        if (windSpeed <10 ) {colorWind = Gfx.COLOR_BLUE;} //bleu clair
+                        if (windSpeed <6 ) {colorWind = Gfx.COLOR_LT_GRAY;}  //blanc vert pale
+                        if (windSpeed <3 ) {colorWind = white;}  //blanc 
+                        return [windSpeed.format("%01d") +" kts",colorWind];
+                    }
+                }
+            }
+        } else if (num == 4) { //pressure
+			var r;
+			if (Activity.Info has :rawAmbientPressure) {
+				r = Activity.getActivityInfo().rawAmbientPressure;
+			}
+			if ((r == null) && (Toybox has :SensorHistory) && (Toybox.SensorHistory has :getPressureHistory)) {
+				r = Toybox.SensorHistory.getPressureHistory({});
+				if (r != null) { r = r.next().data;}
+				}
+			if (r != null) {
+				return [(r/100).format("%01d")+" Pa",white] ;
+			}
+        } else if (num == 5) { //altitude
+			var alt = Activity.getActivityInfo().altitude;
+			if ((alt == null) && (Toybox has :SensorHistory) && (Toybox.SensorHistory has :getElevationHistory)) {
+				alt = Toybox.SensorHistory.getElevationHistory({});
+				if (alt != null) { alt = alt.next().data;}
+			}
+			if (alt != null) {
+				var unitstr = "m";
+				if (System.getDeviceSettings().heightUnits != 0) {
+					alt = alt* 3.28084;
+					unitstr = "ft";
+				}
+				return [(alt).format("%01d") +unitstr,white];
+			}
+        } else if (num == 6) { //steps
+            return [ActivityMonitor.getInfo().steps.format("%01d")+" st",white];
+        } else if (num == 7) { // distance
+            return [(ActivityMonitor.getInfo().distance/100).format("%01d")+" m",white];
+        } else if (num == 8) { // heart rate
+			var r = Activity.getActivityInfo().currentHeartRate;
+			if ((r == null) && (Toybox has :SensorHistory) && (Toybox.SensorHistory has :getHeartRateHistory)) {
+				r = Toybox.SensorHistory.getHeartRateHistory({});
+				if (r != null) { r = r.next().data;}
+			}
+			if (r != null) {
+				return ["HR "+r.toString(),white];
+			}
+        } else if (num == 9) { //floor
+			if  (Toybox.ActivityMonitor.Info has :floorsClimbed) {
+				return [ActivityMonitor.getInfo().floorsClimbed +" Fl",white];
+                }
+        } else if (num == 10) { // calories
+			if  (Toybox.ActivityMonitor.Info has :calories) {
+				return [ActivityMonitor.getInfo().calories+" Kc",white];
+                }
+        } else if (num == 11) { 
+        } else if (num == 12) { 
+        } else if (num == 13) { 
+        } else if (num == 14) { 
+        }
+        return ["N/A",Gfx.COLOR_WHITE];
     }
 
 }

@@ -9,8 +9,8 @@ class MenuSetPrincipalDelegate extends Ui.BehaviorDelegate {
 
     enum {
     seconds,
-    meteo,
-    graphOptions,
+    fields,
+    graphOrFieldsOptions,
     provenance,
     unites
     }
@@ -43,7 +43,7 @@ var _menu_principalview;
     function onSelect()    {
 /*
 seconds,
-meteo,
+fields,
 graphOptions,
 provenance */
       	if (_menu_principalview.itemEnCours == provenance) { 
@@ -57,16 +57,22 @@ provenance */
             var menuSettings =  WatchApp.menuPrincipal(seconds);
             Ui.switchToView(menuSettings, new $.MenuSetPrincipalDelegate(menuSettings),Ui.SLIDE_IMMEDIATE);
             System.println("Set seconds to "+afficheSecondes);
-        } else if (_menu_principalview.itemEnCours == meteo)   {
-            afficheMeteo = ! afficheMeteo;
-            App.getApp().setProperty("afficheMeteo",afficheMeteo);
-            var menuSettings =  WatchApp.menuPrincipal(meteo);
+        } else if (_menu_principalview.itemEnCours == fields)   {
+            afficheFields = ! afficheFields;
+            App.getApp().setProperty("afficheFields",afficheFields);
+            var menuSettings =  WatchApp.menuPrincipal(fields);
             Ui.switchToView(menuSettings, new $.MenuSetPrincipalDelegate(menuSettings),Ui.SLIDE_IMMEDIATE);
-            System.println("afficheMeteo "+afficheMeteo);
-        } else if (_menu_principalview.itemEnCours == graphOptions)    {
-            var menuGraphOptionView = new $.MenuView("Graph options",
-            ["Linear or Log scale","Duration"],0);
-            Ui.pushView(menuGraphOptionView, new $.MenuSetGraphOptionsDelegate(menuGraphOptionView),Ui.SLIDE_RIGHT);
+            System.println("afficheFields "+afficheFields);
+        } else if (_menu_principalview.itemEnCours == graphOrFieldsOptions)    {
+            if (afficheFields) {
+                var menuFieldsOptionView = new $.MenuView("Fields options",
+                ["Field 1","Field 2","Field 3"],0);
+                Ui.pushView(menuFieldsOptionView, new $.MenuSetFieldsOptionsDelegate(menuFieldsOptionView),Ui.SLIDE_RIGHT);
+            } else {
+                var menuGraphOptionView = new $.MenuView("Graph options",
+                ["Linear or Log scale","Duration"],0);
+                Ui.pushView(menuGraphOptionView, new $.MenuSetGraphOptionsDelegate(menuGraphOptionView),Ui.SLIDE_RIGHT);
+            }
         } else if (_menu_principalview.itemEnCours == unites)    {
             var menuUnitsView = new $.MenuView("Units\nif necessary",
             ["Don't force","Force to mg/l","Force to mmol/l"],units);
