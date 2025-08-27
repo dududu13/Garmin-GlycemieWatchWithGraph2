@@ -1,0 +1,70 @@
+<resources>
+
+<layouts>
+
+<layout id="Settings">
+    <drawable id="backgroundGrey"  />
+
+    <button x="0" y="0" width="800" height="800" >
+        <state id="stateDefault" bitmap="@Drawables.BoutonVide" />
+    </button>
+    <label x="50%" y="2%" text="@Strings.version" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+
+    <label x="15%" y="15%" text="Seconds ?" font="Gfx.FONT_MEDIUM" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_LEFT" />
+    <label x="39%" y="30%" text="Fields ?" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+     <button x="15%" y="30%" width="50%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsField" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsFieldActive" />
+        <param name="behavior">field</param>
+    </button>
+    <label x="39%" y="45%" text="Graph" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+     <button x="15%" y="45%" width="50%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsGraph" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsGraphActive" />
+        <param name="behavior">graph</param>
+    </button>
+
+
+     <button x="70%" y="15%" width="16%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsCoche0" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsCocheActive0" />
+        <param name="behavior">seconds</param>
+    </button>
+     <button x="70%" y="30%" width="16%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsCoche1" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsCocheActive1" />
+        <param name="behavior">meteo</param>
+    </button>
+    <button x="70%" y="45%" width="16%" height="16%" >
+        <state id="stateDefault" drawable="@Drawables.settingsCoche2" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsCocheActive2" />
+        <param name="behavior">meteo</param>
+    </button>
+
+    <button  x="18%" y="60%" width="68%" height="18%" >
+        <state id="stateDefault" drawable="@Drawables.settingsCoche3" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsCocheActive3" />
+        <param name="behavior">sourceBG</param>
+    </button>
+
+    <label x="52%" y="63.4%" id="choixSource" text="" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+
+
+    <label x="65%" y="82%" text="Units" font="Gfx.FONT_SMALL" color="Gfx.COLOR_WHITE" justification="Gfx.TEXT_JUSTIFY_CENTER" />
+     <button  x="50%" y="80%" width="30%" height="15%" >
+        <state id="stateDefault" drawable="@Drawables.settingsUnits" />
+        <state id="stateHighlighted" drawable="@Drawables.settingsUnitsActive" />
+        <param name="behavior">units</param>
+    </button>
+
+
+     <button  x="30%" y="80%" width="20%" height="20%" >
+        <state id="stateDefault" bitmap="@Drawables.back" />
+        <param name="behavior">back</param>
+    </button>
+
+    </layout>
+
+</layouts>
+
+</resources>
