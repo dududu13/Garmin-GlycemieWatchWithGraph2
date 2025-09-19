@@ -135,16 +135,11 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 	            //Sys.println("onReceiveSGV valid data: " + sgv + "  "+delta + "  "+timeSecondes);
                 validData = true;
             }
-            /*
+            
             if (data[1].hasKey("sgv")) { //pour Xdrip et Dexcom, le delta est une moyenne des 3 dernieres valeurs, il faut donc recuperer le svg precedent pour calculer le delta
 				sgvPrevious = data[1]["sgv"].toNumber();
                 delta = sgv-sgvPrevious;
             }
-            */
-            //bgdata["elapsedMills"] = elapsedMills;
-        } else {
-            //Sys.println("onReceiveSGV SGV resp: " + responseCode.toString());
-            //Sys.println("onReceiveSGV data: " + data);
         }
         //Sys.println("onReceiveSGV receiveCtr = "+receiveCtr);
 		receiveCtr--;
