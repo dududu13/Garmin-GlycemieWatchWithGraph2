@@ -224,24 +224,15 @@ class WatchApp extends App.AppBase {
 (:onlyWithSettingOnWatchface)
     function getSettingsView() {
         Application.Storage.setValue("CapteurChanged",true);
-         if (Sys.getDeviceSettings().isTouchScreen) {
+         if ((Sys.getDeviceSettings().isTouchScreen) && ($ has :GraphSet_Delegate) && ($ has :GraphSet_View)){
             return [new $.GraphSet_View(), new $.GraphSet_Delegate()];
-        } else {
-            var menuSettings =  menuPrincipal(0);
+        } else if (($ has :MenuSetPrincipalDelegate) && (MenuSetPrincipalDelegate has :menuPrincipal)){
+            var menuSettings =  MenuSetPrincipalDelegate.menuPrincipal(0);
             return [menuSettings, new $.MenuSetPrincipalDelegate(menuSettings),WatchUi.SLIDE_RIGHT];
         }
     }
 
 
-(:onlyWithSettingOnWatchface)
-    public function menuPrincipal(position) {
-        var unitStr = ["","(mg/l)","(mmol/l)"][units];
-        var tab = [afficheSecondes ? "Set seconds OFF" : "Set seconds ON",
-                    afficheFields ?  "Graph I/O fields" : "Fields I/O graph",
-                    afficheFields ? "Fields options" : "Graph options",
-                    "BG source",
-                    "Units "+unitStr];
-        return  new $.MenuView("Settings "+WatchUi.loadResource(Rez.Strings.version),tab,position);
-    }
+
 
 }
