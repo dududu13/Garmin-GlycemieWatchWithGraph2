@@ -9,81 +9,6 @@ using Toybox.Time.Gregorian as Calendar;
 
 
 class WatchView extends Ui.WatchFace {
-var debug = [
-[120,3,0],
-[200,80,0],
-[159,-41,0],
-[220,61,0],
-[147,-73,0],
-[199,52,0],
-[251,52,0],
-[248,-3,0],
-[249,1,0],
-[139,-110,0],
-[134,-5,0],
-[248,114,0],
-[218,-30,0],
-[200,-18,0],
-[147,-53,0],
-[265,118,0],
-[176,-89,0],
-[244,68,0],
-[272,28,0],
-[131,-141,0],
-[264,133,0],
-[185,-79,0],
-[259,74,0],
-[203,-56,0],
-[197,-6,0],
-[193,-4,0],
-[194,1,0],
-[210,16,0],
-[257,47,0],
-[240,-17,0],
-[164,-76,0],
-[181,17,0],
-[208,27,0],
-[155,-53,0],
-[270,115,0],
-[272,2,0],
-[188,-84,0],
-[241,53,0],
-[218,-23,0],
-[231,13,0],
-[199,-32,0],
-[212,13,0],
-[180,-32,0],
-[274,94,0],
-[212,-62,0],
-[137,-75,0],
-[179,42,0],
-[220,41,0],
-[137,-83,0],
-[227,90,0],
-[198,-29,0],
-[271,73,0],
-[142,-129,0],
-[197,55,0],
-[180,-17,0],
-[264,84,0],
-[146,-118,0],
-[248,102,0],
-[144,-104,0],
-[262,118,0],
-[269,7,0],
-[222,-47,0],
-[221,-1,0],
-[220,-1,0],
-[151,-69,0],
-[170,19,0],
-[182,12,0],
-[122,-60,0],
-[270,148,0],
-[171,-99,0],
-[168,-3,0],
-[250,82,0],
-
-];
 
     var partialUpdatesAllowed = false;
 
@@ -107,66 +32,14 @@ var debug = [
     var hauteurEcran = System.getDeviceSettings().screenHeight;//dc.getHeight();;
     var OledModel  = System.getDeviceSettings().requiresBurnInProtection; 
 
+var FONT_LARGE = Gfx.FONT_LARGE;
+var FONT_MEDIUM = Gfx.FONT_MEDIUM;
+var FONT_NUMBER_HOT = Gfx.FONT_NUMBER_HOT;
+var FONT_NUMBER_MILD = Gfx.FONT_NUMBER_MILD;
+var FONT_XTINY = Gfx.FONT_XTINY;
 
-var x = {
-"date"=>(0.5 * largeurEcran),
-"heure"=>(0.5 * largeurEcran),
-"notif"=>(0.12 * largeurEcran),
-"BG"=>(0.78 * largeurEcran),
-"Delta"=>(0.29 * largeurEcran),
-"Elapsed"=>(0.96 * largeurEcran),
-"sourceBG"=>(0.02 * largeurEcran),
-"Secondes"=>(0.96 * largeurEcran),
-"field1"=>(0.46 * largeurEcran),
-"field2"=>(0.54 * largeurEcran),
-"field3"=>(0.5 * largeurEcran),
-"labelMin"=>(0.93 * largeurEcran),
-};
+var x,y,font,justification;
 
-var y = {
-"date"=>(0.127 * hauteurEcran),
-"heure"=>0.315 * hauteurEcran,
-"notif"=>0.392 * hauteurEcran,
-"BG"=>0.582 * hauteurEcran,
-"Delta"=>0.6 * hauteurEcran,
-"Elapsed"=>0.545 * hauteurEcran,
-"sourceBG"=>0.49 * hauteurEcran,
-"Secondes"=>0.356 * hauteurEcran,
-"field1"=>0.78 * hauteurEcran,
-"field2"=>0.78 * hauteurEcran,
-"field3"=>0.92 * hauteurEcran,
-"labelMin"=>0.66 * hauteurEcran,
-};
-
-var font = {
-"date"=>Gfx.FONT_LARGE,
-"heure"=>Gfx.FONT_NUMBER_HOT,
-"notif"=>Gfx.FONT_MEDIUM,
-"BG"=>Gfx.FONT_NUMBER_HOT,
-"Delta"=>Gfx.FONT_NUMBER_MILD,
-"Elapsed"=>Gfx.FONT_NUMBER_MILD,
-"sourceBG"=>Gfx.FONT_XTINY,
-"Secondes"=>Gfx.FONT_NUMBER_MILD,
-"field1"=>Gfx.FONT_LARGE,
-"field2"=>Gfx.FONT_LARGE,
-"field3"=>Gfx.FONT_LARGE,
-"labelMin"=>Gfx.FONT_XTINY,
-};
-
-var justification = {
-"date"=>Gfx.TEXT_JUSTIFY_CENTER,
-"heure"=>Gfx.TEXT_JUSTIFY_CENTER,
-"notif"=>Gfx.TEXT_JUSTIFY_CENTER,
-"BG"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"Delta"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"Elapsed"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"sourceBG"=>Gfx.TEXT_JUSTIFY_LEFT,
-"Secondes"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"field1"=>Gfx.TEXT_JUSTIFY_RIGHT,
-"field2"=>Gfx.TEXT_JUSTIFY_LEFT,
-"field3"=>Gfx.TEXT_JUSTIFY_CENTER,
-"labelMin"=>Gfx.TEXT_JUSTIFY_RIGHT,
-};
 
     var coeff=largeurEcran/416.0;
     var centreEcran = hauteurEcran/2;
@@ -183,6 +56,8 @@ var justification = {
     	System.println("view.initialize()");
         readSettings();
         tabData = readAllData();
+        ajusteFonts();
+        ajustexy();
         //tabData = debug;
         //WatchApp.storeAllData(tabData);
         graph = new WatchGraphique(tabData);
@@ -194,6 +69,80 @@ var justification = {
         readSettings();
 		return true; 
     }
+    function ajusteFonts() {
+        var pourCent = 1.0*Gfx.getFontHeight(FONT_NUMBER_HOT)/hauteurEcran;
+        //System.println("pourCent = "+pourCent);
+        if (pourCent > .36) { //pour les montres genre fenix 8
+            System.println("réducton font size");
+            FONT_LARGE = FONT_LARGE-1;
+            FONT_MEDIUM = FONT_MEDIUM-1;
+            FONT_NUMBER_HOT = FONT_NUMBER_HOT-1;
+            FONT_NUMBER_MILD = FONT_NUMBER_MILD-1;
+            FONT_XTINY = FONT_XTINY;
+        }
+
+    }
+    function ajustexy() {
+        x = {
+        "date"=>(0.5 * largeurEcran),
+        "heure"=>(0.5 * largeurEcran),
+        "notif"=>(0.12 * largeurEcran),
+        "BG"=>(0.78 * largeurEcran),
+        "Delta"=>(0.29 * largeurEcran),
+        "Elapsed"=>(0.96 * largeurEcran),
+        "sourceBG"=>(0.02 * largeurEcran),
+        "Secondes"=>(0.96 * largeurEcran),
+        "field1"=>(0.46 * largeurEcran),
+        "field2"=>(0.54 * largeurEcran),
+        "field3"=>(0.5 * largeurEcran),
+        "labelMin"=>(0.93 * largeurEcran),
+        };
+
+        y = {
+        "date"=>(0.127 * hauteurEcran),
+        "heure"=>0.315 * hauteurEcran,
+        "notif"=>0.392 * hauteurEcran,
+        "BG"=>0.582 * hauteurEcran,
+        "Delta"=>0.6 * hauteurEcran,
+        "Elapsed"=>0.545 * hauteurEcran,
+        "sourceBG"=>0.49 * hauteurEcran,
+        "Secondes"=>0.356 * hauteurEcran,
+        "field1"=>0.78 * hauteurEcran,
+        "field2"=>0.78 * hauteurEcran,
+        "field3"=>0.92 * hauteurEcran,
+        "labelMin"=>0.66 * hauteurEcran,
+        };
+
+        font = {
+        "date"=>FONT_LARGE,
+        "heure"=>FONT_NUMBER_HOT,
+        "notif"=>FONT_MEDIUM,
+        "BG"=>FONT_NUMBER_HOT,
+        "Delta"=>FONT_NUMBER_MILD,
+        "Elapsed"=>FONT_NUMBER_MILD,
+        "sourceBG"=>FONT_XTINY,
+        "Secondes"=>FONT_NUMBER_MILD,
+        "field1"=>FONT_LARGE,
+        "field2"=>FONT_LARGE,
+        "field3"=>FONT_LARGE,
+        "labelMin"=>FONT_XTINY,
+        };
+
+        justification = {
+        "date"=>Gfx.TEXT_JUSTIFY_CENTER,
+        "heure"=>Gfx.TEXT_JUSTIFY_CENTER,
+        "notif"=>Gfx.TEXT_JUSTIFY_CENTER,
+        "BG"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        "Delta"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        "Elapsed"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        "sourceBG"=>Gfx.TEXT_JUSTIFY_LEFT,
+        "Secondes"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        "field1"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        "field2"=>Gfx.TEXT_JUSTIFY_LEFT,
+        "field3"=>Gfx.TEXT_JUSTIFY_CENTER,
+        "labelMin"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        };
+    }
 
     //var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,debugage;
 
@@ -203,7 +152,6 @@ var justification = {
         afficheFields = getProp("afficheFields",false);
         nbHGraph = getProp("nbHGraph",2);
         logarithmique = getProp("logarithmique",false);
-        debugage = getProp("debuging",false);
         units  = getProp("units",0);
         field1  = getProp("field1",1);
         field2  = getProp("field2",2);
@@ -274,7 +222,7 @@ var justification = {
         }
         return [delaiRestant,prochainTime];
     }
-
+/*
     function afficheDebug(dc) {
         var largeurEcran = System.getDeviceSettings().screenWidth;
 
@@ -323,7 +271,7 @@ var justification = {
         dc.setColor(Gfx.COLOR_LT_GRAY,Gfx.COLOR_TRANSPARENT);
         dc.drawText(0.5 * largeurEcran,0.33 * largeurEcran,font,debugData,Gfx.TEXT_JUSTIFY_CENTER);
     }
-
+*/
     function isCapteurChanged() {
         var temp = Application.Storage.getValue("CapteurChanged");
         if (temp == null) {return true;}
@@ -336,10 +284,6 @@ var justification = {
             tabData = readAllData();
             graph.calcule_tout(tabData);
             Application.Storage.setValue("CapteurChanged",false);
-        }
-        if (debugage) {
-            afficheDebug(dc);
-            return;
         }
         var timeNow = Time.now();
         if (isCapteurChanged()) {
@@ -357,7 +301,7 @@ var justification = {
             coeff = 1/18.0;
             format = "%2.1f";
         }
-        var infoTime = Calendar.info(timeNow, Time.FORMAT_LONG);
+        var infoTime = Calendar.info(timeNow, Time.FORMAT_MEDIUM);
 
         drawGraphOrFieldsIfNotLowPower(dc);
         drawDeltaValue(dc,coeff,format);
@@ -578,7 +522,9 @@ var justification = {
     }
 
     function drawDate(dc,infoTime) {
-        var dateStr = Lang.format("$1$ $2$ $3$", [infoTime.day_of_week, infoTime.day,infoTime.month]);
+        var m = infoTime.month;
+        if (m.length()>3) {m = m.substring(0,3);}
+        var dateStr = Lang.format("$1$ $2$ $3$", [infoTime.day_of_week, infoTime.day,m]);
         drawLabel(dc,"date",dateStr,white);
     }
 

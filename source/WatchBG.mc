@@ -85,7 +85,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 		} else if (sourceBG == 2) {
 			url = "http://127.0.0.1:17580/sgv.json?count=3" ; //xdrip
 		}
-		traiteDebugSent(sourceBG);
+		//traiteDebugSent(sourceBG);
 		receiveCtr++;
 		reqNum++;
 		Sys.println("request url: " + url);
@@ -96,7 +96,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 													}, method(:onReceiveSGV));
 		return true;
     } 
-
+/*
   	function traiteDebugSent(sourceBG) {
 	 	var sourceText = ["NS","AAPS","Xd+"][sourceBG];
         var info = Calendar.info(Time.now(), Time.FORMAT_LONG);
@@ -107,14 +107,14 @@ class WatchBG extends Toybox.System.ServiceDelegate {
         Application.Storage.setValue("debugData", "Attente réponse\nde "+sourceText);
         Application.Storage.setValue("debugInfos", debugInfos);
 	}
+    */
 
     function onReceiveSGV(responseCode, data) {//si coderesponse 404=pas de réseau
-        //Sys.println("in OnReceiveSGV  responseCode="+ responseCode);
+        //Sys.println("in OnReceiveSGV  responseCode="+ responseCode + "  "+data);
 		var timeSecondes=0;
 		var sgv=0;
         var sgvPrevious=0;
 		var delta=0;
-        var validData = false;
         if ((responseCode == 200) &&
             (data != null) &&
         	(data instanceof Array) &&
@@ -127,34 +127,18 @@ class WatchBG extends Toybox.System.ServiceDelegate {
             //bgdata["sgv"] = data;
             if (data[0].hasKey("sgv") &&
                 data[0].hasKey("date") &&
-                data[0].hasKey("delta")
+                data[1].hasKey("sgv")
                 ) {
-                timeSecondes= data[0]["date"].toLong()/1000;
+                timeSecondes = data[0]["date"].toLong()/1000;
 				sgv = data[0]["sgv"].toNumber();
-				delta = data[0]["delta"].toNumber();
-	            //Sys.println("onReceiveSGV valid data: " + sgv + "  "+delta + "  "+timeSecondes);
-                validData = true;
-            }
-            
-            if (data[1].hasKey("sgv")) { //pour Xdrip et Dexcom, le delta est une moyenne des 3 dernieres valeurs, il faut donc recuperer le svg precedent pour calculer le delta
-				sgvPrevious = data[1]["sgv"].toNumber();
-                delta = sgv-sgvPrevious;
+                delta = sgv-data[1]["sgv"].toNumber();
             }
         }
-        //Sys.println("onReceiveSGV receiveCtr = "+receiveCtr);
 		receiveCtr--;
-        var capteur;
-        if  (validData) {
-            traiteDebugRecue(responseCode,data,timeSecondes);
-            capteur = [sgv,delta,timeSecondes];
-        } else {
-            traiteDebugRecue(responseCode,data,0);
-            capteur = [0,0,0];
-        }
-        //Sys.println("onReceiveSGV call OnBackground.exit capteur="+capteur);
-        Background.exit([capteur, data]);
+        Background.exit([sgv,delta,timeSecondes]);
+        
     }
-
+/*
 	function traiteDebugRecue(responseCode,data,capteur_secondes) {
         
         var source = ["NS","AAPS","Xd+"][Application.getApp().getProperty("sourceBG")];
@@ -181,5 +165,5 @@ class WatchBG extends Toybox.System.ServiceDelegate {
 
 	}
 
-
+*/
 }

@@ -30,7 +30,7 @@ const NBRE_MAXI_DATA = 72;//6h
 
 (:background)
 var myView = null;
-var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,debugage,units;
+var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,units;
 var field1,field2,field3;
 
 var nextEventSecs = 0;
@@ -136,8 +136,8 @@ class WatchApp extends App.AppBase {
     function onBackgroundData(data) {
 	    //Sys.println("onBackground "+data);
         
-        enregistreDernierCapteur(data[0]);
-        var capteurSecondes = data[0][2];
+        enregistreDernierCapteur(data);
+        var capteurSecondes = data[2];
 	    //Sys.println("onBackground "+capteurSecondes);
         if ((capteurSecondes != null) &&
             (capteurSecondes > 0)) {

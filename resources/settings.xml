@@ -78,8 +78,6 @@
             <listEntry value="10">Calories</listEntry>
         </settingConfig>
     </setting>
-    <setting propertyKey="@Properties.debuging" title="Debug ?" >
-        <settingConfig type="boolean" /></setting>
 
 
 </settings>
