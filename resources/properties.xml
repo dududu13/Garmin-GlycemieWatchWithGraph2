@@ -2,7 +2,7 @@
     <property id="sourceBG" type="number">0</property>
     <property id="NSurl" type="string"></property>
     <property id="NStoken" type="string"></property>
-    <property id="afficheSecondes" type="boolean">false</property>
+    <property id="afficheSecondes" type="boolean">true</property>
     <property id="afficheFields" type="boolean">false</property>
     <property id="nbHGraph" type="number">1</property>
     <property id="logarithmique" type="boolean">true</property>

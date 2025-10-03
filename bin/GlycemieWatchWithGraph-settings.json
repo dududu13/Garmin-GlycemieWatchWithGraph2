@@ -56,7 +56,7 @@
   }, {
     "key" : "afficheSecondes",
     "valueType" : "boolean",
-    "defaultValue" : false,
+    "defaultValue" : true,
     "configTitle" : "secondsPrompt",
     "configPrompt" : null,
     "configType" : "boolean",

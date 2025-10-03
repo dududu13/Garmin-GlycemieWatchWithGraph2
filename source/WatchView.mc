@@ -35,6 +35,8 @@ class WatchView extends Ui.WatchFace {
 var FONT_LARGE = Gfx.FONT_LARGE;
 var FONT_MEDIUM = Gfx.FONT_MEDIUM;
 var FONT_NUMBER_HOT = Gfx.FONT_NUMBER_HOT;
+var FONT_NUMBER_MEDIUM = Gfx.FONT_NUMBER_MEDIUM;
+
 var FONT_NUMBER_MILD = Gfx.FONT_NUMBER_MILD;
 var FONT_XTINY = Gfx.FONT_XTINY;
 
@@ -56,33 +58,37 @@ var x,y,font,justification;
     	System.println("view.initialize()");
         readSettings();
         tabData = readAllData();
-        ajusteFonts();
-        ajustexy();
         //tabData = debug;
         //WatchApp.storeAllData(tabData);
         graph = new WatchGraphique(tabData);
         WatchFace.initialize();
     }
 
+    function onLayout(dc) {
+        ajusteFonts();
+        ajustexy(dc);
+
+    }
 
     function onSettingsChanged() {
         readSettings();
 		return true; 
     }
-    function ajusteFonts() {
+    function ajusteFonts() { //pour les montres genre fenix 8
         var pourCent = 1.0*Gfx.getFontHeight(FONT_NUMBER_HOT)/hauteurEcran;
         //System.println("pourCent = "+pourCent);
-        if (pourCent > .36) { //pour les montres genre fenix 8
+        if (pourCent > .36) { 
             System.println("réducton font size");
-            FONT_LARGE = FONT_LARGE-1;
-            FONT_MEDIUM = FONT_MEDIUM-1;
+            FONT_LARGE = FONT_LARGE-2;
+            FONT_MEDIUM = FONT_MEDIUM-2;
             FONT_NUMBER_HOT = FONT_NUMBER_HOT-1;
-            FONT_NUMBER_MILD = FONT_NUMBER_MILD-1;
+            FONT_NUMBER_MILD = FONT_NUMBER_MILD-2;
             FONT_XTINY = FONT_XTINY;
+            
         }
 
     }
-    function ajustexy() {
+    function ajustexy(dc) {
         x = {
         "date"=>(0.5 * largeurEcran),
         "heure"=>(0.5 * largeurEcran),
@@ -90,7 +96,7 @@ var x,y,font,justification;
         "BG"=>(0.78 * largeurEcran),
         "Delta"=>(0.29 * largeurEcran),
         "Elapsed"=>(0.96 * largeurEcran),
-        "sourceBG"=>(0.02 * largeurEcran),
+        "sourceBG"=>(0.03 * largeurEcran),
         "Secondes"=>(0.96 * largeurEcran),
         "field1"=>(0.46 * largeurEcran),
         "field2"=>(0.54 * largeurEcran),
@@ -105,8 +111,8 @@ var x,y,font,justification;
         "BG"=>0.582 * hauteurEcran,
         "Delta"=>0.6 * hauteurEcran,
         "Elapsed"=>0.545 * hauteurEcran,
-        "sourceBG"=>0.49 * hauteurEcran,
-        "Secondes"=>0.356 * hauteurEcran,
+        "sourceBG"=>0.51 * hauteurEcran,
+        "Secondes"=>0.34 * hauteurEcran,
         "field1"=>0.78 * hauteurEcran,
         "field2"=>0.78 * hauteurEcran,
         "field3"=>0.92 * hauteurEcran,
@@ -121,7 +127,7 @@ var x,y,font,justification;
         "Delta"=>FONT_NUMBER_MILD,
         "Elapsed"=>FONT_NUMBER_MILD,
         "sourceBG"=>FONT_XTINY,
-        "Secondes"=>FONT_NUMBER_MILD,
+        "Secondes"=>FONT_LARGE,
         "field1"=>FONT_LARGE,
         "field2"=>FONT_LARGE,
         "field3"=>FONT_LARGE,
@@ -136,12 +142,21 @@ var x,y,font,justification;
         "Delta"=>Gfx.TEXT_JUSTIFY_RIGHT,
         "Elapsed"=>Gfx.TEXT_JUSTIFY_RIGHT,
         "sourceBG"=>Gfx.TEXT_JUSTIFY_LEFT,
-        "Secondes"=>Gfx.TEXT_JUSTIFY_RIGHT,
+        "Secondes"=>Gfx.TEXT_JUSTIFY_LEFT,
         "field1"=>Gfx.TEXT_JUSTIFY_RIGHT,
         "field2"=>Gfx.TEXT_JUSTIFY_LEFT,
         "field3"=>Gfx.TEXT_JUSTIFY_CENTER,
         "labelMin"=>Gfx.TEXT_JUSTIFY_RIGHT,
         };
+        //var secX,secY;
+        var heuX = x.get("heure")+ dc.getTextWidthInPixels("00:00", font.get("heure"))/2;
+        var secX = heuX+0.01*largeurEcran;
+        x.put("Secondes",secX);
+        if (largeurEcran>420) {
+            y.put("Secondes",0.362 * hauteurEcran);
+        }
+        //y.put("Secondes",secY);
+
     }
 
     //var sourceBG,afficheSecondes,afficheFields,nbHGraph,logarithmique,debugage;
