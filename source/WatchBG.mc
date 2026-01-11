@@ -49,32 +49,31 @@ class WatchBG extends Toybox.System.ServiceDelegate {
         var url = thisApp.getProperty("NSurl");
         var utilisateurNS = thisApp.getProperty("NStoken");
 		var token = "";
-		if ((utilisateurNS != null) && (! utilisateurNS.equals(""))) {token = "?token="+utilisateurNS;}
+		if ((utilisateurNS != null) && (! utilisateurNS.equals(""))) {token = "&token="+utilisateurNS;}
 		
-		url = url+token;
+		//url = url+token;
 		if (url == null) { url = ""; }
 
 		url = removeWhitespace(url);
 
         if (!url.equals("")) {
-        	var options = "";
+        	//var options = "";
 	        if (url.find("://") == null) {
     	        url = "https://" + url;
         	}
-	        if (url.find("?") != null) {
-	        	// support token based nightscout authentication, set NS URL = your-site.herokuapp.com?token=your-token
-	        	options = "&" + url.substring(url.find("?")+1,url.length());
-			    url = url.substring(0,url.find("?"));
-				url = removeWhitespace(url);
-	        }
-			url = url + "/api/v1/entries/sgv.json?count=3/";
-			url = url + options;
+//  https://mon_site.com
+//  /api/v1/entries/sgv.json?count=3
+//  &token=myToken
+//  url = https://mon_site.com/api/v1/entries/sgv.json?count=3&token=myToken
+ 
+			url = url + "/api/v1/entries/sgv.json?count=3"+token;
+			//url = url + options;
 	   	}
 		System.println("makeNSURL "+url);
         return url;
 	}
 
-// url = https://monsite.com/api/v1/entries/sgv.json?count=3/&token=
+
     function myWebRequest(ns, fetchMode, loop) {
 		var url;
 		var sourceBG = Application.getApp().getProperty("sourceBG");
