@@ -17,11 +17,11 @@ class WatchBG extends Toybox.System.ServiceDelegate {
     }
 
     function onTemporalEvent() {
-        //Sys.println("in onTemporalEvent");
+        Sys.println("in onTemporalEvent");
         receiveCtr = 0;
         reqNum = 0;
         myWebRequest(true, 1, false);
-        //Sys.println("onTemporalEvent receiveCtr="+receiveCtr);
+        Sys.println("onTemporalEvent receiveCtr="+receiveCtr);
 
     }
 
@@ -110,7 +110,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
     */
 
     function onReceiveSGV(responseCode, data) {//si coderesponse 404=pas de réseau
-        //Sys.println("in OnReceiveSGV  responseCode="+ responseCode + "  "+data);
+        Sys.println("in OnReceiveSGV  responseCode="+ responseCode + "  "+data);
 		var timeSecondes=0;
 		var sgv=0;
         var sgvPrevious=0;

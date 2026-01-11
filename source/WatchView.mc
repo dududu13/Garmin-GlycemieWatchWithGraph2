@@ -32,15 +32,15 @@ class WatchView extends Ui.WatchFace {
     var hauteurEcran = System.getDeviceSettings().screenHeight;//dc.getHeight();;
     var OledModel  = System.getDeviceSettings().requiresBurnInProtection; 
 
-var FONT_LARGE = Gfx.FONT_LARGE;
-var FONT_MEDIUM = Gfx.FONT_MEDIUM;
-var FONT_NUMBER_HOT = Gfx.FONT_NUMBER_HOT;
-var FONT_NUMBER_MEDIUM = Gfx.FONT_NUMBER_MEDIUM;
+    var FONT_LARGE = Gfx.FONT_LARGE;
+    var FONT_MEDIUM = Gfx.FONT_MEDIUM;
+    var FONT_NUMBER_HOT = Gfx.FONT_NUMBER_HOT;
+    var FONT_NUMBER_MEDIUM = Gfx.FONT_NUMBER_MEDIUM;
 
-var FONT_NUMBER_MILD = Gfx.FONT_NUMBER_MILD;
-var FONT_XTINY = Gfx.FONT_XTINY;
+    var FONT_NUMBER_MILD = Gfx.FONT_NUMBER_MILD;
+    var FONT_XTINY = Gfx.FONT_XTINY;
 
-var x,y,font,justification;
+    var x,y,font,justification;
 
 
     var coeff=largeurEcran/416.0;
@@ -51,24 +51,49 @@ var x,y,font,justification;
     var white = Gfx.COLOR_WHITE;
     var trans = Gfx.COLOR_TRANSPARENT;
 
+    var rectangleSeondes;
+
  
 
 
     function initialize() {
     	System.println("view.initialize()");
+        WatchFace.initialize();
         readSettings();
         tabData = readAllData();
         //tabData = debug;
-        //WatchApp.storeAllData(tabData);
+        WatchApp.storeAllData(tabData);
         graph = new WatchGraphique(tabData);
-        WatchFace.initialize();
+        
     }
+
+
 
     function onLayout(dc) {
+        System.println("onLayout");
         ajusteFonts();
         ajustexy(dc);
-
+        rectangleSeondes = rectangleSeondesPermanentes(dc.getTextDimensions("88", font.get("Secondes")));
     }
+
+    function bufferSeondesPermanentes(xy) {
+		var largeur = xy[0];
+		var hauteur = xy[1];
+        var xx = x.get("Secondes");
+        var yy = y.get("Secondes");
+		var clipSecondes = [xx,yy-hauteur/2,largeur,hauteur];
+		System.println("calculeclip --> "+ clipSecondes);
+        return Gfx.createBufferedBitmap({:width=>largeur,:height=>hauteur,:alphaBlending=>1}).get();
+	}
+    function rectangleSeondesPermanentes(xy) {
+		var largeur = xy[0];
+		var hauteur = xy[1];
+        var xx = x.get("Secondes");
+        var yy = y.get("Secondes");
+        return [xx,yy-hauteur/2,largeur,hauteur];
+	}
+
+
 
     function onSettingsChanged() {
         readSettings();
@@ -167,7 +192,7 @@ var x,y,font,justification;
         afficheFields = getProp("afficheFields",false);
         nbHGraph = getProp("nbHGraph",2);
         logarithmique = getProp("logarithmique",false);
-        units  = getProp("units",0);
+        unitBG  = getProp("unitBG",0);
         field1  = getProp("field1",1);
         field2  = getProp("field2",2);
         field3  = getProp("field3",3);
@@ -295,11 +320,13 @@ var x,y,font,justification;
     function onUpdate(dc) {
 		dc.setColor( Gfx.COLOR_WHITE, Gfx.COLOR_BLACK);
         dc.clear();
+        /*
         if (isCapteurChanged()) {
             tabData = readAllData();
             graph.calcule_tout(tabData);
             Application.Storage.setValue("CapteurChanged",false);
         }
+        */
         var timeNow = Time.now();
         if (isCapteurChanged()) {
             tabData = readAllData();
@@ -309,10 +336,10 @@ var x,y,font,justification;
         
         var coeff = 1.0;
         var format = "%01d";
-        if (units == 1) {
+        if (unitBG == 1) {
             coeff = 18;
         }
-        else if (units == 2) {
+        else if (unitBG == 2) {
             coeff = 1/18.0;
             format = "%2.1f";
         }
@@ -341,12 +368,21 @@ var x,y,font,justification;
         }
     }
 
+    function onPartialUpdate( dc ) {
+        dc.setColor(Gfx.COLOR_BLACK ,Gfx.COLOR_BLACK);
+        dc.fillRectangle(rectangleSeondes[ 0],rectangleSeondes[1],rectangleSeondes[2],rectangleSeondes[3]);
+        var texte = Calendar.info(Time.now(), Time.FORMAT_MEDIUM).sec.format("%02d");
+        drawLabel(dc,"Secondes",texte,white);
+ 
+    }
+
+
     function drawClock(dc,info) {
         dc.setColor(white,trans);
         var timeString = Lang.format("$1$:$2$", [info.hour, info.min.format("%02d")]);
         drawLabel(dc,"heure", timeString,white);
         var texte="";
-        if (afficheSecondes ){
+        if (afficheSecondes ) {
             texte = info.sec.format("%02d");
             drawLabel(dc,"Secondes",texte,white);
        }    
@@ -441,6 +477,7 @@ var x,y,font,justification;
     function ereaseOLEDifLowPower(dc) {
         if ((inLowPower) and (OledModel)) {
             dc.setColor(Gfx.COLOR_BLACK, Gfx.COLOR_BLACK);
+            dc.fillRectangle(rectangleSeondes[ 0],rectangleSeondes[1],rectangleSeondes[2],rectangleSeondes[3]);
             decalageY_OLED = 1 + decalageY_OLED;
             if (decalageY_OLED > 1) {decalageY_OLED = -1;}
             dc.setPenWidth(3);
