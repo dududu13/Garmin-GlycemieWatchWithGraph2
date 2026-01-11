@@ -74,7 +74,7 @@ class WatchBG extends Toybox.System.ServiceDelegate {
         return url;
 	}
 
-// url = https://monsite.com/api/v1/entries/sgv.json?count=3/&token=watchface-0da8d01b0c8b3595
+// url = https://monsite.com/api/v1/entries/sgv.json?count=3/&token=
     function myWebRequest(ns, fetchMode, loop) {
 		var url;
 		var sourceBG = Application.getApp().getProperty("sourceBG");
