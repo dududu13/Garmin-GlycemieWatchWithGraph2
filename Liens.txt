@@ -1,0 +1,8 @@
+NS
+https://glycemie.fin-tech.com/api/v3/entries/sgv.json?count=3/&token=watchface-0da8d01b0c8b3595
+
+AAPS
+http://127.0.0.1:28891/sgv.json?count=3&brief_mode=true
+
+Xdrip
+http://127.0.0.1:17580/sgv.json?count=3
