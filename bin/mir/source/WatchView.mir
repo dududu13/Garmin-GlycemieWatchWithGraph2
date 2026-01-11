@@ -521,7 +521,7 @@ D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_
         %tmp.14 = getm $.Toybox.System;
         symbol [ println %tmp.15 106 19 26 ];
         %tmp.15 = getv function %tmp.14 :println;
-        %tmp.16 = "rÃ©ducton font size";
+        %tmp.16 = "réducton font size";
         invoke %tmp.14 %tmp.15(%tmp.16);
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 107 12 ]
         symbol [ FONT_LARGE %tmp.18 107 25 35 ];
@@ -4658,7 +4658,7 @@ D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_
         [ "D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_638_48_653_20_start" "D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_638_48_653_20_stop" ]
         %unitstr.6 = local;
         symbol [ unitstr %unitstr.6 647 8 15 ];
-        %tmp.99 = "Â°C";
+        %tmp.99 = "°C";
         lputv %unitstr.6 %tmp.99;
         symbol [ unitstr %unitstr.6 647 8 15 ];
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 648 4 ]
@@ -4688,7 +4688,7 @@ D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_
         lputv %temp.5 %tmp.111;
         symbol [ temp %temp.5 649 5 9 ];
 [ "D:\gduriez\Perso\Dossiers\DossiersVS\GlycemieWatchWithGraph\source\WatchView.mc" 650 5 ]
-        %tmp.112 = "Â°F";
+        %tmp.112 = "°F";
         lputv %unitstr.6 %tmp.112;
         symbol [ unitstr %unitstr.6 650 5 12 ];
 D__gduriez_Perso_Dossiers_DossiersVS_GlycemieWatchWithGraph_source_WatchView_mc_648_77_651_4_stop:
